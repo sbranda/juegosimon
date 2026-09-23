@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Memorión</title>
+<meta name="description" content="Juego de memoria de secuencias de colores con sonido.">
+<meta name="theme-color" content="#12141c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Memorión">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;600;700&display=swap">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0}
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+
+  :root{
+    color-scheme: dark;
+    --ground:#12141c;
+    --ground-2:#1b1e29;
+    --shell:#23273a;
+    --shell-edge:#2f3550;
+    --ink:#eef0f7;
+    --muted:#8d93ad;
+    --red:#e2483f;   --red-hi:#ff8a7a;
+    --green:#1fae6b; --green-hi:#6dffb4;
+    --yellow:#f2b705;--yellow-hi:#fff07a;
+    --blue:#2f6fe4;  --blue-hi:#8ec5ff;
+    --lcd:#0b1a14; --lcd-ink:#7dffb2;
+  }
+  html,body{height:100%}
+  body{
+    background:radial-gradient(120% 80% at 50% 0%, var(--ground-2), var(--ground) 70%);
+    background-color:var(--ground);
+    color:var(--ink);
+    font-family:"Chakra Petch", system-ui, sans-serif;
+    display:flex;justify-content:center;
+    padding-inline:16px;
+  }
+  .wrap{width:100%;max-width:460px;display:flex;flex-direction:column;align-items:center;gap:18px;padding-block:22px 96px}
+  header{text-align:center}
+  h1{font-family:"Bungee", "Chakra Petch", sans-serif;font-weight:400;font-size:clamp(34px,9vw,46px);margin:0;letter-spacing:.02em;line-height:1;
+     background:linear-gradient(90deg,var(--red),var(--yellow) 35%,var(--green) 65%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tag{margin:6px 0 0;color:var(--muted);font-size:14px;letter-spacing:.04em}
+
+  /* Device */
+  .device{position:relative;width:100%;max-width:400px;aspect-ratio:1;
+    background:linear-gradient(145deg,var(--shell-edge),var(--shell));
+    border-radius:34px;padding:16px;
+    box-shadow:0 20px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px}
+  .pad{appearance:none;border:0;cursor:pointer;position:relative;border-radius:22px;
+    transition:filter .08s, transform .08s, box-shadow .08s;
+    filter:brightness(.55) saturate(.85);
+    box-shadow:inset 0 -6px 0 rgba(0,0,0,.25), inset 0 2px 0 rgba(255,255,255,.12)}
+  .pad[data-i="0"]{background:var(--green);border-top-left-radius:60px}
+  .pad[data-i="1"]{background:var(--red);border-top-right-radius:60px}
+  .pad[data-i="2"]{background:var(--yellow);border-bottom-left-radius:60px}
+  .pad[data-i="3"]{background:var(--blue);border-bottom-right-radius:60px}
+  .pad .key{position:absolute;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:13px;color:rgba(0,0,0,.45);letter-spacing:.08em}
+  .pad[data-i="0"] .key{left:18px;top:16px}
+  .pad[data-i="1"] .key{right:18px;top:16px}
+  .pad[data-i="2"] .key{left:18px;bottom:16px}
+  .pad[data-i="3"] .key{right:18px;bottom:16px}
+  .pad.lit{filter:brightness(1.15) saturate(1.1);transform:scale(.985)}
+  .pad[data-i="0"].lit{box-shadow:0 0 40px var(--green-hi), inset 0 0 30px var(--green-hi)}
+  .pad[data-i="1"].lit{box-shadow:0 0 40px var(--red-hi), inset 0 0 30px var(--red-hi)}
+  .pad[data-i="2"].lit{box-shadow:0 0 40px var(--yellow-hi), inset 0 0 30px var(--yellow-hi)}
+  .pad[data-i="3"].lit{box-shadow:0 0 40px var(--blue-hi), inset 0 0 30px var(--blue-hi)}
+  .pad:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .locked .pad{cursor:default}
+
+  .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:38%;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #3a4060, var(--shell) 70%);
+    border:8px solid var(--ground);
+    box-shadow:0 6px 18px rgba(0,0,0,.5);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;pointer-events:none}
+  .lcd{background:var(--lcd);color:var(--lcd-ink);font-family:"Chakra Petch",monospace;font-weight:700;
+    font-variant-numeric:tabular-nums;font-size:clamp(24px,7vw,34px);line-height:1;padding:6px 12px;border-radius:8px;
+    min-width:2.6ch;text-align:center;text-shadow:0 0 8px rgba(125,255,178,.6);box-shadow:inset 0 2px 6px rgba(0,0,0,.6)}
+  .lcd.bad{color:#ff7b72;text-shadow:0 0 8px rgba(255,123,114,.7)}
+  .hub small{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+  /* Controls */
+  .status{min-height:1.4em;font-size:16px;font-weight:600;text-align:center;color:var(--ink)}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+  .btn{appearance:none;border:0;cursor:pointer;font:700 15px/1 "Chakra Petch",sans-serif;letter-spacing:.06em;text-transform:uppercase;
+    padding:13px 22px;border-radius:999px;background:var(--ink);color:var(--ground);box-shadow:0 4px 0 #9ea4bd}
+  .btn:active{transform:translateY(2px);box-shadow:0 2px 0 #9ea4bd}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:3px solid var(--blue-hi);outline-offset:2px}
+  .seg{display:inline-flex;background:var(--ground-2);border:1px solid var(--shell-edge);border-radius:999px;padding:3px}
+  .seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:600 13px/1 "Chakra Petch",sans-serif;padding:9px 12px;border-radius:999px;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--shell-edge);color:var(--ink)}
+  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:38px;height:22px;border-radius:999px;background:var(--ground-2);border:1px solid var(--shell-edge);position:relative;transition:background .15s}
+  .toggle span::after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:transform .15s, background .15s}
+  .toggle input:checked+span{background:var(--red)}
+  .toggle input:checked+span::after{transform:translateX(16px);background:var(--ink)}
+
+  .stats{display:flex;gap:28px;justify-content:center;font-variant-numeric:tabular-nums}
+  .stat{text-align:center}
+  .stat b{display:block;font-size:24px}
+  .stat span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  details{width:100%;color:var(--muted);font-size:14px;line-height:1.55;background:var(--ground-2);border:1px solid var(--shell-edge);border-radius:14px;padding:12px 16px}
+  summary{cursor:pointer;color:var(--ink);font-weight:600}
+  details ul{padding-left:18px;margin:8px 0 0}
+  footer{font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+
+  .pad{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+  .install{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--ground-2);border-top:1px solid var(--shell-edge);font-size:14px;color:var(--ink)}
+  .install .btn{padding:10px 18px;font-size:13px}
+  .install .x{appearance:none;border:0;background:transparent;color:var(--muted);font:600 13px "Chakra Petch",sans-serif;cursor:pointer;padding:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Memorión</h1>
+    <p class="tag">Mirá, escuchá y repetí la secuencia</p>
+  </header>
+
+  <div class="device locked" id="device">
+    <button class="pad" data-i="0" aria-label="Verde"><span class="key">Q</span></button>
+    <button class="pad" data-i="1" aria-label="Rojo"><span class="key">W</span></button>
+    <button class="pad" data-i="2" aria-label="Amarillo"><span class="key">A</span></button>
+    <button class="pad" data-i="3" aria-label="Azul"><span class="key">S</span></button>
+    <div class="hub" aria-hidden="true">
+      <div class="lcd" id="lcd">--</div>
+      <small>ronda</small>
+    </div>
+  </div>
+
+  <div class="status" id="status" role="status" aria-live="polite">Tocá «Jugar» para empezar</div>
+
+  <div class="controls">
+    <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
+      <button data-g="8">8</button>
+      <button data-g="14" aria-pressed="true">14</button>
+      <button data-g="20">20</button>
+      <button data-g="31">31</button>
+    </div>
+    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="best">0</b><span>Récord</span></div>
+    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+  </div>
+
+  <details>
+    <summary>Cómo se juega</summary>
+    <ul>
+      <li>El aparato ilumina una secuencia de colores. Repetila en el mismo orden.</li>
+      <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
+      <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
+    </ul>
+  </details>
+
+  <footer>Desarrollado por Seba Branda</footer>
+</div>
+
+<script>
+(() => {
+  const pads = [...document.querySelectorAll('.pad')];
+  const device = document.getElementById('device');
+  const lcd = document.getElementById('lcd');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('start');
+  const strictEl = document.getElementById('strict');
+  const bestEl = document.getElementById('best');
+  const goalV = document.getElementById('goalv');
+  const goalBtns = [...document.querySelectorAll('#goal button')];
+
+  const FREQS = [415.3, 310, 252, 209]; // tonos clásicos: verde, rojo, amarillo, azul
+  const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
+
+  let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let best = 0;
+  try { best = +localStorage.getItem('memorion-best') || 0; } catch(e){}
+  bestEl.textContent = best;
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function audio(){
+    if(!ctx){ try{ ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function tone(freq, ms, type='triangle', vol=.25){
+    const a = audio(); if(!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + .01);
+    g.gain.setValueAtTime(vol, t + ms/1000 - .03);
+    g.gain.linearRampToValueAtTime(0, t + ms/1000);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + ms/1000 + .02);
+  }
+
+  async function flash(i, ms){
+    pads[i].classList.add('lit'); tone(FREQS[i], ms);
+    await sleep(ms);
+    pads[i].classList.remove('lit');
+  }
+
+  function tempo(){
+    const n = seq.length;
+    if(n <= 5) return {on:420, gap:80};
+    if(n <= 9) return {on:320, gap:70};
+    if(n <= 13) return {on:240, gap:60};
+    return {on:180, gap:50};
+  }
+
+  function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
+  function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
+
+  async function playSeq(){
+    const my = token;
+    lock(true);
+    statusEl.textContent = 'Mirá la secuencia…';
+    await sleep(600);
+    const {on, gap} = tempo();
+    for(const i of seq){
+      if(my !== token) return;
+      await flash(i, on); await sleep(gap);
+    }
+    if(my !== token) return;
+    step = 0; lock(false);
+    statusEl.textContent = 'Tu turno';
+  }
+
+  async function nextRound(){
+    seq.push(Math.floor(Math.random()*4));
+    show(seq.length);
+    await playSeq();
+  }
+
+  async function start(){
+    audio();
+    token++; running = true; seq = [];
+    startBtn.textContent = 'Reiniciar';
+    await nextRound();
+  }
+
+  async function fail(){
+    const my = token;
+    lock(true);
+    tone(90, 700, 'sawtooth', .18);
+    show('!!', true); lcd.textContent = '!!';
+    if(strictEl.checked){
+      statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
+      await sleep(1400); if(my !== token) return;
+      seq = []; await nextRound();
+    } else {
+      statusEl.textContent = 'Error. Mirá de nuevo.';
+      await sleep(1100); if(my !== token) return;
+      show(seq.length); await playSeq();
+    }
+  }
+
+  async function win(){
+    const my = token;
+    lock(true); running = false;
+    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    for(let k=0;k<3;k++){
+      for(const i of [0,1,3,2]){ if(my!==token) return; await flash(i, 90); }
+    }
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
+  async function press(i){
+    if(!accepting || !running) return;
+    const my = token;
+    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    accepting = false;
+    await flash(i, 220);
+    if(my !== token) return;
+    accepting = true;
+    step++;
+    if(step === seq.length){
+      lock(true);
+      const done = seq.length;
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('memorion-best', best); }catch(e){} }
+      if(done >= goal) return win();
+      statusEl.textContent = '¡Bien!';
+      await sleep(500); if(my !== token) return;
+      nextRound();
+    }
+  }
+
+  pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
+  pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+  document.addEventListener('keydown', e => {
+    if(e.target.closest && e.target.closest('.pad')) return;
+    const k = KEYS[e.key.toLowerCase()];
+    if(k !== undefined) press(k);
+  });
+  startBtn.addEventListener('click', start);
+  goalBtns.forEach(b => b.addEventListener('click', () => {
+    goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    goal = +b.dataset.g; goalV.textContent = goal;
+  }));
+})();
+</script>
+
+<div class="install" id="install" hidden>
+  <span id="installMsg">Instalá Memorión para jugar sin conexión</span>
+  <button class="btn" id="installBtn">Instalar</button>
+  <button class="x" id="installClose" aria-label="Cerrar">Ahora no</button>
+</div>
+
+<script>
+// ---- PWA: service worker + instalación ----
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+(() => {
+  const bar = document.getElementById('install');
+  const btn = document.getElementById('installBtn');
+  const msg = document.getElementById('installMsg');
+  const close = document.getElementById('installClose');
+  let deferred = null;
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  let dismissed = false;
+  try { dismissed = localStorage.getItem('memorion-install-off') === '1'; } catch(e){}
+  if (standalone || dismissed) return;
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferred = e; bar.hidden = false;
+  });
+  btn.addEventListener('click', async () => {
+    if (!deferred) return;
+    deferred.prompt();
+    await deferred.userChoice;
+    deferred = null; bar.hidden = true;
+  });
+  close.addEventListener('click', () => {
+    bar.hidden = true;
+    try { localStorage.setItem('memorion-install-off','1'); } catch(e){}
+  });
+  window.addEventListener('appinstalled', () => { bar.hidden = true; });
+
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  if (ios) {
+    msg.textContent = 'Para instalar: tocá Compartir y después «Agregar a inicio»';
+    btn.hidden = true; bar.hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
