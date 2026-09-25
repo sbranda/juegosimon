@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Memorión</title>
-<meta name="description" content="Juego de memoria de secuencias de colores con sonido.">
+<meta name="description" content="Juego de memoria de secuencias de colores. Elegí entre cinco diseños.">
 <meta name="theme-color" content="#12141c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -15,130 +15,746 @@
 <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Manrope:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Work+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
   *,*::before,*::after{box-sizing:border-box}
-  body{margin:0}
-  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-  [hidden]{display:none!important}
-
-  :root{
-    color-scheme: dark;
-    --ground:#12141c;
-    --ground-2:#1b1e29;
-    --shell:#23273a;
-    --shell-edge:#2f3550;
-    --ink:#eef0f7;
-    --muted:#8d93ad;
-    --red:#e2483f;   --red-hi:#ff8a7a;
-    --green:#1fae6b; --green-hi:#6dffb4;
-    --yellow:#f2b705;--yellow-hi:#fff07a;
-    --blue:#2f6fe4;  --blue-hi:#8ec5ff;
-    --lcd:#0b1a14; --lcd-ink:#7dffb2;
-  }
   html,body{height:100%}
-  body{
-    background:radial-gradient(120% 80% at 50% 0%, var(--ground-2), var(--ground) 70%);
-    background-color:var(--ground);
-    color:var(--ink);
-    font-family:"Chakra Petch", system-ui, sans-serif;
-    display:flex;justify-content:center;
-    padding-inline:16px;
+  body{margin:0}
+  :root{
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    color-scheme: dark;
+    --m-bg:#12141c; --m-bg2:#1b1e29; --m-card:#1e2230; --m-card-edge:#2c3247;
+    --m-ink:#eef0f7; --m-muted:#8d93ad;
+    --m-accent:#6d8bff;
   }
-  .wrap{width:100%;max-width:460px;display:flex;flex-direction:column;align-items:center;gap:18px;padding-block:22px 96px}
-  header{text-align:center}
-  h1{font-family:"Bungee", "Chakra Petch", sans-serif;font-weight:400;font-size:clamp(34px,9vw,46px);margin:0;letter-spacing:.02em;line-height:1;
-     background:linear-gradient(90deg,var(--red),var(--yellow) 35%,var(--green) 65%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .tag{margin:6px 0 0;color:var(--muted);font-size:14px;letter-spacing:.04em}
+  [hidden]{display:none!important}
+  body{
+    background:radial-gradient(120% 70% at 50% 0%, var(--m-bg2), var(--m-bg) 70%);
+    background-color:var(--m-bg);
+    color:var(--m-ink);
+    font-family:"Manrope", system-ui, sans-serif;
+  }
 
-  /* Device */
-  .device{position:relative;width:100%;max-width:400px;aspect-ratio:1;
-    background:linear-gradient(145deg,var(--shell-edge),var(--shell));
-    border-radius:34px;padding:16px;
-    box-shadow:0 20px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
-    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px}
-  .pad{appearance:none;border:0;cursor:pointer;position:relative;border-radius:22px;
-    transition:filter .08s, transform .08s, box-shadow .08s;
-    filter:brightness(.55) saturate(.85);
-    box-shadow:inset 0 -6px 0 rgba(0,0,0,.25), inset 0 2px 0 rgba(255,255,255,.12)}
-  .pad[data-i="0"]{background:var(--green);border-top-left-radius:60px}
-  .pad[data-i="1"]{background:var(--red);border-top-right-radius:60px}
-  .pad[data-i="2"]{background:var(--yellow);border-bottom-left-radius:60px}
-  .pad[data-i="3"]{background:var(--blue);border-bottom-right-radius:60px}
-  .pad .key{position:absolute;font-family:"Chakra Petch",sans-serif;font-weight:700;font-size:13px;color:rgba(0,0,0,.45);letter-spacing:.08em}
-  .pad[data-i="0"] .key{left:18px;top:16px}
-  .pad[data-i="1"] .key{right:18px;top:16px}
-  .pad[data-i="2"] .key{left:18px;bottom:16px}
-  .pad[data-i="3"] .key{right:18px;bottom:16px}
-  .pad.lit{filter:brightness(1.15) saturate(1.1);transform:scale(.985)}
-  .pad[data-i="0"].lit{box-shadow:0 0 40px var(--green-hi), inset 0 0 30px var(--green-hi)}
-  .pad[data-i="1"].lit{box-shadow:0 0 40px var(--red-hi), inset 0 0 30px var(--red-hi)}
-  .pad[data-i="2"].lit{box-shadow:0 0 40px var(--yellow-hi), inset 0 0 30px var(--yellow-hi)}
-  .pad[data-i="3"].lit{box-shadow:0 0 40px var(--blue-hi), inset 0 0 30px var(--blue-hi)}
-  .pad:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-  .locked .pad{cursor:default}
+  /* ---------- Menú ---------- */
+  #menu{display:flex;justify-content:center;padding-inline:16px}
+  .menu-wrap{width:100%;max-width:460px;display:flex;flex-direction:column;gap:18px;padding-block:26px 32px}
+  .menu-head h1{font-size:clamp(26px,7vw,32px);margin:0 0 6px;font-weight:800;letter-spacing:-.01em}
+  .menu-head p{margin:0;color:var(--m-muted);font-size:14px}
 
-  .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:38%;aspect-ratio:1;border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #3a4060, var(--shell) 70%);
-    border:8px solid var(--ground);
-    box-shadow:0 6px 18px rgba(0,0,0,.5);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;pointer-events:none}
-  .lcd{background:var(--lcd);color:var(--lcd-ink);font-family:"Chakra Petch",monospace;font-weight:700;
-    font-variant-numeric:tabular-nums;font-size:clamp(24px,7vw,34px);line-height:1;padding:6px 12px;border-radius:8px;
-    min-width:2.6ch;text-align:center;text-shadow:0 0 8px rgba(125,255,178,.6);box-shadow:inset 0 2px 6px rgba(0,0,0,.6)}
-  .lcd.bad{color:#ff7b72;text-shadow:0 0 8px rgba(255,123,114,.7)}
-  .hub small{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .cards{display:flex;flex-direction:column;gap:12px}
+  .card{
+    display:flex;gap:14px;align-items:center;text-align:left;
+    background:var(--m-card);border:1px solid var(--m-card-edge);border-radius:16px;
+    padding:12px;appearance:none;cursor:pointer;color:inherit;font-family:inherit;
+    transition:border-color .12s, transform .08s;
+  }
+  .card:hover{border-color:var(--m-accent)}
+  .card:active{transform:scale(.99)}
+  .card:focus-visible{outline:2px solid var(--m-accent);outline-offset:2px}
 
-  /* Controls */
-  .status{min-height:1.4em;font-size:16px;font-weight:600;text-align:center;color:var(--ink)}
-  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
-  .btn{appearance:none;border:0;cursor:pointer;font:700 15px/1 "Chakra Petch",sans-serif;letter-spacing:.06em;text-transform:uppercase;
-    padding:13px 22px;border-radius:999px;background:var(--ink);color:var(--ground);box-shadow:0 4px 0 #9ea4bd}
-  .btn:active{transform:translateY(2px);box-shadow:0 2px 0 #9ea4bd}
-  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:3px solid var(--blue-hi);outline-offset:2px}
-  .seg{display:inline-flex;background:var(--ground-2);border:1px solid var(--shell-edge);border-radius:999px;padding:3px}
-  .seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:600 13px/1 "Chakra Petch",sans-serif;padding:9px 12px;border-radius:999px;cursor:pointer}
-  .seg button[aria-pressed="true"]{background:var(--shell-edge);color:var(--ink)}
-  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;cursor:pointer;user-select:none}
-  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
-  .toggle span{width:38px;height:22px;border-radius:999px;background:var(--ground-2);border:1px solid var(--shell-edge);position:relative;transition:background .15s}
-  .toggle span::after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--muted);transition:transform .15s, background .15s}
-  .toggle input:checked+span{background:var(--red)}
-  .toggle input:checked+span::after{transform:translateX(16px);background:var(--ink)}
+  .prev{width:60px;height:60px;flex:0 0 auto;border-radius:12px;position:relative;overflow:hidden}
+  .prev span{position:absolute;display:block}
 
-  .stats{display:flex;gap:28px;justify-content:center;font-variant-numeric:tabular-nums}
-  .stat{text-align:center}
-  .stat b{display:block;font-size:24px}
-  .stat span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .prev-neon{background:#070312;border:1px solid #2a1552}
+  .prev-neon span{width:24px;height:24px;border-radius:5px;background:#0a0616}
+  .prev-neon span:nth-child(1){top:6px;left:6px;border:2px solid #12ffb0;box-shadow:0 0 6px #12ffb0}
+  .prev-neon span:nth-child(2){top:6px;right:6px;border:2px solid #ff2b8f;box-shadow:0 0 6px #ff2b8f}
+  .prev-neon span:nth-child(3){bottom:6px;left:6px;border:2px solid #ffe814;box-shadow:0 0 6px #ffe814}
+  .prev-neon span:nth-child(4){bottom:6px;right:6px;border:2px solid #26d3ff;box-shadow:0 0 6px #26d3ff}
 
-  details{width:100%;color:var(--muted);font-size:14px;line-height:1.55;background:var(--ground-2);border:1px solid var(--shell-edge);border-radius:14px;padding:12px 16px}
-  summary{cursor:pointer;color:var(--ink);font-weight:600}
-  details ul{padding-left:18px;margin:8px 0 0}
-  footer{font-size:12px;color:var(--muted);letter-spacing:.04em}
+  .prev-consola{background:#f1e6cc}
+  .prev-consola span{width:12px;height:12px;top:50%;margin-top:-6px;border-radius:50%;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+  .prev-consola span:nth-child(1){left:5px;background:#2f9e58}
+  .prev-consola span:nth-child(2){left:20px;background:#d6402f}
+  .prev-consola span:nth-child(3){left:35px;background:#e8ab1c}
+  .prev-consola span:nth-child(4){left:50px;background:#2b6fc9}
 
-  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .prev-flat{background:#faf8f4;border:1px solid #e7e2d8}
+  .prev-flat span{width:22px;height:22px;border-radius:6px}
+  .prev-flat span:nth-child(1){top:7px;left:7px;background:#e94f37}
+  .prev-flat span:nth-child(2){top:7px;right:7px;background:#0f9d8f}
+  .prev-flat span:nth-child(3){bottom:7px;left:7px;background:#f2a900}
+  .prev-flat span:nth-child(4){bottom:7px;right:7px;background:#4a4de7}
 
-  .pad{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
-  .install{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
-    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--ground-2);border-top:1px solid var(--shell-edge);font-size:14px;color:var(--ink)}
-  .install .btn{padding:10px 18px;font-size:13px}
-  .install .x{appearance:none;border:0;background:transparent;color:var(--muted);font:600 13px "Chakra Petch",sans-serif;cursor:pointer;padding:8px}
+  .prev-botanico{background:#f3ecdd}
+  .prev-botanico span{width:30px;height:30px}
+  .prev-botanico span:nth-child(1){top:0;left:0;background:#4f7942;border-radius:0 100% 100% 100%}
+  .prev-botanico span:nth-child(2){top:0;right:0;background:#c1652f;border-radius:100% 0 100% 100%}
+  .prev-botanico span:nth-child(3){bottom:0;left:0;background:#d7a233;border-radius:100% 100% 100% 0}
+  .prev-botanico span:nth-child(4){bottom:0;right:0;background:#7c3a56;border-radius:100% 100% 0 100%}
+
+  .prev-terminal{background:#050705;background-image:repeating-linear-gradient(0deg, rgba(0,0,0,.4) 0 1px, transparent 1px 3px)}
+  .prev-terminal span{width:22px;height:22px;border:1px solid currentColor;border-radius:2px}
+  .prev-terminal span:nth-child(1){top:7px;left:7px;color:#33ff66}
+  .prev-terminal span:nth-child(2){top:7px;right:7px;color:#ffcf33}
+  .prev-terminal span:nth-child(3){bottom:7px;left:7px;color:#33e0ff}
+  .prev-terminal span:nth-child(4){bottom:7px;right:7px;color:#ff5fd6}
+
+  .card-body{flex:1;min-width:0}
+  .card-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .card-title{font-weight:800;font-size:15px}
+  .badge{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--m-accent);
+    background:rgba(109,139,255,.14);border-radius:999px;padding:2px 8px;font-weight:700}
+  .card-tag{margin:3px 0 0;color:var(--m-muted);font-size:12.5px;line-height:1.4}
+  .card-rec{margin-top:5px;font-size:11px;color:var(--m-muted);font-variant-numeric:tabular-nums}
+  .card-rec b{color:var(--m-ink)}
+  .chev{flex:0 0 auto;color:var(--m-muted);font-size:20px}
+
+  footer.credit{font-size:12px;color:var(--m-muted);text-align:center}
+
+  /* ---------- Stage + back bar ---------- */
+  #backbar{
+    position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:10px;
+    padding:10px 14px calc(10px);padding-top:calc(10px + env(safe-area-inset-top,0px));
+    background:rgba(8,8,12,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    color:#f2f2f7;font-family:"Manrope",system-ui,sans-serif;
+  }
+  .back-btn{appearance:none;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;
+    font:700 13px "Manrope",sans-serif;padding:7px 12px;border-radius:999px;cursor:pointer}
+  .back-btn:active{background:rgba(255,255,255,.18)}
+  .back-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  #backbar-name{font-size:12px;color:rgba(255,255,255,.75);font-weight:600;letter-spacing:.02em}
+  #stage{padding-top:44px}
+
+  @media (min-width:600px){
+    .cards{display:grid;grid-template-columns:1fr 1fr}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+
+<div id="backbar" hidden>
+  <button class="back-btn" id="backBtn" type="button">‹ Diseños</button>
+  <span id="backbar-name"></span>
+</div>
+
+<div id="menu">
+  <div class="menu-wrap">
+    <div class="menu-head">
+      <h1>Memorión</h1>
+      <p>Elegí un diseño y repetí la secuencia de colores</p>
+    </div>
+
+    <div class="cards" id="cardList">
+      <button class="card" data-skin="neon" type="button">
+        <div class="prev prev-neon"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Neón Cuadrante</span><span class="badge" data-lastbadge="neon" hidden>Último</span></div>
+          <p class="card-tag">Arcade synthwave con luces de neón</p>
+          <p class="card-rec" data-rec="neon"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <button class="card" data-skin="consola" type="button">
+        <div class="prev prev-consola"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Botonera Eco</span><span class="badge" data-lastbadge="consola" hidden>Último</span></div>
+          <p class="card-tag">Consola de juguete plástica clásica</p>
+          <p class="card-rec" data-rec="consola"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <button class="card" data-skin="flat" type="button">
+        <div class="prev prev-flat"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Secuencia Cuatro</span><span class="badge" data-lastbadge="flat" hidden>Último</span></div>
+          <p class="card-tag">Minimalista, plana y luminosa</p>
+          <p class="card-rec" data-rec="flat"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <button class="card" data-skin="botanico" type="button">
+        <div class="prev prev-botanico"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Ronda Silvestre</span><span class="badge" data-lastbadge="botanico" hidden>Último</span></div>
+          <p class="card-tag">Pétalos y tonos tierra de jardín</p>
+          <p class="card-rec" data-rec="botanico"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <button class="card" data-skin="terminal" type="button">
+        <div class="prev prev-terminal"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Terminal Mnemo</span><span class="badge" data-lastbadge="terminal" hidden>Último</span></div>
+          <p class="card-tag">Consola CRT verde fósforo</p>
+          <p class="card-rec" data-rec="terminal"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+    </div>
+
+    <footer class="credit">Desarrollado por Seba Branda</footer>
+  </div>
+</div>
+
+<div id="stage" hidden></div>
+
+<script>
+const SKINS = {
+  neon: {
+    name: "Ne\u00f3n Cuadrante",
+    tag: "Arcade synthwave con luces de ne\u00f3n",
+    bestKey: "neon-cuadrante-best",
+    css: `
+  :root{
+    color-scheme: dark;
+    --bg:#070312; --bg2:#120826; --grid:#1c0f3a;
+    --panel:#0d0620; --panel-edge:#2a1552;
+    --ink:#f3eeff; --muted:#8b7fc4;
+    --c0:#12ffb0; --c0-hi:#9dffe0;  /* verde */
+    --c1:#ff2b8f; --c1-hi:#ffa9d4;  /* magenta */
+    --c2:#ffe814; --c2-hi:#fff9a8;  /* amarillo */
+    --c3:#26d3ff; --c3-hi:#b3f0ff;  /* cian */
+    --lcd:#04140f; --lcd-ink:#12ffb0;
+  }
+  html,body{height:100%}
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;
+    background:
+      radial-gradient(120% 60% at 50% -10%, var(--bg2), transparent 60%),
+      repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 42px),
+      repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 42px),
+      var(--bg);
+    background-color:var(--bg);
+    color:var(--ink);
+    font-family:"Share Tech Mono", ui-monospace, monospace;
+    display:flex;justify-content:center;
+    padding-inline:16px;
+  }
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;gap:20px;padding-block:26px 30px}
+
+  header{text-align:center}
+  h1{font-family:"Press Start 2P", monospace;font-weight:400;font-size:clamp(20px,6.5vw,28px);margin:0;letter-spacing:.03em;line-height:1.4;
+     color:var(--c3);text-shadow:0 0 6px var(--c3), 0 0 22px var(--c3-hi);}
+  .tag{margin:10px 0 0;color:var(--muted);font-size:13px;letter-spacing:.06em}
+
+  .device{position:relative;width:100%;max-width:380px;aspect-ratio:1;
+    background:linear-gradient(160deg,var(--panel-edge),var(--panel) 60%);
+    border-radius:20px;padding:14px;
+    border:1px solid var(--panel-edge);
+    box-shadow:0 0 0 1px rgba(255,255,255,.03), 0 25px 60px rgba(0,0,0,.7), inset 0 0 40px rgba(0,0,0,.5);
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
+  .pad{appearance:none;border:0;cursor:pointer;position:relative;border-radius:10px;
+    background:#0a0616;
+    border:2px solid var(--pc);
+    color:var(--pc);
+    transition:background .08s, box-shadow .08s, transform .08s;
+    box-shadow:inset 0 0 18px color-mix(in srgb, var(--pc) 25%, transparent)}
+  .pad[data-i="0"]{--pc:var(--c0)}
+  .pad[data-i="1"]{--pc:var(--c1)}
+  .pad[data-i="2"]{--pc:var(--c2)}
+  .pad[data-i="3"]{--pc:var(--c3)}
+  .pad .key{position:absolute;top:10px;left:12px;font-family:"Press Start 2P",monospace;font-size:10px;letter-spacing:.05em;opacity:.7}
+  .pad.lit{background:var(--pc);color:#050109;transform:scale(.98);
+    box-shadow:0 0 30px var(--pc), 0 0 70px var(--pc), inset 0 0 25px rgba(255,255,255,.5)}
+  .pad:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .locked .pad{cursor:default}
+
+  .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:34%;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #1a0f38, #08041a 70%);
+    border:2px solid var(--panel-edge);
+    box-shadow:0 0 24px rgba(0,0,0,.6);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;pointer-events:none}
+  .lcd{background:var(--lcd);color:var(--lcd-ink);font-family:"Share Tech Mono",monospace;font-weight:700;
+    font-variant-numeric:tabular-nums;font-size:clamp(20px,6vw,26px);line-height:1;padding:5px 10px;border-radius:4px;
+    min-width:2.6ch;text-align:center;text-shadow:0 0 10px currentColor;box-shadow:inset 0 0 10px rgba(0,0,0,.6)}
+  .lcd.bad{color:#ff5566;text-shadow:0 0 10px #ff5566}
+  .hub small{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+  .status{min-height:1.4em;font-size:14px;text-align:center;color:var(--ink)}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+  .btn{appearance:none;border:1px solid var(--c1);cursor:pointer;font:700 13px "Share Tech Mono",monospace;letter-spacing:.08em;text-transform:uppercase;
+    padding:12px 20px;border-radius:6px;background:transparent;color:var(--c1);
+    box-shadow:0 0 14px color-mix(in srgb, var(--c1) 35%, transparent)}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:2px solid var(--c3-hi);outline-offset:2px}
+  .seg{display:inline-flex;background:#0a0616;border:1px solid var(--panel-edge);border-radius:6px;padding:3px}
+  .seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:600 12px "Share Tech Mono",monospace;padding:9px 11px;border-radius:4px;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--panel-edge);color:var(--c3)}
+  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:36px;height:20px;border-radius:4px;background:#0a0616;border:1px solid var(--panel-edge);position:relative;transition:background .15s}
+  .toggle span::after{content:"";position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:2px;background:var(--muted);transition:transform .15s, background .15s}
+  .toggle input:checked+span{border-color:var(--c1)}
+  .toggle input:checked+span::after{transform:translateX(16px);background:var(--c1);box-shadow:0 0 8px var(--c1)}
+
+  .stats{display:flex;gap:26px;justify-content:center;font-variant-numeric:tabular-nums}
+  .stat{text-align:center}
+  .stat b{display:block;font-size:20px;color:var(--c2);text-shadow:0 0 8px color-mix(in srgb, var(--c2) 50%, transparent)}
+  .stat span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  details{width:100%;color:var(--muted);font-size:13px;line-height:1.6;background:#0a0616;border:1px solid var(--panel-edge);border-radius:8px;padding:12px 15px}
+  summary{cursor:pointer;color:var(--ink);font-weight:600}
+  details ul{padding-left:18px;margin:8px 0 0}
+  footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+`,
+    html: `<div class="wrap">
   <header>
-    <h1>Memorión</h1>
-    <p class="tag">Mirá, escuchá y repetí la secuencia</p>
+    <h1>NEÓN<br>CUADRANTE</h1>
+    <p class="tag">// repetí la secuencia de luz</p>
   </header>
 
   <div class="device locked" id="device">
     <button class="pad" data-i="0" aria-label="Verde"><span class="key">Q</span></button>
-    <button class="pad" data-i="1" aria-label="Rojo"><span class="key">W</span></button>
+    <button class="pad" data-i="1" aria-label="Magenta"><span class="key">W</span></button>
     <button class="pad" data-i="2" aria-label="Amarillo"><span class="key">A</span></button>
-    <button class="pad" data-i="3" aria-label="Azul"><span class="key">S</span></button>
+    <button class="pad" data-i="3" aria-label="Cian"><span class="key">S</span></button>
     <div class="hub" aria-hidden="true">
+      <div class="lcd" id="lcd">--</div>
+      <small>ronda</small>
+    </div>
+  </div>
+
+  <div class="status" id="status" role="status" aria-live="polite">Presioná «Iniciar» para empezar</div>
+
+  <div class="controls">
+    <button class="btn" id="start">Iniciar</button>
+    <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
+      <button data-g="8">8</button>
+      <button data-g="14" aria-pressed="true">14</button>
+      <button data-g="20">20</button>
+      <button data-g="31">31</button>
+    </div>
+    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="best">0</b><span>Récord</span></div>
+    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+  </div>
+
+  <details>
+    <summary>Cómo se juega</summary>
+    <ul>
+      <li>El sistema enciende una secuencia de colores. Repetila en el mismo orden.</li>
+      <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
+      <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
+    </ul>
+  </details>
+
+  <footer>Desarrollado por Seba Branda</footer>
+</div>`,
+    init: init_neon
+  },
+  consola: {
+    name: "Botonera Eco",
+    tag: "Consola de juguete pl\u00e1stica cl\u00e1sica",
+    bestKey: "botonera-eco-best",
+    css: `
+  :root{
+    color-scheme: light;
+    --bg:#e8ddc4; --bg2:#dccfab;
+    --case:#f1e6cc; --case-edge:#c9b686; --case-deep:#a99461;
+    --plate:#fffaf0;
+    --ink:#3a2e1c; --muted:#8a7a56;
+    --c0:#2f9e58; --c0-d:#1f6f3c; /* verde */
+    --c1:#d6402f; --c1-d:#9c2a1e; /* rojo */
+    --c2:#e8ab1c; --c2-d:#b17f0f; /* amarillo */
+    --c3:#2b6fc9; --c3-d:#1c4c8f; /* azul */
+    --lcd:#2b3a2e; --lcd-ink:#a9e6b4;
+  }
+  :root:not([data-theme="light"])[data-theme]{}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --bg:#221c14; --bg2:#2b2318;
+      --case:#3a3122; --case-edge:#544730; --case-deep:#231d13;
+      --plate:#463c29;
+      --ink:#f1e8d3; --muted:#a5977a;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#221c14; --bg2:#2b2318;
+    --case:#3a3122; --case-edge:#544730; --case-deep:#231d13;
+    --plate:#463c29;
+    --ink:#f1e8d3; --muted:#a5977a;
+  }
+  html,body{height:100%}
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;
+    background:radial-gradient(120% 70% at 50% 0%, var(--bg2), var(--bg) 75%);
+    color:var(--ink);
+    font-family:"Baloo 2", system-ui, sans-serif;
+    display:flex;justify-content:center;
+    padding-inline:16px;
+  }
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;gap:20px;padding-block:24px 30px}
+
+  header{text-align:center}
+  h1{font-family:"Baloo 2", sans-serif;font-weight:800;font-size:clamp(30px,8vw,40px);margin:0;letter-spacing:.01em;color:var(--c1);
+     text-shadow:2px 2px 0 var(--case-edge)}
+  .tag{margin:6px 0 0;color:var(--muted);font-size:14px;font-weight:500}
+
+  .console{position:relative;width:100%;max-width:400px;
+    background:linear-gradient(160deg,var(--case),var(--case) 60%,var(--case-deep));
+    border-radius:28px;padding:22px 20px 26px;
+    box-shadow:0 18px 0 var(--case-deep), 0 24px 40px rgba(0,0,0,.35);
+    border:1px solid var(--case-edge);
+  }
+  .screw{position:absolute;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #fff8, var(--case-deep));box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
+  .screw.tl{top:10px;left:12px} .screw.tr{top:10px;right:12px} .screw.bl{bottom:10px;left:12px} .screw.br{bottom:10px;right:12px}
+
+  .plate{background:var(--plate);border-radius:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;
+    box-shadow:inset 0 2px 4px rgba(0,0,0,.15);margin-bottom:18px}
+  .plate .brand{font-weight:700;font-size:15px;letter-spacing:.03em;color:var(--ink)}
+  .lcd{background:var(--lcd);color:var(--lcd-ink);font-family:"Space Mono",monospace;font-weight:700;
+    font-variant-numeric:tabular-nums;font-size:20px;line-height:1;padding:6px 12px;border-radius:6px;
+    min-width:2.4ch;text-align:center;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
+
+  .pads{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .locked .pad{cursor:default}
+  .pad{appearance:none;border:0;cursor:pointer;aspect-ratio:1;border-radius:50%;position:relative;
+    background:radial-gradient(circle at 35% 28%, color-mix(in srgb, var(--pc) 70%, white), var(--pc) 55%, var(--pd) 100%);
+    box-shadow:0 6px 0 var(--pd), 0 8px 14px rgba(0,0,0,.3), inset 0 -4px 6px rgba(0,0,0,.15);
+    transition:transform .07s, box-shadow .07s, filter .07s}
+  .pad[data-i="0"]{--pc:var(--c0);--pd:var(--c0-d)}
+  .pad[data-i="1"]{--pc:var(--c1);--pd:var(--c1-d)}
+  .pad[data-i="2"]{--pc:var(--c2);--pd:var(--c2-d)}
+  .pad[data-i="3"]{--pc:var(--c3);--pd:var(--c3-d)}
+  .pad .key{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-family:"Space Mono",monospace;font-size:11px;font-weight:700;color:var(--muted)}
+  .pad.lit{transform:translateY(4px);box-shadow:0 2px 0 var(--pd), 0 4px 10px rgba(0,0,0,.25), inset 0 -2px 4px rgba(0,0,0,.1);filter:brightness(1.2) saturate(1.15)}
+  .pad:active{transform:translateY(4px)}
+  .pad:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+  .status{min-height:1.4em;font-size:16px;font-weight:600;text-align:center;color:var(--ink)}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+  .btn{appearance:none;border:0;cursor:pointer;font:700 15px "Baloo 2",sans-serif;letter-spacing:.02em;
+    padding:12px 24px;border-radius:999px;background:var(--c1);color:#fff9ee;box-shadow:0 4px 0 var(--c1-d)}
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--c1-d)}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:3px solid var(--c3);outline-offset:2px}
+  .seg{display:inline-flex;background:var(--plate);border-radius:999px;padding:3px;box-shadow:inset 0 1px 3px rgba(0,0,0,.15)}
+  .seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:700 13px "Baloo 2",sans-serif;padding:9px 12px;border-radius:999px;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--c2);color:#3a2e1c}
+  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:38px;height:22px;border-radius:999px;background:var(--plate);box-shadow:inset 0 1px 3px rgba(0,0,0,.2);position:relative;transition:background .15s}
+  .toggle span::after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .15s}
+  .toggle input:checked+span{background:var(--c1)}
+  .toggle input:checked+span::after{transform:translateX(16px)}
+
+  .stats{display:flex;gap:28px;justify-content:center;font-variant-numeric:tabular-nums}
+  .stat{text-align:center}
+  .stat b{display:block;font-size:24px;color:var(--c3)}
+  .stat span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+  details{width:100%;color:var(--muted);font-size:14px;line-height:1.55;background:var(--plate);border-radius:14px;padding:12px 16px;box-shadow:inset 0 1px 3px rgba(0,0,0,.1)}
+  summary{cursor:pointer;color:var(--ink);font-weight:700}
+  details ul{padding-left:18px;margin:8px 0 0}
+  footer{font-size:12px;color:var(--muted);font-weight:500}
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+`,
+    html: `<div class="wrap">
+  <header>
+    <h1>Botonera Eco</h1>
+    <p class="tag">Escuchá, mirá y repetí</p>
+  </header>
+
+  <div class="console locked" id="device">
+    <span class="screw tl"></span><span class="screw tr"></span><span class="screw bl"></span><span class="screw br"></span>
+    <div class="plate">
+      <span class="brand">MODELO 4X</span>
+      <div class="lcd" id="lcd">--</div>
+    </div>
+    <div class="pads">
+      <button class="pad" data-i="0" aria-label="Verde"><span class="key">Q</span></button>
+      <button class="pad" data-i="1" aria-label="Rojo"><span class="key">W</span></button>
+      <button class="pad" data-i="2" aria-label="Amarillo"><span class="key">A</span></button>
+      <button class="pad" data-i="3" aria-label="Azul"><span class="key">S</span></button>
+    </div>
+  </div>
+
+  <div class="status" id="status" role="status" aria-live="polite">Tocá «Jugar» para empezar</div>
+
+  <div class="controls">
+    <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
+      <button data-g="8">8</button>
+      <button data-g="14" aria-pressed="true">14</button>
+      <button data-g="20">20</button>
+      <button data-g="31">31</button>
+    </div>
+    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="best">0</b><span>Récord</span></div>
+    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+  </div>
+
+  <details>
+    <summary>Cómo se juega</summary>
+    <ul>
+      <li>La botonera enciende una secuencia de colores. Repetila en el mismo orden.</li>
+      <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
+      <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
+    </ul>
+  </details>
+
+  <footer>Desarrollado por Seba Branda</footer>
+</div>`,
+    init: init_consola
+  },
+  flat: {
+    name: "Secuencia Cuatro",
+    tag: "Minimalista, plano y luminoso",
+    bestKey: "secuencia-cuatro-best",
+    css: `
+  :root{
+    color-scheme: light;
+    --bg:#faf8f4; --surface:#ffffff; --line:#e7e2d8;
+    --ink:#221f1a; --muted:#797365;
+    --c0:#e94f37; --c0-soft:#fde2dd; /* coral */
+    --c1:#0f9d8f; --c1-soft:#d9f3ef; /* teal */
+    --c2:#f2a900; --c2-soft:#fdedcc; /* amber */
+    --c3:#4a4de7; --c3-soft:#e3e3fd; /* indigo */
+    --accent:#221f1a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --bg:#17161a; --surface:#201f24; --line:#332f36;
+      --ink:#f3f1ec; --muted:#a19a8d;
+      --c0-soft:#3a2020; --c1-soft:#12302c; --c2-soft:#3a2c0c; --c3-soft:#22224a;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#17161a; --surface:#201f24; --line:#332f36;
+    --ink:#f3f1ec; --muted:#a19a8d;
+    --c0-soft:#3a2020; --c1-soft:#12302c; --c2-soft:#3a2c0c; --c3-soft:#22224a;
+  }
+  html,body{height:100%}
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;display:flex;justify-content:center;padding-inline:16px}
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:22px;padding-block:28px 32px}
+
+  header{display:flex;justify-content:space-between;align-items:flex-end}
+  h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(26px,7vw,32px);margin:0;letter-spacing:-.01em}
+  .roundtag{font-size:12px;color:var(--muted);text-align:right;line-height:1.4}
+  .roundtag b{display:block;font-family:"Manrope";font-weight:800;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+
+  .board{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
+  .pads{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .locked .pad{cursor:default}
+  .pad{appearance:none;cursor:pointer;border:1px solid var(--line);border-radius:14px;aspect-ratio:1.15;
+    display:flex;flex-direction:column;justify-content:space-between;padding:14px;
+    background:var(--soft);color:var(--pc);text-align:left;transition:background .1s, box-shadow .1s, transform .06s}
+  .pad[data-i="0"]{--soft:var(--c0-soft);--pc:var(--c0)}
+  .pad[data-i="1"]{--soft:var(--c1-soft);--pc:var(--c1)}
+  .pad[data-i="2"]{--soft:var(--c2-soft);--pc:var(--c2)}
+  .pad[data-i="3"]{--soft:var(--c3-soft);--pc:var(--c3)}
+  .pad .num{font-family:"Manrope";font-weight:800;font-size:13px;letter-spacing:.04em}
+  .pad .dot{width:100%;flex:1;border-radius:8px;background:var(--pc);opacity:.16;margin:10px 0}
+  .pad .key{font-family:"Manrope";font-weight:700;font-size:12px;color:var(--pc)}
+  .pad.lit{background:var(--pc);transform:scale(.985);box-shadow:0 8px 20px color-mix(in srgb, var(--pc) 45%, transparent)}
+  .pad.lit .num,.pad.lit .key{color:#fff}
+  .pad.lit .dot{background:#fff;opacity:.9}
+  .pad:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+  .status{font-size:15px;font-weight:600;text-align:center;min-height:1.4em}
+
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+  .btn{appearance:none;border:0;cursor:pointer;font:800 14px "Manrope",sans-serif;padding:13px 22px;border-radius:10px;background:var(--ink);color:var(--bg)}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:2px solid var(--c3);outline-offset:2px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .seg button{appearance:none;border:0;border-right:1px solid var(--line);background:var(--surface);color:var(--muted);font:700 13px "Manrope",sans-serif;padding:11px 13px;cursor:pointer}
+  .seg button:last-child{border-right:0}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:36px;height:20px;border-radius:999px;background:var(--line);position:relative;transition:background .15s}
+  .toggle span::after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--surface);box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .15s}
+  .toggle input:checked+span{background:var(--c0)}
+  .toggle input:checked+span::after{transform:translateX(16px)}
+
+  .stats{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stat{flex:1;text-align:center;padding-block:14px}
+  .stat+.stat{border-left:1px solid var(--line)}
+  .stat b{display:block;font-family:"Fraunces",serif;font-weight:600;font-size:26px;font-variant-numeric:tabular-nums}
+  .stat span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+  details{color:var(--muted);font-size:14px;line-height:1.6}
+  summary{cursor:pointer;color:var(--ink);font-weight:700}
+  details ul{padding-left:18px;margin:8px 0 0}
+  footer{font-size:12px;color:var(--muted);text-align:center}
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+`,
+    html: `<div class="wrap">
+  <header>
+    <h1>Secuencia<br>Cuatro</h1>
+    <div class="roundtag"><b id="lcd">00</b>ronda</div>
+  </header>
+
+  <div class="board">
+    <div class="pads locked" id="device">
+      <button class="pad" data-i="0" aria-label="Coral"><span class="num">01</span><span class="dot"></span><span class="key">Q</span></button>
+      <button class="pad" data-i="1" aria-label="Verde azulado"><span class="num">02</span><span class="dot"></span><span class="key">W</span></button>
+      <button class="pad" data-i="2" aria-label="Ámbar"><span class="num">03</span><span class="dot"></span><span class="key">A</span></button>
+      <button class="pad" data-i="3" aria-label="Índigo"><span class="num">04</span><span class="dot"></span><span class="key">S</span></button>
+    </div>
+  </div>
+
+  <div class="status" id="status" role="status" aria-live="polite">Presioná «Jugar» para empezar</div>
+
+  <div class="controls">
+    <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
+      <button data-g="8">8</button>
+      <button data-g="14" aria-pressed="true">14</button>
+      <button data-g="20">20</button>
+      <button data-g="31">31</button>
+    </div>
+    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="best">0</b><span>Récord</span></div>
+    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+  </div>
+
+  <details>
+    <summary>Cómo se juega</summary>
+    <ul>
+      <li>El tablero muestra una secuencia de colores. Repetila en el mismo orden.</li>
+      <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
+      <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
+    </ul>
+  </details>
+
+  <footer>Desarrollado por Seba Branda</footer>
+</div>`,
+    init: init_flat
+  },
+  botanico: {
+    name: "Ronda Silvestre",
+    tag: "P\u00e9talos y tonos tierra de jard\u00edn",
+    bestKey: "ronda-silvestre-best",
+    css: `
+  :root{
+    color-scheme: light;
+    --bg:#f3ecdd; --bg2:#e9dfc7;
+    --wood:#5b4632; --wood-hi:#7a5f42;
+    --ink:#2c2416; --muted:#7a6d54;
+    --c0:#4f7942; --c0-hi:#7fae6a; /* musgo */
+    --c1:#c1652f; --c1-hi:#e08a52; /* terracota */
+    --c2:#d7a233; --c2-hi:#eec66a; /* miel */
+    --c3:#7c3a56; --c3-hi:#a85c7c; /* ciruela */
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --bg:#1b1810; --bg2:#242017;
+      --wood:#3a2f22; --wood-hi:#4d3f2c;
+      --ink:#ede4d1; --muted:#a89b7e;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --bg:#1b1810; --bg2:#242017;
+    --wood:#3a2f22; --wood-hi:#4d3f2c;
+    --ink:#ede4d1; --muted:#a89b7e;
+  }
+  html,body{height:100%}
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(140% 90% at 50% -10%, var(--bg2), var(--bg) 70%);color:var(--ink);
+    font-family:"Work Sans",system-ui,sans-serif;display:flex;justify-content:center;padding-inline:16px}
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;gap:20px;padding-block:28px 32px}
+
+  header{text-align:center}
+  h1{font-family:"Fraunces",serif;font-style:italic;font-weight:600;font-size:clamp(30px,8vw,40px);margin:0;color:var(--c1)}
+  .tag{margin:8px 0 0;color:var(--muted);font-size:14px}
+
+  .garden{position:relative;width:100%;max-width:360px;aspect-ratio:1;margin-block:6px}
+  .locked .petal{cursor:default}
+  .petal{position:absolute;appearance:none;border:0;cursor:pointer;width:46%;height:46%;
+    background:var(--pc);transition:filter .1s, transform .1s;
+    box-shadow:inset 0 0 0 2px rgba(0,0,0,.06)}
+  .petal[data-i="0"]{--pc:var(--c0);top:0;left:0;border-radius:0 100% 100% 100%;transform-origin:100% 100%}
+  .petal[data-i="1"]{--pc:var(--c1);top:0;right:0;border-radius:100% 0 100% 100%;transform-origin:0% 100%}
+  .petal[data-i="2"]{--pc:var(--c2);bottom:0;left:0;border-radius:100% 100% 100% 0;transform-origin:100% 0%}
+  .petal[data-i="3"]{--pc:var(--c3);bottom:0;right:0;border-radius:100% 100% 0 100%;transform-origin:0% 0%}
+  .petal .key{position:absolute;font-family:"Work Sans";font-weight:600;font-size:12px;color:rgba(0,0,0,.35)}
+  .petal[data-i="0"] .key{top:14%;left:14%} .petal[data-i="1"] .key{top:14%;right:14%}
+  .petal[data-i="2"] .key{bottom:14%;left:14%} .petal[data-i="3"] .key{bottom:14%;right:14%}
+  .petal.lit{filter:brightness(1.22) saturate(1.15);transform:scale(1.04);z-index:2;
+    box-shadow:0 0 0 2px rgba(0,0,0,.06), 0 10px 26px rgba(0,0,0,.25)}
+  .petal:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+  .stump{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:30%;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--wood-hi), var(--wood) 75%);
+    border:5px solid var(--bg);box-shadow:0 6px 16px rgba(0,0,0,.3);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;pointer-events:none;z-index:3}
+  .lcd{font-family:"Fraunces",serif;font-weight:600;font-variant-numeric:tabular-nums;font-size:clamp(20px,6vw,26px);color:#f3ecdd;line-height:1}
+  .lcd.bad{color:var(--c1-hi)}
+  .stump small{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#d8c9a3}
+
+  .status{min-height:1.4em;font-size:15px;font-weight:600;text-align:center}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+  .btn{appearance:none;border:0;cursor:pointer;font:600 14px "Work Sans",sans-serif;padding:12px 22px;border-radius:999px;
+    background:var(--c0);color:#fbf6e8;box-shadow:0 3px 0 #33512b}
+  .btn:active{transform:translateY(2px);box-shadow:0 1px 0 #33512b}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:3px solid var(--c3);outline-offset:2px}
+  .seg{display:inline-flex;background:var(--bg2);border:1px solid var(--muted);border-radius:999px;padding:3px}
+  .seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:600 13px "Work Sans",sans-serif;padding:9px 12px;border-radius:999px;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--c2);color:#2c2416}
+  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:36px;height:20px;border-radius:999px;background:var(--bg2);border:1px solid var(--muted);position:relative;transition:background .15s}
+  .toggle span::after{content:"";position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--muted);transition:transform .15s, background .15s}
+  .toggle input:checked+span{background:var(--c1)}
+  .toggle input:checked+span::after{transform:translateX(16px);background:#fbf6e8}
+
+  .stats{display:flex;gap:28px;justify-content:center;font-variant-numeric:tabular-nums}
+  .stat{text-align:center}
+  .stat b{display:block;font-family:"Fraunces",serif;font-weight:600;font-size:24px}
+  .stat span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+  details{width:100%;color:var(--muted);font-size:14px;line-height:1.6;background:var(--bg2);border-radius:16px;padding:12px 16px}
+  summary{cursor:pointer;color:var(--ink);font-weight:600}
+  details ul{padding-left:18px;margin:8px 0 0}
+  footer{font-size:12px;color:var(--muted)}
+  @media (prefers-reduced-motion: reduce){ .petal,.toggle span::after{transition:none} .petal.lit{transform:none} }
+`,
+    html: `<div class="wrap">
+  <header>
+    <h1>Ronda Silvestre</h1>
+    <p class="tag">Observá el jardín y repetí su orden</p>
+  </header>
+
+  <div class="garden locked" id="device">
+    <button class="petal" data-i="0" aria-label="Musgo"><span class="key">Q</span></button>
+    <button class="petal" data-i="1" aria-label="Terracota"><span class="key">W</span></button>
+    <button class="petal" data-i="2" aria-label="Miel"><span class="key">A</span></button>
+    <button class="petal" data-i="3" aria-label="Ciruela"><span class="key">S</span></button>
+    <div class="stump" aria-hidden="true">
       <div class="lcd" id="lcd">--</div>
       <small>ronda</small>
     </div>
@@ -165,7 +781,7 @@
   <details>
     <summary>Cómo se juega</summary>
     <ul>
-      <li>El aparato ilumina una secuencia de colores. Repetila en el mismo orden.</li>
+      <li>El jardín ilumina una secuencia de pétalos. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
       <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
@@ -173,10 +789,151 @@
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
-</div>
+</div>`,
+    init: init_botanico
+  },
+  terminal: {
+    name: "Terminal Mnemo",
+    tag: "Consola CRT verde f\u00f3sforo",
+    bestKey: "terminal-mnemo-best",
+    css: `
+  :root{
+    color-scheme: dark;
+    --bg:#050705; --scan:#08140a;
+    --frame:#0e1a0f; --frame-edge:#1e3a20;
+    --ink:#d8ffe0; --muted:#5f8f68;
+    --c0:#33ff66; --c0-d:#0f5c22; /* green */
+    --c1:#ffcf33; --c1-d:#8a6f10; /* amber */
+    --c2:#33e0ff; --c2-d:#0f6f8a; /* cyan */
+    --c3:#ff5fd6; --c3-d:#8a1f78; /* magenta */
+  }
+  html,body{height:100%}
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px),
+      radial-gradient(120% 80% at 50% 0%, var(--scan), var(--bg) 70%);
+    background-color:var(--bg);
+    color:var(--ink);
+    font-family:"JetBrains Mono", ui-monospace, monospace;
+    display:flex;justify-content:center;
+    padding-inline:16px;
+  }
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:440px;display:flex;flex-direction:column;gap:14px;padding-block:22px 28px}
 
-<script>
-(() => {
+  .win{border:1px solid var(--frame-edge);border-radius:8px;background:var(--frame);box-shadow:0 0 0 1px rgba(51,255,102,.05), 0 30px 60px rgba(0,0,0,.6)}
+  .titlebar{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--frame-edge)}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--muted);opacity:.5}
+  .titlebar span{margin-left:6px;font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+  .screen{padding:18px 16px}
+  h1{font-size:15px;margin:0 0 2px;color:var(--c0);letter-spacing:.02em;text-shadow:0 0 6px rgba(51,255,102,.5)}
+  h1::before{content:"$ "}
+  .tag{margin:0 0 16px;color:var(--muted);font-size:12px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+  .locked .pad{cursor:default}
+  .pad{appearance:none;cursor:pointer;border:1px solid var(--pd);background:#000;color:var(--pc);
+    border-radius:4px;padding:16px 10px;text-align:left;font-family:"JetBrains Mono",monospace;
+    display:flex;flex-direction:column;gap:6px;transition:background .08s, box-shadow .08s}
+  .pad[data-i="0"]{--pc:var(--c0);--pd:var(--c0-d)}
+  .pad[data-i="1"]{--pc:var(--c1);--pd:var(--c1-d)}
+  .pad[data-i="2"]{--pc:var(--c2);--pd:var(--c2-d)}
+  .pad[data-i="3"]{--pc:var(--c3);--pd:var(--c3-d)}
+  .pad .lbl{font-size:11px;letter-spacing:.06em;opacity:.85}
+  .pad .brk{font-size:16px;font-weight:700}
+  .pad.lit{background:var(--pc);color:#04140a;box-shadow:0 0 24px var(--pc), inset 0 0 12px rgba(255,255,255,.4)}
+  .pad:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+  .feed{background:#000;border:1px solid var(--frame-edge);border-radius:4px;padding:10px 12px;font-size:12px;
+    color:var(--muted);min-height:1.6em;display:flex;align-items:center;gap:8px}
+  .feed .cursor{width:7px;height:13px;background:var(--c0);display:inline-block;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .lcdrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:12px;color:var(--muted)}
+  .lcdrow b{color:var(--c0);font-size:16px;font-variant-numeric:tabular-nums}
+  .lcdrow b.bad{color:#ff5566}
+
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+  .btn{appearance:none;border:1px solid var(--c0);cursor:pointer;font:700 12px "JetBrains Mono",monospace;letter-spacing:.05em;
+    padding:10px 16px;border-radius:4px;background:transparent;color:var(--c0)}
+  .btn::before{content:"> "}
+  .btn:active{background:rgba(51,255,102,.1)}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:2px solid var(--c2);outline-offset:2px}
+  .seg{display:inline-flex;border:1px solid var(--frame-edge);border-radius:4px;overflow:hidden}
+  .seg button{appearance:none;border:0;border-right:1px solid var(--frame-edge);background:transparent;color:var(--muted);font:700 12px "JetBrains Mono",monospace;padding:10px 11px;cursor:pointer}
+  .seg button:last-child{border-right:0}
+  .seg button[aria-pressed="true"]{background:var(--c0);color:#04140a}
+  .toggle{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:30px;height:16px;border:1px solid var(--frame-edge);border-radius:2px;position:relative}
+  .toggle span::after{content:"";position:absolute;left:1px;top:1px;width:12px;height:12px;background:var(--muted);transition:transform .15s, background .15s}
+  .toggle input:checked+span::after{transform:translateX(14px);background:var(--c1)}
+
+  .stats{display:flex;gap:20px;font-size:12px;color:var(--muted);margin-top:12px}
+  .stats b{color:var(--c0);font-variant-numeric:tabular-nums}
+
+  details{margin-top:14px;color:var(--muted);font-size:12px;line-height:1.6}
+  summary{cursor:pointer;color:var(--ink)}
+  summary::marker{color:var(--c0)}
+  details ul{padding-left:16px;margin:8px 0 0}
+  footer{font-size:11px;color:var(--muted);text-align:center;margin-top:4px}
+  @media (prefers-reduced-motion: reduce){ .pad,.cursor{transition:none;animation:none} }
+`,
+    html: `<div class="wrap">
+  <div class="win">
+    <div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>mnemo.sh — 80x24</span></div>
+    <div class="screen">
+      <h1>terminal_mnemo --start</h1>
+      <p class="tag">reproducí la secuencia de canales para avanzar</p>
+
+      <div class="lcdrow"><span>ronda</span><b id="lcd">00</b></div>
+
+      <div class="grid locked" id="device">
+        <button class="pad" data-i="0" aria-label="Canal verde"><span class="lbl">CH.01 · Q</span><span class="brk">████</span></button>
+        <button class="pad" data-i="1" aria-label="Canal ámbar"><span class="lbl">CH.02 · W</span><span class="brk">████</span></button>
+        <button class="pad" data-i="2" aria-label="Canal cian"><span class="lbl">CH.03 · A</span><span class="brk">████</span></button>
+        <button class="pad" data-i="3" aria-label="Canal magenta"><span class="lbl">CH.04 · S</span><span class="brk">████</span></button>
+      </div>
+
+      <div class="feed"><span id="status">esperando inicio…</span><span class="cursor" aria-hidden="true"></span></div>
+
+      <div class="controls">
+        <button class="btn" id="start">run</button>
+        <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
+          <button data-g="8">8</button>
+          <button data-g="14" aria-pressed="true">14</button>
+          <button data-g="20">20</button>
+          <button data-g="31">31</button>
+        </div>
+        <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>--strict</label>
+      </div>
+
+      <div class="stats">
+        <span>best=<b id="best">0</b></span>
+        <span>goal=<b id="goalv">14</b></span>
+      </div>
+
+      <details>
+        <summary>man mnemo</summary>
+        <ul>
+          <li>La terminal emite una secuencia de canales. Repetila en el mismo orden.</li>
+          <li>Cada ronda agrega un canal nuevo y, cada tanto, acelera.</li>
+          <li>Un error repite la secuencia. Con <b>--strict</b>, reinicia el conteo.</li>
+          <li>Alcanzá la meta elegida para completar el proceso. Teclado: Q W A S (o 1 2 3 4).</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+  <footer>Desarrollado por Seba Branda</footer>
+</div>`,
+    init: init_terminal
+  }
+};
+
+function init_neon(signal) {
   const pads = [...document.querySelectorAll('.pad')];
   const device = document.getElementById('device');
   const lcd = document.getElementById('lcd');
@@ -187,12 +944,12 @@
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
 
-  const FREQS = [415.3, 310, 252, 209]; // tonos clásicos: verde, rojo, amarillo, azul
+  const FREQS = [415.3, 310, 252, 209];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
 
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let best = 0;
-  try { best = +localStorage.getItem('memorion-best') || 0; } catch(e){}
+  try { best = +localStorage.getItem('neon-cuadrante-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
   const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -202,7 +959,7 @@
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
-  function tone(freq, ms, type='triangle', vol=.25){
+  function tone(freq, ms, type='square', vol=.16){
     const a = audio(); if(!a) return;
     const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
     o.type = type; o.frequency.value = freq;
@@ -261,8 +1018,8 @@
   async function fail(){
     const my = token;
     lock(true);
-    tone(90, 700, 'sawtooth', .18);
-    show('!!', true); lcd.textContent = '!!';
+    tone(90, 700, 'sawtooth', .14);
+    lcd.textContent = '!!'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
       await sleep(1400); if(my !== token) return;
@@ -296,7 +1053,7 @@
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('memorion-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('neon-cuadrante-best', best); }catch(e){} }
       if(done >= goal) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
@@ -310,21 +1067,643 @@
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
-  });
+  }, {signal});
   startBtn.addEventListener('click', start);
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; goalV.textContent = goal;
   }));
+}
+
+function init_consola(signal) {
+  const pads = [...document.querySelectorAll('.pad')];
+  const device = document.getElementById('device');
+  const lcd = document.getElementById('lcd');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('start');
+  const strictEl = document.getElementById('strict');
+  const bestEl = document.getElementById('best');
+  const goalV = document.getElementById('goalv');
+  const goalBtns = [...document.querySelectorAll('#goal button')];
+
+  const FREQS = [415.3, 310, 252, 209];
+  const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
+
+  let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let best = 0;
+  try { best = +localStorage.getItem('botonera-eco-best') || 0; } catch(e){}
+  bestEl.textContent = best;
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function audio(){
+    if(!ctx){ try{ ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function tone(freq, ms, type='triangle', vol=.25){
+    const a = audio(); if(!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + .01);
+    g.gain.setValueAtTime(vol, t + ms/1000 - .03);
+    g.gain.linearRampToValueAtTime(0, t + ms/1000);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + ms/1000 + .02);
+  }
+
+  async function flash(i, ms){
+    pads[i].classList.add('lit'); tone(FREQS[i], ms);
+    await sleep(ms);
+    pads[i].classList.remove('lit');
+  }
+
+  function tempo(){
+    const n = seq.length;
+    if(n <= 5) return {on:420, gap:80};
+    if(n <= 9) return {on:320, gap:70};
+    if(n <= 13) return {on:240, gap:60};
+    return {on:180, gap:50};
+  }
+
+  function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
+  function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.style.color = bad ? '#ff8a7a' : ''; }
+
+  async function playSeq(){
+    const my = token;
+    lock(true);
+    statusEl.textContent = 'Mirá la secuencia…';
+    await sleep(600);
+    const {on, gap} = tempo();
+    for(const i of seq){
+      if(my !== token) return;
+      await flash(i, on); await sleep(gap);
+    }
+    if(my !== token) return;
+    step = 0; lock(false);
+    statusEl.textContent = 'Tu turno';
+  }
+
+  async function nextRound(){
+    seq.push(Math.floor(Math.random()*4));
+    show(seq.length);
+    await playSeq();
+  }
+
+  async function start(){
+    audio();
+    token++; running = true; seq = [];
+    startBtn.textContent = 'Reiniciar';
+    await nextRound();
+  }
+
+  async function fail(){
+    const my = token;
+    lock(true);
+    tone(90, 700, 'sawtooth', .18);
+    lcd.textContent = '!!'; show(0,true); lcd.textContent='!!';
+    if(strictEl.checked){
+      statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
+      await sleep(1400); if(my !== token) return;
+      seq = []; await nextRound();
+    } else {
+      statusEl.textContent = 'Error. Mirá de nuevo.';
+      await sleep(1100); if(my !== token) return;
+      show(seq.length); await playSeq();
+    }
+  }
+
+  async function win(){
+    const my = token;
+    lock(true); running = false;
+    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    for(let k=0;k<3;k++){
+      for(const i of [0,1,3,2]){ if(my!==token) return; await flash(i, 90); }
+    }
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
+  async function press(i){
+    if(!accepting || !running) return;
+    const my = token;
+    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    accepting = false;
+    await flash(i, 220);
+    if(my !== token) return;
+    accepting = true;
+    step++;
+    if(step === seq.length){
+      lock(true);
+      const done = seq.length;
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('botonera-eco-best', best); }catch(e){} }
+      if(done >= goal) return win();
+      statusEl.textContent = '¡Bien!';
+      await sleep(500); if(my !== token) return;
+      nextRound();
+    }
+  }
+
+  pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
+  pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+  document.addEventListener('keydown', e => {
+    if(e.target.closest && e.target.closest('.pad')) return;
+    const k = KEYS[e.key.toLowerCase()];
+    if(k !== undefined) press(k);
+  }, {signal});
+  startBtn.addEventListener('click', start);
+  goalBtns.forEach(b => b.addEventListener('click', () => {
+    goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    goal = +b.dataset.g; goalV.textContent = goal;
+  }));
+}
+
+function init_flat(signal) {
+  const pads = [...document.querySelectorAll('.pad')];
+  const device = document.getElementById('device');
+  const lcd = document.getElementById('lcd');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('start');
+  const strictEl = document.getElementById('strict');
+  const bestEl = document.getElementById('best');
+  const goalV = document.getElementById('goalv');
+  const goalBtns = [...document.querySelectorAll('#goal button')];
+
+  const FREQS = [415.3, 310, 252, 209];
+  const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
+
+  let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let best = 0;
+  try { best = +localStorage.getItem('secuencia-cuatro-best') || 0; } catch(e){}
+  bestEl.textContent = best;
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function audio(){
+    if(!ctx){ try{ ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function tone(freq, ms, type='sine', vol=.22){
+    const a = audio(); if(!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + .01);
+    g.gain.setValueAtTime(vol, t + ms/1000 - .03);
+    g.gain.linearRampToValueAtTime(0, t + ms/1000);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + ms/1000 + .02);
+  }
+
+  async function flash(i, ms){
+    pads[i].classList.add('lit'); tone(FREQS[i], ms);
+    await sleep(ms);
+    pads[i].classList.remove('lit');
+  }
+
+  function tempo(){
+    const n = seq.length;
+    if(n <= 5) return {on:420, gap:80};
+    if(n <= 9) return {on:320, gap:70};
+    if(n <= 13) return {on:240, gap:60};
+    return {on:180, gap:50};
+  }
+
+  function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
+  function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.style.color = bad ? '#e94f37' : ''; }
+
+  async function playSeq(){
+    const my = token;
+    lock(true);
+    statusEl.textContent = 'Mirá la secuencia…';
+    await sleep(600);
+    const {on, gap} = tempo();
+    for(const i of seq){
+      if(my !== token) return;
+      await flash(i, on); await sleep(gap);
+    }
+    if(my !== token) return;
+    step = 0; lock(false);
+    statusEl.textContent = 'Tu turno';
+  }
+
+  async function nextRound(){
+    seq.push(Math.floor(Math.random()*4));
+    show(seq.length);
+    await playSeq();
+  }
+
+  async function start(){
+    audio();
+    token++; running = true; seq = [];
+    startBtn.textContent = 'Reiniciar';
+    await nextRound();
+  }
+
+  async function fail(){
+    const my = token;
+    lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    show(0,true); lcd.textContent='!!';
+    if(strictEl.checked){
+      statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
+      await sleep(1400); if(my !== token) return;
+      seq = []; await nextRound();
+    } else {
+      statusEl.textContent = 'Error. Mirá de nuevo.';
+      await sleep(1100); if(my !== token) return;
+      show(seq.length); await playSeq();
+    }
+  }
+
+  async function win(){
+    const my = token;
+    lock(true); running = false;
+    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    for(let k=0;k<3;k++){
+      for(const i of [0,1,3,2]){ if(my!==token) return; await flash(i, 90); }
+    }
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
+  async function press(i){
+    if(!accepting || !running) return;
+    const my = token;
+    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    accepting = false;
+    await flash(i, 220);
+    if(my !== token) return;
+    accepting = true;
+    step++;
+    if(step === seq.length){
+      lock(true);
+      const done = seq.length;
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('secuencia-cuatro-best', best); }catch(e){} }
+      if(done >= goal) return win();
+      statusEl.textContent = '¡Bien!';
+      await sleep(500); if(my !== token) return;
+      nextRound();
+    }
+  }
+
+  pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
+  pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+  document.addEventListener('keydown', e => {
+    if(e.target.closest && e.target.closest('.pad')) return;
+    const k = KEYS[e.key.toLowerCase()];
+    if(k !== undefined) press(k);
+  }, {signal});
+  startBtn.addEventListener('click', start);
+  goalBtns.forEach(b => b.addEventListener('click', () => {
+    goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    goal = +b.dataset.g; goalV.textContent = goal;
+  }));
+}
+
+function init_botanico(signal) {
+  const pads = [...document.querySelectorAll('.petal')];
+  const device = document.getElementById('device');
+  const lcd = document.getElementById('lcd');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('start');
+  const strictEl = document.getElementById('strict');
+  const bestEl = document.getElementById('best');
+  const goalV = document.getElementById('goalv');
+  const goalBtns = [...document.querySelectorAll('#goal button')];
+
+  const FREQS = [392, 330, 262, 220]; // pentatónico suave
+  const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
+
+  let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let best = 0;
+  try { best = +localStorage.getItem('ronda-silvestre-best') || 0; } catch(e){}
+  bestEl.textContent = best;
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function audio(){
+    if(!ctx){ try{ ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function tone(freq, ms, type='sine', vol=.22){
+    const a = audio(); if(!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + .015);
+    g.gain.setValueAtTime(vol, t + ms/1000 - .04);
+    g.gain.linearRampToValueAtTime(0, t + ms/1000);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + ms/1000 + .02);
+  }
+
+  async function flash(i, ms){
+    pads[i].classList.add('lit'); tone(FREQS[i], ms);
+    await sleep(ms);
+    pads[i].classList.remove('lit');
+  }
+
+  function tempo(){
+    const n = seq.length;
+    if(n <= 5) return {on:420, gap:80};
+    if(n <= 9) return {on:320, gap:70};
+    if(n <= 13) return {on:240, gap:60};
+    return {on:180, gap:50};
+  }
+
+  function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
+  function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
+
+  async function playSeq(){
+    const my = token;
+    lock(true);
+    statusEl.textContent = 'Mirá la secuencia…';
+    await sleep(600);
+    const {on, gap} = tempo();
+    for(const i of seq){
+      if(my !== token) return;
+      await flash(i, on); await sleep(gap);
+    }
+    if(my !== token) return;
+    step = 0; lock(false);
+    statusEl.textContent = 'Tu turno';
+  }
+
+  async function nextRound(){
+    seq.push(Math.floor(Math.random()*4));
+    show(seq.length);
+    await playSeq();
+  }
+
+  async function start(){
+    audio();
+    token++; running = true; seq = [];
+    startBtn.textContent = 'Reiniciar';
+    await nextRound();
+  }
+
+  async function fail(){
+    const my = token;
+    lock(true);
+    tone(90, 700, 'sawtooth', .14);
+    lcd.textContent = '!!'; lcd.classList.add('bad');
+    if(strictEl.checked){
+      statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
+      await sleep(1400); if(my !== token) return;
+      seq = []; await nextRound();
+    } else {
+      statusEl.textContent = 'Error. Mirá de nuevo.';
+      await sleep(1100); if(my !== token) return;
+      show(seq.length); await playSeq();
+    }
+  }
+
+  async function win(){
+    const my = token;
+    lock(true); running = false;
+    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    for(let k=0;k<3;k++){
+      for(const i of [0,1,3,2]){ if(my!==token) return; await flash(i, 90); }
+    }
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
+  async function press(i){
+    if(!accepting || !running) return;
+    const my = token;
+    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    accepting = false;
+    await flash(i, 220);
+    if(my !== token) return;
+    accepting = true;
+    step++;
+    if(step === seq.length){
+      lock(true);
+      const done = seq.length;
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('ronda-silvestre-best', best); }catch(e){} }
+      if(done >= goal) return win();
+      statusEl.textContent = '¡Bien!';
+      await sleep(500); if(my !== token) return;
+      nextRound();
+    }
+  }
+
+  pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
+  pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+  document.addEventListener('keydown', e => {
+    if(e.target.closest && e.target.closest('.petal')) return;
+    const k = KEYS[e.key.toLowerCase()];
+    if(k !== undefined) press(k);
+  }, {signal});
+  startBtn.addEventListener('click', start);
+  goalBtns.forEach(b => b.addEventListener('click', () => {
+    goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    goal = +b.dataset.g; goalV.textContent = goal;
+  }));
+}
+
+function init_terminal(signal) {
+  const pads = [...document.querySelectorAll('.pad')];
+  const device = document.getElementById('device');
+  const lcd = document.getElementById('lcd');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('start');
+  const strictEl = document.getElementById('strict');
+  const bestEl = document.getElementById('best');
+  const goalV = document.getElementById('goalv');
+  const goalBtns = [...document.querySelectorAll('#goal button')];
+
+  const FREQS = [415.3, 310, 252, 209];
+  const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
+
+  let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let best = 0;
+  try { best = +localStorage.getItem('terminal-mnemo-best') || 0; } catch(e){}
+  bestEl.textContent = best;
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function audio(){
+    if(!ctx){ try{ ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function tone(freq, ms, type='square', vol=.14){
+    const a = audio(); if(!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + .008);
+    g.gain.setValueAtTime(vol, t + ms/1000 - .03);
+    g.gain.linearRampToValueAtTime(0, t + ms/1000);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + ms/1000 + .02);
+  }
+
+  async function flash(i, ms){
+    pads[i].classList.add('lit'); tone(FREQS[i], ms);
+    await sleep(ms);
+    pads[i].classList.remove('lit');
+  }
+
+  function tempo(){
+    const n = seq.length;
+    if(n <= 5) return {on:420, gap:80};
+    if(n <= 9) return {on:320, gap:70};
+    if(n <= 13) return {on:240, gap:60};
+    return {on:180, gap:50};
+  }
+
+  function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
+  function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
+
+  async function playSeq(){
+    const my = token;
+    lock(true);
+    statusEl.textContent = 'reproduciendo secuencia…';
+    await sleep(600);
+    const {on, gap} = tempo();
+    for(const i of seq){
+      if(my !== token) return;
+      await flash(i, on); await sleep(gap);
+    }
+    if(my !== token) return;
+    step = 0; lock(false);
+    statusEl.textContent = 'tu turno_';
+  }
+
+  async function nextRound(){
+    seq.push(Math.floor(Math.random()*4));
+    show(seq.length);
+    await playSeq();
+  }
+
+  async function start(){
+    audio();
+    token++; running = true; seq = [];
+    startBtn.textContent = 'restart';
+    await nextRound();
+  }
+
+  async function fail(){
+    const my = token;
+    lock(true);
+    tone(90, 700, 'sawtooth', .13);
+    lcd.textContent = 'ERR'; lcd.classList.add('bad');
+    if(strictEl.checked){
+      statusEl.textContent = `error — llegaste a ${seq.length - 1}. reiniciando proceso…`;
+      await sleep(1400); if(my !== token) return;
+      seq = []; await nextRound();
+    } else {
+      statusEl.textContent = 'error — reintentando…';
+      await sleep(1100); if(my !== token) return;
+      show(seq.length); await playSeq();
+    }
+  }
+
+  async function win(){
+    const my = token;
+    lock(true); running = false;
+    statusEl.textContent = `proceso completo. ${goal} rondas ok.`;
+    for(let k=0;k<3;k++){
+      for(const i of [0,1,3,2]){ if(my!==token) return; await flash(i, 90); }
+    }
+    startBtn.textContent = 'run again';
+  }
+
+  async function press(i){
+    if(!accepting || !running) return;
+    const my = token;
+    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    accepting = false;
+    await flash(i, 220);
+    if(my !== token) return;
+    accepting = true;
+    step++;
+    if(step === seq.length){
+      lock(true);
+      const done = seq.length;
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} }
+      if(done >= goal) return win();
+      statusEl.textContent = 'ok_';
+      await sleep(500); if(my !== token) return;
+      nextRound();
+    }
+  }
+
+  pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
+  pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+  document.addEventListener('keydown', e => {
+    if(e.target.closest && e.target.closest('.pad')) return;
+    const k = KEYS[e.key.toLowerCase()];
+    if(k !== undefined) press(k);
+  }, {signal});
+  startBtn.addEventListener('click', start);
+  goalBtns.forEach(b => b.addEventListener('click', () => {
+    goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    goal = +b.dataset.g; goalV.textContent = goal;
+  }));
+}
+
+</script>
+
+<script>
+(() => {
+  const menu = document.getElementById('menu');
+  const stage = document.getElementById('stage');
+  const backbar = document.getElementById('backbar');
+  const backbarName = document.getElementById('backbar-name');
+  let skinStyleEl = document.getElementById('skin-style');
+  if(!skinStyleEl){ skinStyleEl = document.createElement('style'); skinStyleEl.id = 'skin-style'; document.head.appendChild(skinStyleEl); }
+  let currentAbort = null;
+
+  function readBest(key){ try{ return +localStorage.getItem(key) || 0; }catch(e){ return 0; } }
+
+  function refreshCards(){
+    let last = null;
+    try{ last = localStorage.getItem('memorion-last-skin'); }catch(e){}
+    document.querySelectorAll('[data-rec]').forEach(el => {
+      const skin = SKINS[el.dataset.rec];
+      const best = readBest(skin.bestKey);
+      el.innerHTML = best > 0 ? `Récord: <b>${best}</b>` : 'Sin partidas todavía';
+    });
+    document.querySelectorAll('[data-lastbadge]').forEach(el => {
+      el.hidden = el.dataset.lastbadge !== last;
+    });
+  }
+
+  function mountSkin(key){
+    const skin = SKINS[key];
+    if(!skin) return;
+    if(currentAbort) currentAbort.abort();
+    currentAbort = new AbortController();
+    skinStyleEl.textContent = skin.css;
+    stage.innerHTML = skin.html;
+    skin.init(currentAbort.signal);
+    backbarName.textContent = skin.name;
+    menu.hidden = true; stage.hidden = false; backbar.hidden = false;
+    window.scrollTo(0,0);
+    try{ localStorage.setItem('memorion-last-skin', key); }catch(e){}
+  }
+
+  function showMenu(){
+    if(currentAbort){ currentAbort.abort(); currentAbort = null; }
+    skinStyleEl.textContent = '';
+    stage.innerHTML = '';
+    stage.hidden = true; backbar.hidden = true; menu.hidden = false;
+    refreshCards();
+    window.scrollTo(0,0);
+  }
+
+  document.getElementById('cardList').addEventListener('click', e => {
+    const card = e.target.closest('.card');
+    if(card) mountSkin(card.dataset.skin);
+  });
+  document.getElementById('backBtn').addEventListener('click', showMenu);
+
+  refreshCards();
 })();
 </script>
 
-<div class="install" id="install" hidden>
-  <span id="installMsg">Instalá Memorión para jugar sin conexión</span>
-  <button class="btn" id="installBtn">Instalar</button>
-  <button class="x" id="installClose" aria-label="Cerrar">Ahora no</button>
-</div>
-
+<div class="install" id="install" hidden></div>
 <script>
 // ---- PWA: service worker + instalación ----
 if ('serviceWorker' in navigator) {
@@ -332,14 +1711,19 @@ if ('serviceWorker' in navigator) {
 }
 (() => {
   const bar = document.getElementById('install');
-  const btn = document.getElementById('installBtn');
-  const msg = document.getElementById('installMsg');
-  const close = document.getElementById('installClose');
+  bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(8,8,12,.92);backdrop-filter:blur(6px);color:#f2f2f7;font:14px "Manrope",sans-serif;border-top:1px solid rgba(255,255,255,.12)';
   let deferred = null;
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   let dismissed = false;
   try { dismissed = localStorage.getItem('memorion-install-off') === '1'; } catch(e){}
   if (standalone || dismissed) return;
+
+  bar.innerHTML = '<span id="installMsg">Instalá Memorión para jugar sin conexión</span>' +
+    '<button id="installBtn" style="appearance:none;border:0;cursor:pointer;font:700 13px \'Manrope\',sans-serif;padding:9px 16px;border-radius:999px;background:#6d8bff;color:#0a0a12">Instalar</button>' +
+    '<button id="installClose" aria-label="Cerrar" style="appearance:none;border:0;background:transparent;color:#b8bcca;font:600 13px \'Manrope\',sans-serif;cursor:pointer;padding:8px">Ahora no</button>';
+  const msg = document.getElementById('installMsg');
+  const btn = document.getElementById('installBtn');
+  const close = document.getElementById('installClose');
 
   window.addEventListener('beforeinstallprompt', e => {
     e.preventDefault(); deferred = e; bar.hidden = false;
