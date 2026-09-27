@@ -52,6 +52,10 @@
   .menu-head h1{font-size:clamp(26px,7vw,32px);margin:0 0 6px;font-weight:800;letter-spacing:-.01em}
   .menu-head p{margin:0;color:var(--m-muted);font-size:14px}
   .install-link{appearance:none;border:1px solid var(--m-card-edge);background:var(--m-card);color:var(--m-ink);cursor:pointer;font:700 12.5px "Manrope",sans-serif;padding:8px 14px;border-radius:999px;margin-top:12px}
+  .streak-banner{display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg, rgba(255,138,61,.16), rgba(255,90,61,.10));border:1px solid rgba(255,138,61,.35);cursor:pointer;text-align:left}
+  .streak-banner .streak-text{flex:1;font-size:13.5px;font-weight:700;color:var(--m-ink);line-height:1.4}
+  .streak-banner .streak-text b{color:#ff8a3d}
+  .streak-close{appearance:none;border:0;background:transparent;color:var(--m-muted);font-size:14px;cursor:pointer;padding:4px;line-height:1;flex-shrink:0}
   .install-link:hover{border-color:var(--m-accent)}
 
   /* ---------- Modal: instalar app ---------- */
@@ -200,6 +204,10 @@
     <div class="menu-head">
       <h1>Memorión</h1>
       <p>Elegí un diseño y repetí la secuencia de colores</p>
+      <div class="streak-banner" id="streakBanner" hidden role="button" tabindex="0">
+        <span class="streak-text" id="streakText"></span>
+        <button class="streak-close" id="streakClose" type="button" aria-label="Cerrar">✕</button>
+      </div>
       <button class="install-link" id="installOpenLink" type="button" hidden>📲 Instalar app</button>
     </div>
 
@@ -11497,6 +11505,42 @@ function init_glass(signal) {
     document.querySelectorAll('[data-lastbadge]').forEach(el => {
       el.hidden = el.dataset.lastbadge !== last;
     });
+    updateStreakBanner();
+  }
+
+  function dateStrShell(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function computeStreakBeforeToday(playDays){
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date(Date.now() - oneDay);
+    let streak = 0;
+    while(set.has(dateStrShell(cursor))){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+    }
+    return streak;
+  }
+  function updateStreakBanner(){
+    const streakBannerEl = document.getElementById('streakBanner');
+    const streakTextEl = document.getElementById('streakText');
+    if(!streakBannerEl) return;
+    let playDays = [];
+    try{ const s = JSON.parse(localStorage.getItem('memorion-stats')); if(s && Array.isArray(s.playDays)) playDays = s.playDays; }catch(e){}
+    const streak = computeStreakBeforeToday(playDays);
+    const today = dateStrShell(new Date());
+    let dismissedDay = null;
+    try{ dismissedDay = localStorage.getItem('memorion-streak-dismissed'); }catch(e){}
+    let history = [];
+    try{ history = JSON.parse(localStorage.getItem('memorion-history')) || []; }catch(e){}
+    const playedDailyToday = history.some(e => e.mode === 'daily' && dateStrShell(new Date(e.ts)) === today);
+    if(streak >= 1 && !playedDailyToday && dismissedDay !== today){
+      streakTextEl.innerHTML = '\u{1f525} Racha de <b>' + streak + (streak===1?' día':' días') + '</b> — jugá el desafío diario de hoy para no perderla';
+      streakBannerEl.hidden = false;
+    } else {
+      streakBannerEl.hidden = true;
+    }
   }
 
   function mountSkin(key){
@@ -11527,6 +11571,25 @@ function init_glass(signal) {
     if(card) mountSkin(card.dataset.skin);
   });
   document.getElementById('backBtn').addEventListener('click', showMenu);
+
+  const streakBannerEl2 = document.getElementById('streakBanner');
+  const streakCloseEl = document.getElementById('streakClose');
+  if(streakBannerEl2 && streakCloseEl){
+    streakCloseEl.addEventListener('click', e => {
+      e.stopPropagation();
+      try{ localStorage.setItem('memorion-streak-dismissed', dateStrShell(new Date())); }catch(e){}
+      streakBannerEl2.hidden = true;
+    });
+    streakBannerEl2.addEventListener('click', () => {
+      let last = null;
+      try{ last = localStorage.getItem('memorion-last-skin'); }catch(e){}
+      const key = (last && SKINS[last]) ? last : Object.keys(SKINS)[0];
+      mountSkin(key);
+    });
+    streakBannerEl2.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); streakBannerEl2.click(); }
+    });
+  }
 
   refreshCards();
 })();
