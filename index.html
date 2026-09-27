@@ -115,6 +115,13 @@
   .prev-cosmos span:nth-child(3){bottom:6px;left:6px;background:radial-gradient(circle at 32% 28%,#ffe08a,#e0b53a 55%,#6e4f13 100%);box-shadow:0 0 8px rgba(224,181,58,.6)}
   .prev-cosmos span:nth-child(4){bottom:6px;right:6px;background:radial-gradient(circle at 32% 28%,#8fffde,#3ae0b0 55%,#13614a 100%);box-shadow:0 0 8px rgba(58,224,176,.6)}
 
+  .prev-radio{background:linear-gradient(160deg,#f2e6c8,#e8d8b0 55%,#d8c093 100%);border:1px solid #8a6239}
+  .prev-radio span{width:24px;height:24px;border-radius:6px;box-shadow:0 2px 0 rgba(0,0,0,.3)}
+  .prev-radio span:nth-child(1){top:6px;left:6px;background:linear-gradient(180deg,#e8834f,#cc5b2e 55%,#8a3d1f 100%)}
+  .prev-radio span:nth-child(2){top:6px;right:6px;background:linear-gradient(180deg,#ecc352,#d9a520 55%,#95700f 100%)}
+  .prev-radio span:nth-child(3){bottom:6px;left:6px;background:linear-gradient(180deg,#83a468,#5b7a3f 55%,#374d24 100%)}
+  .prev-radio span:nth-child(4){bottom:6px;right:6px;background:linear-gradient(180deg,#54a599,#2f7a72 55%,#184f49 100%)}
+
   .card-body{flex:1;min-width:0}
   .card-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .card-title{font-weight:800;font-size:15px}
@@ -227,6 +234,16 @@
           <div class="card-title-row"><span class="card-title">Órbita Cósmica</span><span class="badge" data-lastbadge="cosmos" hidden>Último</span></div>
           <p class="card-tag">Planetas brillantes en un fondo estrellado</p>
           <p class="card-rec" data-rec="cosmos"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <button class="card" data-skin="radio" type="button">
+        <div class="prev prev-radio"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Dial Retro</span><span class="badge" data-lastbadge="radio" hidden>Último</span></div>
+          <p class="card-tag">Radio y casete vintage con dial de sintonía</p>
+          <p class="card-rec" data-rec="radio"></p>
         </div>
         <span class="chev" aria-hidden="true">›</span>
       </button>
@@ -1801,6 +1818,234 @@ const SKINS = {
 </div>`,
     init: init_cosmos
   },
+  radio: {
+    name: "Dial Retro",
+    tag: "Radio y casete vintage con dial de sintonía",
+    bestKey: "dial-retro-best",
+    css: `
+  :root{
+    color-scheme: dark;
+    --bg:#241407; --bg2:#3b220d; --grid:#160c04;
+    --panel:#e8d8b0; --panel-edge:#8a6239;
+    --ink:#f2e4c4; --muted:#b89a76;
+    --c0:#cc5b2e; --c0-hi:#ffa374;  /* naranja quemado */
+    --c1:#d9a520; --c1-hi:#ffe27a;  /* mostaza */
+    --c2:#5b7a3f; --c2-hi:#a8cf7a;  /* oliva */
+    --c3:#2f7a72; --c3-hi:#7fd6c9;  /* verde azulado */
+    --c4:#a33d2e; --c4-hi:#e8836a;  /* rojo ladrillo */
+    --c5:#c98a2c; --c5-hi:#ffcc7a;  /* dorado */
+    --c6:#6b4226; --c6-hi:#a67a52;  /* nogal */
+    --c7:#7c8f3f; --c7-hi:#c3d98a;  /* verde palta */
+    --lcd:#1a0f04; --lcd-ink:#ffb347;
+  }
+  html,body{height:100%}
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;
+    background:
+      radial-gradient(120% 60% at 50% -10%, var(--bg2), transparent 60%),
+      repeating-linear-gradient(90deg, rgba(0,0,0,.16) 0 2px, transparent 2px 7px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 14px),
+      var(--bg);
+    background-color:var(--bg);
+    color:var(--ink);
+    font-family:"Special Elite", ui-monospace, monospace;
+    display:flex;justify-content:center;
+    padding-inline:16px;
+  }
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;gap:20px;padding-block:26px 30px}
+
+  header{text-align:center}
+  h1{font-family:"Alfa Slab One", cursive;font-weight:400;font-size:clamp(24px,7.5vw,34px);margin:0;letter-spacing:.02em;line-height:1.2;
+     color:var(--c1);text-shadow:2px 2px 0 rgba(0,0,0,.4), 0 0 24px rgba(217,165,32,.35);}
+  .tag{margin:10px 0 0;color:var(--muted);font-size:13px;letter-spacing:.06em}
+
+  .device{position:relative;width:100%;max-width:380px;aspect-ratio:1;
+    background:linear-gradient(160deg,#f2e6c8,var(--panel) 55%,#d8c093 100%);
+    border-radius:20px;padding:14px;
+    border:3px solid var(--panel-edge);
+    box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 25px 60px rgba(0,0,0,.6), inset 0 0 30px rgba(120,80,30,.15)}
+  .device[data-level="4"]{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:10px}
+  .device[data-level="4"] .gridpads{display:contents}
+  .device:not([data-level="4"]){display:flex;flex-direction:column;gap:12px}
+  .device:not([data-level="4"]) .gridpads{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:10px;flex:1}
+  .device:not([data-level="4"]) .hub{position:static;transform:none;width:auto;flex-direction:row;gap:10px;padding:8px 14px;order:-1;aspect-ratio:auto;border-radius:999px}
+  .pad{appearance:none;cursor:pointer;position:relative;border-radius:12px;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+    background:linear-gradient(180deg, color-mix(in srgb, var(--pc) 80%, white) 0%, var(--pc) 45%, color-mix(in srgb, var(--pc) 65%, black) 100%);
+    border:2px solid color-mix(in srgb, var(--pc) 45%, black);
+    color:rgba(0,0,0,.5);
+    transition:transform .08s, box-shadow .08s, filter .08s;
+    box-shadow:0 4px 0 color-mix(in srgb, var(--pc) 50%, black), 0 7px 10px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.5)}
+  .pad[data-i="0"]{--pc:var(--c0)}
+  .pad[data-i="1"]{--pc:var(--c1)}
+  .pad[data-i="2"]{--pc:var(--c2)}
+  .pad[data-i="3"]{--pc:var(--c3)}
+  .pad[data-i="4"]{--pc:var(--c4)}
+  .pad[data-i="5"]{--pc:var(--c5)}
+  .pad[data-i="6"]{--pc:var(--c6)}
+  .pad[data-i="7"]{--pc:var(--c7)}
+  .pad .key{position:absolute;top:8px;left:10px;font-family:"VT323",monospace;font-size:15px;letter-spacing:.05em;color:rgba(0,0,0,.5)}
+  .pad.lit{transform:translateY(4px);filter:brightness(1.2) saturate(1.15);
+    box-shadow:0 1px 0 color-mix(in srgb, var(--pc) 50%, black), 0 2px 4px rgba(0,0,0,.3), inset 0 2px 8px rgba(0,0,0,.35)}
+  .pad:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .locked .pad{cursor:default}
+
+  .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:34%;aspect-ratio:1;border-radius:50%;
+    background:
+      repeating-conic-gradient(from 0deg, rgba(0,0,0,.08) 0deg 3deg, transparent 3deg 9deg),
+      radial-gradient(circle at 35% 28%, #f6ecd2, #c9a565 45%, #7a5227 100%);
+    border:3px solid #5c3d20;
+    box-shadow:0 0 0 4px #eddcb4, 0 10px 22px rgba(0,0,0,.55), inset 0 2px 8px rgba(255,255,255,.35);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;pointer-events:none}
+  .lcd{background:var(--lcd);color:var(--lcd-ink);font-family:"VT323",monospace;font-weight:400;
+    font-variant-numeric:tabular-nums;font-size:clamp(24px,7vw,32px);line-height:1;padding:4px 10px;border-radius:4px;
+    min-width:2.6ch;text-align:center;text-shadow:0 0 8px currentColor;box-shadow:inset 0 0 10px rgba(0,0,0,.7);border:1px solid #000}
+  .lcd.bad{color:#ff5566;text-shadow:0 0 10px #ff5566}
+  .hub small{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4a2f14}
+
+  .status{min-height:1.4em;font-size:14px;text-align:center;color:var(--ink)}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+  .btn{appearance:none;border:2px solid var(--c1);cursor:pointer;font:700 13px "Special Elite",monospace;letter-spacing:.06em;text-transform:uppercase;
+    padding:12px 20px;border-radius:8px;background:linear-gradient(180deg,color-mix(in srgb, var(--c1) 25%, transparent),transparent);color:var(--c1);
+    box-shadow:0 3px 0 color-mix(in srgb, var(--c1) 45%, black)}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:2px solid var(--c3-hi);outline-offset:2px}
+  .seg{display:inline-flex;background:#1c1006;border:1px solid var(--panel-edge);border-radius:8px;padding:3px}
+  .seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:600 12px "Special Elite",monospace;padding:9px 11px;border-radius:6px;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--panel-edge);color:#fff2d6}
+  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:36px;height:20px;border-radius:4px;background:#1c1006;border:1px solid var(--panel-edge);position:relative;transition:background .15s}
+  .toggle span::after{content:"";position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:2px;background:var(--muted);transition:transform .15s, background .15s}
+  .toggle input:checked+span{border-color:var(--c1)}
+  .toggle input:checked+span::after{transform:translateX(16px);background:var(--c1);box-shadow:0 0 6px var(--c1)}
+
+  .stats{display:flex;gap:26px;justify-content:center;font-variant-numeric:tabular-nums}
+  .stat{text-align:center}
+  .stat b{display:block;font-size:22px;font-family:"VT323",monospace;color:var(--c1);text-shadow:0 0 6px color-mix(in srgb, var(--c1) 50%, transparent)}
+  .stat span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  details{width:100%;color:var(--muted);font-size:13px;line-height:1.6;background:#1c1006;border:1px solid var(--panel-edge);border-radius:8px;padding:12px 15px}
+  summary{cursor:pointer;color:var(--ink);font-weight:600}
+  details ul{padding-left:18px;margin:8px 0 0}
+  .hist-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .hist-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.18)}
+  .hist-row:last-child{border-bottom:0}
+  .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
+  .hist-round{font-weight:700}
+  .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
+  .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer;font-family:inherit}
+  .ach-count{font-size:11px;color:var(--muted);margin-left:8px;font-weight:400}
+  .ach-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .ach-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.18);opacity:.45}
+  .ach-row.unlocked{opacity:1}
+  .ach-row:last-child{border-bottom:0}
+  .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
+  .ach-row.unlocked .ach-badge{border-color:var(--c1);color:var(--c1);background:color-mix(in srgb, var(--c1) 18%, transparent)}
+  .ach-info{flex:1}
+  .ach-title{font-weight:700;font-size:13px;display:block}
+  .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .chart-wrap{margin-top:8px}
+  #chartSvg{width:100%;height:140px;display:block;overflow:visible}
+  .chart-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .chart-axis{stroke:var(--muted);stroke-width:1;opacity:.35}
+  .chart-line{fill:none;stroke:var(--c1);stroke-width:2}
+  .chart-dot{fill:var(--c1)}
+  .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
+  footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+`,
+    html: `<div class="wrap">
+  <header>
+    <h1>DIAL<br>RETRO</h1>
+    <p class="tag">Sintonizá la secuencia de botones</p>
+  </header>
+
+  <div class="device locked" id="device" data-level="4">
+    <div class="gridpads" id="gridpads"></div>
+    <div class="hub" aria-hidden="true">
+      <div class="lcd" id="lcd">--</div>
+      <small>ronda</small>
+    </div>
+  </div>
+
+  <div class="status" id="status" role="status" aria-live="polite">Presioná «Iniciar» para empezar</div>
+
+  <div class="controls">
+    <button class="btn" id="start">Iniciar</button>
+    <div class="seg" role="group" aria-label="Modo de juego" id="mode">
+      <button data-m="goal" aria-pressed="true">Meta</button>
+      <button data-m="time">Contrarreloj</button>
+    </div>
+    <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
+      <button data-g="8">8</button>
+      <button data-g="14" aria-pressed="true">14</button>
+      <button data-g="20">20</button>
+      <button data-g="31">31</button>
+    </div>
+    <div class="seg" role="group" aria-label="Duración" id="timeseg" hidden>
+      <button data-t="30">30s</button>
+      <button data-t="60" aria-pressed="true">60s</button>
+      <button data-t="90">90s</button>
+    </div>
+    <div class="seg" role="group" aria-label="Nivel de botones" id="level">
+      <button data-n="4" aria-pressed="true">4</button>
+      <button data-n="6">6</button>
+      <button data-n="8">8</button>
+    </div>
+    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
+    <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
+    <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="best">0</b><span>Récord</span></div>
+    <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+  </div>
+
+  <details>
+    <summary>Cómo se juega</summary>
+    <ul>
+      <li>El dial enciende una secuencia de botones. Repetila en el mismo orden.</li>
+      <li>Cada ronda agrega un botón nuevo y, cada tanto, acelera.</li>
+      <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Con <b>Orden inverso</b>, repetís la secuencia empezando por el último botón.</li>
+      <li>Con <b>Solo sonido</b> practicás de oído: el dial no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
+      <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
+      <li>Elegí <b>Nivel</b> 6 u 8 botones para un desafío experto (no se puede cambiar con la partida en curso).</li>
+    </ul>
+  </details>
+
+  <details id="historyBox">
+    <summary>Historial de partidas</summary>
+    <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
+    <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
+  </details>
+
+  <details id="achievementsBox">
+    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <div class="ach-list" id="achList"></div>
+  </details>
+
+  <details id="chartBox">
+    <summary>Evolución del récord</summary>
+    <div class="chart-wrap" id="chartWrap">
+      <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
+      <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <footer>Desarrollado por Seba Branda</footer>
+</div>`,
+    init: init_radio
+  },
 };
 
 function init_neon(signal) {
@@ -1830,12 +2075,12 @@ function init_neon(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Neón Cuadrante';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 7 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
@@ -2158,12 +2403,12 @@ function init_consola(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Botonera Eco';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 7 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
@@ -2486,12 +2731,12 @@ function init_flat(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Secuencia Cuatro';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 7 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
@@ -2812,12 +3057,12 @@ function init_botanico(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Ronda Silvestre';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 7 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
@@ -3139,12 +3384,12 @@ function init_terminal(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Terminal Mnemo';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 7 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
@@ -3466,12 +3711,12 @@ function init_pizarron(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Pizarrón Vivo';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 7 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
@@ -3794,12 +4039,12 @@ function init_cosmos(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Órbita Cósmica';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 7 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
@@ -4061,6 +4306,333 @@ function init_cosmos(signal) {
       lock(true);
       const done = seq.length;
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('orbita-cosmica-best', best); }catch(e){} }
+      if(done > peak) peak = done;
+      if(mode === 'goal' && done >= goal) return win();
+      statusEl.textContent = '¡Bien!';
+      await sleep(500); if(my !== token) return;
+      nextRound();
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if(e.target.closest && e.target.closest('.pad')) return;
+    const k = KEYS[e.key.toLowerCase()];
+    if(k !== undefined) press(k);
+  }, {signal});
+  startBtn.addEventListener('click', start);
+  goalBtns.forEach(b => b.addEventListener('click', () => {
+    goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
+  }));
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    mode = b.dataset.m;
+    goalSegEl.hidden = mode !== 'goal';
+    timeSegEl.hidden = mode !== 'time';
+    if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+  }));
+  timeBtns.forEach(b => b.addEventListener('click', () => {
+    timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    timeLimit = +b.dataset.t;
+    if(mode === 'time') goalV.textContent = timeLimit + 's';
+  }));
+}
+
+function init_radio(signal) {
+  let pads = [];
+  const gridpads = document.getElementById('gridpads');
+  const device = document.getElementById('device');
+  const lcd = document.getElementById('lcd');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('start');
+  const strictEl = document.getElementById('strict');
+  const reverseEl = document.getElementById('reverse');
+  const muteEl = document.getElementById('mute');
+  const audioOnlyEl = document.getElementById('audioonly');
+  muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
+  audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const bestEl = document.getElementById('best');
+  const goalV = document.getElementById('goalv');
+  const goalBtns = [...document.querySelectorAll('#goal button')];
+  const modeBtns = [...document.querySelectorAll('#mode button')];
+  const timeBtns = [...document.querySelectorAll('#timeseg button')];
+  const timeSegEl = document.getElementById('timeseg');
+  const goalSegEl = document.getElementById('goal');
+  const goalLabel = document.getElementById('goallabel');
+  const levelBtns = [...document.querySelectorAll('#level button')];
+
+  const FREQS = [415.3, 310, 252, 209, 554.4, 466.2, 349.2, 622.3];
+  const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
+  const HIST_KEY = 'memorion-history';
+  const SKIN_NAME = 'Dial Retro';
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro'];
+  const ACHIEVEMENTS = [
+    { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
+    { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
+    { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 8 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
+    { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
+    { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
+    { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 botones.', check: list => list.some(e => e.won && e.numColors === 8) },
+    { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+  ];
+  const achListEl = document.getElementById('achList');
+  const achCountEl = document.getElementById('achCount');
+  const chartSvgEl = document.getElementById('chartSvg');
+  const chartEmptyEl = document.getElementById('chartEmpty');
+  const histListEl = document.getElementById('histList');
+  const histClearEl = document.getElementById('histClear');
+  const LABELS = ['Naranja','Mostaza','Oliva','Turquesa','Rojo ladrillo','Dorado','Nogal','Verde palta'];
+  const KEYHINT = ['Q','W','A','S','5','6','7','8'];
+
+  let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
+  let numColors = 4;
+  let best = 0;
+  try { best = +localStorage.getItem('dial-retro-best') || 0; } catch(e){}
+  bestEl.textContent = best;
+
+  function buildPads(){
+    gridpads.innerHTML = '';
+    for(let i=0;i<numColors;i++){
+      const b = document.createElement('button');
+      b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
+      b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      gridpads.appendChild(b);
+    }
+    pads = [...gridpads.querySelectorAll('.pad')];
+    pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
+    pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+  }
+  buildPads();
+  levelBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
+    levelBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    numColors = +b.dataset.n;
+    device.dataset.level = numColors;
+    buildPads();
+  }));
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function audio(){
+    if(!ctx){ try{ ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function tone(freq, ms, type='triangle', vol=.16){
+    if(muteEl.checked) return;
+    const a = audio(); if(!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + .01);
+    g.gain.setValueAtTime(vol, t + ms/1000 - .03);
+    g.gain.linearRampToValueAtTime(0, t + ms/1000);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + ms/1000 + .02);
+  }
+
+  async function flash(i, ms, visual=true){
+    if(visual) pads[i].classList.add('lit');
+    tone(FREQS[i], ms);
+    await sleep(ms);
+    if(visual) pads[i].classList.remove('lit');
+  }
+
+  function tempo(){
+    const n = seq.length;
+    if(n <= 5) return {on:420, gap:80};
+    if(n <= 9) return {on:320, gap:70};
+    if(n <= 13) return {on:240, gap:60};
+    return {on:180, gap:50};
+  }
+
+  function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
+  function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
+
+  function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+  function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function addHistoryEntry(round, won){
+    if(!round || round < 1) return;
+    const list = loadHistory();
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+    saveHistory(list);
+    renderHistory();
+    renderAchievements();
+    renderChart();
+  }
+  function renderHistory(){
+    const list = loadHistory().slice().reverse().slice(0,10);
+    if(list.length === 0){
+      histListEl.innerHTML = '<p class="hist-empty">Todavía no jugaste ninguna partida.</p>';
+      histClearEl.hidden = true;
+      return;
+    }
+    histClearEl.hidden = false;
+    histListEl.innerHTML = list.map(e => {
+      const d = new Date(e.ts);
+      const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+    }).join('');
+  }
+  function renderAchievements(){
+    const list = loadHistory();
+    let unlocked = 0;
+    achListEl.innerHTML = ACHIEVEMENTS.map(a => {
+      const done = a.check(list);
+      if(done) unlocked++;
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+    }).join('');
+    achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+  }
+  function renderChart(){
+    const list = loadHistory();
+    const milestones = [];
+    let runningMax = 0;
+    for(const e of list){
+      if(e.round > runningMax){ runningMax = e.round; milestones.push({ ts: e.ts, round: e.round }); }
+    }
+    if(milestones.length === 0){
+      chartSvgEl.innerHTML = '';
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    const W = 320, H = 140, padL = 22, padR = 8, padT = 12, padB = 20;
+    const innerW = W - padL - padR, innerH = H - padT - padB;
+    const maxRound = milestones[milestones.length - 1].round;
+    const n = milestones.length;
+    const xFor = i => n === 1 ? padL : padL + (innerW * i / (n - 1));
+    const yFor = r => padT + innerH * (1 - (maxRound === 0 ? 0 : r / maxRound));
+    let d = `M ${xFor(0)} ${yFor(milestones[0].round)}`;
+    for(let i = 1; i < n; i++){
+      d += ` L ${xFor(i)} ${yFor(milestones[i-1].round)} L ${xFor(i)} ${yFor(milestones[i].round)}`;
+    }
+    d += ` L ${W - padR} ${yFor(milestones[n-1].round)}`;
+    const dateFmt = ts => new Date(ts).toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit'});
+    const dots = milestones.map((m, i) => `<circle class="chart-dot" cx="${xFor(i)}" cy="${yFor(m.round)}" r="3"><title>${dateFmt(m.ts)} \u00b7 Ronda ${m.round}</title></circle>`).join('');
+    chartSvgEl.innerHTML = `
+      <line class="chart-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
+      <line class="chart-axis" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+      <text class="chart-label" x="1" y="${padT + 4}">${maxRound}</text>
+      <text class="chart-label" x="1" y="${H - padB + 4}">0</text>
+      <path class="chart-line" d="${d}"></path>
+      ${dots}
+      <text class="chart-label" x="${padL}" y="${H - 4}">${dateFmt(milestones[0].ts)}</text>
+      <text class="chart-label" x="${W - padR}" y="${H - 4}" text-anchor="end">hoy</text>
+    `;
+  }
+  renderHistory();
+  renderAchievements();
+  renderChart();
+  histClearEl.addEventListener('click', () => {
+    try{ localStorage.removeItem(HIST_KEY); }catch(e){}
+    renderHistory();
+    renderAchievements();
+    renderChart();
+  });
+
+  async function playSeq(){
+    const my = token;
+    lock(true);
+    statusEl.textContent = 'Mirá la secuencia…';
+    await sleep(600);
+    const {on, gap} = tempo();
+    for(const i of seq){
+      if(my !== token) return;
+      await flash(i, on, !audioOnlyEl.checked); await sleep(gap);
+    }
+    if(my !== token) return;
+    step = 0; lock(false);
+    statusEl.textContent = reverseEl.checked ? 'Tu turno (al revés)' : 'Tu turno';
+  }
+
+  async function nextRound(){
+    seq.push(Math.floor(Math.random()*numColors));
+    show(seq.length);
+    await playSeq();
+  }
+
+  async function start(){
+    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+    audio();
+    token++; running = true; seq = []; peak = 0;
+    startBtn.textContent = 'Reiniciar';
+    if(mode === 'time'){
+      timeLeft = timeLimit;
+      goalV.textContent = timeLeft + 's';
+      timerInterval = setInterval(tick, 1000);
+    }
+    await nextRound();
+  }
+
+  async function fail(){
+    const my = token;
+    lock(true);
+    tone(90, 700, 'sawtooth', .14);
+    lcd.textContent = '!!'; lcd.classList.add('bad');
+    if(strictEl.checked){
+      statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
+      await sleep(1400); if(my !== token) return;
+      seq = []; await nextRound();
+    } else {
+      statusEl.textContent = 'Error. Mirá de nuevo.';
+      await sleep(1100); if(my !== token) return;
+      show(seq.length); await playSeq();
+    }
+  }
+
+  async function win(){
+    const my = token;
+    lock(true); running = false;
+    addHistoryEntry(peak, true);
+    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    const order = Array.from({length:numColors}, (_,k)=>k);
+    for(let k=0;k<3;k++){
+      for(const i of order){ if(my!==token) return; await flash(i, 90); }
+    }
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
+  function tick(){
+    if(!running){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } return; }
+    timeLeft -= 1;
+    if(timeLeft <= 0){
+      timeLeft = 0; goalV.textContent = '0s';
+      clearInterval(timerInterval); timerInterval = null;
+      timeUp();
+    } else {
+      goalV.textContent = timeLeft + 's';
+    }
+  }
+
+  function timeUp(){
+    running = false; accepting = false; token++; lock(true);
+    addHistoryEntry(peak, false);
+    tone(90, 700, 'sawtooth', .16);
+    statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
+  async function press(i){
+    if(!accepting || !running) return;
+    const my = token;
+    const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
+    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    accepting = false;
+    await flash(i, 220);
+    if(my !== token) return;
+    accepting = true;
+    step++;
+    if(step === seq.length){
+      lock(true);
+      const done = seq.length;
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('dial-retro-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       statusEl.textContent = '¡Bien!';
