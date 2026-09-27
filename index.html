@@ -431,6 +431,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -523,6 +525,15 @@ const SKINS = {
     <div class="chart-wrap" id="chartWrap">
       <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
       <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
     </div>
   </details>
 
@@ -687,6 +698,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -780,6 +793,15 @@ const SKINS = {
     <div class="chart-wrap" id="chartWrap">
       <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
       <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
     </div>
   </details>
 
@@ -923,6 +945,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -1011,6 +1035,15 @@ const SKINS = {
     <div class="chart-wrap" id="chartWrap">
       <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
       <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
     </div>
   </details>
 
@@ -1168,6 +1201,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -1260,6 +1295,15 @@ const SKINS = {
     <div class="chart-wrap" id="chartWrap">
       <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
       <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
     </div>
   </details>
 
@@ -1410,6 +1454,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;color:var(--muted)}
+  .stats-global b{color:var(--c0);font-variant-numeric:tabular-nums}
 `,
     html: `<div class="wrap">
   <div class="win">
@@ -1503,6 +1549,15 @@ const SKINS = {
       </details>
     </div>
   </div>
+  <details id="globalStatsBox">
+    <summary>resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <span>total=<b id="gsTotal">0</b></span>
+      <span>favorito=<b id="gsFavorite">--</b></span>
+      <span>racha=<b id="gsStreak">0</b>d</span>
+    </div>
+  </details>
+
   <footer>Desarrollado por Seba Branda</footer>
 </div>`,
     init: init_terminal
@@ -1663,6 +1718,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -1757,6 +1814,15 @@ const SKINS = {
     <div class="chart-wrap" id="chartWrap">
       <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
       <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
     </div>
   </details>
 
@@ -1923,6 +1989,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -2015,6 +2083,15 @@ const SKINS = {
     <div class="chart-wrap" id="chartWrap">
       <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
       <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
     </div>
   </details>
 
@@ -2176,6 +2253,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -2268,6 +2347,15 @@ const SKINS = {
     <div class="chart-wrap" id="chartWrap">
       <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
       <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
     </div>
   </details>
 
@@ -2437,6 +2525,8 @@ const SKINS = {
   .daily-info b{color:var(--ink)}
   .seg button:disabled{opacity:.4;cursor:not-allowed}
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
+  .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
+  #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
 `,
     html: `<div class="wrap">
   <header>
@@ -2532,6 +2622,15 @@ const SKINS = {
     </div>
   </details>
 
+  <details id="globalStatsBox">
+    <summary>Resumen global</summary>
+    <div class="stats-global" id="globalStats">
+      <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
+      <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
+      <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+    </div>
+  </details>
+
   <footer>Desarrollado por Seba Branda</footer>
 </div>`,
     init: init_glass
@@ -2622,6 +2721,9 @@ function init_neon(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -2694,6 +2796,59 @@ function init_neon(signal) {
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+  }
   function tone(freq, ms, type='square', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -2765,6 +2920,8 @@ function init_neon(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2830,6 +2987,7 @@ function init_neon(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -3214,6 +3372,9 @@ function init_consola(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -3287,6 +3448,59 @@ function init_consola(signal) {
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+  }
   function tone(freq, ms, type='triangle', vol=.25){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -3358,6 +3572,8 @@ function init_consola(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -3423,6 +3639,7 @@ function init_consola(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -3804,6 +4021,9 @@ function init_flat(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -3874,6 +4094,59 @@ function init_flat(signal) {
   function sameLocalDay(ts, dayStr){
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
   }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
@@ -3946,6 +4219,8 @@ function init_flat(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -4011,6 +4286,7 @@ function init_flat(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -4393,6 +4669,9 @@ function init_botanico(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -4466,6 +4745,59 @@ function init_botanico(signal) {
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+  }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -4537,6 +4869,8 @@ function init_botanico(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -4602,6 +4936,7 @@ function init_botanico(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -4983,6 +5318,9 @@ function init_terminal(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -5053,6 +5391,59 @@ function init_terminal(signal) {
   function sameLocalDay(ts, dayStr){
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
   }
   function tone(freq, ms, type='square', vol=.14){
     if(muteEl.checked) return;
@@ -5125,6 +5516,8 @@ function init_terminal(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -5190,6 +5583,7 @@ function init_terminal(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -5573,6 +5967,9 @@ function init_pizarron(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -5646,6 +6043,59 @@ function init_pizarron(signal) {
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+  }
   function tone(freq, ms, type='triangle', vol=.2){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -5717,6 +6167,8 @@ function init_pizarron(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -5782,6 +6234,7 @@ function init_pizarron(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -6164,6 +6617,9 @@ function init_cosmos(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -6236,6 +6692,59 @@ function init_cosmos(signal) {
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+  }
   function tone(freq, ms, type='sine', vol=.18){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -6307,6 +6816,8 @@ function init_cosmos(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -6372,6 +6883,7 @@ function init_cosmos(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -6754,6 +7266,9 @@ function init_radio(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -6826,6 +7341,59 @@ function init_radio(signal) {
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+  }
   function tone(freq, ms, type='triangle', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -6897,6 +7465,8 @@ function init_radio(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -6962,6 +7532,7 @@ function init_radio(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
@@ -7344,6 +7915,9 @@ function init_glass(signal) {
   const dailyInfoEl = document.getElementById('dailyInfo');
   let dailyRng = null, preDaily = null;
   const duoInfoEl = document.getElementById('duoInfo');
+  const gsTotalEl = document.getElementById('gsTotal');
+  const gsFavoriteEl = document.getElementById('gsFavorite');
+  const gsStreakEl = document.getElementById('gsStreak');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
@@ -7416,6 +7990,59 @@ function init_glass(signal) {
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
+  const STATS_KEY = 'memorion-stats';
+  function dateStr(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function loadStats(){
+    try{
+      const s = JSON.parse(localStorage.getItem(STATS_KEY));
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+    }catch(e){}
+    return { totalGames:0, bySkin:{}, playDays:[] };
+  }
+  function saveStats(s){
+    try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function recordGlobalStat(){
+    const s = loadStats();
+    s.totalGames++;
+    s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    const today = todayStr();
+    if(s.playDays[s.playDays.length-1] !== today){
+      s.playDays.push(today);
+      if(s.playDays.length > 400) s.playDays = s.playDays.slice(-400);
+    }
+    saveStats(s);
+  }
+  function computeStreak(playDays){
+    if(!playDays.length) return 0;
+    const set = new Set(playDays);
+    const oneDay = 86400000;
+    let cursor = new Date();
+    let cursorStr = dateStr(cursor);
+    if(!set.has(cursorStr)){
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    let streak = 0;
+    while(set.has(cursorStr)){
+      streak++;
+      cursor = new Date(cursor.getTime() - oneDay);
+      cursorStr = dateStr(cursor);
+    }
+    return streak;
+  }
+  function renderGlobalStats(){
+    const s = loadStats();
+    if(gsTotalEl) gsTotalEl.textContent = s.totalGames;
+    if(gsFavoriteEl){
+      let fav = '—', favCount = 0;
+      Object.keys(s.bySkin).forEach(k => { if(s.bySkin[k] > favCount){ favCount = s.bySkin[k]; fav = k; } });
+      gsFavoriteEl.textContent = fav;
+    }
+    if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+  }
   function tone(freq, ms, type='sine', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -7487,6 +8114,8 @@ function init_glass(signal) {
     renderAchievements();
     renderChart();
     updateDailyInfo();
+    recordGlobalStat();
+    renderGlobalStats();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -7552,6 +8181,7 @@ function init_glass(signal) {
   renderHistory();
   renderAchievements();
   renderChart();
+  renderGlobalStats();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
