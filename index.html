@@ -396,6 +396,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
@@ -492,6 +493,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -511,6 +513,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -539,6 +542,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -668,6 +672,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
@@ -765,6 +770,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -784,6 +790,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -812,6 +819,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -920,6 +928,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
@@ -1012,6 +1021,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -1031,6 +1041,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -1059,6 +1070,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -1181,6 +1193,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
@@ -1277,6 +1290,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -1296,6 +1310,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -1324,6 +1339,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -1432,6 +1448,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
@@ -1532,6 +1549,7 @@ const SKINS = {
       <div class="stats">
         <span>best=<b id="best">0</b></span>
         <span id="goallabel">goal=</span><b id="goalv">14</b>
+        <span>acc=<b id="accv">100%</b></span>
       </div>
 
       <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -1551,6 +1569,7 @@ const SKINS = {
       <li>Elegí <b>--daily</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>--2p</b> para jugar por turnos en el mismo dispositivo: cada jugador enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá <b>--speed</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>--acc</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
         </ul>
       </details>
 
@@ -1580,6 +1599,7 @@ const SKINS = {
       <span>total=<b id="gsTotal">0</b></span>
       <span>favorito=<b id="gsFavorite">--</b></span>
       <span>racha=<b id="gsStreak">0</b>d</span>
+      <span>precisión=<b id="gsAccuracy">--</b></span>
     </div>
   </details>
 
@@ -1708,6 +1728,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
@@ -1806,6 +1827,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -1825,6 +1847,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -1853,6 +1876,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -1984,6 +2008,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
@@ -2080,6 +2105,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -2099,6 +2125,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -2127,6 +2154,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -2253,6 +2281,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer;font-family:inherit}
@@ -2349,6 +2378,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -2368,6 +2398,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -2396,6 +2427,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -2530,6 +2562,7 @@ const SKINS = {
   .hist-row:last-child{border-bottom:0}
   .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
   .hist-round{font-weight:700}
+  .hist-acc{color:var(--muted);font-size:12px}
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:999px;cursor:pointer}
@@ -2626,6 +2659,7 @@ const SKINS = {
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
+    <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
@@ -2645,6 +2679,7 @@ const SKINS = {
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
       <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
+      <li>La <b>Precisión</b> mide qué porcentaje de tus intentos fueron aciertos, no solo hasta qué ronda llegaste.</li>
     </ul>
   </details>
 
@@ -2673,6 +2708,7 @@ const SKINS = {
       <div class="stat"><b id="gsTotal">0</b><span>Partidas totales</span></div>
       <div class="stat"><b id="gsFavorite">—</b><span>Favorito</span></div>
       <div class="stat"><b id="gsStreak">0</b><span>Racha (días)</span></div>
+      <div class="stat"><b id="gsAccuracy">—</b><span>Precisión global</span></div>
     </div>
   </details>
 
@@ -2723,6 +2759,7 @@ function init_neon(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -2769,7 +2806,15 @@ function init_neon(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('neon-cuadrante-best') || 0; } catch(e){}
@@ -2848,17 +2893,19 @@ function init_neon(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -2893,6 +2940,10 @@ function init_neon(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='square', vol=.16){
     if(muteEl.checked) return;
@@ -2970,17 +3021,19 @@ function init_neon(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -2994,7 +3047,8 @@ function init_neon(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -3177,10 +3231,11 @@ function init_neon(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -3204,7 +3259,7 @@ function init_neon(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -3246,7 +3301,7 @@ function init_neon(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -3269,7 +3324,7 @@ function init_neon(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -3280,7 +3335,8 @@ function init_neon(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -3388,6 +3444,7 @@ function init_consola(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -3435,7 +3492,15 @@ function init_consola(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('botonera-eco-best') || 0; } catch(e){}
@@ -3515,17 +3580,19 @@ function init_consola(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -3560,6 +3627,10 @@ function init_consola(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='triangle', vol=.25){
     if(muteEl.checked) return;
@@ -3637,17 +3708,19 @@ function init_consola(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -3661,7 +3734,8 @@ function init_consola(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -3844,10 +3918,11 @@ function init_consola(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -3871,7 +3946,7 @@ function init_consola(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -3913,7 +3988,7 @@ function init_consola(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -3936,7 +4011,7 @@ function init_consola(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -3947,7 +4022,8 @@ function init_consola(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -4053,6 +4129,7 @@ function init_flat(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -4099,7 +4176,15 @@ function init_flat(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('secuencia-cuatro-best') || 0; } catch(e){}
@@ -4177,17 +4262,19 @@ function init_flat(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -4222,6 +4309,10 @@ function init_flat(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
@@ -4299,17 +4390,19 @@ function init_flat(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -4323,7 +4416,8 @@ function init_flat(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -4506,10 +4600,11 @@ function init_flat(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -4533,7 +4628,7 @@ function init_flat(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -4575,7 +4670,7 @@ function init_flat(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -4598,7 +4693,7 @@ function init_flat(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -4609,7 +4704,8 @@ function init_flat(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -4716,6 +4812,7 @@ function init_botanico(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -4762,7 +4859,15 @@ function init_botanico(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('ronda-silvestre-best') || 0; } catch(e){}
@@ -4842,17 +4947,19 @@ function init_botanico(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -4887,6 +4994,10 @@ function init_botanico(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
@@ -4964,17 +5075,19 @@ function init_botanico(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -4988,7 +5101,8 @@ function init_botanico(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -5171,10 +5285,11 @@ function init_botanico(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -5198,7 +5313,7 @@ function init_botanico(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -5240,7 +5355,7 @@ function init_botanico(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -5263,7 +5378,7 @@ function init_botanico(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -5274,7 +5389,8 @@ function init_botanico(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -5380,6 +5496,7 @@ function init_terminal(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -5426,7 +5543,15 @@ function init_terminal(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('terminal-mnemo-best') || 0; } catch(e){}
@@ -5504,17 +5629,19 @@ function init_terminal(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -5549,6 +5676,10 @@ function init_terminal(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='square', vol=.14){
     if(muteEl.checked) return;
@@ -5626,17 +5757,19 @@ function init_terminal(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -5650,7 +5783,8 @@ function init_terminal(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -5833,10 +5967,11 @@ function init_terminal(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -5860,7 +5995,7 @@ function init_terminal(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -5902,7 +6037,7 @@ function init_terminal(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `desafío diario superado. ${DAILY_GOAL} rondas ok.` : `proceso completo. ${goal} rondas ok.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -5925,7 +6060,7 @@ function init_terminal(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `tiempo agotado. llegaste a ${peak} rondas.`;
@@ -5936,7 +6071,8 @@ function init_terminal(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -6044,6 +6180,7 @@ function init_pizarron(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -6090,7 +6227,15 @@ function init_pizarron(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('pizarron-vivo-best') || 0; } catch(e){}
@@ -6170,17 +6315,19 @@ function init_pizarron(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -6215,6 +6362,10 @@ function init_pizarron(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='triangle', vol=.2){
     if(muteEl.checked) return;
@@ -6292,17 +6443,19 @@ function init_pizarron(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -6316,7 +6469,8 @@ function init_pizarron(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -6499,10 +6653,11 @@ function init_pizarron(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -6526,7 +6681,7 @@ function init_pizarron(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -6568,7 +6723,7 @@ function init_pizarron(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -6591,7 +6746,7 @@ function init_pizarron(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -6602,7 +6757,8 @@ function init_pizarron(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -6709,6 +6865,7 @@ function init_cosmos(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -6755,7 +6912,15 @@ function init_cosmos(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('orbita-cosmica-best') || 0; } catch(e){}
@@ -6834,17 +6999,19 @@ function init_cosmos(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -6879,6 +7046,10 @@ function init_cosmos(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='sine', vol=.18){
     if(muteEl.checked) return;
@@ -6956,17 +7127,19 @@ function init_cosmos(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -6980,7 +7153,8 @@ function init_cosmos(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -7163,10 +7337,11 @@ function init_cosmos(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -7190,7 +7365,7 @@ function init_cosmos(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -7232,7 +7407,7 @@ function init_cosmos(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -7255,7 +7430,7 @@ function init_cosmos(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -7266,7 +7441,8 @@ function init_cosmos(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -7373,6 +7549,7 @@ function init_radio(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -7419,7 +7596,15 @@ function init_radio(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('dial-retro-best') || 0; } catch(e){}
@@ -7498,17 +7683,19 @@ function init_radio(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -7543,6 +7730,10 @@ function init_radio(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='triangle', vol=.16){
     if(muteEl.checked) return;
@@ -7620,17 +7811,19 @@ function init_radio(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -7644,7 +7837,8 @@ function init_radio(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -7827,10 +8021,11 @@ function init_radio(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -7854,7 +8049,7 @@ function init_radio(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -7896,7 +8091,7 @@ function init_radio(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -7919,7 +8114,7 @@ function init_radio(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -7930,7 +8125,8 @@ function init_radio(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -8037,6 +8233,7 @@ function init_glass(signal) {
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
+  const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
   const modeBtns = [...document.querySelectorAll('#mode button')];
   const timeBtns = [...document.querySelectorAll('#timeseg button')];
@@ -8083,7 +8280,15 @@ function init_glass(signal) {
   const gsTotalEl = document.getElementById('gsTotal');
   const gsFavoriteEl = document.getElementById('gsFavorite');
   const gsStreakEl = document.getElementById('gsStreak');
+  const gsAccuracyEl = document.getElementById('gsAccuracy');
   let duoRng = null, duoPhase = 'p1', duoSeedValue = 0, duoP1Score = 0;
+  let hits = 0, misses = 0;
+  function updateAcc(){
+    const total = hits + misses;
+    const pct = total > 0 ? Math.round(hits / total * 100) : 100;
+    if(accEl) accEl.textContent = pct + '%';
+    return pct;
+  }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
   try { best = +localStorage.getItem('vidrio-holografico-best') || 0; } catch(e){}
@@ -8162,17 +8367,19 @@ function init_glass(signal) {
   function loadStats(){
     try{
       const s = JSON.parse(localStorage.getItem(STATS_KEY));
-      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[] };
+      if(s && typeof s === 'object') return { totalGames:+s.totalGames||0, bySkin:s.bySkin||{}, playDays:Array.isArray(s.playDays)?s.playDays:[], totalHits:+s.totalHits||0, totalMisses:+s.totalMisses||0 };
     }catch(e){}
-    return { totalGames:0, bySkin:{}, playDays:[] };
+    return { totalGames:0, bySkin:{}, playDays:[], totalHits:0, totalMisses:0 };
   }
   function saveStats(s){
     try{ localStorage.setItem(STATS_KEY, JSON.stringify(s)); }catch(e){}
   }
-  function recordGlobalStat(){
+  function recordGlobalStat(hitCount, missCount){
     const s = loadStats();
     s.totalGames++;
     s.bySkin[SKIN_NAME] = (s.bySkin[SKIN_NAME]||0) + 1;
+    s.totalHits = (s.totalHits||0) + (hitCount||0);
+    s.totalMisses = (s.totalMisses||0) + (missCount||0);
     const today = todayStr();
     if(s.playDays[s.playDays.length-1] !== today){
       s.playDays.push(today);
@@ -8207,6 +8414,10 @@ function init_glass(signal) {
       gsFavoriteEl.textContent = fav;
     }
     if(gsStreakEl) gsStreakEl.textContent = computeStreak(s.playDays);
+    if(gsAccuracyEl){
+      const totalAtt = (s.totalHits||0) + (s.totalMisses||0);
+      gsAccuracyEl.textContent = totalAtt > 0 ? Math.round(s.totalHits/totalAtt*100) + '%' : '—';
+    }
   }
   function tone(freq, ms, type='sine', vol=.16){
     if(muteEl.checked) return;
@@ -8284,17 +8495,19 @@ function init_glass(signal) {
           ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
           : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
   }
-  function addHistoryEntry(round, won){
+  function addHistoryEntry(round, won, hitCount, missCount){
     if(!round || round < 1) return;
     const list = loadHistory();
+    const h = hitCount||0, m = missCount||0, totalAtt = h + m;
+    const acc = totalAtt > 0 ? Math.round(h / totalAtt * 100) : null;
     list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
-      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode, hits: h, misses: m, acc });
     saveHistory(list);
     renderHistory();
     renderAchievements();
     renderChart();
     updateDailyInfo();
-    recordGlobalStat();
+    recordGlobalStat(h, m);
     renderGlobalStats();
   }
   function renderHistory(){
@@ -8308,7 +8521,8 @@ function init_glass(signal) {
     histListEl.innerHTML = list.map(e => {
       const d = new Date(e.ts);
       const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
-      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+      const accHtml = (e.acc !== null && e.acc !== undefined) ? `<span class="hist-acc">${e.acc}% prec.</span>` : '';
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
   function renderAchievements(){
@@ -8491,10 +8705,11 @@ function init_glass(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak, false);
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    hits = 0; misses = 0; updateAcc();
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -8518,7 +8733,7 @@ function init_glass(signal) {
     vibrate([45,60,45]);
     show(seq.length - 1, true);
     const score = seq.length - 1;
-    addHistoryEntry(score, false);
+    addHistoryEntry(score, false, hits, misses);
     if(duoPhase === 'p1'){
       duoP1Score = score;
       duoPhase = 'p2';
@@ -8560,7 +8775,7 @@ function init_glass(signal) {
     const my = token;
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
-    addHistoryEntry(peak, true);
+    addHistoryEntry(peak, true, hits, misses);
     statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -8583,7 +8798,7 @@ function init_glass(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak, false);
+    addHistoryEntry(peak, false, hits, misses);
     tone(90, 700, 'sawtooth', .16);
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
@@ -8594,7 +8809,8 @@ function init_glass(signal) {
     if(!accepting || !running) return;
     const my = token;
     const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
-    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    if(i !== seq[idx]){ misses++; updateAcc(); pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    hits++; updateAcc();
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
