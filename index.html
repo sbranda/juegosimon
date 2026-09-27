@@ -3208,6 +3208,19 @@ function init_neon(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -3245,6 +3258,10 @@ function init_neon(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -3895,6 +3912,19 @@ function init_consola(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -3932,6 +3962,10 @@ function init_consola(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -4577,6 +4611,19 @@ function init_flat(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -4614,6 +4661,10 @@ function init_flat(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -5262,6 +5313,19 @@ function init_botanico(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -5299,6 +5363,10 @@ function init_botanico(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -5944,6 +6012,19 @@ function init_terminal(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'preparando…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -5981,6 +6062,10 @@ function init_terminal(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'restart';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -6630,6 +6715,19 @@ function init_pizarron(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -6667,6 +6765,10 @@ function init_pizarron(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -7314,6 +7416,19 @@ function init_cosmos(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -7351,6 +7466,10 @@ function init_cosmos(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -7998,6 +8117,19 @@ function init_radio(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -8035,6 +8167,10 @@ function init_radio(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
@@ -8682,6 +8818,19 @@ function init_glass(signal) {
   }
   if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
+  async function countdown(){
+    const my = token;
+    lock(true);
+    for(const n of [3,2,1]){
+      if(my !== token) return false;
+      lcd.textContent = String(n);
+      statusEl.textContent = 'Preparate…';
+      tone(520, 110, 'sine', .12);
+      vibrate([25]);
+      await sleep(700);
+    }
+    return my === token;
+  }
   async function playSeq(){
     const my = token;
     lock(true);
@@ -8719,6 +8868,10 @@ function init_glass(signal) {
     }
     updateDuoInfo();
     startBtn.textContent = 'Reiniciar';
+    lock(true);
+    const myStart = token;
+    await countdown();
+    if(myStart !== token) return;
     if(mode === 'time'){
       timeLeft = timeLimit;
       goalV.textContent = timeLeft + 's';
