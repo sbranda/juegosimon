@@ -270,6 +270,7 @@ const SKINS = {
     box-shadow:0 0 0 1px rgba(255,255,255,.03), 0 25px 60px rgba(0,0,0,.7), inset 0 0 40px rgba(0,0,0,.5);
     display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
   .pad{appearance:none;border:0;cursor:pointer;position:relative;border-radius:10px;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     background:#0a0616;
     border:2px solid var(--pc);
     color:var(--pc);
@@ -346,18 +347,27 @@ const SKINS = {
 
   <div class="controls">
     <button class="btn" id="start">Iniciar</button>
+    <div class="seg" role="group" aria-label="Modo de juego" id="mode">
+      <button data-m="goal" aria-pressed="true">Meta</button>
+      <button data-m="time">Contrarreloj</button>
+    </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
       <button data-g="14" aria-pressed="true">14</button>
       <button data-g="20">20</button>
       <button data-g="31">31</button>
     </div>
+    <div class="seg" role="group" aria-label="Duración" id="timeseg" hidden>
+      <button data-t="30">30s</button>
+      <button data-t="60" aria-pressed="true">60s</button>
+      <button data-t="90">90s</button>
+    </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
   </div>
 
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
-    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+    <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
   <details>
@@ -446,6 +456,7 @@ const SKINS = {
   .pads{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .locked .pad{cursor:default}
   .pad{appearance:none;border:0;cursor:pointer;aspect-ratio:1;border-radius:50%;position:relative;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     background:radial-gradient(circle at 35% 28%, color-mix(in srgb, var(--pc) 70%, white), var(--pc) 55%, var(--pd) 100%);
     box-shadow:0 6px 0 var(--pd), 0 8px 14px rgba(0,0,0,.3), inset 0 -4px 6px rgba(0,0,0,.15);
     transition:transform .07s, box-shadow .07s, filter .07s}
@@ -509,18 +520,27 @@ const SKINS = {
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Modo de juego" id="mode">
+      <button data-m="goal" aria-pressed="true">Meta</button>
+      <button data-m="time">Contrarreloj</button>
+    </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
       <button data-g="14" aria-pressed="true">14</button>
       <button data-g="20">20</button>
       <button data-g="31">31</button>
     </div>
+    <div class="seg" role="group" aria-label="Duración" id="timeseg" hidden>
+      <button data-t="30">30s</button>
+      <button data-t="60" aria-pressed="true">60s</button>
+      <button data-t="90">90s</button>
+    </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
   </div>
 
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
-    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+    <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
   <details>
@@ -539,7 +559,7 @@ const SKINS = {
   },
   flat: {
     name: "Secuencia Cuatro",
-    tag: "Minimalista, plano y luminoso",
+    tag: "Minimalista, plana y luminosa",
     bestKey: "secuencia-cuatro-best",
     css: `
   :root{
@@ -582,6 +602,7 @@ const SKINS = {
   .pads{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .locked .pad{cursor:default}
   .pad{appearance:none;cursor:pointer;border:1px solid var(--line);border-radius:14px;aspect-ratio:1.15;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     display:flex;flex-direction:column;justify-content:space-between;padding:14px;
     background:var(--soft);color:var(--pc);text-align:left;transition:background .1s, box-shadow .1s, transform .06s}
   .pad[data-i="0"]{--soft:var(--c0-soft);--pc:var(--c0)}
@@ -644,18 +665,27 @@ const SKINS = {
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Modo de juego" id="mode">
+      <button data-m="goal" aria-pressed="true">Meta</button>
+      <button data-m="time">Contrarreloj</button>
+    </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
       <button data-g="14" aria-pressed="true">14</button>
       <button data-g="20">20</button>
       <button data-g="31">31</button>
     </div>
+    <div class="seg" role="group" aria-label="Duración" id="timeseg" hidden>
+      <button data-t="30">30s</button>
+      <button data-t="60" aria-pressed="true">60s</button>
+      <button data-t="90">90s</button>
+    </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
   </div>
 
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
-    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+    <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
   <details>
@@ -716,6 +746,7 @@ const SKINS = {
   .garden{position:relative;width:100%;max-width:360px;aspect-ratio:1;margin-block:6px}
   .locked .petal{cursor:default}
   .petal{position:absolute;appearance:none;border:0;cursor:pointer;width:46%;height:46%;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     background:var(--pc);transition:filter .1s, transform .1s;
     box-shadow:inset 0 0 0 2px rgba(0,0,0,.06)}
   .petal[data-i="0"]{--pc:var(--c0);top:0;left:0;border-radius:0 100% 100% 100%;transform-origin:100% 100%}
@@ -786,18 +817,27 @@ const SKINS = {
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Modo de juego" id="mode">
+      <button data-m="goal" aria-pressed="true">Meta</button>
+      <button data-m="time">Contrarreloj</button>
+    </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
       <button data-g="14" aria-pressed="true">14</button>
       <button data-g="20">20</button>
       <button data-g="31">31</button>
     </div>
+    <div class="seg" role="group" aria-label="Duración" id="timeseg" hidden>
+      <button data-t="30">30s</button>
+      <button data-t="60" aria-pressed="true">60s</button>
+      <button data-t="90">90s</button>
+    </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
   </div>
 
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
-    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+    <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
   <details>
@@ -859,6 +899,7 @@ const SKINS = {
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
   .locked .pad{cursor:default}
   .pad{appearance:none;cursor:pointer;border:1px solid var(--pd);background:#000;color:var(--pc);
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     border-radius:4px;padding:16px 10px;text-align:left;font-family:"JetBrains Mono",monospace;
     display:flex;flex-direction:column;gap:6px;transition:background .08s, box-shadow .08s}
   .pad[data-i="0"]{--pc:var(--c0);--pd:var(--c0-d)}
@@ -924,18 +965,27 @@ const SKINS = {
 
       <div class="controls">
         <button class="btn" id="start">run</button>
+        <div class="seg" role="group" aria-label="Modo de juego" id="mode">
+          <button data-m="goal" aria-pressed="true">meta</button>
+          <button data-m="time">reloj</button>
+        </div>
         <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
           <button data-g="8">8</button>
           <button data-g="14" aria-pressed="true">14</button>
           <button data-g="20">20</button>
           <button data-g="31">31</button>
         </div>
+        <div class="seg" role="group" aria-label="Duración" id="timeseg" hidden>
+          <button data-t="30">30s</button>
+          <button data-t="60" aria-pressed="true">60s</button>
+          <button data-t="90">90s</button>
+        </div>
         <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>--strict</label>
       </div>
 
       <div class="stats">
         <span>best=<b id="best">0</b></span>
-        <span>goal=<b id="goalv">14</b></span>
+        <span id="goallabel">goal=</span><b id="goalv">14</b>
       </div>
 
       <details>
@@ -954,8 +1004,8 @@ const SKINS = {
     init: init_terminal
   },
   pizarron: {
-    name: "Pizarrón Vivo",
-    tag: "Tiza de colores sobre pizarrón de madera",
+    name: "Pizarr\u00f3n Vivo",
+    tag: "Tiza de colores sobre pizarr\u00f3n de madera",
     bestKey: "pizarron-vivo-best",
     css: `
   :root{
@@ -1004,6 +1054,7 @@ const SKINS = {
   .pads{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;position:relative}
   .locked .pad{cursor:default}
   .pad{appearance:none;cursor:pointer;position:relative;aspect-ratio:1.05;
+    -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     background:transparent;border:3px dashed var(--pc);color:var(--pc);
     transition:background .1s, box-shadow .1s, transform .08s}
   .pad[data-i="0"]{--pc:var(--c0);border-radius:255px 15px 225px 15px;transform:rotate(-1deg)}
@@ -1076,18 +1127,27 @@ const SKINS = {
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Modo de juego" id="mode">
+      <button data-m="goal" aria-pressed="true">Meta</button>
+      <button data-m="time">Contrarreloj</button>
+    </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
       <button data-g="14" aria-pressed="true">14</button>
       <button data-g="20">20</button>
       <button data-g="31">31</button>
     </div>
+    <div class="seg" role="group" aria-label="Duración" id="timeseg" hidden>
+      <button data-t="30">30s</button>
+      <button data-t="60" aria-pressed="true">60s</button>
+      <button data-t="90">90s</button>
+    </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
   </div>
 
   <div class="stats">
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
-    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+    <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
   <details>
@@ -1116,11 +1176,17 @@ function init_neon(signal) {
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
+  const modeBtns = [...document.querySelectorAll('#mode button')];
+  const timeBtns = [...document.querySelectorAll('#timeseg button')];
+  const timeSegEl = document.getElementById('timeseg');
+  const goalSegEl = document.getElementById('goal');
+  const goalLabel = document.getElementById('goallabel');
 
   const FREQS = [415.3, 310, 252, 209];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
 
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let best = 0;
   try { best = +localStorage.getItem('neon-cuadrante-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -1182,9 +1248,15 @@ function init_neon(signal) {
   }
 
   async function start(){
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
-    token++; running = true; seq = [];
+    token++; running = true; seq = []; peak = 0;
     startBtn.textContent = 'Reiniciar';
+    if(mode === 'time'){
+      timeLeft = timeLimit;
+      goalV.textContent = timeLeft + 's';
+      timerInterval = setInterval(tick, 1000);
+    }
     await nextRound();
   }
 
@@ -1214,6 +1286,25 @@ function init_neon(signal) {
     startBtn.textContent = 'Jugar otra vez';
   }
 
+  function tick(){
+    if(!running){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } return; }
+    timeLeft -= 1;
+    if(timeLeft <= 0){
+      timeLeft = 0; goalV.textContent = '0s';
+      clearInterval(timerInterval); timerInterval = null;
+      timeUp();
+    } else {
+      goalV.textContent = timeLeft + 's';
+    }
+  }
+
+  function timeUp(){
+    running = false; accepting = false; token++; lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
@@ -1227,7 +1318,8 @@ function init_neon(signal) {
       lock(true);
       const done = seq.length;
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('neon-cuadrante-best', best); }catch(e){} }
-      if(done >= goal) return win();
+      if(done > peak) peak = done;
+      if(mode === 'goal' && done >= goal) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -1244,7 +1336,20 @@ function init_neon(signal) {
   startBtn.addEventListener('click', start);
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
-    goal = +b.dataset.g; goalV.textContent = goal;
+    goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
+  }));
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    mode = b.dataset.m;
+    goalSegEl.hidden = mode !== 'goal';
+    timeSegEl.hidden = mode !== 'time';
+    if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+  }));
+  timeBtns.forEach(b => b.addEventListener('click', () => {
+    timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    timeLimit = +b.dataset.t;
+    if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
 }
 
@@ -1258,11 +1363,17 @@ function init_consola(signal) {
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
+  const modeBtns = [...document.querySelectorAll('#mode button')];
+  const timeBtns = [...document.querySelectorAll('#timeseg button')];
+  const timeSegEl = document.getElementById('timeseg');
+  const goalSegEl = document.getElementById('goal');
+  const goalLabel = document.getElementById('goallabel');
 
   const FREQS = [415.3, 310, 252, 209];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
 
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let best = 0;
   try { best = +localStorage.getItem('botonera-eco-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -1324,9 +1435,15 @@ function init_consola(signal) {
   }
 
   async function start(){
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
-    token++; running = true; seq = [];
+    token++; running = true; seq = []; peak = 0;
     startBtn.textContent = 'Reiniciar';
+    if(mode === 'time'){
+      timeLeft = timeLimit;
+      goalV.textContent = timeLeft + 's';
+      timerInterval = setInterval(tick, 1000);
+    }
     await nextRound();
   }
 
@@ -1356,6 +1473,25 @@ function init_consola(signal) {
     startBtn.textContent = 'Jugar otra vez';
   }
 
+  function tick(){
+    if(!running){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } return; }
+    timeLeft -= 1;
+    if(timeLeft <= 0){
+      timeLeft = 0; goalV.textContent = '0s';
+      clearInterval(timerInterval); timerInterval = null;
+      timeUp();
+    } else {
+      goalV.textContent = timeLeft + 's';
+    }
+  }
+
+  function timeUp(){
+    running = false; accepting = false; token++; lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
@@ -1369,7 +1505,8 @@ function init_consola(signal) {
       lock(true);
       const done = seq.length;
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('botonera-eco-best', best); }catch(e){} }
-      if(done >= goal) return win();
+      if(done > peak) peak = done;
+      if(mode === 'goal' && done >= goal) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -1386,7 +1523,20 @@ function init_consola(signal) {
   startBtn.addEventListener('click', start);
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
-    goal = +b.dataset.g; goalV.textContent = goal;
+    goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
+  }));
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    mode = b.dataset.m;
+    goalSegEl.hidden = mode !== 'goal';
+    timeSegEl.hidden = mode !== 'time';
+    if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+  }));
+  timeBtns.forEach(b => b.addEventListener('click', () => {
+    timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    timeLimit = +b.dataset.t;
+    if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
 }
 
@@ -1400,11 +1550,17 @@ function init_flat(signal) {
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
+  const modeBtns = [...document.querySelectorAll('#mode button')];
+  const timeBtns = [...document.querySelectorAll('#timeseg button')];
+  const timeSegEl = document.getElementById('timeseg');
+  const goalSegEl = document.getElementById('goal');
+  const goalLabel = document.getElementById('goallabel');
 
   const FREQS = [415.3, 310, 252, 209];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
 
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let best = 0;
   try { best = +localStorage.getItem('secuencia-cuatro-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -1466,9 +1622,15 @@ function init_flat(signal) {
   }
 
   async function start(){
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
-    token++; running = true; seq = [];
+    token++; running = true; seq = []; peak = 0;
     startBtn.textContent = 'Reiniciar';
+    if(mode === 'time'){
+      timeLeft = timeLimit;
+      goalV.textContent = timeLeft + 's';
+      timerInterval = setInterval(tick, 1000);
+    }
     await nextRound();
   }
 
@@ -1498,6 +1660,25 @@ function init_flat(signal) {
     startBtn.textContent = 'Jugar otra vez';
   }
 
+  function tick(){
+    if(!running){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } return; }
+    timeLeft -= 1;
+    if(timeLeft <= 0){
+      timeLeft = 0; goalV.textContent = '0s';
+      clearInterval(timerInterval); timerInterval = null;
+      timeUp();
+    } else {
+      goalV.textContent = timeLeft + 's';
+    }
+  }
+
+  function timeUp(){
+    running = false; accepting = false; token++; lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
@@ -1511,7 +1692,8 @@ function init_flat(signal) {
       lock(true);
       const done = seq.length;
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('secuencia-cuatro-best', best); }catch(e){} }
-      if(done >= goal) return win();
+      if(done > peak) peak = done;
+      if(mode === 'goal' && done >= goal) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -1528,7 +1710,20 @@ function init_flat(signal) {
   startBtn.addEventListener('click', start);
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
-    goal = +b.dataset.g; goalV.textContent = goal;
+    goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
+  }));
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    mode = b.dataset.m;
+    goalSegEl.hidden = mode !== 'goal';
+    timeSegEl.hidden = mode !== 'time';
+    if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+  }));
+  timeBtns.forEach(b => b.addEventListener('click', () => {
+    timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    timeLimit = +b.dataset.t;
+    if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
 }
 
@@ -1542,11 +1737,17 @@ function init_botanico(signal) {
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
+  const modeBtns = [...document.querySelectorAll('#mode button')];
+  const timeBtns = [...document.querySelectorAll('#timeseg button')];
+  const timeSegEl = document.getElementById('timeseg');
+  const goalSegEl = document.getElementById('goal');
+  const goalLabel = document.getElementById('goallabel');
 
   const FREQS = [392, 330, 262, 220]; // pentatónico suave
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
 
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let best = 0;
   try { best = +localStorage.getItem('ronda-silvestre-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -1608,9 +1809,15 @@ function init_botanico(signal) {
   }
 
   async function start(){
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
-    token++; running = true; seq = [];
+    token++; running = true; seq = []; peak = 0;
     startBtn.textContent = 'Reiniciar';
+    if(mode === 'time'){
+      timeLeft = timeLimit;
+      goalV.textContent = timeLeft + 's';
+      timerInterval = setInterval(tick, 1000);
+    }
     await nextRound();
   }
 
@@ -1640,6 +1847,25 @@ function init_botanico(signal) {
     startBtn.textContent = 'Jugar otra vez';
   }
 
+  function tick(){
+    if(!running){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } return; }
+    timeLeft -= 1;
+    if(timeLeft <= 0){
+      timeLeft = 0; goalV.textContent = '0s';
+      clearInterval(timerInterval); timerInterval = null;
+      timeUp();
+    } else {
+      goalV.textContent = timeLeft + 's';
+    }
+  }
+
+  function timeUp(){
+    running = false; accepting = false; token++; lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
@@ -1653,7 +1879,8 @@ function init_botanico(signal) {
       lock(true);
       const done = seq.length;
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('ronda-silvestre-best', best); }catch(e){} }
-      if(done >= goal) return win();
+      if(done > peak) peak = done;
+      if(mode === 'goal' && done >= goal) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -1670,7 +1897,20 @@ function init_botanico(signal) {
   startBtn.addEventListener('click', start);
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
-    goal = +b.dataset.g; goalV.textContent = goal;
+    goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
+  }));
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    mode = b.dataset.m;
+    goalSegEl.hidden = mode !== 'goal';
+    timeSegEl.hidden = mode !== 'time';
+    if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+  }));
+  timeBtns.forEach(b => b.addEventListener('click', () => {
+    timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    timeLimit = +b.dataset.t;
+    if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
 }
 
@@ -1684,11 +1924,17 @@ function init_terminal(signal) {
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
+  const modeBtns = [...document.querySelectorAll('#mode button')];
+  const timeBtns = [...document.querySelectorAll('#timeseg button')];
+  const timeSegEl = document.getElementById('timeseg');
+  const goalSegEl = document.getElementById('goal');
+  const goalLabel = document.getElementById('goallabel');
 
   const FREQS = [415.3, 310, 252, 209];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
 
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let best = 0;
   try { best = +localStorage.getItem('terminal-mnemo-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -1750,9 +1996,15 @@ function init_terminal(signal) {
   }
 
   async function start(){
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
-    token++; running = true; seq = [];
+    token++; running = true; seq = []; peak = 0;
     startBtn.textContent = 'restart';
+    if(mode === 'time'){
+      timeLeft = timeLimit;
+      goalV.textContent = timeLeft + 's';
+      timerInterval = setInterval(tick, 1000);
+    }
     await nextRound();
   }
 
@@ -1782,6 +2034,25 @@ function init_terminal(signal) {
     startBtn.textContent = 'run again';
   }
 
+  function tick(){
+    if(!running){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } return; }
+    timeLeft -= 1;
+    if(timeLeft <= 0){
+      timeLeft = 0; goalV.textContent = '0s';
+      clearInterval(timerInterval); timerInterval = null;
+      timeUp();
+    } else {
+      goalV.textContent = timeLeft + 's';
+    }
+  }
+
+  function timeUp(){
+    running = false; accepting = false; token++; lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    statusEl.textContent = `tiempo agotado. llegaste a ${peak} rondas.`;
+    startBtn.textContent = 'run again';
+  }
+
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
@@ -1795,7 +2066,8 @@ function init_terminal(signal) {
       lock(true);
       const done = seq.length;
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} }
-      if(done >= goal) return win();
+      if(done > peak) peak = done;
+      if(mode === 'goal' && done >= goal) return win();
       statusEl.textContent = 'ok_';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -1812,7 +2084,20 @@ function init_terminal(signal) {
   startBtn.addEventListener('click', start);
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
-    goal = +b.dataset.g; goalV.textContent = goal;
+    goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
+  }));
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    mode = b.dataset.m;
+    goalSegEl.hidden = mode !== 'goal';
+    timeSegEl.hidden = mode !== 'time';
+    if(goalLabel) goalLabel.textContent = mode === 'time' ? 'reloj=' : 'meta=';
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+  }));
+  timeBtns.forEach(b => b.addEventListener('click', () => {
+    timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    timeLimit = +b.dataset.t;
+    if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
 }
 
@@ -1826,11 +2111,17 @@ function init_pizarron(signal) {
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
+  const modeBtns = [...document.querySelectorAll('#mode button')];
+  const timeBtns = [...document.querySelectorAll('#timeseg button')];
+  const timeSegEl = document.getElementById('timeseg');
+  const goalSegEl = document.getElementById('goal');
+  const goalLabel = document.getElementById('goallabel');
 
   const FREQS = [415.3, 310, 252, 209];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
 
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let best = 0;
   try { best = +localStorage.getItem('pizarron-vivo-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -1892,9 +2183,15 @@ function init_pizarron(signal) {
   }
 
   async function start(){
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
-    token++; running = true; seq = [];
+    token++; running = true; seq = []; peak = 0;
     startBtn.textContent = 'Reiniciar';
+    if(mode === 'time'){
+      timeLeft = timeLimit;
+      goalV.textContent = timeLeft + 's';
+      timerInterval = setInterval(tick, 1000);
+    }
     await nextRound();
   }
 
@@ -1924,6 +2221,25 @@ function init_pizarron(signal) {
     startBtn.textContent = 'Jugar otra vez';
   }
 
+  function tick(){
+    if(!running){ if(timerInterval){ clearInterval(timerInterval); timerInterval = null; } return; }
+    timeLeft -= 1;
+    if(timeLeft <= 0){
+      timeLeft = 0; goalV.textContent = '0s';
+      clearInterval(timerInterval); timerInterval = null;
+      timeUp();
+    } else {
+      goalV.textContent = timeLeft + 's';
+    }
+  }
+
+  function timeUp(){
+    running = false; accepting = false; token++; lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
@@ -1937,7 +2253,8 @@ function init_pizarron(signal) {
       lock(true);
       const done = seq.length;
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('pizarron-vivo-best', best); }catch(e){} }
-      if(done >= goal) return win();
+      if(done > peak) peak = done;
+      if(mode === 'goal' && done >= goal) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -1954,7 +2271,20 @@ function init_pizarron(signal) {
   startBtn.addEventListener('click', start);
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
-    goal = +b.dataset.g; goalV.textContent = goal;
+    goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
+  }));
+  modeBtns.forEach(b => b.addEventListener('click', () => {
+    modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    mode = b.dataset.m;
+    goalSegEl.hidden = mode !== 'goal';
+    timeSegEl.hidden = mode !== 'time';
+    if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+  }));
+  timeBtns.forEach(b => b.addEventListener('click', () => {
+    timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    timeLimit = +b.dataset.t;
+    if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
 }
 
