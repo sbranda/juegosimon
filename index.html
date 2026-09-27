@@ -486,6 +486,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -619,6 +626,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -812,6 +828,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -946,6 +969,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -1118,6 +1150,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1247,6 +1286,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -1433,6 +1481,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1566,6 +1621,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -1745,6 +1809,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1876,6 +1947,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">pausado</p>
+      <p class="pause-sub">volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">&gt; continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -2068,6 +2148,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2203,6 +2290,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -2398,6 +2494,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2531,6 +2634,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -2721,6 +2833,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2854,6 +2973,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -3052,6 +3180,13 @@ const SKINS = {
   .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
   .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .confirm-ok{background:#ff5566;color:#0a0a12}
+  .pause-overlay{position:fixed;inset:0;z-index:64;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .pause-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .pause-icon{font-size:34px;margin:0 0 6px}
+  .pause-text{margin:0 0 6px;font-size:19px;font-weight:800}
+  .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
+  .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
+  .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -3185,6 +3320,15 @@ const SKINS = {
         <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
         <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
+    </div>
+  </div>
+  <div class="pause-overlay" id="pauseOverlay" hidden>
+    <div class="pause-card">
+      <p class="pause-icon">⏸</p>
+      <p class="pause-text">Pausado</p>
+      <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
+      <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
+      <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
 </div>`,
@@ -3883,6 +4027,47 @@ function init_neon(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -4697,6 +4882,47 @@ function init_consola(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -5506,6 +5732,47 @@ function init_flat(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -6318,6 +6585,47 @@ function init_botanico(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.petal')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -7127,6 +7435,47 @@ function init_terminal(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -7940,6 +8289,47 @@ function init_pizarron(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -8751,6 +9141,47 @@ function init_cosmos(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -9562,6 +9993,47 @@ function init_radio(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
@@ -10373,6 +10845,47 @@ function init_glass(signal) {
     }
   }
 
+  const pauseOverlayEl = document.getElementById('pauseOverlay');
+  const pauseResumeEl = document.getElementById('pauseResume');
+  const pauseExitEl = document.getElementById('pauseExit');
+  const backBtnRef = document.getElementById('backBtn');
+  if(!backBtnRef) pauseExitEl.hidden = true;
+  let pausedForBg = false;
+  function resumeFromPause(){
+    if(!pausedForBg) return;
+    pausedForBg = false;
+    pauseOverlayEl.hidden = true;
+    if(!running) return;
+    const myResume = token;
+    (async () => {
+      if(seq.length === 0){
+        const ready = await countdown();
+        if(myResume !== token || !ready) return;
+        if(mode === 'time'){
+          timeLeft = timeLimit; goalV.textContent = timeLeft + 's';
+          timerInterval = setInterval(tick, 1000);
+        }
+        await nextRound();
+      } else {
+        if(mode === 'time' && timeLeft > 0){
+          timerInterval = setInterval(tick, 1000);
+        }
+        show(seq.length);
+        await playSeq();
+      }
+    })();
+  }
+  pauseResumeEl.addEventListener('click', resumeFromPause);
+  pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && running && !pausedForBg){
+      pausedForBg = true;
+      token++;
+      lock(true);
+      if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+      pauseOverlayEl.hidden = false;
+    }
+  }, {signal});
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
