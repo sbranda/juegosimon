@@ -427,6 +427,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -443,12 +447,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Presioná «Iniciar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Iniciar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -494,6 +500,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -504,7 +511,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -673,6 +680,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -690,12 +701,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Tocá «Jugar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -741,6 +754,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -751,7 +765,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -899,6 +913,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -911,12 +929,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Presioná «Jugar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -962,6 +982,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -972,7 +993,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -1134,6 +1155,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -1150,12 +1175,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Tocá «Jugar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -1201,6 +1228,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -1211,7 +1239,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -1366,6 +1394,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <div class="win">
@@ -1379,12 +1411,14 @@ const SKINS = {
       <div class="grid locked" id="device"></div>
 
       <div class="feed"><span id="status">esperando inicio…</span><span class="cursor" aria-hidden="true"></span></div>
+      <div class="dailyinfo" id="dailyInfo" hidden></div>
 
       <div class="controls">
         <button class="btn" id="start">run</button>
         <div class="seg" role="group" aria-label="Modo de juego" id="mode">
           <button data-m="goal" aria-pressed="true">meta</button>
           <button data-m="time">reloj</button>
+          <button data-m="daily">diario</button>
         </div>
         <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
           <button data-g="8">8</button>
@@ -1430,6 +1464,7 @@ const SKINS = {
           <li>Elegí <b>--level</b> 6 u 8 canales para un modo experto (no se puede cambiar con el proceso corriendo).</li>
           <li>Activá <b>--colorblind</b> para ver un símbolo distinto en cada canal, además del color.</li>
       <li>Activá <b>--reduce-motion</b> / <b>--high-contrast</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>--daily</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
         </ul>
       </details>
 
@@ -1440,7 +1475,7 @@ const SKINS = {
       </details>
 
       <details id="achievementsBox">
-        <summary>logros <span class="ach-count" id="achCount">0/10</span></summary>
+        <summary>logros <span class="ach-count" id="achCount">0/11</span></summary>
         <div class="ach-list" id="achList"></div>
       </details>
 
@@ -1609,6 +1644,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -1627,12 +1666,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Tocá «Jugar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Jugar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -1678,6 +1719,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -1688,7 +1730,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -1859,6 +1901,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -1875,12 +1921,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Presioná «Iniciar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Iniciar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -1926,6 +1974,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 planetas para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -1936,7 +1985,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -2102,6 +2151,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -2118,12 +2171,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Presioná «Iniciar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Iniciar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -2169,6 +2224,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 botones para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -2179,7 +2235,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -2353,6 +2409,10 @@ const SKINS = {
   .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
   .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
   .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
+  .daily-info{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+  .daily-info b{color:var(--ink)}
+  .seg button:disabled{opacity:.4;cursor:not-allowed}
+  .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
 `,
     html: `<div class="wrap">
   <header>
@@ -2369,12 +2429,14 @@ const SKINS = {
   </div>
 
   <div class="status" id="status" role="status" aria-live="polite">Presioná «Iniciar» para empezar</div>
+  <p class="daily-info" id="dailyInfo" hidden></p>
 
   <div class="controls">
     <button class="btn" id="start">Iniciar</button>
     <div class="seg" role="group" aria-label="Modo de juego" id="mode">
       <button data-m="goal" aria-pressed="true">Meta</button>
       <button data-m="time">Contrarreloj</button>
+      <button data-m="daily">Desafío diario</button>
     </div>
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
@@ -2420,6 +2482,7 @@ const SKINS = {
       <li>Elegí <b>Nivel</b> 6 u 8 paneles para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
+      <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
     </ul>
   </details>
 
@@ -2430,7 +2493,7 @@ const SKINS = {
   </details>
 
   <details id="achievementsBox">
-    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <summary>Logros <span class="ach-count" id="achCount">0/11</span></summary>
     <div class="ach-list" id="achList"></div>
   </details>
 
@@ -2512,7 +2575,8 @@ function init_neon(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -2526,6 +2590,9 @@ function init_neon(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('neon-cuadrante-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -2575,6 +2642,27 @@ function init_neon(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='square', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -2608,6 +2696,20 @@ function init_neon(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -2617,6 +2719,7 @@ function init_neon(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2804,7 +2907,8 @@ function init_neon(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -2814,6 +2918,7 @@ function init_neon(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -2845,7 +2950,7 @@ function init_neon(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -2890,6 +2995,7 @@ function init_neon(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('neon-cuadrante-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -2907,12 +3013,32 @@ function init_neon(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -2986,7 +3112,8 @@ function init_consola(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -3001,6 +3128,9 @@ function init_consola(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('botonera-eco-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -3051,6 +3181,27 @@ function init_consola(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='triangle', vol=.25){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -3084,6 +3235,20 @@ function init_consola(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -3093,6 +3258,7 @@ function init_consola(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -3280,7 +3446,8 @@ function init_consola(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -3290,6 +3457,7 @@ function init_consola(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -3321,7 +3489,7 @@ function init_consola(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -3366,6 +3534,7 @@ function init_consola(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('botonera-eco-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -3383,12 +3552,32 @@ function init_consola(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -3460,7 +3649,8 @@ function init_flat(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -3474,6 +3664,9 @@ function init_flat(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('secuencia-cuatro-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -3522,6 +3715,27 @@ function init_flat(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -3555,6 +3769,20 @@ function init_flat(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -3564,6 +3792,7 @@ function init_flat(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -3751,7 +3980,8 @@ function init_flat(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -3761,6 +3991,7 @@ function init_flat(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -3792,7 +4023,7 @@ function init_flat(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -3837,6 +4068,7 @@ function init_flat(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('secuencia-cuatro-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -3854,12 +4086,32 @@ function init_flat(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -3932,7 +4184,8 @@ function init_botanico(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -3946,6 +4199,9 @@ function init_botanico(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('ronda-silvestre-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -3996,6 +4252,27 @@ function init_botanico(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -4029,6 +4306,20 @@ function init_botanico(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -4038,6 +4329,7 @@ function init_botanico(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -4225,7 +4517,8 @@ function init_botanico(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -4235,6 +4528,7 @@ function init_botanico(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -4266,7 +4560,7 @@ function init_botanico(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -4311,6 +4605,7 @@ function init_botanico(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('ronda-silvestre-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -4328,12 +4623,32 @@ function init_botanico(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -4405,7 +4720,8 @@ function init_terminal(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -4419,6 +4735,9 @@ function init_terminal(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('terminal-mnemo-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -4467,6 +4786,27 @@ function init_terminal(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='square', vol=.14){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -4500,6 +4840,20 @@ function init_terminal(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -4509,6 +4863,7 @@ function init_terminal(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -4696,7 +5051,8 @@ function init_terminal(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -4706,6 +5062,7 @@ function init_terminal(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'restart';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -4737,7 +5094,7 @@ function init_terminal(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `proceso completo. ${goal} rondas ok.`;
+    statusEl.textContent = mode === 'daily' ? `desafío diario superado. ${DAILY_GOAL} rondas ok.` : `proceso completo. ${goal} rondas ok.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -4782,6 +5139,7 @@ function init_terminal(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = 'ok_';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -4799,12 +5157,32 @@ function init_terminal(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'reloj=' : 'meta=';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -4878,7 +5256,8 @@ function init_pizarron(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -4892,6 +5271,9 @@ function init_pizarron(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('pizarron-vivo-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -4942,6 +5324,27 @@ function init_pizarron(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='triangle', vol=.2){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -4975,6 +5378,20 @@ function init_pizarron(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -4984,6 +5401,7 @@ function init_pizarron(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -5171,7 +5589,8 @@ function init_pizarron(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -5181,6 +5600,7 @@ function init_pizarron(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -5212,7 +5632,7 @@ function init_pizarron(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -5257,6 +5677,7 @@ function init_pizarron(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('pizarron-vivo-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -5274,12 +5695,32 @@ function init_pizarron(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -5352,7 +5793,8 @@ function init_cosmos(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 planetas.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -5366,6 +5808,9 @@ function init_cosmos(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('orbita-cosmica-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -5415,6 +5860,27 @@ function init_cosmos(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='sine', vol=.18){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -5448,6 +5914,20 @@ function init_cosmos(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -5457,6 +5937,7 @@ function init_cosmos(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -5644,7 +6125,8 @@ function init_cosmos(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -5654,6 +6136,7 @@ function init_cosmos(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -5685,7 +6168,7 @@ function init_cosmos(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -5730,6 +6213,7 @@ function init_cosmos(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('orbita-cosmica-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -5747,12 +6231,32 @@ function init_cosmos(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -5825,7 +6329,8 @@ function init_radio(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 botones.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -5839,6 +6344,9 @@ function init_radio(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('dial-retro-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -5888,6 +6396,27 @@ function init_radio(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='triangle', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -5921,6 +6450,20 @@ function init_radio(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -5930,6 +6473,7 @@ function init_radio(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -6117,7 +6661,8 @@ function init_radio(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -6127,6 +6672,7 @@ function init_radio(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -6158,7 +6704,7 @@ function init_radio(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -6203,6 +6749,7 @@ function init_radio(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('dial-retro-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -6220,12 +6767,32 @@ function init_radio(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -6298,7 +6865,8 @@ function init_glass(signal) {
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
     { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 paneles.', check: list => list.some(e => e.won && e.numColors === 8) },
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
-    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
+    { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -6312,6 +6880,9 @@ function init_glass(signal) {
   let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
   let mode = 'goal', timeLimit = 60, timeLeft = 0, timerInterval = null, peak = 0;
   let numColors = 4;
+  const DAILY_GOAL = 20;
+  const dailyInfoEl = document.getElementById('dailyInfo');
+  let dailyRng = null, preDaily = null;
   let best = 0;
   try { best = +localStorage.getItem('vidrio-holografico-best') || 0; } catch(e){}
   bestEl.textContent = best;
@@ -6361,6 +6932,27 @@ function init_glass(signal) {
   function vibrate(pattern){
     try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
   }
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function hashStr(s){
+    let h = 0;
+    for(let i=0;i<s.length;i++){ h = Math.imul(31, h) + s.charCodeAt(i) | 0; }
+    return h >>> 0;
+  }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function sameLocalDay(ts, dayStr){
+    const d = new Date(ts);
+    return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
+  }
   function tone(freq, ms, type='sine', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -6394,6 +6986,20 @@ function init_glass(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function updateDailyInfo(){
+    if(!dailyInfoEl) return;
+    if(mode !== 'daily'){ dailyInfoEl.hidden = true; return; }
+    const today = todayStr();
+    const list = loadHistory().filter(e => e.mode === 'daily' && e.skin === SKIN_NAME && sameLocalDay(e.ts, today));
+    const wonToday = list.some(e => e.won);
+    const bestToday = list.reduce((m,e) => Math.max(m, e.round||0), 0);
+    dailyInfoEl.hidden = false;
+    dailyInfoEl.innerHTML = wonToday
+      ? `Desafío del ${today} · <b>¡Superado!</b> (mejor intento: ${bestToday} rondas)`
+      : (bestToday > 0
+          ? `Desafío del ${today} · mejor intento de hoy: <b>${bestToday}</b> ${bestToday===1?'ronda':'rondas'}`
+          : `Desafío del ${today} · ¡Sé el primero en superarlo hoy!`);
+  }
   function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
@@ -6403,6 +7009,7 @@ function init_glass(signal) {
     renderHistory();
     renderAchievements();
     renderChart();
+    updateDailyInfo();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -6590,7 +7197,8 @@ function init_glass(signal) {
   }
 
   async function nextRound(){
-    seq.push(Math.floor(Math.random()*numColors));
+    const _r = (mode === 'daily' && dailyRng) ? dailyRng() : Math.random();
+    seq.push(Math.floor(_r*numColors));
     show(seq.length);
     await playSeq();
   }
@@ -6600,6 +7208,7 @@ function init_glass(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
+    dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     startBtn.textContent = 'Reiniciar';
     if(mode === 'time'){
       timeLeft = timeLimit;
@@ -6631,7 +7240,7 @@ function init_glass(signal) {
     lock(true); running = false;
     vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
-    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    statusEl.textContent = mode === 'daily' ? `¡Superaste el desafío diario! ${DAILY_GOAL} rondas perfectas.` : `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
@@ -6676,6 +7285,7 @@ function init_glass(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('vidrio-holografico-best', best); }catch(e){} }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
+      if(mode === 'daily' && done >= DAILY_GOAL) return win();
       statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
@@ -6693,12 +7303,32 @@ function init_glass(signal) {
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
   }));
   modeBtns.forEach(b => b.addEventListener('click', () => {
+    if(running) return;
     modeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    const prevMode = mode;
     mode = b.dataset.m;
+    if(mode === 'daily' && prevMode !== 'daily'){
+      preDaily = { strict: strictEl.checked, reverse: reverseEl.checked, audioOnly: audioOnlyEl.checked, numColors };
+      strictEl.checked = true; strictEl.disabled = true;
+      reverseEl.checked = false; reverseEl.disabled = true;
+      audioOnlyEl.checked = false; audioOnlyEl.disabled = true;
+      levelBtns.forEach(x => x.disabled = true);
+      if(numColors !== 4){
+        numColors = 4; device.dataset.level = 4; buildPads();
+        levelBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.n==='4' ? 'true' : 'false'));
+      }
+    } else if(mode !== 'daily' && prevMode === 'daily' && preDaily){
+      strictEl.checked = preDaily.strict; strictEl.disabled = false;
+      reverseEl.checked = preDaily.reverse; reverseEl.disabled = false;
+      audioOnlyEl.checked = preDaily.audioOnly; audioOnlyEl.disabled = false;
+      levelBtns.forEach(x => x.disabled = false);
+      preDaily = null;
+    }
     goalSegEl.hidden = mode !== 'goal';
     timeSegEl.hidden = mode !== 'time';
     if(goalLabel) goalLabel.textContent = mode === 'time' ? 'Tiempo' : 'Meta';
-    goalV.textContent = mode === 'time' ? timeLimit + 's' : goal;
+    goalV.textContent = mode === 'time' ? timeLimit + 's' : (mode === 'daily' ? DAILY_GOAL : goal);
+    updateDailyInfo();
   }));
   timeBtns.forEach(b => b.addEventListener('click', () => {
     timeBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
@@ -6811,3 +7441,5 @@ if ('serviceWorker' in navigator) {
 </script>
 </body>
 </html>
+
+</body></html>
