@@ -433,6 +433,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -483,6 +486,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -506,6 +510,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -700,6 +705,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -751,6 +759,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -774,6 +783,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -947,6 +957,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -993,6 +1006,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -1016,6 +1030,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -1203,6 +1218,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -1253,6 +1271,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -1276,6 +1295,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -1456,6 +1476,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;color:var(--muted)}
   .stats-global b{color:var(--c0);font-variant-numeric:tabular-nums}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <div class="win">
@@ -1503,6 +1526,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>--colorblind</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>--reduce-motion</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>--high-contrast</label>
+    <label class="speed-ctrl" for="speed"><span>--speed=<b id="speedLabel">normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
       </div>
 
       <div class="stats">
@@ -1526,6 +1550,7 @@ const SKINS = {
       <li>Activá <b>--reduce-motion</b> / <b>--high-contrast</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>--daily</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>--2p</b> para jugar por turnos en el mismo dispositivo: cada jugador enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá <b>--speed</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
         </ul>
       </details>
 
@@ -1720,6 +1745,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -1772,6 +1800,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -1795,6 +1824,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -1991,6 +2021,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -2041,6 +2074,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -2064,6 +2098,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -2255,6 +2290,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -2305,6 +2343,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -2328,6 +2367,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -2527,6 +2567,9 @@ const SKINS = {
   .toggle input:disabled+span{opacity:.4;cursor:not-allowed}
   .stats-global{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:center}
   #gsFavorite{font-size:15px!important;line-height:1.25;word-break:break-word;max-width:150px}
+  .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
+  .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
+  .speed-ctrl b{color:var(--ink)}
 `,
     html: `<div class="wrap">
   <header>
@@ -2577,6 +2620,7 @@ const SKINS = {
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
     <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
     <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
   </div>
 
   <div class="stats">
@@ -2600,6 +2644,7 @@ const SKINS = {
       <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
       <li>Elegí <b>Desafío diario</b> para enfrentar la misma secuencia que todos los demás jugadores ese día. ¡Volvé mañana por un desafío nuevo!</li>
       <li>Elegí <b>2 jugadores</b> para jugar por turnos en el mismo celular: cada uno enfrenta la misma secuencia y gana quien llegue más lejos.</li>
+      <li>Ajustá la <b>Velocidad</b> para que la secuencia acelere más lento o más rápido a medida que suben las rondas.</li>
     </ul>
   </details>
 
@@ -2869,12 +2914,27 @@ function init_neon(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -3521,12 +3581,27 @@ function init_consola(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -4168,12 +4243,27 @@ function init_flat(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -4818,12 +4908,27 @@ function init_botanico(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -5465,12 +5570,27 @@ function init_terminal(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'muy lenta',2:'lenta',3:'normal',4:'rápida',5:'muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -6116,12 +6236,27 @@ function init_pizarron(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -6765,12 +6900,27 @@ function init_cosmos(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -7414,12 +7564,27 @@ function init_radio(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
@@ -8063,12 +8228,27 @@ function init_glass(signal) {
     if(visual) pads[i].classList.remove('lit');
   }
 
+  const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
+  const SPEED_MULT = {1:0.5, 2:0.75, 3:1, 4:1.5, 5:2};
+  const speedEl = document.getElementById('speed');
+  const speedLabelEl = document.getElementById('speedLabel');
+  let speedLevel = 3;
+  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  speedEl.value = speedLevel;
+  speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+  speedEl.addEventListener('input', () => {
+    speedLevel = +speedEl.value;
+    speedLabelEl.textContent = SPEED_LABELS[speedLevel];
+    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+  });
   function tempo(){
     const n = seq.length;
-    if(n <= 5) return {on:420, gap:80};
-    if(n <= 9) return {on:320, gap:70};
-    if(n <= 13) return {on:240, gap:60};
-    return {on:180, gap:50};
+    const mult = SPEED_MULT[speedLevel] || 1;
+    const rampRounds = 16 / mult;
+    const t = Math.min(1, (n-1) / rampRounds);
+    const on = Math.round(420 - t*(420-170));
+    const gap = Math.round(80 - t*(80-45));
+    return {on, gap};
   }
 
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
