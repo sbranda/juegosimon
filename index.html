@@ -51,6 +51,29 @@
   .menu-wrap{width:100%;max-width:460px;display:flex;flex-direction:column;gap:18px;padding-block:26px 32px}
   .menu-head h1{font-size:clamp(26px,7vw,32px);margin:0 0 6px;font-weight:800;letter-spacing:-.01em}
   .menu-head p{margin:0;color:var(--m-muted);font-size:14px}
+  .install-link{appearance:none;border:1px solid var(--m-card-edge);background:var(--m-card);color:var(--m-ink);cursor:pointer;font:700 12.5px "Manrope",sans-serif;padding:8px 14px;border-radius:999px;margin-top:12px}
+  .install-link:hover{border-color:var(--m-accent)}
+
+  /* ---------- Modal: instalar app ---------- */
+  .install-overlay{position:fixed;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;background:rgba(6,6,10,.55);backdrop-filter:blur(2px);padding:16px}
+  @media (min-height:640px){ .install-overlay{align-items:center} }
+  .install-modal{position:relative;width:100%;max-width:380px;background:var(--m-card);border:1px solid var(--m-card-edge);border-radius:20px;padding:24px 22px 20px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.45);animation:installPop .22s ease}
+  @keyframes installPop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+  .install-x{position:absolute;top:10px;right:10px;appearance:none;border:0;background:transparent;color:var(--m-muted);font-size:16px;cursor:pointer;padding:8px;line-height:1}
+  .install-icon{border-radius:18px;margin-bottom:10px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+  .install-modal h2{margin:0 0 6px;font-size:20px;font-weight:800}
+  .install-sub{margin:0 0 14px;color:var(--m-muted);font-size:13.5px;line-height:1.5}
+  .install-benefits{list-style:none;margin:0 0 18px;padding:0;text-align:left;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--m-ink)}
+  .install-benefits li{display:flex;gap:8px;align-items:flex-start}
+  .install-steps{list-style:none;margin:0 0 18px;padding:0;text-align:left;display:flex;flex-direction:column;gap:10px;font-size:13.5px;color:var(--m-ink)}
+  .install-steps li{display:flex;gap:10px;align-items:flex-start}
+  .install-steps b{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--m-accent);color:#0a0a12;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .install-fallback{margin:0 0 16px;font-size:13px;color:var(--m-muted);line-height:1.5;background:var(--m-bg2);border-radius:12px;padding:10px 12px}
+  .install-cta{appearance:none;border:0;cursor:pointer;width:100%;font:800 15px "Manrope",sans-serif;padding:13px;border-radius:14px;background:var(--m-accent);color:#0a0a12;margin-bottom:10px}
+  .install-cta:active{transform:scale(.98)}
+  .install-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .install-later,.install-never{appearance:none;border:0;background:transparent;cursor:pointer;font:600 12.5px "Manrope",sans-serif;color:var(--m-muted);padding:6px}
+  .install-never{text-decoration:underline}
 
   .cards{display:flex;flex-direction:column;gap:12px}
   .card{
@@ -177,6 +200,7 @@
     <div class="menu-head">
       <h1>Memorión</h1>
       <p>Elegí un diseño y repetí la secuencia de colores</p>
+      <button class="install-link" id="installOpenLink" type="button" hidden>📲 Instalar app</button>
     </div>
 
     <div class="cards" id="cardList">
@@ -9087,48 +9111,130 @@ function init_glass(signal) {
 })();
 </script>
 
-<div class="install" id="install" hidden></div>
+<div class="install-overlay" id="installOverlay" hidden>
+  <div class="install-modal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+    <button class="install-x" id="installX" aria-label="Cerrar" type="button">✕</button>
+    <img class="install-icon" src="./icons/icon-192.png" alt="" width="64" height="64">
+    <h2 id="installTitle">Instalá Memorión</h2>
+    <p class="install-sub" id="installSub">Agregala a tu pantalla de inicio para jugar más rápido y sin distracciones.</p>
+    <ul class="install-benefits" id="installBenefits">
+      <li>🎮 Se abre como una app, sin la barra del navegador</li>
+      <li>⚡ Acceso directo desde tu pantalla de inicio</li>
+      <li>📶 Jugá aunque te quedes sin conexión</li>
+    </ul>
+    <ol class="install-steps" id="installSteps" hidden></ol>
+    <p class="install-fallback" id="installFallback" hidden></p>
+    <button class="install-cta" id="installBtn" type="button">Instalar</button>
+    <div class="install-links">
+      <button class="install-later" id="installLater" type="button">Ahora no</button>
+      <button class="install-never" id="installNever" type="button">No preguntar de nuevo</button>
+    </div>
+  </div>
+</div>
 <script>
 // ---- PWA: service worker + instalación ----
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 }
 (() => {
-  const bar = document.getElementById('install');
-  bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(8,8,12,.92);backdrop-filter:blur(6px);color:#f2f2f7;font:14px "Manrope",sans-serif;border-top:1px solid rgba(255,255,255,.12)';
-  let deferred = null;
-  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  let dismissed = false;
-  try { dismissed = localStorage.getItem('memorion-install-off') === '1'; } catch(e){}
-  if (standalone || dismissed) return;
-
-  bar.innerHTML = '<span id="installMsg">Instalá Memorión para jugar sin conexión</span>' +
-    '<button id="installBtn" style="appearance:none;border:0;cursor:pointer;font:700 13px \'Manrope\',sans-serif;padding:9px 16px;border-radius:999px;background:#6d8bff;color:#0a0a12">Instalar</button>' +
-    '<button id="installClose" aria-label="Cerrar" style="appearance:none;border:0;background:transparent;color:#b8bcca;font:600 13px \'Manrope\',sans-serif;cursor:pointer;padding:8px">Ahora no</button>';
-  const msg = document.getElementById('installMsg');
+  const overlay = document.getElementById('installOverlay');
+  const benefits = document.getElementById('installBenefits');
+  const steps = document.getElementById('installSteps');
+  const fallback = document.getElementById('installFallback');
   const btn = document.getElementById('installBtn');
-  const close = document.getElementById('installClose');
+  const later = document.getElementById('installLater');
+  const never = document.getElementById('installNever');
+  const xBtn = document.getElementById('installX');
+  const openLink = document.getElementById('installOpenLink');
 
-  window.addEventListener('beforeinstallprompt', e => {
-    e.preventDefault(); deferred = e; bar.hidden = false;
-  });
-  btn.addEventListener('click', async () => {
-    if (!deferred) return;
-    deferred.prompt();
-    await deferred.userChoice;
-    deferred = null; bar.hidden = true;
-  });
-  close.addEventListener('click', () => {
-    bar.hidden = true;
-    try { localStorage.setItem('memorion-install-off','1'); } catch(e){}
-  });
-  window.addEventListener('appinstalled', () => { bar.hidden = true; });
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  if (standalone) return;
+
+  let neverAsk = false;
+  try { neverAsk = localStorage.getItem('memorion-install-off') === '1'; } catch(e){}
 
   const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
-  if (ios) {
-    msg.textContent = 'Para instalar: tocá Compartir y después «Agregar a inicio»';
-    btn.hidden = true; bar.hidden = false;
+  let deferred = null;
+
+  // El link manual "Instalar app" queda disponible incluso si el usuario eligió
+  // "No preguntar de nuevo": solo se suprimen los popups automáticos.
+  openLink.hidden = false;
+
+  function renderContent(){
+    if (ios){
+      benefits.hidden = false;
+      steps.hidden = false;
+      fallback.hidden = true;
+      steps.innerHTML =
+        '<li><b>1</b><span>Tocá el ícono <strong>Compartir</strong> (el cuadrado con la flecha hacia arriba) en Safari.</span></li>' +
+        '<li><b>2</b><span>Elegí <strong>«Agregar a inicio»</strong> en la lista de opciones.</span></li>' +
+        '<li><b>3</b><span>Confirmá tocando <strong>«Agregar»</strong>.</span></li>';
+      btn.hidden = true;
+    } else if (deferred){
+      benefits.hidden = false;
+      steps.hidden = true;
+      fallback.hidden = true;
+      btn.hidden = false;
+      btn.textContent = 'Instalar';
+    } else {
+      benefits.hidden = false;
+      steps.hidden = true;
+      fallback.hidden = false;
+      fallback.textContent = 'Buscá la opción «Instalar aplicación» o «Agregar a pantalla de inicio» en el menú (⋮ o ⋯) de tu navegador.';
+      btn.hidden = true;
+    }
   }
+
+  function openModal(){ renderContent(); overlay.hidden = false; }
+  function closeModal(remindMs){
+    overlay.hidden = true;
+    if (remindMs){
+      try { localStorage.setItem('memorion-install-remind', String(Date.now() + remindMs)); } catch(e){}
+    }
+  }
+
+  if (ios){
+    if (!neverAsk) setTimeout(() => {
+      let remindAt = 0;
+      try { remindAt = +localStorage.getItem('memorion-install-remind') || 0; } catch(e){}
+      if (Date.now() >= remindAt) openModal();
+    }, 1200);
+  } else {
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferred = e;
+      if (neverAsk) return;
+      let remindAt = 0;
+      try { remindAt = +localStorage.getItem('memorion-install-remind') || 0; } catch(e){}
+      if (Date.now() >= remindAt) setTimeout(openModal, 800);
+    });
+  }
+
+  btn.addEventListener('click', async () => {
+    if (!deferred) { closeModal(0); return; }
+    deferred.prompt();
+    const choice = await deferred.userChoice;
+    deferred = null;
+    overlay.hidden = true;
+    if (choice && choice.outcome === 'dismissed'){
+      try { localStorage.setItem('memorion-install-remind', String(Date.now() + 3*86400000)); } catch(e){}
+    }
+  });
+  later.addEventListener('click', () => closeModal(4*86400000));
+  xBtn.addEventListener('click', () => closeModal(4*86400000));
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(4*86400000); });
+  never.addEventListener('click', () => {
+    overlay.hidden = true;
+    openLink.hidden = false;
+    try { localStorage.setItem('memorion-install-off','1'); } catch(e){}
+  });
+  openLink.addEventListener('click', openModal);
+
+  window.addEventListener('appinstalled', () => {
+    overlay.hidden = true;
+    openLink.hidden = true;
+    try { localStorage.setItem('memorion-install-off','1'); } catch(e){}
+  });
 })();
 </script>
 </body>
