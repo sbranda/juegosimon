@@ -354,6 +354,13 @@ const SKINS = {
   .ach-info{flex:1}
   .ach-title{font-weight:700;font-size:13px;display:block}
   .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .chart-wrap{margin-top:8px}
+  #chartSvg{width:100%;height:140px;display:block;overflow:visible}
+  .chart-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .chart-axis{stroke:var(--muted);stroke-width:1;opacity:.35}
+  .chart-line{fill:none;stroke:var(--c2);stroke-width:2}
+  .chart-dot{fill:var(--c2)}
+  .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -428,6 +435,14 @@ const SKINS = {
   <details id="achievementsBox">
     <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
     <div class="ach-list" id="achList"></div>
+  </details>
+
+  <details id="chartBox">
+    <summary>Evolución del récord</summary>
+    <div class="chart-wrap" id="chartWrap">
+      <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
+      <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -570,6 +585,13 @@ const SKINS = {
   .ach-info{flex:1}
   .ach-title{font-weight:700;font-size:13px;display:block}
   .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .chart-wrap{margin-top:8px}
+  #chartSvg{width:100%;height:140px;display:block;overflow:visible}
+  .chart-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .chart-axis{stroke:var(--muted);stroke-width:1;opacity:.35}
+  .chart-line{fill:none;stroke:var(--c2);stroke-width:2}
+  .chart-dot{fill:var(--c2)}
+  .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:12px;color:var(--muted);font-weight:500}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -645,6 +667,14 @@ const SKINS = {
   <details id="achievementsBox">
     <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
     <div class="ach-list" id="achList"></div>
+  </details>
+
+  <details id="chartBox">
+    <summary>Evolución del récord</summary>
+    <div class="chart-wrap" id="chartWrap">
+      <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
+      <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -766,6 +796,13 @@ const SKINS = {
   .ach-info{flex:1}
   .ach-title{font-weight:700;font-size:13px;display:block}
   .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .chart-wrap{margin-top:8px}
+  #chartSvg{width:100%;height:140px;display:block;overflow:visible}
+  .chart-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .chart-axis{stroke:var(--muted);stroke-width:1;opacity:.35}
+  .chart-line{fill:none;stroke:var(--c2);stroke-width:2}
+  .chart-dot{fill:var(--c2)}
+  .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:12px;color:var(--muted);text-align:center}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -836,6 +873,14 @@ const SKINS = {
   <details id="achievementsBox">
     <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
     <div class="ach-list" id="achList"></div>
+  </details>
+
+  <details id="chartBox">
+    <summary>Evolución del récord</summary>
+    <div class="chart-wrap" id="chartWrap">
+      <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
+      <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -971,6 +1016,13 @@ const SKINS = {
   .ach-info{flex:1}
   .ach-title{font-weight:700;font-size:13px;display:block}
   .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .chart-wrap{margin-top:8px}
+  #chartSvg{width:100%;height:140px;display:block;overflow:visible}
+  .chart-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .chart-axis{stroke:var(--muted);stroke-width:1;opacity:.35}
+  .chart-line{fill:none;stroke:var(--c2);stroke-width:2}
+  .chart-dot{fill:var(--c2)}
+  .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:12px;color:var(--muted)}
   @media (prefers-reduced-motion: reduce){ .petal,.toggle span::after{transition:none} .petal.lit{transform:none} }
 `,
@@ -1045,6 +1097,14 @@ const SKINS = {
   <details id="achievementsBox">
     <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
     <div class="ach-list" id="achList"></div>
+  </details>
+
+  <details id="chartBox">
+    <summary>Evolución del récord</summary>
+    <div class="chart-wrap" id="chartWrap">
+      <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
+      <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -1166,6 +1226,13 @@ const SKINS = {
   .ach-info{flex:1}
   .ach-title{font-weight:700;font-size:13px;display:block}
   .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .chart-wrap{margin-top:8px}
+  #chartSvg{width:100%;height:140px;display:block;overflow:visible}
+  .chart-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .chart-axis{stroke:var(--muted);stroke-width:1;opacity:.35}
+  .chart-line{fill:none;stroke:var(--c2);stroke-width:2}
+  .chart-dot{fill:var(--c2)}
+  .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);text-align:center;margin-top:4px}
   @media (prefers-reduced-motion: reduce){ .pad,.cursor{transition:none;animation:none} }
 `,
@@ -1237,6 +1304,14 @@ const SKINS = {
       <details id="achievementsBox">
         <summary>logros <span class="ach-count" id="achCount">0/10</span></summary>
         <div class="ach-list" id="achList"></div>
+      </details>
+
+      <details id="chartBox">
+        <summary>evolución del récord</summary>
+        <div class="chart-wrap" id="chartWrap">
+          <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
+          <p class="chart-empty" id="chartEmpty" hidden>todavía no hay suficientes partidas para graficar.</p>
+        </div>
       </details>
     </div>
   </div>
@@ -1379,6 +1454,13 @@ const SKINS = {
   .ach-info{flex:1}
   .ach-title{font-weight:700;font-size:13px;display:block}
   .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+  .chart-wrap{margin-top:8px}
+  #chartSvg{width:100%;height:140px;display:block;overflow:visible}
+  .chart-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .chart-axis{stroke:var(--muted);stroke-width:1;opacity:.35}
+  .chart-line{fill:none;stroke:var(--c2);stroke-width:2}
+  .chart-dot{fill:var(--c2)}
+  .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:13px;color:var(--muted);font-family:"Patrick Hand",cursive}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -1457,6 +1539,14 @@ const SKINS = {
     <div class="ach-list" id="achList"></div>
   </details>
 
+  <details id="chartBox">
+    <summary>Evolución del récord</summary>
+    <div class="chart-wrap" id="chartWrap">
+      <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" role="img" aria-label="Gráfico de evolución del récord"></svg>
+      <p class="chart-empty" id="chartEmpty" hidden>Todavía no hay suficientes partidas para graficar.</p>
+    </div>
+  </details>
+
   <footer>Desarrollado por Seba Branda</footer>
 </div>`,
     init: init_pizarron
@@ -1505,6 +1595,8 @@ function init_neon(signal) {
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
+  const chartSvgEl = document.getElementById('chartSvg');
+  const chartEmptyEl = document.getElementById('chartEmpty');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Verde','Magenta','Amarillo','Cian','Naranja','Violeta','Rojo','Verde agua'];
@@ -1585,6 +1677,7 @@ function init_neon(signal) {
     saveHistory(list);
     renderHistory();
     renderAchievements();
+    renderChart();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -1610,12 +1703,51 @@ function init_neon(signal) {
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
   }
+  function renderChart(){
+    const list = loadHistory();
+    const milestones = [];
+    let runningMax = 0;
+    for(const e of list){
+      if(e.round > runningMax){ runningMax = e.round; milestones.push({ ts: e.ts, round: e.round }); }
+    }
+    if(milestones.length === 0){
+      chartSvgEl.innerHTML = '';
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    const W = 320, H = 140, padL = 22, padR = 8, padT = 12, padB = 20;
+    const innerW = W - padL - padR, innerH = H - padT - padB;
+    const maxRound = milestones[milestones.length - 1].round;
+    const n = milestones.length;
+    const xFor = i => n === 1 ? padL : padL + (innerW * i / (n - 1));
+    const yFor = r => padT + innerH * (1 - (maxRound === 0 ? 0 : r / maxRound));
+    let d = `M ${xFor(0)} ${yFor(milestones[0].round)}`;
+    for(let i = 1; i < n; i++){
+      d += ` L ${xFor(i)} ${yFor(milestones[i-1].round)} L ${xFor(i)} ${yFor(milestones[i].round)}`;
+    }
+    d += ` L ${W - padR} ${yFor(milestones[n-1].round)}`;
+    const dateFmt = ts => new Date(ts).toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit'});
+    const dots = milestones.map((m, i) => `<circle class="chart-dot" cx="${xFor(i)}" cy="${yFor(m.round)}" r="3"><title>${dateFmt(m.ts)} \u00b7 Ronda ${m.round}</title></circle>`).join('');
+    chartSvgEl.innerHTML = `
+      <line class="chart-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
+      <line class="chart-axis" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+      <text class="chart-label" x="1" y="${padT + 4}">${maxRound}</text>
+      <text class="chart-label" x="1" y="${H - padB + 4}">0</text>
+      <path class="chart-line" d="${d}"></path>
+      ${dots}
+      <text class="chart-label" x="${padL}" y="${H - 4}">${dateFmt(milestones[0].ts)}</text>
+      <text class="chart-label" x="${W - padR}" y="${H - 4}" text-anchor="end">hoy</text>
+    `;
+  }
   renderHistory();
   renderAchievements();
+  renderChart();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
+    renderChart();
   });
 
   async function playSeq(){
@@ -1791,6 +1923,8 @@ function init_consola(signal) {
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
+  const chartSvgEl = document.getElementById('chartSvg');
+  const chartEmptyEl = document.getElementById('chartEmpty');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Verde','Rojo','Amarillo','Azul','Naranja','Violeta','Rosa','Verde agua'];
@@ -1873,6 +2007,7 @@ function init_consola(signal) {
     saveHistory(list);
     renderHistory();
     renderAchievements();
+    renderChart();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -1898,12 +2033,51 @@ function init_consola(signal) {
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
   }
+  function renderChart(){
+    const list = loadHistory();
+    const milestones = [];
+    let runningMax = 0;
+    for(const e of list){
+      if(e.round > runningMax){ runningMax = e.round; milestones.push({ ts: e.ts, round: e.round }); }
+    }
+    if(milestones.length === 0){
+      chartSvgEl.innerHTML = '';
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    const W = 320, H = 140, padL = 22, padR = 8, padT = 12, padB = 20;
+    const innerW = W - padL - padR, innerH = H - padT - padB;
+    const maxRound = milestones[milestones.length - 1].round;
+    const n = milestones.length;
+    const xFor = i => n === 1 ? padL : padL + (innerW * i / (n - 1));
+    const yFor = r => padT + innerH * (1 - (maxRound === 0 ? 0 : r / maxRound));
+    let d = `M ${xFor(0)} ${yFor(milestones[0].round)}`;
+    for(let i = 1; i < n; i++){
+      d += ` L ${xFor(i)} ${yFor(milestones[i-1].round)} L ${xFor(i)} ${yFor(milestones[i].round)}`;
+    }
+    d += ` L ${W - padR} ${yFor(milestones[n-1].round)}`;
+    const dateFmt = ts => new Date(ts).toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit'});
+    const dots = milestones.map((m, i) => `<circle class="chart-dot" cx="${xFor(i)}" cy="${yFor(m.round)}" r="3"><title>${dateFmt(m.ts)} \u00b7 Ronda ${m.round}</title></circle>`).join('');
+    chartSvgEl.innerHTML = `
+      <line class="chart-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
+      <line class="chart-axis" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+      <text class="chart-label" x="1" y="${padT + 4}">${maxRound}</text>
+      <text class="chart-label" x="1" y="${H - padB + 4}">0</text>
+      <path class="chart-line" d="${d}"></path>
+      ${dots}
+      <text class="chart-label" x="${padL}" y="${H - 4}">${dateFmt(milestones[0].ts)}</text>
+      <text class="chart-label" x="${W - padR}" y="${H - 4}" text-anchor="end">hoy</text>
+    `;
+  }
   renderHistory();
   renderAchievements();
+  renderChart();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
+    renderChart();
   });
 
   async function playSeq(){
@@ -2077,6 +2251,8 @@ function init_flat(signal) {
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
+  const chartSvgEl = document.getElementById('chartSvg');
+  const chartEmptyEl = document.getElementById('chartEmpty');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Coral','Verde azulado','Ámbar','Índigo','Naranja','Violeta','Rosa','Verde'];
@@ -2156,6 +2332,7 @@ function init_flat(signal) {
     saveHistory(list);
     renderHistory();
     renderAchievements();
+    renderChart();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2181,12 +2358,51 @@ function init_flat(signal) {
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
   }
+  function renderChart(){
+    const list = loadHistory();
+    const milestones = [];
+    let runningMax = 0;
+    for(const e of list){
+      if(e.round > runningMax){ runningMax = e.round; milestones.push({ ts: e.ts, round: e.round }); }
+    }
+    if(milestones.length === 0){
+      chartSvgEl.innerHTML = '';
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    const W = 320, H = 140, padL = 22, padR = 8, padT = 12, padB = 20;
+    const innerW = W - padL - padR, innerH = H - padT - padB;
+    const maxRound = milestones[milestones.length - 1].round;
+    const n = milestones.length;
+    const xFor = i => n === 1 ? padL : padL + (innerW * i / (n - 1));
+    const yFor = r => padT + innerH * (1 - (maxRound === 0 ? 0 : r / maxRound));
+    let d = `M ${xFor(0)} ${yFor(milestones[0].round)}`;
+    for(let i = 1; i < n; i++){
+      d += ` L ${xFor(i)} ${yFor(milestones[i-1].round)} L ${xFor(i)} ${yFor(milestones[i].round)}`;
+    }
+    d += ` L ${W - padR} ${yFor(milestones[n-1].round)}`;
+    const dateFmt = ts => new Date(ts).toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit'});
+    const dots = milestones.map((m, i) => `<circle class="chart-dot" cx="${xFor(i)}" cy="${yFor(m.round)}" r="3"><title>${dateFmt(m.ts)} \u00b7 Ronda ${m.round}</title></circle>`).join('');
+    chartSvgEl.innerHTML = `
+      <line class="chart-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
+      <line class="chart-axis" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+      <text class="chart-label" x="1" y="${padT + 4}">${maxRound}</text>
+      <text class="chart-label" x="1" y="${H - padB + 4}">0</text>
+      <path class="chart-line" d="${d}"></path>
+      ${dots}
+      <text class="chart-label" x="${padL}" y="${H - 4}">${dateFmt(milestones[0].ts)}</text>
+      <text class="chart-label" x="${W - padR}" y="${H - 4}" text-anchor="end">hoy</text>
+    `;
+  }
   renderHistory();
   renderAchievements();
+  renderChart();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
+    renderChart();
   });
 
   async function playSeq(){
@@ -2361,6 +2577,8 @@ function init_botanico(signal) {
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
+  const chartSvgEl = document.getElementById('chartSvg');
+  const chartEmptyEl = document.getElementById('chartEmpty');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Musgo','Terracota','Miel','Ciruela','Lavanda','Salvia','Arcilla','Bruma'];
@@ -2442,6 +2660,7 @@ function init_botanico(signal) {
     saveHistory(list);
     renderHistory();
     renderAchievements();
+    renderChart();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2467,12 +2686,51 @@ function init_botanico(signal) {
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
   }
+  function renderChart(){
+    const list = loadHistory();
+    const milestones = [];
+    let runningMax = 0;
+    for(const e of list){
+      if(e.round > runningMax){ runningMax = e.round; milestones.push({ ts: e.ts, round: e.round }); }
+    }
+    if(milestones.length === 0){
+      chartSvgEl.innerHTML = '';
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    const W = 320, H = 140, padL = 22, padR = 8, padT = 12, padB = 20;
+    const innerW = W - padL - padR, innerH = H - padT - padB;
+    const maxRound = milestones[milestones.length - 1].round;
+    const n = milestones.length;
+    const xFor = i => n === 1 ? padL : padL + (innerW * i / (n - 1));
+    const yFor = r => padT + innerH * (1 - (maxRound === 0 ? 0 : r / maxRound));
+    let d = `M ${xFor(0)} ${yFor(milestones[0].round)}`;
+    for(let i = 1; i < n; i++){
+      d += ` L ${xFor(i)} ${yFor(milestones[i-1].round)} L ${xFor(i)} ${yFor(milestones[i].round)}`;
+    }
+    d += ` L ${W - padR} ${yFor(milestones[n-1].round)}`;
+    const dateFmt = ts => new Date(ts).toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit'});
+    const dots = milestones.map((m, i) => `<circle class="chart-dot" cx="${xFor(i)}" cy="${yFor(m.round)}" r="3"><title>${dateFmt(m.ts)} \u00b7 Ronda ${m.round}</title></circle>`).join('');
+    chartSvgEl.innerHTML = `
+      <line class="chart-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
+      <line class="chart-axis" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+      <text class="chart-label" x="1" y="${padT + 4}">${maxRound}</text>
+      <text class="chart-label" x="1" y="${H - padB + 4}">0</text>
+      <path class="chart-line" d="${d}"></path>
+      ${dots}
+      <text class="chart-label" x="${padL}" y="${H - 4}">${dateFmt(milestones[0].ts)}</text>
+      <text class="chart-label" x="${W - padR}" y="${H - 4}" text-anchor="end">hoy</text>
+    `;
+  }
   renderHistory();
   renderAchievements();
+  renderChart();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
+    renderChart();
   });
 
   async function playSeq(){
@@ -2646,6 +2904,8 @@ function init_terminal(signal) {
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
+  const chartSvgEl = document.getElementById('chartSvg');
+  const chartEmptyEl = document.getElementById('chartEmpty');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Canal verde','Canal ámbar','Canal cian','Canal magenta','Canal naranja','Canal violeta','Canal rojo','Canal menta'];
@@ -2725,6 +2985,7 @@ function init_terminal(signal) {
     saveHistory(list);
     renderHistory();
     renderAchievements();
+    renderChart();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2750,12 +3011,51 @@ function init_terminal(signal) {
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
   }
+  function renderChart(){
+    const list = loadHistory();
+    const milestones = [];
+    let runningMax = 0;
+    for(const e of list){
+      if(e.round > runningMax){ runningMax = e.round; milestones.push({ ts: e.ts, round: e.round }); }
+    }
+    if(milestones.length === 0){
+      chartSvgEl.innerHTML = '';
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    const W = 320, H = 140, padL = 22, padR = 8, padT = 12, padB = 20;
+    const innerW = W - padL - padR, innerH = H - padT - padB;
+    const maxRound = milestones[milestones.length - 1].round;
+    const n = milestones.length;
+    const xFor = i => n === 1 ? padL : padL + (innerW * i / (n - 1));
+    const yFor = r => padT + innerH * (1 - (maxRound === 0 ? 0 : r / maxRound));
+    let d = `M ${xFor(0)} ${yFor(milestones[0].round)}`;
+    for(let i = 1; i < n; i++){
+      d += ` L ${xFor(i)} ${yFor(milestones[i-1].round)} L ${xFor(i)} ${yFor(milestones[i].round)}`;
+    }
+    d += ` L ${W - padR} ${yFor(milestones[n-1].round)}`;
+    const dateFmt = ts => new Date(ts).toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit'});
+    const dots = milestones.map((m, i) => `<circle class="chart-dot" cx="${xFor(i)}" cy="${yFor(m.round)}" r="3"><title>${dateFmt(m.ts)} \u00b7 Ronda ${m.round}</title></circle>`).join('');
+    chartSvgEl.innerHTML = `
+      <line class="chart-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
+      <line class="chart-axis" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+      <text class="chart-label" x="1" y="${padT + 4}">${maxRound}</text>
+      <text class="chart-label" x="1" y="${H - padB + 4}">0</text>
+      <path class="chart-line" d="${d}"></path>
+      ${dots}
+      <text class="chart-label" x="${padL}" y="${H - 4}">${dateFmt(milestones[0].ts)}</text>
+      <text class="chart-label" x="${W - padR}" y="${H - 4}" text-anchor="end">hoy</text>
+    `;
+  }
   renderHistory();
   renderAchievements();
+  renderChart();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
+    renderChart();
   });
 
   async function playSeq(){
@@ -2931,6 +3231,8 @@ function init_pizarron(signal) {
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
+  const chartSvgEl = document.getElementById('chartSvg');
+  const chartEmptyEl = document.getElementById('chartEmpty');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Tiza verde','Tiza roja','Tiza amarilla','Tiza azul','Tiza naranja','Tiza violeta','Tiza rosa','Tiza aguamarina'];
@@ -3012,6 +3314,7 @@ function init_pizarron(signal) {
     saveHistory(list);
     renderHistory();
     renderAchievements();
+    renderChart();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -3037,12 +3340,51 @@ function init_pizarron(signal) {
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
   }
+  function renderChart(){
+    const list = loadHistory();
+    const milestones = [];
+    let runningMax = 0;
+    for(const e of list){
+      if(e.round > runningMax){ runningMax = e.round; milestones.push({ ts: e.ts, round: e.round }); }
+    }
+    if(milestones.length === 0){
+      chartSvgEl.innerHTML = '';
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    const W = 320, H = 140, padL = 22, padR = 8, padT = 12, padB = 20;
+    const innerW = W - padL - padR, innerH = H - padT - padB;
+    const maxRound = milestones[milestones.length - 1].round;
+    const n = milestones.length;
+    const xFor = i => n === 1 ? padL : padL + (innerW * i / (n - 1));
+    const yFor = r => padT + innerH * (1 - (maxRound === 0 ? 0 : r / maxRound));
+    let d = `M ${xFor(0)} ${yFor(milestones[0].round)}`;
+    for(let i = 1; i < n; i++){
+      d += ` L ${xFor(i)} ${yFor(milestones[i-1].round)} L ${xFor(i)} ${yFor(milestones[i].round)}`;
+    }
+    d += ` L ${W - padR} ${yFor(milestones[n-1].round)}`;
+    const dateFmt = ts => new Date(ts).toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit'});
+    const dots = milestones.map((m, i) => `<circle class="chart-dot" cx="${xFor(i)}" cy="${yFor(m.round)}" r="3"><title>${dateFmt(m.ts)} \u00b7 Ronda ${m.round}</title></circle>`).join('');
+    chartSvgEl.innerHTML = `
+      <line class="chart-axis" x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}"></line>
+      <line class="chart-axis" x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}"></line>
+      <text class="chart-label" x="1" y="${padT + 4}">${maxRound}</text>
+      <text class="chart-label" x="1" y="${H - padB + 4}">0</text>
+      <path class="chart-line" d="${d}"></path>
+      ${dots}
+      <text class="chart-label" x="${padL}" y="${H - 4}">${dateFmt(milestones[0].ts)}</text>
+      <text class="chart-label" x="${W - padR}" y="${H - 4}" text-anchor="end">hoy</text>
+    `;
+  }
   renderHistory();
   renderAchievements();
+  renderChart();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
+    renderChart();
   });
 
   async function playSeq(){
