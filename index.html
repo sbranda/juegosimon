@@ -343,6 +343,17 @@ const SKINS = {
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
+  .ach-count{font-size:11px;color:var(--muted);margin-left:8px;font-weight:400}
+  .ach-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .ach-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.18);opacity:.45}
+  .ach-row.unlocked{opacity:1}
+  .ach-row:last-child{border-bottom:0}
+  .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
+  .ach-row.unlocked .ach-badge{border-color:var(--c2);color:var(--c2);background:color-mix(in srgb, var(--c2) 18%, transparent)}
+  .ach-info{flex:1}
+  .ach-title{font-weight:700;font-size:13px;display:block}
+  .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -412,6 +423,11 @@ const SKINS = {
     <summary>Historial de partidas</summary>
     <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
     <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
+  </details>
+
+  <details id="achievementsBox">
+    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <div class="ach-list" id="achList"></div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -543,6 +559,17 @@ const SKINS = {
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
+  .ach-count{font-size:11px;color:var(--muted);margin-left:8px;font-weight:400}
+  .ach-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .ach-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.18);opacity:.45}
+  .ach-row.unlocked{opacity:1}
+  .ach-row:last-child{border-bottom:0}
+  .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
+  .ach-row.unlocked .ach-badge{border-color:var(--c2);color:var(--c2);background:color-mix(in srgb, var(--c2) 18%, transparent)}
+  .ach-info{flex:1}
+  .ach-title{font-weight:700;font-size:13px;display:block}
+  .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
   footer{font-size:12px;color:var(--muted);font-weight:500}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -613,6 +640,11 @@ const SKINS = {
     <summary>Historial de partidas</summary>
     <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
     <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
+  </details>
+
+  <details id="achievementsBox">
+    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <div class="ach-list" id="achList"></div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -723,6 +755,17 @@ const SKINS = {
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
+  .ach-count{font-size:11px;color:var(--muted);margin-left:8px;font-weight:400}
+  .ach-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .ach-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.18);opacity:.45}
+  .ach-row.unlocked{opacity:1}
+  .ach-row:last-child{border-bottom:0}
+  .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
+  .ach-row.unlocked .ach-badge{border-color:var(--c2);color:var(--c2);background:color-mix(in srgb, var(--c2) 18%, transparent)}
+  .ach-info{flex:1}
+  .ach-title{font-weight:700;font-size:13px;display:block}
+  .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
   footer{font-size:12px;color:var(--muted);text-align:center}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -788,6 +831,11 @@ const SKINS = {
     <summary>Historial de partidas</summary>
     <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
     <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
+  </details>
+
+  <details id="achievementsBox">
+    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <div class="ach-list" id="achList"></div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -912,6 +960,17 @@ const SKINS = {
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
+  .ach-count{font-size:11px;color:var(--muted);margin-left:8px;font-weight:400}
+  .ach-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .ach-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.18);opacity:.45}
+  .ach-row.unlocked{opacity:1}
+  .ach-row:last-child{border-bottom:0}
+  .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
+  .ach-row.unlocked .ach-badge{border-color:var(--c2);color:var(--c2);background:color-mix(in srgb, var(--c2) 18%, transparent)}
+  .ach-info{flex:1}
+  .ach-title{font-weight:700;font-size:13px;display:block}
+  .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
   footer{font-size:12px;color:var(--muted)}
   @media (prefers-reduced-motion: reduce){ .petal,.toggle span::after{transition:none} .petal.lit{transform:none} }
 `,
@@ -981,6 +1040,11 @@ const SKINS = {
     <summary>Historial de partidas</summary>
     <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
     <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
+  </details>
+
+  <details id="achievementsBox">
+    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <div class="ach-list" id="achList"></div>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -1091,6 +1155,17 @@ const SKINS = {
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
+  .ach-count{font-size:11px;color:var(--muted);margin-left:8px;font-weight:400}
+  .ach-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .ach-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.18);opacity:.45}
+  .ach-row.unlocked{opacity:1}
+  .ach-row:last-child{border-bottom:0}
+  .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
+  .ach-row.unlocked .ach-badge{border-color:var(--c2);color:var(--c2);background:color-mix(in srgb, var(--c2) 18%, transparent)}
+  .ach-info{flex:1}
+  .ach-title{font-weight:700;font-size:13px;display:block}
+  .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
   footer{font-size:11px;color:var(--muted);text-align:center;margin-top:4px}
   @media (prefers-reduced-motion: reduce){ .pad,.cursor{transition:none;animation:none} }
 `,
@@ -1157,6 +1232,11 @@ const SKINS = {
         <summary>historial</summary>
         <div class="hist-list" id="histList"><p class="hist-empty">todavía no hay partidas registradas.</p></div>
         <button class="hist-clear" id="histClear" type="button" hidden>borrar historial</button>
+      </details>
+
+      <details id="achievementsBox">
+        <summary>logros <span class="ach-count" id="achCount">0/10</span></summary>
+        <div class="ach-list" id="achList"></div>
       </details>
     </div>
   </div>
@@ -1288,6 +1368,17 @@ const SKINS = {
   .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
   .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
   .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
+  .ach-count{font-size:11px;color:var(--muted);margin-left:8px;font-weight:400}
+  .ach-list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .ach-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(127,127,127,.18);opacity:.45}
+  .ach-row.unlocked{opacity:1}
+  .ach-row:last-child{border-bottom:0}
+  .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
+  .ach-row.unlocked .ach-badge{border-color:var(--c2);color:var(--c2);background:color-mix(in srgb, var(--c2) 18%, transparent)}
+  .ach-info{flex:1}
+  .ach-title{font-weight:700;font-size:13px;display:block}
+  .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
   footer{font-size:13px;color:var(--muted);font-family:"Patrick Hand",cursive}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -1361,6 +1452,11 @@ const SKINS = {
     <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
   </details>
 
+  <details id="achievementsBox">
+    <summary>Logros <span class="ach-count" id="achCount">0/10</span></summary>
+    <div class="ach-list" id="achList"></div>
+  </details>
+
   <footer>Desarrollado por Seba Branda</footer>
 </div>`,
     init: init_pizarron
@@ -1394,6 +1490,21 @@ function init_neon(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Neón Cuadrante';
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo'];
+  const ACHIEVEMENTS = [
+    { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
+    { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
+    { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 6 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
+    { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
+    { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
+    { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
+    { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+  ];
+  const achListEl = document.getElementById('achList');
+  const achCountEl = document.getElementById('achCount');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Verde','Magenta','Amarillo','Cian','Naranja','Violeta','Rojo','Verde agua'];
@@ -1466,12 +1577,14 @@ function init_neon(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
-  function addHistoryEntry(round){
+  function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
-    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
     saveHistory(list);
     renderHistory();
+    renderAchievements();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -1487,10 +1600,22 @@ function init_neon(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  function renderAchievements(){
+    const list = loadHistory();
+    let unlocked = 0;
+    achListEl.innerHTML = ACHIEVEMENTS.map(a => {
+      const done = a.check(list);
+      if(done) unlocked++;
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+    }).join('');
+    achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+  }
   renderHistory();
+  renderAchievements();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
+    renderAchievements();
   });
 
   async function playSeq(){
@@ -1515,7 +1640,7 @@ function init_neon(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak);
+    if(running && peak > 0) addHistoryEntry(peak, false);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -1547,7 +1672,7 @@ function init_neon(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -1570,7 +1695,7 @@ function init_neon(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -1651,6 +1776,21 @@ function init_consola(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Botonera Eco';
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo'];
+  const ACHIEVEMENTS = [
+    { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
+    { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
+    { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 6 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
+    { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
+    { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
+    { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
+    { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+  ];
+  const achListEl = document.getElementById('achList');
+  const achCountEl = document.getElementById('achCount');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Verde','Rojo','Amarillo','Azul','Naranja','Violeta','Rosa','Verde agua'];
@@ -1725,12 +1865,14 @@ function init_consola(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
-  function addHistoryEntry(round){
+  function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
-    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
     saveHistory(list);
     renderHistory();
+    renderAchievements();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -1746,10 +1888,22 @@ function init_consola(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  function renderAchievements(){
+    const list = loadHistory();
+    let unlocked = 0;
+    achListEl.innerHTML = ACHIEVEMENTS.map(a => {
+      const done = a.check(list);
+      if(done) unlocked++;
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+    }).join('');
+    achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+  }
   renderHistory();
+  renderAchievements();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
+    renderAchievements();
   });
 
   async function playSeq(){
@@ -1774,7 +1928,7 @@ function init_consola(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak);
+    if(running && peak > 0) addHistoryEntry(peak, false);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -1806,7 +1960,7 @@ function init_consola(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -1829,7 +1983,7 @@ function init_consola(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -1908,6 +2062,21 @@ function init_flat(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Secuencia Cuatro';
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo'];
+  const ACHIEVEMENTS = [
+    { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
+    { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
+    { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 6 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
+    { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
+    { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
+    { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
+    { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+  ];
+  const achListEl = document.getElementById('achList');
+  const achCountEl = document.getElementById('achCount');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Coral','Verde azulado','Ámbar','Índigo','Naranja','Violeta','Rosa','Verde'];
@@ -1979,12 +2148,14 @@ function init_flat(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
-  function addHistoryEntry(round){
+  function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
-    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
     saveHistory(list);
     renderHistory();
+    renderAchievements();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2000,10 +2171,22 @@ function init_flat(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  function renderAchievements(){
+    const list = loadHistory();
+    let unlocked = 0;
+    achListEl.innerHTML = ACHIEVEMENTS.map(a => {
+      const done = a.check(list);
+      if(done) unlocked++;
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+    }).join('');
+    achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+  }
   renderHistory();
+  renderAchievements();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
+    renderAchievements();
   });
 
   async function playSeq(){
@@ -2028,7 +2211,7 @@ function init_flat(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak);
+    if(running && peak > 0) addHistoryEntry(peak, false);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -2060,7 +2243,7 @@ function init_flat(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -2083,7 +2266,7 @@ function init_flat(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -2163,6 +2346,21 @@ function init_botanico(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Ronda Silvestre';
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo'];
+  const ACHIEVEMENTS = [
+    { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
+    { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
+    { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 6 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
+    { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
+    { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
+    { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
+    { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+  ];
+  const achListEl = document.getElementById('achList');
+  const achCountEl = document.getElementById('achCount');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Musgo','Terracota','Miel','Ciruela','Lavanda','Salvia','Arcilla','Bruma'];
@@ -2236,12 +2434,14 @@ function init_botanico(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
-  function addHistoryEntry(round){
+  function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
-    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
     saveHistory(list);
     renderHistory();
+    renderAchievements();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2257,10 +2457,22 @@ function init_botanico(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  function renderAchievements(){
+    const list = loadHistory();
+    let unlocked = 0;
+    achListEl.innerHTML = ACHIEVEMENTS.map(a => {
+      const done = a.check(list);
+      if(done) unlocked++;
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+    }).join('');
+    achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+  }
   renderHistory();
+  renderAchievements();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
+    renderAchievements();
   });
 
   async function playSeq(){
@@ -2285,7 +2497,7 @@ function init_botanico(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak);
+    if(running && peak > 0) addHistoryEntry(peak, false);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -2317,7 +2529,7 @@ function init_botanico(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -2340,7 +2552,7 @@ function init_botanico(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -2419,6 +2631,21 @@ function init_terminal(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Terminal Mnemo';
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo'];
+  const ACHIEVEMENTS = [
+    { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
+    { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
+    { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 6 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
+    { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
+    { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
+    { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
+    { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+  ];
+  const achListEl = document.getElementById('achList');
+  const achCountEl = document.getElementById('achCount');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Canal verde','Canal ámbar','Canal cian','Canal magenta','Canal naranja','Canal violeta','Canal rojo','Canal menta'];
@@ -2490,12 +2717,14 @@ function init_terminal(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
-  function addHistoryEntry(round){
+  function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
-    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
     saveHistory(list);
     renderHistory();
+    renderAchievements();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2511,10 +2740,22 @@ function init_terminal(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  function renderAchievements(){
+    const list = loadHistory();
+    let unlocked = 0;
+    achListEl.innerHTML = ACHIEVEMENTS.map(a => {
+      const done = a.check(list);
+      if(done) unlocked++;
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+    }).join('');
+    achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+  }
   renderHistory();
+  renderAchievements();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
+    renderAchievements();
   });
 
   async function playSeq(){
@@ -2539,7 +2780,7 @@ function init_terminal(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak);
+    if(running && peak > 0) addHistoryEntry(peak, false);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -2571,7 +2812,7 @@ function init_terminal(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, true);
     statusEl.textContent = `proceso completo. ${goal} rondas ok.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -2594,7 +2835,7 @@ function init_terminal(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `tiempo agotado. llegaste a ${peak} rondas.`;
     startBtn.textContent = 'run again';
@@ -2675,6 +2916,21 @@ function init_pizarron(signal) {
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Pizarrón Vivo';
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo'];
+  const ACHIEVEMENTS = [
+    { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
+    { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
+    { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 6 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
+    { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
+    { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },
+    { id:'expert_win', title:'Modo experto', desc:'Gan\u00e1 una partida con 8 colores.', check: list => list.some(e => e.won && e.numColors === 8) },
+    { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
+    { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) }
+  ];
+  const achListEl = document.getElementById('achList');
+  const achCountEl = document.getElementById('achCount');
   const histListEl = document.getElementById('histList');
   const histClearEl = document.getElementById('histClear');
   const LABELS = ['Tiza verde','Tiza roja','Tiza amarilla','Tiza azul','Tiza naranja','Tiza violeta','Tiza rosa','Tiza aguamarina'];
@@ -2748,12 +3004,14 @@ function init_pizarron(signal) {
 
   function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
   function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
-  function addHistoryEntry(round){
+  function addHistoryEntry(round, won){
     if(!round || round < 1) return;
     const list = loadHistory();
-    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME, won: !!won, strict: strictEl.checked, reverse: reverseEl.checked,
+      muted: muteEl.checked, audioOnly: audioOnlyEl.checked, numColors, mode });
     saveHistory(list);
     renderHistory();
+    renderAchievements();
   }
   function renderHistory(){
     const list = loadHistory().slice().reverse().slice(0,10);
@@ -2769,10 +3027,22 @@ function init_pizarron(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  function renderAchievements(){
+    const list = loadHistory();
+    let unlocked = 0;
+    achListEl.innerHTML = ACHIEVEMENTS.map(a => {
+      const done = a.check(list);
+      if(done) unlocked++;
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+    }).join('');
+    achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+  }
   renderHistory();
+  renderAchievements();
   histClearEl.addEventListener('click', () => {
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
+    renderAchievements();
   });
 
   async function playSeq(){
@@ -2797,7 +3067,7 @@ function init_pizarron(signal) {
   }
 
   async function start(){
-    if(running && peak > 0) addHistoryEntry(peak);
+    if(running && peak > 0) addHistoryEntry(peak, false);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -2829,7 +3099,7 @@ function init_pizarron(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -2852,7 +3122,7 @@ function init_pizarron(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
-    addHistoryEntry(peak);
+    addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
