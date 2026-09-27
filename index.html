@@ -479,6 +479,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -602,6 +609,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -789,6 +805,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -913,6 +936,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -1079,6 +1111,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1198,6 +1237,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -1378,6 +1426,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1501,6 +1556,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -1674,6 +1738,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1795,6 +1866,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -1981,6 +2061,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2106,6 +2193,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -2295,6 +2391,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2418,6 +2521,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -2602,6 +2714,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2725,6 +2844,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -2917,6 +3045,13 @@ const SKINS = {
   .tour-skip{background:transparent;color:#b8bcca}
   .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
   .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
+  .confirm-overlay{position:fixed;inset:0;z-index:65;background:rgba(6,6,10,.65);display:flex;align-items:center;justify-content:center;padding:16px}
+  .confirm-card{width:100%;max-width:300px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 18px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .confirm-text{margin:0 0 16px;font-size:14.5px;line-height:1.5}
+  .confirm-btns{display:flex;gap:10px}
+  .confirm-btns button{flex:1;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:13.5px;padding:11px;border-radius:999px}
+  .confirm-cancel{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .confirm-ok{background:#ff5566;color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -3040,6 +3175,15 @@ const SKINS = {
           <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
           <button class="tour-next" id="tourNext" type="button">Siguiente</button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-overlay" id="confirmOverlay" hidden>
+    <div class="confirm-card">
+      <p class="confirm-text" id="confirmText"></p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel" id="confirmCancel" type="button">Cancelar</button>
+        <button class="confirm-ok" id="confirmOk" type="button">Confirmar</button>
       </div>
     </div>
   </div>
@@ -3453,7 +3597,23 @@ function init_neon(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -3728,7 +3888,13 @@ function init_neon(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -4245,7 +4411,23 @@ function init_consola(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -4520,7 +4702,13 @@ function init_consola(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -5032,7 +5220,23 @@ function init_flat(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -5307,7 +5511,13 @@ function init_flat(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -5822,7 +6032,23 @@ function init_botanico(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -6097,7 +6323,13 @@ function init_botanico(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -6609,7 +6841,23 @@ function init_terminal(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿borrar todo el historial de partidas? esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -6884,7 +7132,13 @@ function init_terminal(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('vas a perder el intento actual (ronda ' + peak + '). \u00bfreiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -7400,7 +7654,23 @@ function init_pizarron(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -7675,7 +7945,13 @@ function init_pizarron(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -8189,7 +8465,23 @@ function init_cosmos(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -8464,7 +8756,13 @@ function init_cosmos(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -8978,7 +9276,23 @@ function init_radio(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -9253,7 +9567,13 @@ function init_radio(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
@@ -9767,7 +10087,23 @@ function init_glass(signal) {
   renderAchievements();
   renderChart();
   renderGlobalStats();
-  histClearEl.addEventListener('click', () => {
+  const confirmOverlayEl = document.getElementById('confirmOverlay');
+  const confirmTextEl = document.getElementById('confirmText');
+  const confirmCancelEl = document.getElementById('confirmCancel');
+  const confirmOkEl = document.getElementById('confirmOk');
+  let confirmResolve = null;
+  function askConfirm(message){
+    return new Promise(resolve => {
+      confirmTextEl.textContent = message;
+      confirmOverlayEl.hidden = false;
+      confirmResolve = resolve;
+    });
+  }
+  confirmCancelEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(false); });
+  confirmOkEl.addEventListener('click', () => { confirmOverlayEl.hidden = true; if(confirmResolve) confirmResolve(true); });
+  histClearEl.addEventListener('click', async () => {
+    const ok = await askConfirm('¿Borrar todo el historial de partidas? Esta acci\u00f3n no se puede deshacer.');
+    if(!ok) return;
     try{ localStorage.removeItem(HIST_KEY); }catch(e){}
     renderHistory();
     renderAchievements();
@@ -10042,7 +10378,13 @@ function init_glass(signal) {
     const k = KEYS[e.key.toLowerCase()];
     if(k !== undefined) press(k);
   }, {signal});
-  startBtn.addEventListener('click', start);
+  startBtn.addEventListener('click', async () => {
+    if(running && peak > 0){
+      const ok = await askConfirm('Vas a perder el intento actual (ronda ' + peak + '). \u00bfReiniciar de todas formas?');
+      if(!ok) return;
+    }
+    start();
+  });
   goalBtns.forEach(b => b.addEventListener('click', () => {
     goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
     goal = +b.dataset.g; if(mode === 'goal') goalV.textContent = goal;
