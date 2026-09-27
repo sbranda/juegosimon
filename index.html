@@ -2408,6 +2408,9 @@ function init_neon(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='square', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -2423,6 +2426,7 @@ function init_neon(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -2659,6 +2663,7 @@ function init_neon(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .14);
+    vibrate([45,60,45]);
     lcd.textContent = '!!'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -2674,6 +2679,7 @@ function init_neon(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -2699,6 +2705,7 @@ function init_neon(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
@@ -2837,6 +2844,9 @@ function init_consola(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='triangle', vol=.25){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -2852,6 +2862,7 @@ function init_consola(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -3088,6 +3099,7 @@ function init_consola(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .18);
+    vibrate([45,60,45]);
     lcd.textContent = '!!'; show(0,true); lcd.textContent='!!';
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -3103,6 +3115,7 @@ function init_consola(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -3128,6 +3141,7 @@ function init_consola(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
@@ -3261,6 +3275,9 @@ function init_flat(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -3276,6 +3293,7 @@ function init_flat(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -3512,6 +3530,7 @@ function init_flat(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     show(0,true); lcd.textContent='!!';
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -3527,6 +3546,7 @@ function init_flat(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -3552,6 +3572,7 @@ function init_flat(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
@@ -3688,6 +3709,9 @@ function init_botanico(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='sine', vol=.22){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -3703,6 +3727,7 @@ function init_botanico(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -3939,6 +3964,7 @@ function init_botanico(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .14);
+    vibrate([45,60,45]);
     lcd.textContent = '!!'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -3954,6 +3980,7 @@ function init_botanico(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -3979,6 +4006,7 @@ function init_botanico(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
@@ -4112,6 +4140,9 @@ function init_terminal(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='square', vol=.14){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -4127,6 +4158,7 @@ function init_terminal(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -4363,6 +4395,7 @@ function init_terminal(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .13);
+    vibrate([45,60,45]);
     lcd.textContent = 'ERR'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `error — llegaste a ${seq.length - 1}. reiniciando proceso…`;
@@ -4378,6 +4411,7 @@ function init_terminal(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `proceso completo. ${goal} rondas ok.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -4403,6 +4437,7 @@ function init_terminal(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `tiempo agotado. llegaste a ${peak} rondas.`;
     startBtn.textContent = 'run again';
   }
@@ -4540,6 +4575,9 @@ function init_pizarron(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='triangle', vol=.2){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -4555,6 +4593,7 @@ function init_pizarron(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -4791,6 +4830,7 @@ function init_pizarron(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     lcd.textContent = '!!'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -4806,6 +4846,7 @@ function init_pizarron(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -4831,6 +4872,7 @@ function init_pizarron(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
@@ -4966,6 +5008,9 @@ function init_cosmos(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='sine', vol=.18){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -4981,6 +5026,7 @@ function init_cosmos(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -5217,6 +5263,7 @@ function init_cosmos(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .14);
+    vibrate([45,60,45]);
     lcd.textContent = '!!'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -5232,6 +5279,7 @@ function init_cosmos(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -5257,6 +5305,7 @@ function init_cosmos(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
@@ -5392,6 +5441,9 @@ function init_radio(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='triangle', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -5407,6 +5459,7 @@ function init_radio(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -5643,6 +5696,7 @@ function init_radio(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .14);
+    vibrate([45,60,45]);
     lcd.textContent = '!!'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -5658,6 +5712,7 @@ function init_radio(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -5683,6 +5738,7 @@ function init_radio(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
@@ -5818,6 +5874,9 @@ function init_glass(signal) {
     if(ctx && ctx.state === 'suspended') ctx.resume();
     return ctx;
   }
+  function vibrate(pattern){
+    try{ if(navigator.vibrate) navigator.vibrate(pattern); }catch(e){}
+  }
   function tone(freq, ms, type='sine', vol=.16){
     if(muteEl.checked) return;
     const a = audio(); if(!a) return;
@@ -5833,6 +5892,7 @@ function init_glass(signal) {
   async function flash(i, ms, visual=true){
     if(visual) pads[i].classList.add('lit');
     tone(FREQS[i], ms);
+    vibrate(14);
     await sleep(ms);
     if(visual) pads[i].classList.remove('lit');
   }
@@ -6069,6 +6129,7 @@ function init_glass(signal) {
     const my = token;
     lock(true);
     tone(90, 700, 'sawtooth', .14);
+    vibrate([45,60,45]);
     lcd.textContent = '!!'; lcd.classList.add('bad');
     if(strictEl.checked){
       statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
@@ -6084,6 +6145,7 @@ function init_glass(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    vibrate([25,45,25,45,90]);
     addHistoryEntry(peak, true);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
@@ -6109,6 +6171,7 @@ function init_glass(signal) {
     running = false; accepting = false; token++; lock(true);
     addHistoryEntry(peak, false);
     tone(90, 700, 'sawtooth', .16);
+    vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
   }
