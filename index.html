@@ -469,6 +469,8 @@ const SKINS = {
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
+
   <details>
     <summary>Cómo se juega</summary>
     <ul>
@@ -701,6 +703,8 @@ const SKINS = {
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
+
   <details>
     <summary>Cómo se juega</summary>
     <ul>
@@ -906,6 +910,8 @@ const SKINS = {
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
+
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
 
   <details>
     <summary>Cómo se juega</summary>
@@ -1131,6 +1137,8 @@ const SKINS = {
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
+
   <details>
     <summary>Cómo se juega</summary>
     <ul>
@@ -1337,6 +1345,8 @@ const SKINS = {
         <span>best=<b id="best">0</b></span>
         <span id="goallabel">goal=</span><b id="goalv">14</b>
       </div>
+
+      <button class="btn" id="shareBtn" type="button">Compartir récord</button>
 
       <details>
         <summary>man mnemo</summary>
@@ -1571,6 +1581,8 @@ const SKINS = {
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
+
   <details>
     <summary>Cómo se juega</summary>
     <ul>
@@ -1804,6 +1816,8 @@ const SKINS = {
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
+
   <details>
     <summary>Cómo se juega</summary>
     <ul>
@@ -2031,6 +2045,8 @@ const SKINS = {
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
+
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
 
   <details>
     <summary>Cómo se juega</summary>
@@ -2268,6 +2284,8 @@ const SKINS = {
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
   </div>
 
+  <button class="btn" id="shareBtn" type="button">Compartir récord</button>
+
   <details>
     <summary>Cómo se juega</summary>
     <ul>
@@ -2502,6 +2520,105 @@ function init_neon(signal) {
     renderAchievements();
     renderChart();
   });
+
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
   async function playSeq(){
     const my = token;
@@ -2833,6 +2950,105 @@ function init_consola(signal) {
     renderChart();
   });
 
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -3157,6 +3373,105 @@ function init_flat(signal) {
     renderAchievements();
     renderChart();
   });
+
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
   async function playSeq(){
     const my = token;
@@ -3486,6 +3801,105 @@ function init_botanico(signal) {
     renderChart();
   });
 
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -3810,6 +4224,105 @@ function init_terminal(signal) {
     renderAchievements();
     renderChart();
   });
+
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
   async function playSeq(){
     const my = token;
@@ -4140,6 +4653,105 @@ function init_pizarron(signal) {
     renderChart();
   });
 
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -4466,6 +5078,105 @@ function init_cosmos(signal) {
     renderAchievements();
     renderChart();
   });
+
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
   async function playSeq(){
     const my = token;
@@ -4794,6 +5505,105 @@ function init_radio(signal) {
     renderChart();
   });
 
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -5120,6 +5930,105 @@ function init_glass(signal) {
     renderAchievements();
     renderChart();
   });
+
+  const shareBtn = document.getElementById('shareBtn');
+  function makeShareImageBlob(){
+    const ready = (document.fonts && document.fonts.ready) ? document.fonts.ready.catch(()=>{}) : Promise.resolve();
+    return ready.then(() => new Promise(resolve => {
+      const cs = getComputedStyle(document.documentElement);
+      const cget = (name, fb) => { const v = cs.getPropertyValue(name); return (v && v.trim()) || fb; };
+      // Use --bg/--bg2 (the page background) paired with --ink/--muted: by
+      // construction every skin already guarantees that pairing is legible,
+      // unlike a widget-local --panel which some skins deliberately invert.
+      const bg = cget('--bg','#12141c'), bg2 = cget('--bg2', bg);
+      const ink = cget('--ink','#f5f5f5'), muted = cget('--muted','#9aa0c0');
+      const accent = cget('--c2', cget('--c1','#5ec8ff'));
+      const paletteCount = Math.max(4, Math.min(8, numColors || 4));
+      const dots = Array.from({length: paletteCount}, (_,i) => cget('--c'+i, accent));
+      const bodyFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
+      const h1el = document.querySelector('h1');
+      const headFont = h1el ? getComputedStyle(h1el).fontFamily : bodyFont;
+
+      const W = 640, H = 640;
+      const canvas = document.createElement('canvas');
+      canvas.width = W; canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      function luminance(str){
+        ctx.fillStyle = '#000'; ctx.fillStyle = str;
+        const norm = ctx.fillStyle;
+        let r,g2,b;
+        if(norm[0] === '#'){ r=parseInt(norm.slice(1,3),16); g2=parseInt(norm.slice(3,5),16); b=parseInt(norm.slice(5,7),16); }
+        else { const m = norm.match(/rgba?\(([^)]+)\)/); const p = m[1].split(',').map(s=>parseFloat(s)); r=p[0]; g2=p[1]; b=p[2]; }
+        return (0.299*r + 0.587*g2 + 0.114*b) / 255;
+      }
+      const bgLum = luminance(bg);
+      const numColor = Math.abs(luminance(accent) - bgLum) > 0.25 ? accent : ink;
+
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0, bg2); g.addColorStop(1, bg);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = muted;
+      ctx.font = `700 22px ${bodyFont}`;
+      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+
+      ctx.fillStyle = numColor;
+      ctx.font = `800 170px ${headFont}`;
+      ctx.fillText(String(best), W/2, H/2 + 20);
+
+      ctx.fillStyle = ink;
+      ctx.font = `600 26px ${bodyFont}`;
+      ctx.fillText(best === 1 ? 'RONDA ALCANZADA' : 'RONDAS ALCANZADAS', W/2, H/2 + 62);
+
+      const dotY = H - 150, dotR = 16, gap = 16;
+      const totalW = dots.length*(dotR*2) + (dots.length-1)*gap;
+      let dx = W/2 - totalW/2 + dotR;
+      dots.forEach(c => {
+        ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI*2);
+        ctx.fillStyle = c; ctx.fill();
+        dx += dotR*2+gap;
+      });
+
+      ctx.fillStyle = muted;
+      ctx.font = `400 18px ${bodyFont}`;
+      ctx.fillText('¿Podés superarlo?', W/2, H-90);
+
+      canvas.toBlob(blob => resolve(blob), 'image/png');
+    }));
+  }
+
+  async function shareRecord(btn){
+    const text = best > 0
+      ? `\u{1F3AE} Mi r\u00e9cord en Memori\u00f3n (${SKIN_NAME}): ${best} ${best===1?'ronda':'rondas'}. \u00bfPod\u00e9s superarlo?`
+      : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
+    let blob = null;
+    try{ blob = await makeShareImageBlob(); }catch(e){}
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+      try{
+        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        return;
+      }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    if(navigator.share){
+      try{ await navigator.share({ title:'Memori\u00f3n', text }); return; }catch(e){ if(e && e.name === 'AbortError') return; }
+    }
+    try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
+    if(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(()=>URL.revokeObjectURL(url), 4000);
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    if(btn){
+      const old = btn.textContent;
+      btn.textContent = '\u00a1Listo! Abriendo WhatsApp\u2026';
+      setTimeout(() => { btn.textContent = old; }, 2200);
+    }
+  }
+  if(shareBtn) shareBtn.addEventListener('click', () => shareRecord(shareBtn));
 
   async function playSeq(){
     const my = token;
