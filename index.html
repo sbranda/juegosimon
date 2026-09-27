@@ -466,6 +466,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -530,6 +543,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>El sistema enciende una secuencia de colores. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
@@ -577,6 +591,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_neon
   },
@@ -748,6 +776,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -813,6 +854,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>La botonera enciende una secuencia de colores. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
@@ -860,6 +902,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_consola
   },
@@ -1010,6 +1066,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1070,6 +1139,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>El tablero muestra una secuencia de colores. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
@@ -1117,6 +1187,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_flat
   },
@@ -1281,6 +1365,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1345,6 +1442,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>El jardín ilumina una secuencia de pétalos. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
@@ -1392,6 +1490,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_botanico
   },
@@ -1549,6 +1661,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1610,6 +1735,7 @@ const SKINS = {
 
       <details>
         <summary>man mnemo</summary>
+        <button class="tour-replay" id="tourLink" type="button">&#9654; ver tutorial guiado</button>
         <ul>
           <li>La terminal emite una secuencia de canales. Repetila en el mismo orden.</li>
           <li>Cada ronda agrega un canal nuevo y, cada tanto, acelera.</li>
@@ -1658,6 +1784,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_terminal
   },
@@ -1828,6 +1968,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1894,6 +2047,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>El pizarrón dibuja una secuencia de tizas de color. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
@@ -1941,6 +2095,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_pizarron
   },
@@ -2114,6 +2282,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2178,6 +2359,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>El sistema enciende una secuencia de planetas. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un planeta nuevo y, cada tanto, acelera.</li>
@@ -2225,6 +2407,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_cosmos
   },
@@ -2393,6 +2589,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2457,6 +2666,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>El dial enciende una secuencia de botones. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un botón nuevo y, cada tanto, acelera.</li>
@@ -2504,6 +2714,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_radio
   },
@@ -2680,6 +2904,19 @@ const SKINS = {
   .toast.show{opacity:1;transform:translateY(0)}
   .toast.record{color:var(--c2, #ffd54f)}
   .toast.achievement{color:var(--c1, #5ec8ff)}
+  .tour-replay{display:inline-flex;align-items:center;gap:6px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:999px;cursor:pointer;margin:4px 0 10px}
+  .tour-replay:hover{border-color:var(--c1)}
+  .tour-overlay{position:fixed;inset:0;z-index:60;background:rgba(6,6,10,.6)}
+  .tour-spot{position:fixed;border-radius:16px;border:2px solid var(--c1, #5ec8ff);box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 0 24px var(--c1, #5ec8ff);transition:left .25s ease, top .25s ease, width .25s ease, height .25s ease;pointer-events:none;display:none}
+  .tour-tip{position:fixed;width:260px;max-width:calc(100vw - 32px);background:rgba(15,15,22,.96);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:14px;line-height:1.45;box-shadow:0 12px 30px rgba(0,0,0,.4);transition:left .25s ease, top .25s ease}
+  .tour-text{margin:0 0 12px}
+  .tour-foot{display:flex;flex-direction:column;gap:10px}
+  .tour-count{font-size:12px;color:#b8bcca;font-weight:700;text-align:center;white-space:nowrap}
+  .tour-btns{display:flex;gap:6px}
+  .tour-btns button{appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;padding:7px 12px;border-radius:999px}
+  .tour-skip{background:transparent;color:#b8bcca}
+  .tour-prev{background:transparent;color:#f5f5fa;border:1px solid rgba(255,255,255,.25)!important}
+  .tour-next{background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2744,6 +2981,7 @@ const SKINS = {
 
   <details>
     <summary>Cómo se juega</summary>
+    <button class="tour-replay" id="tourLink" type="button">&#9654; Ver tutorial guiado</button>
     <ul>
       <li>El panel enciende una secuencia de reflejos de color. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
@@ -2791,6 +3029,20 @@ const SKINS = {
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
+  <div class="tour-overlay" id="tourOverlay" hidden>
+    <div class="tour-spot" id="tourSpot"></div>
+    <div class="tour-tip" id="tourTip">
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-foot">
+        <span class="tour-count" id="tourCount"></span>
+        <div class="tour-btns">
+          <button class="tour-skip" id="tourSkip" type="button">Saltar</button>
+          <button class="tour-prev" id="tourPrev" type="button">Atrás</button>
+          <button class="tour-next" id="tourNext" type="button">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
     init: init_glass
   },
@@ -3516,6 +3768,73 @@ function init_neon(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'El sistema enciende una secuencia de colores. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_consola(signal) {
@@ -4241,6 +4560,73 @@ function init_consola(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'La botonera enciende una secuencia de colores. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_flat(signal) {
@@ -4961,6 +5347,73 @@ function init_flat(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'El tablero muestra una secuencia de colores. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_botanico(signal) {
@@ -5684,6 +6137,73 @@ function init_botanico(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'El jardín ilumina una secuencia de pétalos. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_terminal(signal) {
@@ -6404,6 +6924,73 @@ function init_terminal(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'la terminal emite una secuencia de canales. memorizala bien.' },
+    { sel: '#goal', text: 'eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'sum\u00e1 m\u00e1s canales (6 u 8) para un desaf\u00edo extra. si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'toc\u00e1 ac\u00e1 para arrancar. vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'repet\u00ed la secuencia tocando los mismos canales en el mismo orden (o con las teclas q w a s). \u00a1buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_pizarron(signal) {
@@ -7128,6 +7715,73 @@ function init_pizarron(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'El pizarrón dibuja una secuencia de tizas de color. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_cosmos(signal) {
@@ -7850,6 +8504,73 @@ function init_cosmos(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'El sistema enciende una secuencia de planetas. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_radio(signal) {
@@ -8572,6 +9293,73 @@ function init_radio(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'El dial enciende una secuencia de botones. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }
 
 function init_glass(signal) {
@@ -9294,6 +10082,73 @@ function init_glass(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
+
+  // ---- Tutorial guiado (onboarding) ----
+  const TOUR_STEPS = [
+    { sel: '#device', text: 'El panel enciende una secuencia de reflejos de color. Memorizala bien.' },
+    { sel: '#goal', text: 'Eleg\u00ed tu meta: hasta qu\u00e9 ronda quer\u00e9s llegar.' },
+    { sel: '#level', text: 'Sum\u00e1 m\u00e1s colores (6 u 8) para un desaf\u00edo extra. Si est\u00e1s empezando, dejalo en 4.' },
+    { sel: '#start', text: 'Toc\u00e1 ac\u00e1 para arrancar. Vas a ver una cuenta regresiva 3-2-1 antes de la secuencia.' },
+    { sel: null, text: 'Repet\u00ed la secuencia tocando los mismos colores en el mismo orden (o con las teclas Q W A S). \u00a1Buena suerte!' }
+  ];
+  const tourOverlayEl = document.getElementById('tourOverlay');
+  const tourSpotEl = document.getElementById('tourSpot');
+  const tourTipEl = document.getElementById('tourTip');
+  const tourTextEl = document.getElementById('tourText');
+  const tourCountEl = document.getElementById('tourCount');
+  const tourSkipEl = document.getElementById('tourSkip');
+  const tourPrevEl = document.getElementById('tourPrev');
+  const tourNextEl = document.getElementById('tourNext');
+  const tourLinkEl = document.getElementById('tourLink');
+  let tourIdx = 0;
+  function showTourStep(i){
+    if(i < 0) return;
+    tourIdx = i;
+    const st = TOUR_STEPS[i];
+    const target = st.sel ? document.querySelector(st.sel) : null;
+    const rect = target ? target.getBoundingClientRect() : null;
+    if(rect && rect.width > 0){
+      tourSpotEl.style.display = 'block';
+      tourSpotEl.style.left = (rect.left - 8) + 'px';
+      tourSpotEl.style.top = (rect.top - 8) + 'px';
+      tourSpotEl.style.width = (rect.width + 16) + 'px';
+      tourSpotEl.style.height = (rect.height + 16) + 'px';
+    } else {
+      tourSpotEl.style.display = 'none';
+    }
+    tourTextEl.textContent = st.text;
+    tourCountEl.textContent = (i+1) + ' / ' + TOUR_STEPS.length;
+    tourPrevEl.style.visibility = i === 0 ? 'hidden' : 'visible';
+    tourNextEl.textContent = i === TOUR_STEPS.length-1 ? '\u00a1A jugar!' : 'Siguiente';
+    const tipW = 260, margin = 12;
+    if(rect && rect.width > 0){
+      const left = Math.min(Math.max(rect.left, margin), window.innerWidth - tipW - margin);
+      let top = rect.bottom + margin;
+      if(top + 170 > window.innerHeight) top = Math.max(rect.top - 175, margin);
+      tourTipEl.style.transform = 'none';
+      tourTipEl.style.left = left + 'px';
+      tourTipEl.style.top = top + 'px';
+    } else {
+      tourTipEl.style.left = '50%';
+      tourTipEl.style.top = '50%';
+      tourTipEl.style.transform = 'translate(-50%,-50%)';
+    }
+  }
+  function endTour(){
+    tourOverlayEl.hidden = true;
+    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+  }
+  function startTour(){
+    tourOverlayEl.hidden = false;
+    showTourStep(0);
+  }
+  tourSkipEl.addEventListener('click', endTour);
+  tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
+  tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
+  let seenTour = false;
+  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
+  if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
 }</script>
 
 <script>
