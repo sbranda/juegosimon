@@ -1,15 +1,15 @@
 // Memorión — service worker
 // IMPORTANTE: subí CACHE_NAME en cada deploy (v2, v3, …) para que los usuarios reciban la versión nueva.
-const CACHE_NAME = 'memorion-app-v32';
+const CACHE_NAME = 'memorion-app-v33';
 const FONT_CACHE = 'memorion-fonts';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/icon-maskable-512.png',
-  './icons/apple-touch-icon.png'
+  './icon-192.png',
+  './icon-512.png',
+  './icon-maskable-512.png',
+  './apple-touch-icon.png'
 ];
 
 self.addEventListener('install', e => {
