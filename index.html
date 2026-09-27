@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Memorión</title>
-<meta name="description" content="Juego de memoria de secuencias de colores. Elegí entre cinco diseños.">
+<meta name="description" content="Juego de memoria de secuencias de colores. Elegí entre seis diseños.">
 <meta name="theme-color" content="#12141c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Manrope:wght@500;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Work+Sans:wght@400;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap">
 <style>
   *,*::before,*::after{box-sizing:border-box}
   html,body{height:100%}
@@ -95,6 +96,13 @@
   .prev-terminal span:nth-child(2){top:7px;right:7px;color:#ffcf33}
   .prev-terminal span:nth-child(3){bottom:7px;left:7px;color:#33e0ff}
   .prev-terminal span:nth-child(4){bottom:7px;right:7px;color:#ff5fd6}
+
+  .prev-pizarron{background:linear-gradient(155deg,#2c3d33,#233129);border:4px solid #6b4a30}
+  .prev-pizarron span{width:22px;height:22px;border:2px dashed currentColor;background:transparent}
+  .prev-pizarron span:nth-child(1){top:5px;left:5px;color:#8ee7b3;border-radius:30px 4px 26px 4px}
+  .prev-pizarron span:nth-child(2){top:5px;right:5px;color:#ff8a75;border-radius:4px 26px 4px 30px}
+  .prev-pizarron span:nth-child(3){bottom:5px;left:5px;color:#ffd166;border-radius:26px 4px 30px 4px}
+  .prev-pizarron span:nth-child(4){bottom:5px;right:5px;color:#8ec9ff;border-radius:4px 30px 4px 26px}
 
   .card-body{flex:1;min-width:0}
   .card-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -188,6 +196,16 @@
           <div class="card-title-row"><span class="card-title">Terminal Mnemo</span><span class="badge" data-lastbadge="terminal" hidden>Último</span></div>
           <p class="card-tag">Consola CRT verde fósforo</p>
           <p class="card-rec" data-rec="terminal"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <button class="card" data-skin="pizarron" type="button">
+        <div class="prev prev-pizarron"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Pizarrón Vivo</span><span class="badge" data-lastbadge="pizarron" hidden>Último</span></div>
+          <p class="card-tag">Tiza de colores sobre pizarrón de madera</p>
+          <p class="card-rec" data-rec="pizarron"></p>
         </div>
         <span class="chev" aria-hidden="true">›</span>
       </button>
@@ -930,6 +948,157 @@ const SKINS = {
   <footer>Desarrollado por Seba Branda</footer>
 </div>`,
     init: init_terminal
+  },
+  pizarron: {
+    name: "Pizarrón Vivo",
+    tag: "Tiza de colores sobre pizarrón de madera",
+    bestKey: "pizarron-vivo-best",
+    css: `
+  :root{
+    color-scheme: dark;
+    --wood:#6b4a30; --wood-hi:#8a6440; --wood-lo:#4a3020;
+    --board:#2c3d33; --board-2:#233129;
+    --chalk:#f5f3e7; --muted:#9fb3a6;
+    --c0:#8ee7b3; --c0-d:#4f9d70; /* tiza verde menta */
+    --c1:#ff8a75; --c1-d:#c2543f; /* tiza roja */
+    --c2:#ffd166; --c2-d:#c99c2e; /* tiza amarilla */
+    --c3:#8ec9ff; --c3-d:#4f8fcf; /* tiza azul */
+  }
+  html,body{height:100%}
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;
+    background:radial-gradient(120% 70% at 50% 0%, var(--wood-hi), var(--wood-lo) 80%);
+    color:var(--chalk);
+    font-family:"Patrick Hand", system-ui, sans-serif;
+    display:flex;justify-content:center;
+    padding-inline:16px;
+  }
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  [hidden]{display:none!important}
+  .wrap{width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;gap:18px;padding-block:24px 30px}
+
+  header{text-align:center}
+  h1{font-family:"Permanent Marker",cursive;font-weight:400;font-size:clamp(30px,8vw,40px);margin:0;letter-spacing:.02em;
+     color:var(--chalk);transform:rotate(-1deg);text-shadow:0 0 1px rgba(245,243,231,.4)}
+  .tag{margin:8px 0 0;color:var(--muted);font-size:15px;font-family:"Patrick Hand",cursive}
+
+  .board{position:relative;width:100%;max-width:400px;
+    background:
+      radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,.05) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 68%, rgba(255,255,255,.05) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 40% 85%, rgba(255,255,255,.04) 50%, transparent 51%),
+      radial-gradient(1px 1px at 60% 12%, rgba(255,255,255,.05) 50%, transparent 51%),
+      radial-gradient(1px 1px at 25% 55%, rgba(255,255,255,.04) 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 30%, rgba(255,255,255,.05) 50%, transparent 51%),
+      linear-gradient(155deg, var(--board), var(--board-2));
+    border-radius:8px;padding:18px;
+    border:10px solid var(--wood);
+    box-shadow:0 16px 0 var(--wood-lo), 0 22px 40px rgba(0,0,0,.4), inset 0 0 30px rgba(0,0,0,.35);
+  }
+
+  .pads{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;position:relative}
+  .locked .pad{cursor:default}
+  .pad{appearance:none;cursor:pointer;position:relative;aspect-ratio:1.05;
+    background:transparent;border:3px dashed var(--pc);color:var(--pc);
+    transition:background .1s, box-shadow .1s, transform .08s}
+  .pad[data-i="0"]{--pc:var(--c0);border-radius:255px 15px 225px 15px;transform:rotate(-1deg)}
+  .pad[data-i="1"]{--pc:var(--c1);border-radius:15px 225px 15px 255px;transform:rotate(1deg)}
+  .pad[data-i="2"]{--pc:var(--c2);border-radius:225px 15px 255px 15px;transform:rotate(1deg)}
+  .pad[data-i="3"]{--pc:var(--c3);border-radius:15px 255px 15px 225px;transform:rotate(-1deg)}
+  .pad .key{position:absolute;top:10px;left:14px;font-family:"Permanent Marker",cursive;font-size:15px;opacity:.85}
+  .pad.lit{background:color-mix(in srgb, var(--pc) 22%, transparent);border-style:solid;
+    box-shadow:0 0 18px color-mix(in srgb, var(--pc) 55%, transparent), inset 0 0 24px color-mix(in srgb, var(--pc) 35%, transparent);
+    transform:scale(1.03) rotate(0deg)}
+  .pad:focus-visible{outline:3px solid var(--chalk);outline-offset:3px}
+
+  .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2deg);
+    width:32%;aspect-ratio:1;border-radius:50%;
+    background:var(--board-2);border:3px solid var(--chalk);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;pointer-events:none}
+  .lcd{font-family:"Permanent Marker",cursive;font-weight:400;font-variant-numeric:tabular-nums;
+    font-size:clamp(20px,6vw,26px);color:var(--chalk);line-height:1}
+  .lcd.bad{color:var(--c1)}
+  .hub small{font-size:10px;font-family:"Patrick Hand",cursive;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+  .status{min-height:1.5em;font-size:17px;text-align:center;color:var(--chalk);font-family:"Patrick Hand",cursive}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+  .btn{appearance:none;border:2px solid var(--chalk);cursor:pointer;font:16px "Patrick Hand",cursive;letter-spacing:.02em;
+    padding:10px 22px;border-radius:255px 15px 225px 15px;background:transparent;color:var(--chalk)}
+  .btn:active{transform:translateY(1px) scale(.98)}
+  .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:2px solid var(--c3);outline-offset:2px}
+  .seg{display:inline-flex;border:2px solid var(--muted);border-radius:999px;padding:3px;gap:2px}
+  .seg button{appearance:none;border:0;background:transparent;color:var(--muted);font:15px "Patrick Hand",cursive;padding:8px 12px;border-radius:999px;cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--chalk);color:var(--board-2)}
+  .toggle{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:15px;font-family:"Patrick Hand",cursive;cursor:pointer;user-select:none}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{width:36px;height:20px;border-radius:999px;background:transparent;border:2px solid var(--muted);position:relative;transition:border-color .15s}
+  .toggle span::after{content:"";position:absolute;left:2px;top:1px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:transform .15s, background .15s}
+  .toggle input:checked+span{border-color:var(--c1)}
+  .toggle input:checked+span::after{transform:translateX(16px);background:var(--c1)}
+
+  .stats{display:flex;gap:30px;justify-content:center;font-variant-numeric:tabular-nums;font-family:"Patrick Hand",cursive}
+  .stat{text-align:center}
+  .stat b{display:block;font-family:"Permanent Marker",cursive;font-weight:400;font-size:24px;color:var(--c2)}
+  .stat span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+  details{width:100%;color:var(--muted);font-size:15px;line-height:1.6;font-family:"Patrick Hand",cursive;
+    background:rgba(0,0,0,.15);border:2px dashed var(--muted);border-radius:12px;padding:12px 16px}
+  summary{cursor:pointer;color:var(--chalk);font-weight:400}
+  details ul{padding-left:20px;margin:8px 0 0}
+  footer{font-size:13px;color:var(--muted);font-family:"Patrick Hand",cursive}
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+`,
+    html: `<div class="wrap">
+  <header>
+    <h1>Pizarrón Vivo</h1>
+    <p class="tag">Mirá la tiza y repetí la secuencia</p>
+  </header>
+
+  <div class="board locked" id="device">
+    <div class="pads">
+      <button class="pad" data-i="0" aria-label="Tiza verde"><span class="key">Q</span></button>
+      <button class="pad" data-i="1" aria-label="Tiza roja"><span class="key">W</span></button>
+      <button class="pad" data-i="2" aria-label="Tiza amarilla"><span class="key">A</span></button>
+      <button class="pad" data-i="3" aria-label="Tiza azul"><span class="key">S</span></button>
+      <div class="hub" aria-hidden="true">
+        <div class="lcd" id="lcd">--</div>
+        <small>ronda</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="status" id="status" role="status" aria-live="polite">Tocá «Jugar» para empezar</div>
+
+  <div class="controls">
+    <button class="btn" id="start">Jugar</button>
+    <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
+      <button data-g="8">8</button>
+      <button data-g="14" aria-pressed="true">14</button>
+      <button data-g="20">20</button>
+      <button data-g="31">31</button>
+    </div>
+    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="best">0</b><span>Récord</span></div>
+    <div class="stat"><b id="goalv">14</b><span>Meta</span></div>
+  </div>
+
+  <details>
+    <summary>Cómo se juega</summary>
+    <ul>
+      <li>El pizarrón dibuja una secuencia de tizas de color. Repetila en el mismo orden.</li>
+      <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
+      <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
+    </ul>
+  </details>
+
+  <footer>Desarrollado por Seba Branda</footer>
+</div>`,
+    init: init_pizarron
   }
 };
 
@@ -1624,6 +1793,148 @@ function init_terminal(signal) {
       if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} }
       if(done >= goal) return win();
       statusEl.textContent = 'ok_';
+      await sleep(500); if(my !== token) return;
+      nextRound();
+    }
+  }
+
+  pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
+  pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+  document.addEventListener('keydown', e => {
+    if(e.target.closest && e.target.closest('.pad')) return;
+    const k = KEYS[e.key.toLowerCase()];
+    if(k !== undefined) press(k);
+  }, {signal});
+  startBtn.addEventListener('click', start);
+  goalBtns.forEach(b => b.addEventListener('click', () => {
+    goalBtns.forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+    goal = +b.dataset.g; goalV.textContent = goal;
+  }));
+}
+
+function init_pizarron(signal) {
+  const pads = [...document.querySelectorAll('.pad')];
+  const device = document.getElementById('device');
+  const lcd = document.getElementById('lcd');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('start');
+  const strictEl = document.getElementById('strict');
+  const bestEl = document.getElementById('best');
+  const goalV = document.getElementById('goalv');
+  const goalBtns = [...document.querySelectorAll('#goal button')];
+
+  const FREQS = [415.3, 310, 252, 209];
+  const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3};
+
+  let ctx = null, seq = [], step = 0, accepting = false, running = false, goal = 14, token = 0;
+  let best = 0;
+  try { best = +localStorage.getItem('pizarron-vivo-best') || 0; } catch(e){}
+  bestEl.textContent = best;
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function audio(){
+    if(!ctx){ try{ ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(ctx && ctx.state === 'suspended') ctx.resume();
+    return ctx;
+  }
+  function tone(freq, ms, type='triangle', vol=.2){
+    const a = audio(); if(!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + .012);
+    g.gain.setValueAtTime(vol, t + ms/1000 - .03);
+    g.gain.linearRampToValueAtTime(0, t + ms/1000);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + ms/1000 + .02);
+  }
+
+  async function flash(i, ms){
+    pads[i].classList.add('lit'); tone(FREQS[i], ms);
+    await sleep(ms);
+    pads[i].classList.remove('lit');
+  }
+
+  function tempo(){
+    const n = seq.length;
+    if(n <= 5) return {on:420, gap:80};
+    if(n <= 9) return {on:320, gap:70};
+    if(n <= 13) return {on:240, gap:60};
+    return {on:180, gap:50};
+  }
+
+  function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
+  function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
+
+  async function playSeq(){
+    const my = token;
+    lock(true);
+    statusEl.textContent = 'Mirá la secuencia…';
+    await sleep(600);
+    const {on, gap} = tempo();
+    for(const i of seq){
+      if(my !== token) return;
+      await flash(i, on); await sleep(gap);
+    }
+    if(my !== token) return;
+    step = 0; lock(false);
+    statusEl.textContent = 'Tu turno';
+  }
+
+  async function nextRound(){
+    seq.push(Math.floor(Math.random()*4));
+    show(seq.length);
+    await playSeq();
+  }
+
+  async function start(){
+    audio();
+    token++; running = true; seq = [];
+    startBtn.textContent = 'Reiniciar';
+    await nextRound();
+  }
+
+  async function fail(){
+    const my = token;
+    lock(true);
+    tone(90, 700, 'sawtooth', .16);
+    lcd.textContent = '!!'; lcd.classList.add('bad');
+    if(strictEl.checked){
+      statusEl.textContent = `Error. Llegaste a ${seq.length - 1} ${seq.length-1===1?'ronda':'rondas'}. Volvés a empezar.`;
+      await sleep(1400); if(my !== token) return;
+      seq = []; await nextRound();
+    } else {
+      statusEl.textContent = 'Error. Mirá de nuevo.';
+      await sleep(1100); if(my !== token) return;
+      show(seq.length); await playSeq();
+    }
+  }
+
+  async function win(){
+    const my = token;
+    lock(true); running = false;
+    statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
+    for(let k=0;k<3;k++){
+      for(const i of [0,1,3,2]){ if(my!==token) return; await flash(i, 90); }
+    }
+    startBtn.textContent = 'Jugar otra vez';
+  }
+
+  async function press(i){
+    if(!accepting || !running) return;
+    const my = token;
+    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    accepting = false;
+    await flash(i, 220);
+    if(my !== token) return;
+    accepting = true;
+    step++;
+    if(step === seq.length){
+      lock(true);
+      const done = seq.length;
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('pizarron-vivo-best', best); }catch(e){} }
+      if(done >= goal) return win();
+      statusEl.textContent = '¡Bien!';
       await sleep(500); if(my !== token) return;
       nextRound();
     }
