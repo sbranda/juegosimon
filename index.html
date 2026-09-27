@@ -493,6 +493,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -635,6 +645,14 @@ const SKINS = {
       <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
     </div>
   </div>
 </div>`,
@@ -835,6 +853,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -978,6 +1006,14 @@ const SKINS = {
       <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
     </div>
   </div>
 </div>`,
@@ -1157,6 +1193,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1295,6 +1341,14 @@ const SKINS = {
       <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
     </div>
   </div>
 </div>`,
@@ -1488,6 +1542,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1630,6 +1694,14 @@ const SKINS = {
       <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
     </div>
   </div>
 </div>`,
@@ -1816,6 +1888,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -1956,6 +2038,14 @@ const SKINS = {
       <p class="pause-sub">volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">&gt; continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">cerrar</button>
     </div>
   </div>
 </div>`,
@@ -2155,6 +2245,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2299,6 +2399,14 @@ const SKINS = {
       <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
     </div>
   </div>
 </div>`,
@@ -2501,6 +2609,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2643,6 +2761,14 @@ const SKINS = {
       <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
     </div>
   </div>
 </div>`,
@@ -2840,6 +2966,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -2982,6 +3118,14 @@ const SKINS = {
       <p class="pause-sub">Volvé cuando quieras: la secuencia se repite desde el principio.</p>
       <button class="pause-resume" id="pauseResume" type="button">▶ Continuar</button>
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
+    </div>
+  </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
     </div>
   </div>
 </div>`,
@@ -3187,6 +3331,16 @@ const SKINS = {
   .pause-sub{margin:0 0 18px;font-size:13px;color:#b8bcca;line-height:1.5}
   .pause-resume{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12;margin-bottom:10px}
   .pause-exit{appearance:none;border:0;background:transparent;color:#b8bcca;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;padding:6px}
+  .summary-overlay{position:fixed;inset:0;z-index:62;background:rgba(6,6,10,.75);display:flex;align-items:center;justify-content:center;padding:16px}
+  .summary-card{width:100%;max-width:320px;background:rgba(15,15,22,.98);color:#f5f5fa;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px 20px 20px;text-align:center;font-family:inherit;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .summary-icon{font-size:36px;margin:0 0 6px;line-height:1}
+  .summary-title{margin:0 0 16px;font-size:18px;font-weight:800;line-height:1.35}
+  .summary-body{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;font-size:13.5px}
+  .summary-row span{color:#b8bcca}
+  .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
+  .summary-row.highlight b{color:var(--c1, #5ec8ff)}
+  .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `,
     html: `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
@@ -3331,6 +3485,14 @@ const SKINS = {
       <button class="pause-exit" id="pauseExit" type="button">Salir al menú</button>
     </div>
   </div>
+  <div class="summary-overlay" id="summaryOverlay" hidden>
+    <div class="summary-card">
+      <p class="summary-icon" id="summaryIcon"></p>
+      <p class="summary-title" id="summaryTitle"></p>
+      <div class="summary-body" id="summaryBody"></div>
+      <button class="summary-close" id="summaryClose" type="button">Cerrar</button>
+    </div>
+  </div>
 </div>`,
     init: init_glass
   },
@@ -3435,6 +3597,7 @@ function init_neon(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('neon-cuadrante-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -3903,7 +4066,7 @@ function init_neon(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -3948,6 +4111,10 @@ function init_neon(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -3980,6 +4147,12 @@ function init_neon(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -4001,6 +4174,11 @@ function init_neon(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -4017,7 +4195,7 @@ function init_neon(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('neon-cuadrante-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('neon-cuadrante-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -4059,6 +4237,24 @@ function init_neon(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -4289,6 +4485,7 @@ function init_consola(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('botonera-eco-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -4758,7 +4955,7 @@ function init_consola(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -4803,6 +5000,10 @@ function init_consola(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -4835,6 +5036,12 @@ function init_consola(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -4856,6 +5063,11 @@ function init_consola(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -4872,7 +5084,7 @@ function init_consola(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('botonera-eco-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('botonera-eco-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -4914,6 +5126,24 @@ function init_consola(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -5141,6 +5371,7 @@ function init_flat(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('secuencia-cuatro-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -5608,7 +5839,7 @@ function init_flat(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -5653,6 +5884,10 @@ function init_flat(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -5685,6 +5920,12 @@ function init_flat(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -5706,6 +5947,11 @@ function init_flat(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -5722,7 +5968,7 @@ function init_flat(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('secuencia-cuatro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('secuencia-cuatro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -5764,6 +6010,24 @@ function init_flat(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -5992,6 +6256,7 @@ function init_botanico(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('ronda-silvestre-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -6461,7 +6726,7 @@ function init_botanico(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -6506,6 +6771,10 @@ function init_botanico(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -6538,6 +6807,12 @@ function init_botanico(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -6559,6 +6834,11 @@ function init_botanico(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -6575,7 +6855,7 @@ function init_botanico(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('ronda-silvestre-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('ronda-silvestre-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -6617,6 +6897,24 @@ function init_botanico(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -6844,6 +7142,7 @@ function init_terminal(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('terminal-mnemo-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -7311,7 +7610,7 @@ function init_terminal(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -7356,6 +7655,10 @@ function init_terminal(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'run again';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -7388,6 +7691,12 @@ function init_terminal(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'run again';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? 'desafío diario superado' : 'proceso completo'), [
+      { label: 'ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'precisión', value: updateAcc() + '%' },
+      { label: 'récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -7409,6 +7718,11 @@ function init_terminal(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `tiempo agotado. llegaste a ${peak} rondas.`;
     startBtn.textContent = 'run again';
+    showSummary('⏱️', 'tiempo agotado', [
+      { label: 'ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'precisión', value: updateAcc() + '%' },
+      { label: 'récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -7425,7 +7739,7 @@ function init_terminal(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -7467,6 +7781,24 @@ function init_terminal(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return 'nuevo récord 🎉';
+    if(done === best) return 'empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('a ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -7696,6 +8028,7 @@ function init_pizarron(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('pizarron-vivo-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -8165,7 +8498,7 @@ function init_pizarron(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -8210,6 +8543,10 @@ function init_pizarron(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -8242,6 +8579,12 @@ function init_pizarron(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -8263,6 +8606,11 @@ function init_pizarron(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -8279,7 +8627,7 @@ function init_pizarron(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('pizarron-vivo-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('pizarron-vivo-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -8321,6 +8669,24 @@ function init_pizarron(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -8549,6 +8915,7 @@ function init_cosmos(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('orbita-cosmica-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -9017,7 +9384,7 @@ function init_cosmos(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -9062,6 +9429,10 @@ function init_cosmos(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -9094,6 +9465,12 @@ function init_cosmos(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -9115,6 +9492,11 @@ function init_cosmos(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -9131,7 +9513,7 @@ function init_cosmos(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('orbita-cosmica-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('orbita-cosmica-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -9173,6 +9555,24 @@ function init_cosmos(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -9401,6 +9801,7 @@ function init_radio(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('dial-retro-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -9869,7 +10270,7 @@ function init_radio(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -9914,6 +10315,10 @@ function init_radio(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -9946,6 +10351,12 @@ function init_radio(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -9967,6 +10378,11 @@ function init_radio(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -9983,7 +10399,7 @@ function init_radio(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('dial-retro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('dial-retro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -10025,6 +10441,24 @@ function init_radio(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
@@ -10253,6 +10687,7 @@ function init_glass(signal) {
   }
   function isForcedMode(m){ return m === 'daily' || m === 'twoplayer'; }
   let best = 0;
+  let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('vidrio-holografico-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
@@ -10721,7 +11156,7 @@ function init_glass(signal) {
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
-    hits = 0; misses = 0; updateAcc();
+    hits = 0; misses = 0; updateAcc(); recordBrokenThisRun = false;
     dailyRng = (mode === 'daily') ? mulberry32(hashStr(todayStr())) : null;
     if(mode === 'twoplayer'){
       if(duoPhase === 'p1'){ duoSeedValue = Math.floor(Math.random()*4294967296); duoP1Score = 0; }
@@ -10766,6 +11201,10 @@ function init_glass(signal) {
       if(duoInfoEl){ duoInfoEl.hidden = false; duoInfoEl.innerHTML = resultMsg; }
       startBtn.textContent = 'Jugar otra vez';
       duoPhase = 'p1'; duoRng = null;
+      showSummary('🏆', resultMsg, [
+        { label: 'Jugador 1', value: duoP1Score + (duoP1Score===1?' ronda':' rondas') },
+        { label: 'Jugador 2', value: p2score + (p2score===1?' ronda':' rondas') }
+      ]);
     }
     lock(true);
   }
@@ -10798,6 +11237,12 @@ function init_glass(signal) {
       for(const i of order){ if(my!==token) return; await flash(i, 90); }
     }
     startBtn.textContent = 'Jugar otra vez';
+    const doneRound = mode === 'daily' ? DAILY_GOAL : goal;
+    showSummary('🏆', (mode === 'daily' ? '¡Desafío diario superado!' : '¡Ganaste!'), [
+      { label: 'Ronda alcanzada', value: doneRound + (doneRound===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(doneRound), highlight: recordBrokenThisRun }
+    ]);
   }
 
   function tick(){
@@ -10819,6 +11264,11 @@ function init_glass(signal) {
     vibrate([45,60,45]);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
+    showSummary('⏱️', '¡Se acabó el tiempo!', [
+      { label: 'Ronda alcanzada', value: peak + (peak===1?' ronda':' rondas') },
+      { label: 'Precisión', value: updateAcc() + '%' },
+      { label: 'Récord personal', value: recordText(peak), highlight: recordBrokenThisRun }
+    ]);
   }
 
   async function press(i){
@@ -10835,7 +11285,7 @@ function init_glass(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('vidrio-holografico-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('vidrio-holografico-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -10877,6 +11327,24 @@ function init_glass(signal) {
   }
   pauseResumeEl.addEventListener('click', resumeFromPause);
   pauseExitEl.addEventListener('click', () => { if(backBtnRef) backBtnRef.click(); });
+  const summaryOverlayEl = document.getElementById('summaryOverlay');
+  const summaryIconEl = document.getElementById('summaryIcon');
+  const summaryTitleEl = document.getElementById('summaryTitle');
+  const summaryBodyEl = document.getElementById('summaryBody');
+  const summaryCloseEl = document.getElementById('summaryClose');
+  summaryCloseEl.addEventListener('click', () => { summaryOverlayEl.hidden = true; });
+  function recordText(done){
+    if(recordBrokenThisRun) return '¡Nuevo récord! 🎉';
+    if(done === best) return 'Empataste tu récord';
+    const diff = best - done;
+    return diff > 0 ? ('A ' + diff + (diff===1?' ronda':' rondas') + ' de tu récord (' + best + ')') : '—';
+  }
+  function showSummary(icon, title, rows){
+    summaryIconEl.textContent = icon;
+    summaryTitleEl.textContent = title;
+    summaryBodyEl.innerHTML = rows.map(r => '<div class="summary-row' + (r.highlight ? ' highlight' : '') + '"><span>' + r.label + '</span><b>' + r.value + '</b></div>').join('');
+    summaryOverlayEl.hidden = false;
+  }
   document.addEventListener('visibilitychange', () => {
     if(document.hidden && running && !pausedForBg){
       pausedForBg = true;
