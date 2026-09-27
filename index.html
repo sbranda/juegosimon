@@ -423,6 +423,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -467,6 +471,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -487,6 +493,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -662,6 +669,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -707,6 +718,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -727,6 +740,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -881,6 +895,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -921,6 +939,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -941,6 +961,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -1109,6 +1130,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -1153,6 +1178,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -1173,6 +1200,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -1334,6 +1362,10 @@ const SKINS = {
   .cb-on .pad .cbsym{display:inline-flex}
   .pad .cbsym svg{width:16px;height:16px;fill:var(--pc);stroke:var(--pd);stroke-width:1px;filter:none}
   .pad.lit .cbsym svg{fill:#04140a;stroke:rgba(255,255,255,.7)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <div class="win">
@@ -1375,6 +1407,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>--mute</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>--audio-only</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>--colorblind</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>--reduce-motion</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>--high-contrast</label>
       </div>
 
       <div class="stats">
@@ -1395,6 +1429,7 @@ const SKINS = {
           <li>Alcanzá la meta elegida para completar el proceso. Teclado: Q W A S (o 1 2 3 4).</li>
           <li>Elegí <b>--level</b> 6 u 8 canales para un modo experto (no se puede cambiar con el proceso corriendo).</li>
           <li>Activá <b>--colorblind</b> para ver un símbolo distinto en cada canal, además del color.</li>
+      <li>Activá <b>--reduce-motion</b> / <b>--high-contrast</b> para adaptar la experiencia a tus necesidades.</li>
         </ul>
       </details>
 
@@ -1570,6 +1605,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -1616,6 +1655,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -1636,6 +1677,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -1813,6 +1855,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -1857,6 +1903,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -1877,6 +1925,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 planetas para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -2049,6 +2098,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -2093,6 +2146,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -2113,6 +2168,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 botones para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -2293,6 +2349,10 @@ const SKINS = {
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
   .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  .hc-on{--muted: var(--ink);}
+  .hc-on .pad,.hc-on .petal{outline:2px solid var(--ink);outline-offset:2px}
+  .rm-on *,.rm-on *::before,.rm-on *::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .rm-on .pad.lit,.rm-on .petal.lit{transform:none!important}
 `,
     html: `<div class="wrap">
   <header>
@@ -2337,6 +2397,8 @@ const SKINS = {
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
     <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
   </div>
 
   <div class="stats">
@@ -2357,6 +2419,7 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 paneles para un desafío experto (no se puede cambiar con la partida en curso).</li>
       <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
+      <li>Activá <b>Reducir animaciones</b> o <b>Alto contraste</b> para adaptar la experiencia a tus necesidades.</li>
     </ul>
   </details>
 
@@ -2406,6 +2469,23 @@ function init_neon(signal) {
   colorblindEl.addEventListener('change', () => {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
@@ -2864,6 +2944,23 @@ function init_consola(signal) {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
   });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -3321,6 +3418,23 @@ function init_flat(signal) {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
   });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -3775,6 +3889,23 @@ function init_botanico(signal) {
   colorblindEl.addEventListener('change', () => {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
@@ -4232,6 +4363,23 @@ function init_terminal(signal) {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
   });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -4687,6 +4835,23 @@ function init_pizarron(signal) {
   colorblindEl.addEventListener('change', () => {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
@@ -5145,6 +5310,23 @@ function init_cosmos(signal) {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
   });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -5600,6 +5782,23 @@ function init_radio(signal) {
   colorblindEl.addEventListener('change', () => {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
@@ -6057,6 +6256,23 @@ function init_glass(signal) {
     device.classList.toggle('cb-on', colorblindEl.checked);
     try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
   });
+  const reduceMotionEl = document.getElementById('reducemotion');
+  const highContrastEl = document.getElementById('highcontrast');
+  let rmPref = false, hcPref = false;
+  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  reduceMotionEl.checked = rmPref;
+  highContrastEl.checked = hcPref;
+  if(rmPref) document.documentElement.classList.add('rm-on');
+  if(hcPref) document.documentElement.classList.add('hc-on');
+  reduceMotionEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
+    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+  });
+  highContrastEl.addEventListener('change', () => {
+    document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
+    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -6489,8 +6705,7 @@ function init_glass(signal) {
     timeLimit = +b.dataset.t;
     if(mode === 'time') goalV.textContent = timeLimit + 's';
   }));
-}
-</script>
+}</script>
 
 <script>
 (() => {
