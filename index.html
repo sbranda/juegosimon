@@ -419,6 +419,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -462,6 +466,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -481,6 +486,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el sistema no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -652,6 +658,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:12px;color:var(--muted);font-weight:500}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -696,6 +706,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -715,6 +726,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el sistema no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -791,7 +803,7 @@ const SKINS = {
   .board{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
   .pads{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .locked .pad{cursor:default}
-  .pad{appearance:none;cursor:pointer;border:1px solid var(--line);border-radius:14px;aspect-ratio:1.15;
+  .pad{appearance:none;cursor:pointer;position:relative;border:1px solid var(--line);border-radius:14px;aspect-ratio:1.15;
     -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     display:flex;flex-direction:column;justify-content:space-between;padding:14px;
     background:var(--soft);color:var(--pc);text-align:left;transition:background .1s, box-shadow .1s, transform .06s}
@@ -865,6 +877,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:12px;color:var(--muted);text-align:center}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -904,6 +920,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -923,6 +940,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el sistema no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -1087,6 +1105,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:12px;color:var(--muted)}
   @media (prefers-reduced-motion: reduce){ .petal,.toggle span::after{transition:none} .petal.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -1130,6 +1152,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -1149,6 +1172,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el sistema no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -1299,6 +1323,17 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);text-align:center;margin-top:4px}
   @media (prefers-reduced-motion: reduce){ .pad,.cursor{transition:none;animation:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
+  /* terminal pads are text panels with a small color swatch, not a full-bleed
+     color surface, so the symbol rides inline next to the swatch instead of
+     covering the whole card */
+  .pad .cbsym{position:static;inset:auto;display:none;width:auto;height:auto;margin-left:8px;vertical-align:middle}
+  .cb-on .pad .cbsym{display:inline-flex}
+  .pad .cbsym svg{width:16px;height:16px;fill:var(--pc);stroke:var(--pd);stroke-width:1px;filter:none}
+  .pad.lit .cbsym svg{fill:#04140a;stroke:rgba(255,255,255,.7)}
 `,
     html: `<div class="wrap">
   <div class="win">
@@ -1339,6 +1374,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>--reverse</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>--mute</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>--audio-only</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>--colorblind</label>
       </div>
 
       <div class="stats">
@@ -1358,6 +1394,7 @@ const SKINS = {
           <li>Con <b>--audio-only</b> el sistema no muestra la secuencia, solo la reproduce. Con <b>--mute</b> corrés sin audio.</li>
           <li>Alcanzá la meta elegida para completar el proceso. Teclado: Q W A S (o 1 2 3 4).</li>
           <li>Elegí <b>--level</b> 6 u 8 canales para un modo experto (no se puede cambiar con el proceso corriendo).</li>
+          <li>Activá <b>--colorblind</b> para ver un símbolo distinto en cada canal, además del color.</li>
         </ul>
       </details>
 
@@ -1529,6 +1566,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:13px;color:var(--muted);font-family:"Patrick Hand",cursive}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -1574,6 +1615,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -1593,6 +1635,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el sistema no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -1766,6 +1809,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -1809,6 +1856,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -1828,6 +1876,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el sistema no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 planetas para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -1996,6 +2045,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -2039,6 +2092,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -2058,6 +2112,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el dial no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 botones para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -2234,6 +2289,10 @@ const SKINS = {
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
+  .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .pad.lit .cbsym svg, .petal.lit .cbsym svg{fill:rgba(0,0,0,.6);stroke:rgba(255,255,255,.92)}
 `,
     html: `<div class="wrap">
   <header>
@@ -2277,6 +2336,7 @@ const SKINS = {
     <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
     <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
     <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
   </div>
 
   <div class="stats">
@@ -2296,6 +2356,7 @@ const SKINS = {
       <li>Con <b>Solo sonido</b> practicás de oído: el panel no ilumina la secuencia. Con <b>Sin sonido</b> jugás en silencio.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 paneles para un desafío experto (no se puede cambiar con la partida en curso).</li>
+      <li>Activá <b>Modo daltónico</b> para ver un símbolo distinto en cada botón, además del color.</li>
     </ul>
   </details>
 
@@ -2337,6 +2398,15 @@ function init_neon(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -2380,12 +2450,26 @@ function init_neon(signal) {
   try { best = +localStorage.getItem('neon-cuadrante-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.pad')];
@@ -2771,6 +2855,15 @@ function init_consola(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -2815,6 +2908,19 @@ function init_consola(signal) {
   try { best = +localStorage.getItem('botonera-eco-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     padsEl.style.gridTemplateColumns = COLS[numColors];
     padsEl.innerHTML = '';
@@ -2822,6 +2928,7 @@ function init_consola(signal) {
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       padsEl.appendChild(b);
     }
     pads = [...padsEl.querySelectorAll('.pad')];
@@ -3205,6 +3312,15 @@ function init_flat(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -3248,12 +3364,26 @@ function init_flat(signal) {
   try { best = +localStorage.getItem('secuencia-cuatro-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     device.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="num">${String(i+1).padStart(2,'0')}</span><span class="dot"></span><span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       device.appendChild(b);
     }
     pads = [...device.querySelectorAll('.pad')];
@@ -3637,6 +3767,15 @@ function init_botanico(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -3680,6 +3819,19 @@ function init_botanico(signal) {
   try { best = +localStorage.getItem('ronda-silvestre-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
@@ -3687,6 +3839,7 @@ function init_botanico(signal) {
       b.className = 'petal shape' + (i%4);
       b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.petal')];
@@ -4070,6 +4223,15 @@ function init_terminal(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -4113,12 +4275,26 @@ function init_terminal(signal) {
   try { best = +localStorage.getItem('terminal-mnemo-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     device.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="lbl">CH.0${i+1} · ${KEYHINT[i]}</span><span class="brk">████</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       device.appendChild(b);
     }
     pads = [...device.querySelectorAll('.pad')];
@@ -4503,6 +4679,15 @@ function init_pizarron(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -4546,6 +4731,19 @@ function init_pizarron(signal) {
   try { best = +localStorage.getItem('pizarron-vivo-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
@@ -4553,6 +4751,7 @@ function init_pizarron(signal) {
       b.className = 'pad shape' + (i%4);
       b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.pad')];
@@ -4937,6 +5136,15 @@ function init_cosmos(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -4980,12 +5188,26 @@ function init_cosmos(signal) {
   try { best = +localStorage.getItem('orbita-cosmica-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.pad')];
@@ -5370,6 +5592,15 @@ function init_radio(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -5413,12 +5644,26 @@ function init_radio(signal) {
   try { best = +localStorage.getItem('dial-retro-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.pad')];
@@ -5803,6 +6048,15 @@ function init_glass(signal) {
   const audioOnlyEl = document.getElementById('audioonly');
   muteEl.addEventListener('change', () => { if(muteEl.checked && audioOnlyEl.checked) audioOnlyEl.checked = false; });
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
+  const colorblindEl = document.getElementById('colorblind');
+  let cbPref = false;
+  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  colorblindEl.checked = cbPref;
+  if(cbPref) device.classList.add('cb-on');
+  colorblindEl.addEventListener('change', () => {
+    device.classList.toggle('cb-on', colorblindEl.checked);
+    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+  });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -5846,12 +6100,26 @@ function init_glass(signal) {
   try { best = +localStorage.getItem('vidrio-holografico-best') || 0; } catch(e){}
   bestEl.textContent = best;
 
+  function cbSymbolHTML(i){
+    const shapes = [
+      '<circle cx="12" cy="12" r="8"/>',
+      '<rect x="4" y="4" width="16" height="16" rx="2"/>',
+      '<polygon points="12,3 21,20 3,20"/>',
+      '<polygon points="12,2 22,12 12,22 2,12"/>',
+      '<polygon points="12,2 14.9,8.6 22,9.3 16.7,13.9 18.2,21 12,17.3 5.8,21 7.3,13.9 2,9.3 9.1,8.6"/>',
+      '<path d="M9 4h6v5h5v6h-5v5H9v-5H4v-6h5z"/>',
+      '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>',
+      '<polygon points="12,2 21,8.5 17.5,19.5 6.5,19.5 3,8.5"/>'
+    ];
+    return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
+  }
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.pad')];
