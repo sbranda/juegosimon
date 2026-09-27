@@ -461,8 +461,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>NEÓN<br>CUADRANTE</h1>
     <p class="tag">// repetí la secuencia de luz</p>
@@ -737,8 +743,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>Botonera Eco</h1>
     <p class="tag">Escuchá, mirá y repetí</p>
@@ -993,8 +1005,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>Secuencia<br>Cuatro</h1>
     <div class="roundtag"><b id="lcd">00</b>ronda</div>
@@ -1258,8 +1276,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>Ronda Silvestre</h1>
     <p class="tag">Observá el jardín y repetí su orden</p>
@@ -1520,8 +1544,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <div class="win">
     <div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>mnemo.sh — 80x24</span></div>
     <div class="screen">
@@ -1793,8 +1823,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>Pizarrón Vivo</h1>
     <p class="tag">Mirá la tiza y repetí la secuencia</p>
@@ -2073,8 +2109,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>ÓRBITA<br>CÓSMICA</h1>
     <p class="tag">Memorizá el orden de los planetas</p>
@@ -2346,8 +2388,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>DIAL<br>RETRO</h1>
     <p class="tag">Sintonizá la secuencia de botones</p>
@@ -2627,8 +2675,14 @@ const SKINS = {
   .speed-ctrl{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;color:var(--muted);cursor:pointer}
   .speed-ctrl input[type=range]{width:130px;accent-color:var(--c1)}
   .speed-ctrl b{color:var(--ink)}
+  .toast-wrap{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:100%;padding:0 16px}
+  .toast{background:rgba(15,15,22,.92);color:#f5f5fa;font-family:inherit;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35);opacity:0;transform:translateY(-10px);transition:opacity .25s ease, transform .25s ease;max-width:340px;text-align:center;border:1px solid rgba(255,255,255,.14)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.record{color:var(--c2, #ffd54f)}
+  .toast.achievement{color:var(--c1, #5ec8ff)}
 `,
     html: `<div class="wrap">
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
     <h1>VIDRIO<br>HOLOGRÁFICO</h1>
     <p class="tag">Repetí el reflejo de la secuencia</p>
@@ -3012,6 +3066,19 @@ function init_neon(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
@@ -3075,15 +3142,23 @@ function init_neon(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -3386,7 +3461,7 @@ function init_neon(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('neon-cuadrante-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('neon-cuadrante-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -3716,6 +3791,19 @@ function init_consola(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.style.color = bad ? '#ff8a7a' : ''; }
 
@@ -3779,15 +3867,23 @@ function init_consola(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -4090,7 +4186,7 @@ function init_consola(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('botonera-eco-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('botonera-eco-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -4415,6 +4511,19 @@ function init_flat(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.style.color = bad ? '#e94f37' : ''; }
 
@@ -4478,15 +4587,23 @@ function init_flat(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -4789,7 +4906,7 @@ function init_flat(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('secuencia-cuatro-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('secuencia-cuatro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -5117,6 +5234,19 @@ function init_botanico(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
@@ -5180,15 +5310,23 @@ function init_botanico(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -5491,7 +5629,7 @@ function init_botanico(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('ronda-silvestre-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('ronda-silvestre-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -5816,6 +5954,19 @@ function init_terminal(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
@@ -5879,15 +6030,23 @@ function init_terminal(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -6190,7 +6349,7 @@ function init_terminal(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('terminal-mnemo-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -6519,6 +6678,19 @@ function init_pizarron(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
@@ -6582,15 +6754,23 @@ function init_pizarron(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -6893,7 +7073,7 @@ function init_pizarron(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('pizarron-vivo-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('pizarron-vivo-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -7220,6 +7400,19 @@ function init_cosmos(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
@@ -7283,15 +7476,23 @@ function init_cosmos(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -7594,7 +7795,7 @@ function init_cosmos(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('orbita-cosmica-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('orbita-cosmica-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -7921,6 +8122,19 @@ function init_radio(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
@@ -7984,15 +8198,23 @@ function init_radio(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -8295,7 +8517,7 @@ function init_radio(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('dial-retro-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('dial-retro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
@@ -8622,6 +8844,19 @@ function init_glass(signal) {
     return {on, gap};
   }
 
+  const toastWrapEl = document.getElementById('toastWrap');
+  function showToast(msg, kind){
+    if(!toastWrapEl) return;
+    const el = document.createElement('div');
+    el.className = 'toast' + (kind ? ' ' + kind : '');
+    el.textContent = msg;
+    toastWrapEl.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('show'));
+    setTimeout(() => {
+      el.classList.remove('show');
+      setTimeout(() => el.remove(), 300);
+    }, 2600);
+  }
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
@@ -8685,15 +8920,23 @@ function init_glass(signal) {
       return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span>${accHtml}<span class="hist-skin">${e.skin}</span></div>`;
     }).join('');
   }
+  let seenAchievements = null;
   function renderAchievements(){
     const list = loadHistory();
     let unlocked = 0;
+    const unlockedNow = new Set();
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
-      if(done) unlocked++;
+      if(done){ unlocked++; unlockedNow.add(a.id); }
       return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
+    if(seenAchievements){
+      for(const a of ACHIEVEMENTS){
+        if(unlockedNow.has(a.id) && !seenAchievements.has(a.id)) showToast('\u{1F3C6} Logro: ' + a.title, 'achievement');
+      }
+    }
+    seenAchievements = unlockedNow;
   }
   function renderChart(){
     const list = loadHistory();
@@ -8996,7 +9239,7 @@ function init_glass(signal) {
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('vidrio-holografico-best', best); }catch(e){} }
+      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('vidrio-holografico-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
