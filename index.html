@@ -363,6 +363,7 @@ const SKINS = {
       <button data-t="90">90s</button>
     </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
   </div>
 
   <div class="stats">
@@ -376,6 +377,7 @@ const SKINS = {
       <li>El sistema enciende una secuencia de colores. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
       <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Con <b>Orden inverso</b>, repetís la secuencia empezando por el último color.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
     </ul>
   </details>
@@ -536,6 +538,7 @@ const SKINS = {
       <button data-t="90">90s</button>
     </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
   </div>
 
   <div class="stats">
@@ -549,6 +552,7 @@ const SKINS = {
       <li>La botonera enciende una secuencia de colores. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
       <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Con <b>Orden inverso</b>, repetís la secuencia empezando por el último color.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
     </ul>
   </details>
@@ -681,6 +685,7 @@ const SKINS = {
       <button data-t="90">90s</button>
     </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
   </div>
 
   <div class="stats">
@@ -694,6 +699,7 @@ const SKINS = {
       <li>El tablero muestra una secuencia de colores. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
       <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Con <b>Orden inverso</b>, repetís la secuencia empezando por el último color.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
     </ul>
   </details>
@@ -833,6 +839,7 @@ const SKINS = {
       <button data-t="90">90s</button>
     </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
   </div>
 
   <div class="stats">
@@ -846,6 +853,7 @@ const SKINS = {
       <li>El jardín ilumina una secuencia de pétalos. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
       <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Con <b>Orden inverso</b>, repetís la secuencia empezando por el último color.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
     </ul>
   </details>
@@ -981,6 +989,7 @@ const SKINS = {
           <button data-t="90">90s</button>
         </div>
         <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>--strict</label>
+    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>--reverse</label>
       </div>
 
       <div class="stats">
@@ -994,6 +1003,7 @@ const SKINS = {
           <li>La terminal emite una secuencia de canales. Repetila en el mismo orden.</li>
           <li>Cada ronda agrega un canal nuevo y, cada tanto, acelera.</li>
           <li>Un error repite la secuencia. Con <b>--strict</b>, reinicia el conteo.</li>
+          <li>Con <b>--reverse</b>, repetís la secuencia empezando por el último canal.</li>
           <li>Alcanzá la meta elegida para completar el proceso. Teclado: Q W A S (o 1 2 3 4).</li>
         </ul>
       </details>
@@ -1143,6 +1153,7 @@ const SKINS = {
       <button data-t="90">90s</button>
     </div>
     <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
   </div>
 
   <div class="stats">
@@ -1156,6 +1167,7 @@ const SKINS = {
       <li>El pizarrón dibuja una secuencia de tizas de color. Repetila en el mismo orden.</li>
       <li>Cada ronda agrega un color nuevo y, cada tanto, acelera.</li>
       <li>Si te equivocás, se repite la secuencia. En modo <b>Estricto</b>, volvés a cero.</li>
+      <li>Con <b>Orden inverso</b>, repetís la secuencia empezando por el último color.</li>
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
     </ul>
   </details>
@@ -1173,6 +1185,7 @@ function init_neon(signal) {
   const statusEl = document.getElementById('status');
   const startBtn = document.getElementById('start');
   const strictEl = document.getElementById('strict');
+  const reverseEl = document.getElementById('reverse');
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -1238,7 +1251,7 @@ function init_neon(signal) {
     }
     if(my !== token) return;
     step = 0; lock(false);
-    statusEl.textContent = 'Tu turno';
+    statusEl.textContent = reverseEl.checked ? 'Tu turno (al revés)' : 'Tu turno';
   }
 
   async function nextRound(){
@@ -1308,7 +1321,8 @@ function init_neon(signal) {
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
-    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
+    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -1360,6 +1374,7 @@ function init_consola(signal) {
   const statusEl = document.getElementById('status');
   const startBtn = document.getElementById('start');
   const strictEl = document.getElementById('strict');
+  const reverseEl = document.getElementById('reverse');
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -1425,7 +1440,7 @@ function init_consola(signal) {
     }
     if(my !== token) return;
     step = 0; lock(false);
-    statusEl.textContent = 'Tu turno';
+    statusEl.textContent = reverseEl.checked ? 'Tu turno (al revés)' : 'Tu turno';
   }
 
   async function nextRound(){
@@ -1495,7 +1510,8 @@ function init_consola(signal) {
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
-    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
+    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -1547,6 +1563,7 @@ function init_flat(signal) {
   const statusEl = document.getElementById('status');
   const startBtn = document.getElementById('start');
   const strictEl = document.getElementById('strict');
+  const reverseEl = document.getElementById('reverse');
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -1612,7 +1629,7 @@ function init_flat(signal) {
     }
     if(my !== token) return;
     step = 0; lock(false);
-    statusEl.textContent = 'Tu turno';
+    statusEl.textContent = reverseEl.checked ? 'Tu turno (al revés)' : 'Tu turno';
   }
 
   async function nextRound(){
@@ -1682,7 +1699,8 @@ function init_flat(signal) {
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
-    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
+    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -1734,6 +1752,7 @@ function init_botanico(signal) {
   const statusEl = document.getElementById('status');
   const startBtn = document.getElementById('start');
   const strictEl = document.getElementById('strict');
+  const reverseEl = document.getElementById('reverse');
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -1799,7 +1818,7 @@ function init_botanico(signal) {
     }
     if(my !== token) return;
     step = 0; lock(false);
-    statusEl.textContent = 'Tu turno';
+    statusEl.textContent = reverseEl.checked ? 'Tu turno (al revés)' : 'Tu turno';
   }
 
   async function nextRound(){
@@ -1869,7 +1888,8 @@ function init_botanico(signal) {
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
-    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
+    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -1921,6 +1941,7 @@ function init_terminal(signal) {
   const statusEl = document.getElementById('status');
   const startBtn = document.getElementById('start');
   const strictEl = document.getElementById('strict');
+  const reverseEl = document.getElementById('reverse');
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -1986,7 +2007,7 @@ function init_terminal(signal) {
     }
     if(my !== token) return;
     step = 0; lock(false);
-    statusEl.textContent = 'tu turno_';
+    statusEl.textContent = reverseEl.checked ? 'tu turno (reverso)_' : 'tu turno_';
   }
 
   async function nextRound(){
@@ -2056,7 +2077,8 @@ function init_terminal(signal) {
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
-    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
+    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
@@ -2108,6 +2130,7 @@ function init_pizarron(signal) {
   const statusEl = document.getElementById('status');
   const startBtn = document.getElementById('start');
   const strictEl = document.getElementById('strict');
+  const reverseEl = document.getElementById('reverse');
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -2173,7 +2196,7 @@ function init_pizarron(signal) {
     }
     if(my !== token) return;
     step = 0; lock(false);
-    statusEl.textContent = 'Tu turno';
+    statusEl.textContent = reverseEl.checked ? 'Tu turno (al revés)' : 'Tu turno';
   }
 
   async function nextRound(){
@@ -2243,7 +2266,8 @@ function init_pizarron(signal) {
   async function press(i){
     if(!accepting || !running) return;
     const my = token;
-    if(i !== seq[step]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
+    const idx = reverseEl.checked ? (seq.length - 1 - step) : step;
+    if(i !== seq[idx]){ pads[i].classList.add('lit'); setTimeout(()=>pads[i].classList.remove('lit'),150); return fail(); }
     accepting = false;
     await flash(i, 220);
     if(my !== token) return;
