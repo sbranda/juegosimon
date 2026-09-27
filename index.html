@@ -335,6 +335,14 @@ const SKINS = {
   details{width:100%;color:var(--muted);font-size:13px;line-height:1.6;background:#0a0616;border:1px solid var(--panel-edge);border-radius:8px;padding:12px 15px}
   summary{cursor:pointer;color:var(--ink);font-weight:600}
   details ul{padding-left:18px;margin:8px 0 0}
+  .hist-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .hist-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.18)}
+  .hist-row:last-child{border-bottom:0}
+  .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
+  .hist-round{font-weight:700}
+  .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
+  .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -398,6 +406,12 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
     </ul>
+  </details>
+
+  <details id="historyBox">
+    <summary>Historial de partidas</summary>
+    <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
+    <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -521,6 +535,14 @@ const SKINS = {
   details{width:100%;color:var(--muted);font-size:14px;line-height:1.55;background:var(--plate);border-radius:14px;padding:12px 16px;box-shadow:inset 0 1px 3px rgba(0,0,0,.1)}
   summary{cursor:pointer;color:var(--ink);font-weight:700}
   details ul{padding-left:18px;margin:8px 0 0}
+  .hist-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .hist-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.18)}
+  .hist-row:last-child{border-bottom:0}
+  .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
+  .hist-round{font-weight:700}
+  .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
+  .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
   footer{font-size:12px;color:var(--muted);font-weight:500}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -585,6 +607,12 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
     </ul>
+  </details>
+
+  <details id="historyBox">
+    <summary>Historial de partidas</summary>
+    <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
+    <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -687,6 +715,14 @@ const SKINS = {
   details{color:var(--muted);font-size:14px;line-height:1.6}
   summary{cursor:pointer;color:var(--ink);font-weight:700}
   details ul{padding-left:18px;margin:8px 0 0}
+  .hist-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .hist-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.18)}
+  .hist-row:last-child{border-bottom:0}
+  .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
+  .hist-round{font-weight:700}
+  .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
+  .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
   footer{font-size:12px;color:var(--muted);text-align:center}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -746,6 +782,12 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
     </ul>
+  </details>
+
+  <details id="historyBox">
+    <summary>Historial de partidas</summary>
+    <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
+    <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -862,6 +904,14 @@ const SKINS = {
   details{width:100%;color:var(--muted);font-size:14px;line-height:1.6;background:var(--bg2);border-radius:16px;padding:12px 16px}
   summary{cursor:pointer;color:var(--ink);font-weight:600}
   details ul{padding-left:18px;margin:8px 0 0}
+  .hist-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .hist-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.18)}
+  .hist-row:last-child{border-bottom:0}
+  .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
+  .hist-round{font-weight:700}
+  .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
+  .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
   footer{font-size:12px;color:var(--muted)}
   @media (prefers-reduced-motion: reduce){ .petal,.toggle span::after{transition:none} .petal.lit{transform:none} }
 `,
@@ -925,6 +975,12 @@ const SKINS = {
       <li>Llegá a la meta elegida para ganar. Teclado: Q W A S (o 1 2 3 4).</li>
       <li>Elegí <b>Nivel</b> 6 u 8 colores para un desafío experto (no se puede cambiar con la partida en curso).</li>
     </ul>
+  </details>
+
+  <details id="historyBox">
+    <summary>Historial de partidas</summary>
+    <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
+    <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
   </details>
 
   <footer>Desarrollado por Seba Branda</footer>
@@ -1027,6 +1083,14 @@ const SKINS = {
   summary{cursor:pointer;color:var(--ink)}
   summary::marker{color:var(--c0)}
   details ul{padding-left:16px;margin:8px 0 0}
+  .hist-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .hist-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.18)}
+  .hist-row:last-child{border-bottom:0}
+  .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
+  .hist-round{font-weight:700}
+  .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
+  .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
   footer{font-size:11px;color:var(--muted);text-align:center;margin-top:4px}
   @media (prefers-reduced-motion: reduce){ .pad,.cursor{transition:none;animation:none} }
 `,
@@ -1087,6 +1151,12 @@ const SKINS = {
           <li>Alcanzá la meta elegida para completar el proceso. Teclado: Q W A S (o 1 2 3 4).</li>
           <li>Elegí <b>--level</b> 6 u 8 canales para un modo experto (no se puede cambiar con el proceso corriendo).</li>
         </ul>
+      </details>
+
+      <details id="historyBox">
+        <summary>historial</summary>
+        <div class="hist-list" id="histList"><p class="hist-empty">todavía no hay partidas registradas.</p></div>
+        <button class="hist-clear" id="histClear" type="button" hidden>borrar historial</button>
       </details>
     </div>
   </div>
@@ -1210,6 +1280,14 @@ const SKINS = {
     background:rgba(0,0,0,.15);border:2px dashed var(--muted);border-radius:12px;padding:12px 16px}
   summary{cursor:pointer;color:var(--chalk);font-weight:400}
   details ul{padding-left:20px;margin:8px 0 0}
+  .hist-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+  .hist-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 10px;font-size:13px;padding:6px 0;border-bottom:1px solid rgba(127,127,127,.18)}
+  .hist-row:last-child{border-bottom:0}
+  .hist-date{color:var(--muted);flex:1 1 100%;font-size:12px}
+  .hist-round{font-weight:700}
+  .hist-skin{color:var(--muted);font-size:12px;margin-left:auto}
+  .hist-empty{color:var(--muted);font-size:13px;margin:6px 0 0}
+  .hist-clear{margin-top:10px;appearance:none;border:1px solid var(--muted);background:transparent;color:var(--muted);font-size:12px;padding:7px 14px;border-radius:6px;cursor:pointer}
   footer{font-size:13px;color:var(--muted);font-family:"Patrick Hand",cursive}
   @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
 `,
@@ -1277,6 +1355,12 @@ const SKINS = {
     </ul>
   </details>
 
+  <details id="historyBox">
+    <summary>Historial de partidas</summary>
+    <div class="hist-list" id="histList"><p class="hist-empty">Todavía no jugaste ninguna partida.</p></div>
+    <button class="hist-clear" id="histClear" type="button" hidden>Borrar historial</button>
+  </details>
+
   <footer>Desarrollado por Seba Branda</footer>
 </div>`,
     init: init_pizarron
@@ -1308,6 +1392,10 @@ function init_neon(signal) {
 
   const FREQS = [415.3, 310, 252, 209, 554.4, 466.2, 349.2, 622.3];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
+  const HIST_KEY = 'memorion-history';
+  const SKIN_NAME = 'Neón Cuadrante';
+  const histListEl = document.getElementById('histList');
+  const histClearEl = document.getElementById('histClear');
   const LABELS = ['Verde','Magenta','Amarillo','Cian','Naranja','Violeta','Rojo','Verde agua'];
   const KEYHINT = ['Q','W','A','S','5','6','7','8'];
 
@@ -1376,6 +1464,35 @@ function init_neon(signal) {
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
+  function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+  function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function addHistoryEntry(round){
+    if(!round || round < 1) return;
+    const list = loadHistory();
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    saveHistory(list);
+    renderHistory();
+  }
+  function renderHistory(){
+    const list = loadHistory().slice().reverse().slice(0,10);
+    if(list.length === 0){
+      histListEl.innerHTML = '<p class="hist-empty">Todavía no jugaste ninguna partida.</p>';
+      histClearEl.hidden = true;
+      return;
+    }
+    histClearEl.hidden = false;
+    histListEl.innerHTML = list.map(e => {
+      const d = new Date(e.ts);
+      const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+    }).join('');
+  }
+  renderHistory();
+  histClearEl.addEventListener('click', () => {
+    try{ localStorage.removeItem(HIST_KEY); }catch(e){}
+    renderHistory();
+  });
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -1398,6 +1515,7 @@ function init_neon(signal) {
   }
 
   async function start(){
+    if(running && peak > 0) addHistoryEntry(peak);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -1429,6 +1547,7 @@ function init_neon(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    addHistoryEntry(peak);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -1451,6 +1570,7 @@ function init_neon(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
+    addHistoryEntry(peak);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -1529,6 +1649,10 @@ function init_consola(signal) {
 
   const FREQS = [415.3, 310, 252, 209, 554.4, 466.2, 349.2, 622.3];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
+  const HIST_KEY = 'memorion-history';
+  const SKIN_NAME = 'Botonera Eco';
+  const histListEl = document.getElementById('histList');
+  const histClearEl = document.getElementById('histClear');
   const LABELS = ['Verde','Rojo','Amarillo','Azul','Naranja','Violeta','Rosa','Verde agua'];
   const KEYHINT = ['Q','W','A','S','5','6','7','8'];
   const COLS = {4:'repeat(4,1fr)',6:'repeat(3,1fr)',8:'repeat(4,1fr)'};
@@ -1599,6 +1723,35 @@ function init_consola(signal) {
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.style.color = bad ? '#ff8a7a' : ''; }
 
+  function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+  function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function addHistoryEntry(round){
+    if(!round || round < 1) return;
+    const list = loadHistory();
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    saveHistory(list);
+    renderHistory();
+  }
+  function renderHistory(){
+    const list = loadHistory().slice().reverse().slice(0,10);
+    if(list.length === 0){
+      histListEl.innerHTML = '<p class="hist-empty">Todavía no jugaste ninguna partida.</p>';
+      histClearEl.hidden = true;
+      return;
+    }
+    histClearEl.hidden = false;
+    histListEl.innerHTML = list.map(e => {
+      const d = new Date(e.ts);
+      const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+    }).join('');
+  }
+  renderHistory();
+  histClearEl.addEventListener('click', () => {
+    try{ localStorage.removeItem(HIST_KEY); }catch(e){}
+    renderHistory();
+  });
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -1621,6 +1774,7 @@ function init_consola(signal) {
   }
 
   async function start(){
+    if(running && peak > 0) addHistoryEntry(peak);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -1652,6 +1806,7 @@ function init_consola(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    addHistoryEntry(peak);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -1674,6 +1829,7 @@ function init_consola(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
+    addHistoryEntry(peak);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -1750,6 +1906,10 @@ function init_flat(signal) {
 
   const FREQS = [415.3, 310, 252, 209, 554.4, 466.2, 349.2, 622.3];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
+  const HIST_KEY = 'memorion-history';
+  const SKIN_NAME = 'Secuencia Cuatro';
+  const histListEl = document.getElementById('histList');
+  const histClearEl = document.getElementById('histClear');
   const LABELS = ['Coral','Verde azulado','Ámbar','Índigo','Naranja','Violeta','Rosa','Verde'];
   const KEYHINT = ['Q','W','A','S','5','6','7','8'];
 
@@ -1817,6 +1977,35 @@ function init_flat(signal) {
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.style.color = bad ? '#e94f37' : ''; }
 
+  function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+  function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function addHistoryEntry(round){
+    if(!round || round < 1) return;
+    const list = loadHistory();
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    saveHistory(list);
+    renderHistory();
+  }
+  function renderHistory(){
+    const list = loadHistory().slice().reverse().slice(0,10);
+    if(list.length === 0){
+      histListEl.innerHTML = '<p class="hist-empty">Todavía no jugaste ninguna partida.</p>';
+      histClearEl.hidden = true;
+      return;
+    }
+    histClearEl.hidden = false;
+    histListEl.innerHTML = list.map(e => {
+      const d = new Date(e.ts);
+      const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+    }).join('');
+  }
+  renderHistory();
+  histClearEl.addEventListener('click', () => {
+    try{ localStorage.removeItem(HIST_KEY); }catch(e){}
+    renderHistory();
+  });
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -1839,6 +2028,7 @@ function init_flat(signal) {
   }
 
   async function start(){
+    if(running && peak > 0) addHistoryEntry(peak);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -1870,6 +2060,7 @@ function init_flat(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    addHistoryEntry(peak);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -1892,6 +2083,7 @@ function init_flat(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
+    addHistoryEntry(peak);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -1969,6 +2161,10 @@ function init_botanico(signal) {
 
   const FREQS = [392, 330, 262, 220, 494, 440, 587, 659]; // pentatónico suave
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
+  const HIST_KEY = 'memorion-history';
+  const SKIN_NAME = 'Ronda Silvestre';
+  const histListEl = document.getElementById('histList');
+  const histClearEl = document.getElementById('histClear');
   const LABELS = ['Musgo','Terracota','Miel','Ciruela','Lavanda','Salvia','Arcilla','Bruma'];
   const KEYHINT = ['Q','W','A','S','5','6','7','8'];
 
@@ -2038,6 +2234,35 @@ function init_botanico(signal) {
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
+  function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+  function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function addHistoryEntry(round){
+    if(!round || round < 1) return;
+    const list = loadHistory();
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    saveHistory(list);
+    renderHistory();
+  }
+  function renderHistory(){
+    const list = loadHistory().slice().reverse().slice(0,10);
+    if(list.length === 0){
+      histListEl.innerHTML = '<p class="hist-empty">Todavía no jugaste ninguna partida.</p>';
+      histClearEl.hidden = true;
+      return;
+    }
+    histClearEl.hidden = false;
+    histListEl.innerHTML = list.map(e => {
+      const d = new Date(e.ts);
+      const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+    }).join('');
+  }
+  renderHistory();
+  histClearEl.addEventListener('click', () => {
+    try{ localStorage.removeItem(HIST_KEY); }catch(e){}
+    renderHistory();
+  });
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -2060,6 +2285,7 @@ function init_botanico(signal) {
   }
 
   async function start(){
+    if(running && peak > 0) addHistoryEntry(peak);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -2091,6 +2317,7 @@ function init_botanico(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    addHistoryEntry(peak);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -2113,6 +2340,7 @@ function init_botanico(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
+    addHistoryEntry(peak);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
@@ -2189,6 +2417,10 @@ function init_terminal(signal) {
 
   const FREQS = [415.3, 310, 252, 209, 554.4, 466.2, 349.2, 622.3];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
+  const HIST_KEY = 'memorion-history';
+  const SKIN_NAME = 'Terminal Mnemo';
+  const histListEl = document.getElementById('histList');
+  const histClearEl = document.getElementById('histClear');
   const LABELS = ['Canal verde','Canal ámbar','Canal cian','Canal magenta','Canal naranja','Canal violeta','Canal rojo','Canal menta'];
   const KEYHINT = ['Q','W','A','S','5','6','7','8'];
 
@@ -2256,6 +2488,35 @@ function init_terminal(signal) {
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
+  function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+  function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function addHistoryEntry(round){
+    if(!round || round < 1) return;
+    const list = loadHistory();
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    saveHistory(list);
+    renderHistory();
+  }
+  function renderHistory(){
+    const list = loadHistory().slice().reverse().slice(0,10);
+    if(list.length === 0){
+      histListEl.innerHTML = '<p class="hist-empty">Todavía no jugaste ninguna partida.</p>';
+      histClearEl.hidden = true;
+      return;
+    }
+    histClearEl.hidden = false;
+    histListEl.innerHTML = list.map(e => {
+      const d = new Date(e.ts);
+      const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+    }).join('');
+  }
+  renderHistory();
+  histClearEl.addEventListener('click', () => {
+    try{ localStorage.removeItem(HIST_KEY); }catch(e){}
+    renderHistory();
+  });
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -2278,6 +2539,7 @@ function init_terminal(signal) {
   }
 
   async function start(){
+    if(running && peak > 0) addHistoryEntry(peak);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -2309,6 +2571,7 @@ function init_terminal(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    addHistoryEntry(peak);
     statusEl.textContent = `proceso completo. ${goal} rondas ok.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -2331,6 +2594,7 @@ function init_terminal(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
+    addHistoryEntry(peak);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `tiempo agotado. llegaste a ${peak} rondas.`;
     startBtn.textContent = 'run again';
@@ -2409,6 +2673,10 @@ function init_pizarron(signal) {
 
   const FREQS = [415.3, 310, 252, 209, 554.4, 466.2, 349.2, 622.3];
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
+  const HIST_KEY = 'memorion-history';
+  const SKIN_NAME = 'Pizarrón Vivo';
+  const histListEl = document.getElementById('histList');
+  const histClearEl = document.getElementById('histClear');
   const LABELS = ['Tiza verde','Tiza roja','Tiza amarilla','Tiza azul','Tiza naranja','Tiza violeta','Tiza rosa','Tiza aguamarina'];
   const KEYHINT = ['Q','W','A','S','5','6','7','8'];
 
@@ -2478,6 +2746,35 @@ function init_pizarron(signal) {
   function lock(v){ accepting = !v; device.classList.toggle('locked', v); }
   function show(n, bad=false){ lcd.textContent = String(n).padStart(2,'0'); lcd.classList.toggle('bad', bad); }
 
+  function loadHistory(){ try{ return JSON.parse(localStorage.getItem(HIST_KEY)) || []; }catch(e){ return []; } }
+  function saveHistory(list){ try{ localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(-50))); }catch(e){} }
+  function addHistoryEntry(round){
+    if(!round || round < 1) return;
+    const list = loadHistory();
+    list.push({ ts: Date.now(), round, skin: SKIN_NAME });
+    saveHistory(list);
+    renderHistory();
+  }
+  function renderHistory(){
+    const list = loadHistory().slice().reverse().slice(0,10);
+    if(list.length === 0){
+      histListEl.innerHTML = '<p class="hist-empty">Todavía no jugaste ninguna partida.</p>';
+      histClearEl.hidden = true;
+      return;
+    }
+    histClearEl.hidden = false;
+    histListEl.innerHTML = list.map(e => {
+      const d = new Date(e.ts);
+      const fecha = d.toLocaleDateString('es-AR', {day:'2-digit', month:'2-digit', year:'2-digit'}) + ' ' + d.toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', hour12:false});
+      return `<div class="hist-row"><span class="hist-date">${fecha}</span><span class="hist-round">Ronda ${e.round}</span><span class="hist-skin">${e.skin}</span></div>`;
+    }).join('');
+  }
+  renderHistory();
+  histClearEl.addEventListener('click', () => {
+    try{ localStorage.removeItem(HIST_KEY); }catch(e){}
+    renderHistory();
+  });
+
   async function playSeq(){
     const my = token;
     lock(true);
@@ -2500,6 +2797,7 @@ function init_pizarron(signal) {
   }
 
   async function start(){
+    if(running && peak > 0) addHistoryEntry(peak);
     if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
     audio();
     token++; running = true; seq = []; peak = 0;
@@ -2531,6 +2829,7 @@ function init_pizarron(signal) {
   async function win(){
     const my = token;
     lock(true); running = false;
+    addHistoryEntry(peak);
     statusEl.textContent = `¡Ganaste! ${goal} rondas perfectas.`;
     const order = Array.from({length:numColors}, (_,k)=>k);
     for(let k=0;k<3;k++){
@@ -2553,6 +2852,7 @@ function init_pizarron(signal) {
 
   function timeUp(){
     running = false; accepting = false; token++; lock(true);
+    addHistoryEntry(peak);
     tone(90, 700, 'sawtooth', .16);
     statusEl.textContent = `¡Se acabó el tiempo! Llegaste a ${peak} ${peak===1?"ronda":"rondas"}.`;
     startBtn.textContent = 'Jugar otra vez';
