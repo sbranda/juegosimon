@@ -72,10 +72,23 @@
 
   .pads{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;row-gap:30px}
   .locked .pad{cursor:default}
-  .pad{appearance:none;border:0;cursor:pointer;aspect-ratio:1;border-radius:50%;position:relative;
+  .pad-shell{position:relative;aspect-ratio:1}
+  .pad-shell::before{
+    content:"";position:absolute;inset:-8px;border-radius:50%;
+    background:var(--case-deep);
+    box-shadow:inset 0 4px 9px rgba(0,0,0,.55), inset 0 -1px 2px rgba(255,255,255,.08), 0 1px 0 rgba(255,255,255,.06);
+  }
+  .pad{appearance:none;border:0;cursor:pointer;position:absolute;inset:0;width:100%;height:100%;border-radius:50%;
     -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
-    background:radial-gradient(circle at 35% 28%, color-mix(in srgb, var(--pc) 70%, white), var(--pc) 55%, var(--pd) 100%);
-    box-shadow:0 6px 0 var(--pd), 0 8px 14px rgba(0,0,0,.3), inset 0 -4px 6px rgba(0,0,0,.15);
+    background:
+      radial-gradient(circle at 28% 18%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.95) 3%, transparent 13%),
+      radial-gradient(circle at 32% 24%, color-mix(in srgb, var(--pc) 45%, white) 0%, color-mix(in srgb, var(--pc) 82%, white) 20%, var(--pc) 48%, var(--pd) 100%);
+    box-shadow:
+      0 9px 0 var(--pd),
+      0 13px 18px rgba(0,0,0,.4),
+      inset 0 4px 5px rgba(255,255,255,.55),
+      inset 0 -12px 16px rgba(0,0,0,.3),
+      inset 0 0 0 2px rgba(0,0,0,.1);
     transition:transform .07s, box-shadow .07s, filter .07s}
   .pad[data-i="0"]{--pc:var(--c0);--pd:var(--c0-d)}
   .pad[data-i="1"]{--pc:var(--c1);--pd:var(--c1-d)}
@@ -86,8 +99,11 @@
   .pad[data-i="6"]{--pc:var(--c6);--pd:var(--c6-d)}
   .pad[data-i="7"]{--pc:var(--c7);--pd:var(--c7-d)}
   .pad .key{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-family:"Space Mono",monospace;font-size:11px;font-weight:700;color:var(--muted)}
-  .pad.lit{transform:translateY(4px);box-shadow:0 2px 0 var(--pd), 0 4px 10px rgba(0,0,0,.25), inset 0 -2px 4px rgba(0,0,0,.1);filter:brightness(1.2) saturate(1.15)}
-  .pad:active{transform:translateY(4px)}
+  .pad.lit{transform:translateY(7px);
+    box-shadow:0 2px 0 var(--pd), 0 4px 10px rgba(0,0,0,.3), inset 0 3px 4px rgba(255,255,255,.35), inset 0 -6px 8px rgba(0,0,0,.22);
+    filter:brightness(1.2) saturate(1.15)}
+  .pad:active{transform:translateY(7px);
+    box-shadow:0 2px 0 var(--pd), 0 4px 10px rgba(0,0,0,.3), inset 0 3px 4px rgba(255,255,255,.35), inset 0 -6px 8px rgba(0,0,0,.22)}
   .pad:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 
   .status{min-height:1.4em;font-size:16px;font-weight:600;text-align:center;color:var(--ink)}
@@ -314,7 +330,7 @@
     </div>
   </details>
 
-  <footer>Desarrollado por Seba Branda</footer>
+  <footer>Desarrollado por @sebranda</footer>
   <div class="tour-overlay" id="tourOverlay" hidden>
     <div class="tour-spot" id="tourSpot"></div>
     <div class="tour-tip" id="tourTip">
@@ -478,11 +494,14 @@
     padsEl.style.gridTemplateColumns = COLS[numColors];
     padsEl.innerHTML = '';
     for(let i=0;i<numColors;i++){
+      const shell = document.createElement('div');
+      shell.className = 'pad-shell';
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
       b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
       b.innerHTML += cbSymbolHTML(i);
-      padsEl.appendChild(b);
+      shell.appendChild(b);
+      padsEl.appendChild(shell);
     }
     pads = [...padsEl.querySelectorAll('.pad')];
     pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
