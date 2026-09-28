@@ -25,6 +25,7 @@
       radial-gradient(120% 60% at 50% -10%, var(--bg2), transparent 60%),
       repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 42px),
       repeating-linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 42px),
+      repeating-linear-gradient(115deg, #170f09 0 3px, #1e150c 3px 6px, #130c07 6px 9px),
       var(--bg);
     background-color:var(--bg);
     color:var(--ink);
@@ -40,6 +41,37 @@
   h1{font-family:"Press Start 2P", monospace;font-weight:400;font-size:clamp(20px,6.5vw,28px);margin:0;letter-spacing:.03em;line-height:1.4;
      color:var(--c3);text-shadow:0 0 6px var(--c3), 0 0 22px var(--c3-hi);}
   .tag{margin:10px 0 0;color:var(--muted);font-size:13px;letter-spacing:.06em}
+
+  /* ---------- Marco tipo gabinete de arcade ---------- */
+  .cabinet{
+    position:relative;width:100%;
+    display:flex;flex-direction:column;align-items:center;gap:18px;
+    border-radius:30px;
+    padding:26px 18px 22px;
+    background:
+      linear-gradient(160deg, rgba(24,12,46,.65), rgba(9,4,20,.8) 65%),
+      linear-gradient(0deg, #1b1008, #1b1008);
+    box-shadow:0 0 0 1px rgba(255,255,255,.03), 0 30px 70px rgba(0,0,0,.65), inset 0 0 50px rgba(0,0,0,.4);
+  }
+  .cabinet::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;padding:3px;pointer-events:none;
+    background:conic-gradient(from 0deg, var(--c3), var(--c1), var(--c5), var(--c0), var(--c3));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:.9;
+    filter:drop-shadow(0 0 6px var(--c3)) drop-shadow(0 0 12px var(--c1));
+  }
+  .cabinet::after{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:
+      radial-gradient(9px 9px at 16px 16px, var(--c3), transparent 72%),
+      radial-gradient(9px 9px at calc(100% - 16px) 16px, var(--c1), transparent 72%),
+      radial-gradient(9px 9px at 16px calc(100% - 16px), var(--c0), transparent 72%),
+      radial-gradient(9px 9px at calc(100% - 16px) calc(100% - 16px), var(--c5), transparent 72%);
+    filter:drop-shadow(0 0 5px rgba(255,255,255,.35));
+  }
+  .cabinet > header{position:relative;z-index:1}
+  .cabinet > .device{position:relative;z-index:1}
 
   .device{position:relative;width:100%;max-width:380px;aspect-ratio:1;
     background:linear-gradient(160deg,var(--panel-edge),var(--panel) 60%);
@@ -200,16 +232,18 @@
 `;
   s.html = `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
-  <header>
-    <h1>NEÓN<br>CUADRANTE</h1>
-    <p class="tag">// repetí la secuencia de luz</p>
-  </header>
+  <div class="cabinet">
+    <header>
+      <h1>NEÓN<br>CUADRANTE</h1>
+      <p class="tag">// repetí la secuencia de luz</p>
+    </header>
 
-  <div class="device locked" id="device" data-level="4">
-    <div class="gridpads" id="gridpads"></div>
-    <div class="hub" aria-hidden="true">
-      <div class="lcd" id="lcd">--</div>
-      <small>ronda</small>
+    <div class="device locked" id="device" data-level="4">
+      <div class="gridpads" id="gridpads"></div>
+      <div class="hub" aria-hidden="true">
+        <div class="lcd" id="lcd">--</div>
+        <small>ronda</small>
+      </div>
     </div>
   </div>
 
@@ -308,7 +342,7 @@
     </div>
   </details>
 
-  <footer>Desarrollado por Seba Branda</footer>
+  <footer>Desarrollado por @sebranda</footer>
   <div class="tour-overlay" id="tourOverlay" hidden>
     <div class="tour-spot" id="tourSpot"></div>
     <div class="tour-tip" id="tourTip">
