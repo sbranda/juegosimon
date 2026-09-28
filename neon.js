@@ -61,17 +61,34 @@
     opacity:.9;
     filter:drop-shadow(0 0 6px var(--c3)) drop-shadow(0 0 12px var(--c1));
   }
-  .cabinet::after{
-    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-    background:
-      radial-gradient(9px 9px at 16px 16px, var(--c3), transparent 72%),
-      radial-gradient(9px 9px at calc(100% - 16px) 16px, var(--c1), transparent 72%),
-      radial-gradient(9px 9px at 16px calc(100% - 16px), var(--c0), transparent 72%),
-      radial-gradient(9px 9px at calc(100% - 16px) calc(100% - 16px), var(--c5), transparent 72%);
-    filter:drop-shadow(0 0 5px rgba(255,255,255,.35));
-  }
   .cabinet > header{position:relative;z-index:1}
   .cabinet > .device{position:relative;z-index:1}
+
+  /* ---------- Filigranas ornamentales ---------- */
+  .orn{position:absolute;width:52px;height:52px;pointer-events:none;fill:none;stroke:currentColor;
+    stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.9;z-index:2;
+    filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 8px currentColor)}
+  .orn.tl{top:8px;left:8px;color:var(--c3)}
+  .orn.tr{top:8px;right:8px;color:var(--c1);transform:scaleX(-1)}
+  .orn.bl{bottom:8px;left:8px;color:var(--c0);transform:scaleY(-1)}
+  .orn.br{bottom:8px;right:8px;color:var(--c5);transform:scale(-1,-1)}
+
+  header{position:relative;padding-inline:30px}
+  .title-orn{position:absolute;top:50%;width:26px;height:48px;pointer-events:none;
+    fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;opacity:.85;
+    filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 7px currentColor)}
+  .title-orn.left{left:-4px;transform:translateY(-50%) rotate(90deg);color:var(--c1)}
+  .title-orn.right{right:-4px;transform:translateY(-50%) rotate(-90deg) scaleX(-1);color:var(--c0)}
+
+  .pad{overflow:visible}
+  .pad::before{
+    content:"";position:absolute;bottom:5px;right:5px;width:16px;height:16px;pointer-events:none;
+    transform:scale(-1,-1);
+    background-color:currentColor;opacity:.5;
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M6,58 C6,40 6,24 18,14 C28,6 40,4 48,8 C54,10 58,14 57,20 C56,25 50,27 47,23 C45,20 47,17 51,18 M18,34 C24,30 31,31 32,37 C33,43 27,45 22,41 C19,38 18,36 18,34 Z' fill='none' stroke='%23000' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M6,58 C6,40 6,24 18,14 C28,6 40,4 48,8 C54,10 58,14 57,20 C56,25 50,27 47,23 C45,20 47,17 51,18 M18,34 C24,30 31,31 32,37 C33,43 27,45 22,41 C19,38 18,36 18,34 Z' fill='none' stroke='%23000' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    -webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  }
 
   .device{position:relative;width:100%;max-width:380px;aspect-ratio:1;
     background:linear-gradient(160deg,var(--panel-edge),var(--panel) 60%);
@@ -231,11 +248,24 @@
   .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
 `;
   s.html = `<div class="wrap">
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+    <defs>
+      <symbol id="orn-flourish" viewBox="0 0 64 64">
+        <path d="M6,58 C6,40 6,24 18,14 C28,6 40,4 48,8 C54,10 58,14 57,20 C56,25 50,27 47,23 C45,20 47,17 51,18 M18,34 C24,30 31,31 32,37 C33,43 27,45 22,41 C19,38 18,36 18,34 Z"/>
+      </symbol>
+    </defs>
+  </svg>
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <div class="cabinet">
+    <svg class="orn tl"><use href="#orn-flourish"/></svg>
+    <svg class="orn tr"><use href="#orn-flourish"/></svg>
+    <svg class="orn bl"><use href="#orn-flourish"/></svg>
+    <svg class="orn br"><use href="#orn-flourish"/></svg>
     <header>
+      <svg class="title-orn left"><use href="#orn-flourish"/></svg>
       <h1>NEÓN<br>CUADRANTE</h1>
       <p class="tag">// repetí la secuencia de luz</p>
+      <svg class="title-orn right"><use href="#orn-flourish"/></svg>
     </header>
 
     <div class="device locked" id="device" data-level="4">
