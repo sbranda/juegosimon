@@ -97,6 +97,17 @@
 
   .prev{width:60px;height:60px;flex:0 0 auto;border-radius:12px;position:relative;overflow:hidden}
   .prev span{position:absolute;display:block}
+  @media (prefers-reduced-motion: no-preference){
+    .prev span{animation:prevChase 2.6s ease-in-out infinite}
+    .prev span:nth-child(1){animation-delay:0s}
+    .prev span:nth-child(2){animation-delay:.28s}
+    .prev span:nth-child(3){animation-delay:.56s}
+    .prev span:nth-child(4){animation-delay:.84s}
+  }
+  @keyframes prevChase{
+    0%,58%,100%{filter:brightness(1);transform:scale(1)}
+    14%{filter:brightness(1.45);transform:scale(1.1)}
+  }
 
   .prev-neon{background:#070312;border:1px solid #2a1552}
   .prev-neon span{width:24px;height:24px;border-radius:5px;background:#0a0616}
@@ -199,11 +210,12 @@
 </head>
 <body>
 
-<div id="backbar" hidden>
+<header id="backbar" hidden>
   <button class="back-btn" id="backBtn" type="button">‹ Diseños</button>
   <span id="backbar-name"></span>
-</div>
+</header>
 
+<main>
 <div id="menu">
   <div class="menu-wrap">
     <div class="menu-head">
@@ -313,6 +325,7 @@
 </div>
 
 <div id="stage" hidden></div>
+</main>
 
 <script>
 window.SKINS = {
