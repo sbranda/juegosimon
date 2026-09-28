@@ -1,6 +1,6 @@
 // Memorión — service worker
 // IMPORTANTE: subí CACHE_NAME en cada deploy (v2, v3, …) para que los usuarios reciban la versión nueva.
-const CACHE_NAME = 'memorion-app-v43';
+const CACHE_NAME = 'memorion-app-v44';
 const FONT_CACHE = 'memorion-fonts';
 const ASSETS = [
   './',

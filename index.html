@@ -187,7 +187,18 @@
   .card-rec b{color:var(--m-ink)}
   .chev{flex:0 0 auto;color:var(--m-muted);font-size:20px}
 
-  footer.credit{font-size:12px;color:var(--m-muted);text-align:center}
+  footer.credit{font-size:12px;color:var(--m-muted);text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
+  .reset-link{appearance:none;border:0;background:transparent;color:var(--m-muted);font:600 12px "Manrope",sans-serif;cursor:pointer;padding:4px;text-decoration:underline;text-underline-offset:2px}
+  .reset-link:hover{color:var(--m-ink)}
+
+  .confirm-overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:rgba(6,6,10,.55);backdrop-filter:blur(2px);padding:16px}
+  .confirm-modal{width:100%;max-width:340px;background:var(--m-card);border:1px solid var(--m-card-edge);border-radius:20px;padding:22px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+  .confirm-modal h2{margin:0 0 8px;font-size:17px;font-weight:800}
+  .confirm-modal p{margin:0 0 18px;color:var(--m-muted);font-size:13.5px;line-height:1.5}
+  .confirm-links{display:flex;gap:10px}
+  .confirm-links button{flex:1;appearance:none;cursor:pointer;font:700 13.5px "Manrope",sans-serif;padding:11px;border-radius:12px;border:1px solid var(--m-card-edge)}
+  .confirm-cancel{background:transparent;color:var(--m-ink)}
+  .confirm-danger{background:#e5484d;color:#fff;border-color:#e5484d}
 
   /* ---------- Stage + back bar ---------- */
   #backbar{
@@ -320,12 +331,26 @@
       </button>
     </div>
 
-    <footer class="credit">Desarrollado por @sebranda</footer>
+    <footer class="credit">
+      Desarrollado por @sebranda
+      <button class="reset-link" id="resetProgressLink" type="button">Restablecer todo el progreso</button>
+    </footer>
   </div>
 </div>
 
 <div id="stage" hidden></div>
 </main>
+
+<div class="confirm-overlay" id="resetOverlay" hidden>
+  <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="resetTitle">
+    <h2 id="resetTitle">¿Borrar todo tu progreso?</h2>
+    <p>Se van a borrar los récords, el historial de partidas y la racha de los 9 diseños. Esta acción no se puede deshacer.</p>
+    <div class="confirm-links">
+      <button class="confirm-cancel" id="resetCancel" type="button">Cancelar</button>
+      <button class="confirm-danger" id="resetOk" type="button">Borrar todo</button>
+    </div>
+  </div>
+</div>
 
 <script>
 window.SKINS = {
@@ -494,6 +519,26 @@ window.SKINS = {
     });
     streakBannerEl2.addEventListener('keydown', e => {
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); streakBannerEl2.click(); }
+    });
+  }
+
+  const resetLinkEl = document.getElementById('resetProgressLink');
+  const resetOverlayEl = document.getElementById('resetOverlay');
+  const resetCancelEl = document.getElementById('resetCancel');
+  const resetOkEl = document.getElementById('resetOk');
+  if(resetLinkEl && resetOverlayEl){
+    resetLinkEl.addEventListener('click', () => { resetOverlayEl.hidden = false; });
+    resetCancelEl.addEventListener('click', () => { resetOverlayEl.hidden = true; });
+    resetOverlayEl.addEventListener('click', e => { if(e.target === resetOverlayEl) resetOverlayEl.hidden = true; });
+    resetOkEl.addEventListener('click', () => {
+      try{
+        Object.values(SKINS).forEach(s => localStorage.removeItem(s.bestKey));
+        localStorage.removeItem('memorion-history');
+        localStorage.removeItem('memorion-stats');
+        localStorage.removeItem('memorion-streak-dismissed');
+      }catch(e){}
+      resetOverlayEl.hidden = true;
+      refreshCards();
     });
   }
 
