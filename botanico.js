@@ -6,7 +6,7 @@
     color-scheme: light;
     --bg:#f3ecdd; --bg2:#e9dfc7;
     --wood:#5b4632; --wood-hi:#7a5f42;
-    --ink:#2c2416; --muted:#7a6d54;
+    --ink:#2c2416; --muted:#6e624c;
     --c0:#4f7942; --c0-hi:#7fae6a; /* musgo */
     --c1:#c1652f; --c1-hi:#e08a52; /* terracota */
     --c2:#d7a233; --c2-hi:#eec66a; /* miel */
@@ -306,7 +306,7 @@
     </div>
   </details>
 
-  <footer>Desarrollado por Seba Branda</footer>
+  <footer>Desarrollado por @sebranda</footer>
   <div class="tour-overlay" id="tourOverlay" hidden>
     <div class="tour-spot" id="tourSpot"></div>
     <div class="tour-tip" id="tourTip">

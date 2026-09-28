@@ -5,15 +5,15 @@
   :root{
     color-scheme: light;
     --bg:#faf8f4; --surface:#ffffff; --line:#e7e2d8;
-    --ink:#221f1a; --muted:#797365;
-    --c0:#e94f37; --c0-soft:#fde2dd; /* coral */
-    --c1:#0f9d8f; --c1-soft:#d9f3ef; /* teal */
-    --c2:#f2a900; --c2-soft:#fdedcc; /* amber */
-    --c3:#4a4de7; --c3-soft:#e3e3fd; /* indigo */
-    --c4:#d9791c; --c4-soft:#fdead2; /* naranja */
-    --c5:#8a4bc9; --c5-soft:#ece0f9; /* violeta */
-    --c6:#c9316f; --c6-soft:#fbdcea; /* rosa */
-    --c7:#1c9a7c; --c7-soft:#d7f1e8; /* verde */
+    --ink:#221f1a; --muted:#787264;
+    --c0:#e94f37; --c0-soft:#fde2dd; --c0-ink:#b93e2b; /* coral */
+    --c1:#0f9d8f; --c1-soft:#d9f3ef; --c1-ink:#0b796f; /* teal */
+    --c2:#f2a900; --c2-soft:#fdedcc; --c2-ink:#906400; /* amber */
+    --c3:#4a4de7; --c3-soft:#e3e3fd; --c3-ink:#4a4de7; /* indigo */
+    --c4:#d9791c; --c4-soft:#fdead2; --c4-ink:#a15914; /* naranja */
+    --c5:#8a4bc9; --c5-soft:#ece0f9; --c5-ink:#8448c1; /* violeta */
+    --c6:#c9316f; --c6-soft:#fbdcea; --c6-ink:#ba2d67; /* rosa */
+    --c7:#1c9a7c; --c7-soft:#d7f1e8; --c7-ink:#157861; /* verde */
     --accent:#221f1a;
   }
   @media (prefers-color-scheme: dark){
@@ -23,6 +23,8 @@
       --ink:#f3f1ec; --muted:#a19a8d;
       --c0-soft:#3a2020; --c1-soft:#12302c; --c2-soft:#3a2c0c; --c3-soft:#22224a;
       --c4-soft:#3a2a12; --c5-soft:#2a1c3a; --c6-soft:#3a1626; --c7-soft:#0f2e26;
+      --c0-ink:var(--c0); --c1-ink:var(--c1); --c2-ink:var(--c2); --c3-ink:var(--c3);
+      --c4-ink:var(--c4); --c5-ink:var(--c5); --c6-ink:var(--c6); --c7-ink:var(--c7);
     }
   }
   :root[data-theme="dark"]{
@@ -31,6 +33,8 @@
     --ink:#f3f1ec; --muted:#a19a8d;
     --c0-soft:#3a2020; --c1-soft:#12302c; --c2-soft:#3a2c0c; --c3-soft:#22224a;
     --c4-soft:#3a2a12; --c5-soft:#2a1c3a; --c6-soft:#3a1626; --c7-soft:#0f2e26;
+    --c0-ink:var(--c0); --c1-ink:var(--c1); --c2-ink:var(--c2); --c3-ink:var(--c3);
+    --c4-ink:var(--c4); --c5-ink:var(--c5); --c6-ink:var(--c6); --c7-ink:var(--c7);
   }
   html,body{height:100%}
   *,*::before,*::after{box-sizing:border-box}
@@ -50,18 +54,18 @@
   .pad{appearance:none;cursor:pointer;position:relative;border:1px solid var(--line);border-radius:14px;aspect-ratio:1.15;
     -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     display:flex;flex-direction:column;justify-content:space-between;padding:14px;
-    background:var(--soft);color:var(--pc);text-align:left;transition:background .1s, box-shadow .1s, transform .06s}
-  .pad[data-i="0"]{--soft:var(--c0-soft);--pc:var(--c0)}
-  .pad[data-i="1"]{--soft:var(--c1-soft);--pc:var(--c1)}
-  .pad[data-i="2"]{--soft:var(--c2-soft);--pc:var(--c2)}
-  .pad[data-i="3"]{--soft:var(--c3-soft);--pc:var(--c3)}
-  .pad[data-i="4"]{--soft:var(--c4-soft);--pc:var(--c4)}
-  .pad[data-i="5"]{--soft:var(--c5-soft);--pc:var(--c5)}
-  .pad[data-i="6"]{--soft:var(--c6-soft);--pc:var(--c6)}
-  .pad[data-i="7"]{--soft:var(--c7-soft);--pc:var(--c7)}
+    background:var(--soft);color:var(--ink-c, var(--pc));text-align:left;transition:background .1s, box-shadow .1s, transform .06s}
+  .pad[data-i="0"]{--soft:var(--c0-soft);--pc:var(--c0);--ink-c:var(--c0-ink)}
+  .pad[data-i="1"]{--soft:var(--c1-soft);--pc:var(--c1);--ink-c:var(--c1-ink)}
+  .pad[data-i="2"]{--soft:var(--c2-soft);--pc:var(--c2);--ink-c:var(--c2-ink)}
+  .pad[data-i="3"]{--soft:var(--c3-soft);--pc:var(--c3);--ink-c:var(--c3-ink)}
+  .pad[data-i="4"]{--soft:var(--c4-soft);--pc:var(--c4);--ink-c:var(--c4-ink)}
+  .pad[data-i="5"]{--soft:var(--c5-soft);--pc:var(--c5);--ink-c:var(--c5-ink)}
+  .pad[data-i="6"]{--soft:var(--c6-soft);--pc:var(--c6);--ink-c:var(--c6-ink)}
+  .pad[data-i="7"]{--soft:var(--c7-soft);--pc:var(--c7);--ink-c:var(--c7-ink)}
   .pad .num{font-family:"Manrope";font-weight:800;font-size:13px;letter-spacing:.04em}
   .pad .dot{width:100%;flex:1;border-radius:8px;background:var(--pc);opacity:.16;margin:10px 0}
-  .pad .key{font-family:"Manrope";font-weight:700;font-size:12px;color:var(--pc)}
+  .pad .key{font-family:"Manrope";font-weight:700;font-size:12px;color:var(--ink-c, var(--pc))}
   .pad.lit{background:var(--pc);transform:scale(.985);box-shadow:0 8px 20px color-mix(in srgb, var(--pc) 45%, transparent)}
   .pad.lit .num,.pad.lit .key{color:#fff}
   .pad.lit .dot{background:#fff;opacity:.9}
@@ -288,7 +292,7 @@
     </div>
   </details>
 
-  <footer>Desarrollado por Seba Branda</footer>
+  <footer>Desarrollado por @sebranda</footer>
   <div class="tour-overlay" id="tourOverlay" hidden>
     <div class="tour-spot" id="tourSpot"></div>
     <div class="tour-tip" id="tourTip">

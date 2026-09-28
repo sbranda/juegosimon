@@ -94,7 +94,7 @@
   .status{min-height:1.4em;font-size:14px;text-align:center;color:var(--ink)}
   .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
   .btn{appearance:none;border:1px solid var(--c1);cursor:pointer;font:700 13px "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;
-    padding:12px 20px;border-radius:6px;background:transparent;color:var(--c1);
+    padding:12px 20px;border-radius:6px;background:transparent;color:#3c71e0;
     box-shadow:0 0 14px color-mix(in srgb, var(--c1) 35%, transparent)}
   .btn:active{transform:translateY(1px)}
   .btn:focus-visible,.seg button:focus-visible,.toggle input:focus-visible+span{outline:2px solid var(--c3-hi);outline-offset:2px}
@@ -315,7 +315,7 @@
     </div>
   </details>
 
-  <footer>Desarrollado por Seba Branda</footer>
+  <footer>Desarrollado por @sebranda</footer>
   <div class="tour-overlay" id="tourOverlay" hidden>
     <div class="tour-spot" id="tourSpot"></div>
     <div class="tour-tip" id="tourTip">

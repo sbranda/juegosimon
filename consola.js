@@ -7,9 +7,9 @@
     --bg:#e8ddc4; --bg2:#dccfab;
     --case:#f1e6cc; --case-edge:#c9b686; --case-deep:#a99461;
     --plate:#fffaf0;
-    --ink:#3a2e1c; --muted:#8a7a56;
+    --ink:#3a2e1c; --muted:#827251;
     --c0:#2f9e58; --c0-d:#1f6f3c; /* verde */
-    --c1:#d6402f; --c1-d:#9c2a1e; /* rojo */
+    --c1:#d13e2e; --c1-d:#9c2a1e; /* rojo */
     --c2:#e8ab1c; --c2-d:#b17f0f; /* amarillo */
     --c3:#2b6fc9; --c3-d:#1c4c8f; /* azul */
     --c4:#d9791c; --c4-d:#9c5711; /* naranja */
@@ -25,7 +25,7 @@
       --bg:#221c14; --bg2:#2b2318;
       --case:#3a3122; --case-edge:#544730; --case-deep:#231d13;
       --plate:#463c29;
-      --ink:#f1e8d3; --muted:#a5977a;
+      --ink:#f1e8d3; --muted:#b2a68d;
     }
   }
   :root[data-theme="dark"]{
@@ -33,7 +33,7 @@
     --bg:#221c14; --bg2:#2b2318;
     --case:#3a3122; --case-edge:#544730; --case-deep:#231d13;
     --plate:#463c29;
-    --ink:#f1e8d3; --muted:#a5977a;
+    --ink:#f1e8d3; --muted:#b2a68d;
   }
   html,body{height:100%}
   *,*::before,*::after{box-sizing:border-box}
@@ -55,7 +55,10 @@
   .tag{margin:6px 0 0;color:var(--muted);font-size:14px;font-weight:500}
 
   .console{position:relative;width:100%;max-width:400px;
-    background:linear-gradient(160deg,var(--case),var(--case) 60%,var(--case-deep));
+    background:
+      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 420'><g fill='none' stroke='%23c9a24a' stroke-width='1.6' stroke-linecap='square' opacity='0.6'><path d='M155,191 H105 V121 H79'/><path d='M245,191 H279 V125 H306'/><path d='M155,198 H93 V174 H62'/><path d='M245,198 H302 V226 H352'/><path d='M155,206 H120 V233 H85'/><path d='M245,206 H289 V136 H315'/><path d='M155,214 H111 V177 H54'/><path d='M245,214 H301 V125 H336'/><path d='M155,222 H89 V265 H56'/><path d='M245,222 H312 V155 H344'/><path d='M155,229 H90 V202 H44'/><path d='M245,229 H306 V289 H385'/><path d='M173,183 V116 H239 V77'/><path d='M173,237 V282 H122 V307'/><path d='M191,183 V117 H278 V66'/><path d='M191,237 V288 H247 V346'/><path d='M209,183 V149 H124 V103'/><path d='M209,237 V277 H248 V328'/><path d='M227,183 V127 H198 V59'/><path d='M227,237 V302 H290 V344'/></g><g fill='%23c9a24a' opacity='0.7'><circle cx='79' cy='121' r='3'/><circle cx='306' cy='125' r='2.6'/><circle cx='62' cy='174' r='3'/><circle cx='352' cy='226' r='2.6'/><circle cx='85' cy='233' r='2.2'/><circle cx='315' cy='136' r='2.2'/><circle cx='54' cy='177' r='2.6'/><circle cx='336' cy='125' r='2.6'/><circle cx='56' cy='265' r='3'/><circle cx='344' cy='155' r='3'/><circle cx='44' cy='202' r='2.2'/><circle cx='385' cy='289' r='2.2'/><circle cx='239' cy='77' r='3'/><circle cx='122' cy='307' r='3'/><circle cx='278' cy='66' r='2.6'/><circle cx='247' cy='346' r='3'/><circle cx='124' cy='103' r='3'/><circle cx='248' cy='328' r='3'/><circle cx='198' cy='59' r='2.6'/><circle cx='290' cy='344' r='2.6'/></g><rect x='240' y='341' width='14' height='10' rx='1.5' fill='none' stroke='%23c9a24a' stroke-width='1.3' opacity='0.55'/><rect x='35' y='196' width='18' height='12' rx='1.5' fill='none' stroke='%23c9a24a' stroke-width='1.3' opacity='0.55'/><rect x='45' y='173' width='18' height='8' rx='1.5' fill='none' stroke='%23c9a24a' stroke-width='1.3' opacity='0.55'/><rect x='47' y='259' width='18' height='12' rx='1.5' fill='none' stroke='%23c9a24a' stroke-width='1.3' opacity='0.55'/><rect x='113' y='301' width='18' height='12' rx='1.5' fill='none' stroke='%23c9a24a' stroke-width='1.3' opacity='0.55'/><rect x='155' y='183' width='90' height='54' rx='4' fill='none' stroke='%23c9a24a' stroke-width='2' opacity='0.8'/><rect x='186' y='201' width='28' height='18' rx='2' fill='%2337c98a' opacity='0.55'/></svg>") no-repeat center 10%,
+      linear-gradient(160deg,var(--case),var(--case) 60%,var(--case-deep));
+    background-size:88% auto, cover;
     border-radius:28px;padding:22px 20px 26px;
     box-shadow:0 18px 0 var(--case-deep), 0 24px 40px rgba(0,0,0,.35);
     border:1px solid var(--case-edge);
@@ -70,7 +73,14 @@
     font-variant-numeric:tabular-nums;font-size:20px;line-height:1;padding:6px 12px;border-radius:6px;
     min-width:2.4ch;text-align:center;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
 
-  .pads{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;row-gap:30px}
+  .pads{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;row-gap:30px;
+    padding:20px 14px 34px;border-radius:16px;margin-top:4px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cpath d='M0,20 H35 V50 H70 V100' stroke='%23c9a24a' stroke-width='1.3' fill='none' opacity='0.55'/%3E%3Cpath d='M100,72 H63 V38 H18 V0' stroke='%23c9a24a' stroke-width='1.3' fill='none' opacity='0.55'/%3E%3Ccircle cx='35' cy='50' r='2.3' fill='%23c9a24a' opacity='0.65'/%3E%3Ccircle cx='63' cy='38' r='2.3' fill='%23c9a24a' opacity='0.65'/%3E%3Ccircle cx='18' cy='0' r='2' fill='%23c9a24a' opacity='0.45'/%3E%3Ccircle cx='70' cy='100' r='2' fill='%23c9a24a' opacity='0.45'/%3E%3C/svg%3E"),
+      linear-gradient(160deg, color-mix(in srgb, var(--case-deep) 55%, #1a1a22), color-mix(in srgb, var(--case-deep) 75%, #0d0d12));
+    background-size:90px 90px, cover;
+    box-shadow:inset 0 3px 10px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.05);
+  }
   .locked .pad{cursor:default}
   .pad-shell{position:relative;aspect-ratio:1}
   .pad-shell::before{
@@ -90,6 +100,17 @@
       inset 0 -12px 16px rgba(0,0,0,.3),
       inset 0 0 0 2px rgba(0,0,0,.1);
     transition:transform .07s, box-shadow .07s, filter .07s}
+  .pad::after{
+    content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;mix-blend-mode:overlay;opacity:.6;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0,0,0,.5) 0 1px, transparent 1px),
+      radial-gradient(circle at 62% 68%, rgba(0,0,0,.5) 0 1px, transparent 1px),
+      radial-gradient(circle at 82% 22%, rgba(255,255,255,.4) 0 1px, transparent 1px),
+      radial-gradient(circle at 38% 84%, rgba(0,0,0,.45) 0 1px, transparent 1px),
+      radial-gradient(circle at 12% 70%, rgba(255,255,255,.3) 0 1px, transparent 1px),
+      radial-gradient(circle at 70% 45%, rgba(0,0,0,.4) 0 1px, transparent 1px);
+    background-size:9px 9px, 7px 7px, 11px 8px, 8px 10px, 10px 7px, 6px 9px;
+  }
   .pad[data-i="0"]{--pc:var(--c0);--pd:var(--c0-d)}
   .pad[data-i="1"]{--pc:var(--c1);--pd:var(--c1-d)}
   .pad[data-i="2"]{--pc:var(--c2);--pd:var(--c2-d)}

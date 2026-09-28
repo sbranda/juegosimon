@@ -6,7 +6,7 @@
     color-scheme: dark;
     --wood:#6b4a30; --wood-hi:#8a6440; --wood-lo:#4a3020;
     --board:#2c3d33; --board-2:#233129;
-    --chalk:#f5f3e7; --muted:#9fb3a6;
+    --chalk:#f5f3e7; --muted:#eaeeeb;
     --c0:#8ee7b3; --c0-d:#4f9d70; /* tiza verde menta */
     --c1:#ff8a75; --c1-d:#c2543f; /* tiza roja */
     --c2:#ffd166; --c2-d:#c99c2e; /* tiza amarilla */
@@ -314,7 +314,7 @@
     </div>
   </details>
 
-  <footer>Desarrollado por Seba Branda</footer>
+  <footer>Desarrollado por @sebranda</footer>
   <div class="tour-overlay" id="tourOverlay" hidden>
     <div class="tour-spot" id="tourSpot"></div>
     <div class="tour-tip" id="tourTip">
