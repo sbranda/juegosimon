@@ -387,12 +387,12 @@
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
   const HIST_KEY = 'memorion-history';
   const SKIN_NAME = 'Secuencia Cuatro';
-  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro','Vidrio Hologr\u00e1fico'];
+  const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro','Vidrio Hologr\u00e1fico','Arrecife Sonoro'];
   const ACHIEVEMENTS = [
     { id:'first_game', title:'Primeros pasos', desc:'Jug\u00e1 tu primera partida.', check: list => list.length >= 1 },
     { id:'ten_games', title:'Diez partidas', desc:'Jug\u00e1 10 partidas en total.', check: list => list.length >= 10 },
     { id:'fifty_games', title:'Maratonista', desc:'Jug\u00e1 50 partidas en total.', check: list => list.length >= 50 },
-    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 9 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
+    { id:'all_skins', title:'Coleccionista', desc:'Gan\u00e1 una partida con los 10 dise\u00f1os.', check: list => { const won = new Set(list.filter(e => e.won).map(e => e.skin)); return ALL_SKINS.every(s => won.has(s)); } },
     { id:'strict_win', title:'Modo estricto', desc:'Gan\u00e1 una partida en modo Estricto.', check: list => list.some(e => e.won && e.strict) },
     { id:'reverse_win', title:'Memoria inversa', desc:'Gan\u00e1 una partida con Orden inverso.', check: list => list.some(e => e.won && e.reverse) },
     { id:'audioonly_win', title:'O\u00eddo absoluto', desc:'Gan\u00e1 una partida en modo Solo sonido.', check: list => list.some(e => e.won && e.audioOnly) },

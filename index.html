@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Memorión</title>
-<meta name="description" content="Juego de memoria de secuencias de colores. Elegí entre seis diseños.">
+<meta name="description" content="Juego de memoria de secuencias de colores. Elegí entre diez diseños.">
 <meta name="theme-color" content="#12141c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -177,6 +177,13 @@
   .prev-glass span:nth-child(3){bottom:6px;left:6px;background:rgba(197,139,255,.35)}
   .prev-glass span:nth-child(4){bottom:6px;right:6px;background:rgba(95,240,192,.35)}
 
+  .prev-acuario{background:radial-gradient(120% 90% at 50% -10%,#0c3247,#03141f 70%)}
+  .prev-acuario span{width:22px;height:22px;border-radius:50%}
+  .prev-acuario span:nth-child(1){top:6px;left:6px;background:radial-gradient(circle at 32% 28%,#ffb199,#ff7657 55%,#7a2e1c 100%);box-shadow:0 0 8px rgba(255,118,87,.55)}
+  .prev-acuario span:nth-child(2){top:6px;right:6px;background:radial-gradient(circle at 32% 28%,#8ff0e6,#22d3c5 55%,#0e5f57 100%);box-shadow:0 0 8px rgba(34,211,197,.55)}
+  .prev-acuario span:nth-child(3){bottom:6px;left:6px;background:radial-gradient(circle at 32% 28%,#ffe28a,#f4c542 55%,#7a5f13 100%);box-shadow:0 0 8px rgba(244,197,66,.55)}
+  .prev-acuario span:nth-child(4){bottom:6px;right:6px;background:radial-gradient(circle at 32% 28%,#a9c4ff,#5088ff 55%,#173a7a 100%);box-shadow:0 0 8px rgba(80,136,255,.55)}
+
   .card-body{flex:1;min-width:0}
   .card-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .card-title{font-weight:800;font-size:15px}
@@ -326,6 +333,16 @@
         </div>
         <span class="chev" aria-hidden="true">›</span>
       </button>
+
+      <button class="card" data-skin="acuario" type="button">
+        <div class="prev prev-acuario"><span></span><span></span><span></span><span></span></div>
+        <div class="card-body">
+          <div class="card-title-row"><span class="card-title">Arrecife Sonoro</span><span class="badge" data-lastbadge="acuario" hidden>Último</span></div>
+          <p class="card-tag">Burbujas y peces de colores en el fondo del mar</p>
+          <p class="card-rec" data-rec="acuario"></p>
+        </div>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
     </div>
 
     <footer class="credit">
@@ -360,6 +377,7 @@ window.SKINS = {
   cosmos: { name: "\u00d3rbita C\u00f3smica", tag: "Planetas brillantes en un fondo estrellado", bestKey: "orbita-cosmica-best", file: "cosmos.js" },
   radio: { name: "Dial Retro", tag: "Radio y casete vintage con dial de sintonía", bestKey: "dial-retro-best", file: "radio.js" },
   glass: { name: "Vidrio Hologr\u00e1fico", tag: "Paneles de vidrio esmerilado con brillo holográfico", bestKey: "vidrio-holografico-best", file: "glass.js" },
+  acuario: { name: "Arrecife Sonoro", tag: "Burbujas y peces de colores en el fondo del mar", bestKey: "arrecife-sonoro-best", file: "acuario.js" },
 };
 </script>
 
