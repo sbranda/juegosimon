@@ -37,15 +37,40 @@
   .wrap{width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;gap:20px;padding-block:26px 30px}
 
   header{text-align:center}
-  h1{font-family:"Alfa Slab One", cursive;font-weight:400;font-size:clamp(24px,7.5vw,34px);margin:0;letter-spacing:.02em;line-height:1.2;
+  h1{font-family:"Playfair Display", serif;font-style:italic;font-weight:700;font-size:clamp(26px,7.5vw,36px);margin:0;letter-spacing:.01em;line-height:1.2;
      color:var(--c1);text-shadow:2px 2px 0 rgba(0,0,0,.4), 0 0 24px rgba(217,165,32,.35);}
   .tag{margin:10px 0 0;color:var(--muted);font-size:13px;letter-spacing:.06em}
 
+  /* ---------- Gabinete de madera ---------- */
+  .cabinet{
+    position:relative;width:100%;
+    display:flex;flex-direction:column;align-items:center;gap:18px;
+    border-radius:26px;
+    padding:30px 20px 26px;
+    background:
+      repeating-linear-gradient(112deg, rgba(0,0,0,.14) 0 3px, rgba(255,255,255,.02) 3px 6px, transparent 6px 10px),
+      linear-gradient(160deg, #6b4423 0%, #4a2c14 45%, #2a1608 100%);
+    box-shadow:
+      0 0 0 3px #1b0f05,
+      inset 0 0 0 2px rgba(255,214,140,.14),
+      inset 0 3px 14px rgba(255,255,255,.10),
+      inset 0 -22px 40px rgba(0,0,0,.35),
+      0 30px 70px rgba(0,0,0,.6);
+  }
+  .cabinet::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:radial-gradient(120% 60% at 50% -10%, rgba(255,224,170,.16), transparent 55%);
+  }
+  .cabinet > header{position:relative;z-index:1}
+  .cabinet > .device{position:relative;z-index:1}
+
   .device{position:relative;width:100%;max-width:380px;aspect-ratio:1;
-    background:linear-gradient(160deg,#f2e6c8,var(--panel) 55%,#d8c093 100%);
-    border-radius:20px;padding:14px;
-    border:3px solid var(--panel-edge);
-    box-shadow:0 0 0 1px rgba(255,255,255,.25) inset, 0 25px 60px rgba(0,0,0,.6), inset 0 0 30px rgba(120,80,30,.15)}
+    background:
+      linear-gradient(120deg, rgba(255,255,255,.35) 0%, transparent 32%),
+      linear-gradient(160deg,#f6e3a8,#d8ad4e 45%,#a9782a 78%,#7a5720 100%);
+    border-radius:18px;padding:14px;
+    border:3px solid #8a6023;
+    box-shadow:0 0 0 2px rgba(240,214,138,.65) inset, 0 20px 45px rgba(0,0,0,.55), inset 0 0 22px rgba(90,60,15,.35)}
   .device[data-level="4"]{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:10px}
   .device[data-level="4"] .gridpads{display:contents}
   .device:not([data-level="4"]){display:flex;flex-direction:column;gap:12px}
@@ -107,6 +132,25 @@
   .stat{text-align:center}
   .stat b{display:block;font-size:22px;font-family:"VT323",monospace;color:var(--c1);text-shadow:0 0 6px color-mix(in srgb, var(--c1) 50%, transparent)}
   .stat span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- Llaves y visor decorativos (panel inferior) ---------- */
+  .deco-panel{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}
+  .deco-toggle{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .deco-toggle small{font-size:9px;letter-spacing:.1em;color:var(--c1);font-family:"VT323",monospace;line-height:1}
+  .deco-lever{width:15px;height:26px;border-radius:7px;position:relative;
+    background:linear-gradient(180deg,#f6e3a8,#a9782a 55%,#6b4423 100%);
+    border:1px solid #5c3d20;box-shadow:0 2px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.4)}
+  .deco-lever::after{content:"";position:absolute;left:50%;top:3px;transform:translateX(-50%);
+    width:9px;height:9px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#fff6d0,#c9a565 55%,#7a5227 100%);box-shadow:0 1px 2px rgba(0,0,0,.4)}
+  .deco-lever.down::after{top:auto;bottom:3px}
+  .deco-strip{background:var(--lcd);border:1px solid #5c3d20;border-radius:6px;padding:8px 12px;
+    box-shadow:0 0 0 2px #8a6023, inset 0 0 8px rgba(0,0,0,.7);
+    color:var(--lcd-ink);font-family:"VT323",monospace;font-size:16px;letter-spacing:.12em;text-shadow:0 0 6px currentColor}
+  .deco-power{gap:3px}
+  .deco-power .deco-lever{width:34px;height:34px;border-radius:50%}
+  .deco-power .deco-lever::after{left:50%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px}
+  .deco-power small{font-weight:700}
 
   details{width:100%;color:var(--muted);font-size:13px;line-height:1.6;background:#1c1006;border:1px solid var(--panel-edge);border-radius:8px;padding:12px 15px}
   summary{cursor:pointer;color:var(--ink);font-weight:600}
@@ -202,16 +246,18 @@
 `;
   s.html = `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
-  <header>
-    <h1>DIAL<br>RETRO</h1>
-    <p class="tag">Sintonizá la secuencia de botones</p>
-  </header>
+  <div class="cabinet">
+    <header>
+      <h1>DIAL<br>RETRO</h1>
+      <p class="tag">Sintonizá la secuencia de botones</p>
+    </header>
 
-  <div class="device locked" id="device" data-level="4">
-    <div class="gridpads" id="gridpads"></div>
-    <div class="hub" aria-hidden="true">
-      <div class="lcd" id="lcd">--</div>
-      <small>ronda</small>
+    <div class="device locked" id="device" data-level="4">
+      <div class="gridpads" id="gridpads"></div>
+      <div class="hub" aria-hidden="true">
+        <div class="lcd" id="lcd">--</div>
+        <small>ronda</small>
+      </div>
     </div>
   </div>
 
@@ -257,6 +303,15 @@
     <div class="stat"><b id="best">0</b><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
     <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
+  </div>
+
+  <div class="deco-panel" aria-hidden="true">
+    <div class="deco-toggle"><small>+</small><span class="deco-lever"></span></div>
+    <div class="deco-toggle"><span class="deco-lever down"></span><small>−</small></div>
+    <div class="deco-strip">000·XXX·XX1</div>
+    <div class="deco-toggle"><small>1</small><span class="deco-lever"></span></div>
+    <div class="deco-toggle"><small>3</small><span class="deco-lever down"></span></div>
+    <div class="deco-toggle deco-power"><small>ON</small><span class="deco-lever"></span><small>OFF</small></div>
   </div>
 
   <button class="btn" id="shareBtn" type="button">Compartir récord</button>
