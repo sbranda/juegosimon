@@ -32,6 +32,9 @@
       radial-gradient(1px 1px at 74% 92%, #fff 50%, transparent 51%),
       radial-gradient(1px 1px at 6% 55%, #fff 50%, transparent 51%),
       radial-gradient(1px 1px at 55% 6%, #fff 50%, transparent 51%),
+      radial-gradient(55% 38% at 12% 22%, rgba(150,70,190,.32), transparent 72%),
+      radial-gradient(50% 34% at 88% 16%, rgba(230,130,70,.22), transparent 72%),
+      radial-gradient(65% 42% at 55% 96%, rgba(60,45,150,.3), transparent 72%),
       radial-gradient(120% 70% at 50% -10%, var(--bg2), transparent 60%),
       var(--bg);
     background-color:var(--bg);
@@ -50,10 +53,12 @@
   .tag{margin:10px 0 0;color:var(--muted);font-size:13px;letter-spacing:.06em}
 
   .device{position:relative;width:100%;max-width:380px;aspect-ratio:1;
-    background:radial-gradient(120% 120% at 50% 8%, rgba(40,20,80,.5), rgba(4,3,10,.85) 70%);
+    background:
+      radial-gradient(60% 45% at 50% 50%, rgba(220,160,70,.12), transparent 70%),
+      radial-gradient(120% 120% at 50% 8%, rgba(60,30,100,.55), rgba(4,3,10,.88) 70%);
     border-radius:24px;padding:16px;
-    border:1px solid rgba(140,120,255,.22);
-    box-shadow:0 0 0 1px rgba(140,120,255,.06), 0 25px 60px rgba(0,0,0,.7), inset 0 0 50px rgba(0,0,0,.5)}
+    border:1px solid rgba(180,150,255,.28);
+    box-shadow:0 0 0 1px rgba(140,120,255,.08), 0 0 0 6px rgba(20,12,36,.6), 0 25px 60px rgba(0,0,0,.7), inset 0 0 50px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06)}
   .device[data-level="4"]{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:10px}
   .device[data-level="4"] .gridpads{display:contents}
   .device:not([data-level="4"]){display:flex;flex-direction:column;gap:12px;aspect-ratio:auto}
@@ -73,6 +78,42 @@
   .pad[data-i="5"]{--pc:var(--c5);--pc-hi:var(--c5-hi)}
   .pad[data-i="6"]{--pc:var(--c6);--pc-hi:var(--c6-hi)}
   .pad[data-i="7"]{--pc:var(--c7);--pc-hi:var(--c7-hi)}
+  .pad::before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none}
+  /* Marte: superficie rocosa con manchas oscuras */
+  .pad[data-i="0"]::before{opacity:.85;mix-blend-mode:multiply;background:
+    radial-gradient(circle at 26% 68%, rgba(70,18,8,.55) 0 6%, transparent 7%),
+    radial-gradient(circle at 58% 52%, rgba(70,18,8,.42) 0 5%, transparent 6%),
+    radial-gradient(circle at 44% 28%, rgba(100,32,14,.32) 0 10%, transparent 11%),
+    radial-gradient(circle at 74% 24%, rgba(70,18,8,.4) 0 4%, transparent 5%),
+    radial-gradient(circle at 20% 30%, rgba(70,18,8,.3) 0 4%, transparent 5%)}
+  /* Neptuno: nubes arremolinadas */
+  .pad[data-i="1"]::before{opacity:.8;mix-blend-mode:screen;background:
+    radial-gradient(ellipse 62% 26% at 30% 34%, rgba(255,255,255,.5), transparent 65%),
+    radial-gradient(ellipse 50% 20% at 68% 58%, rgba(255,255,255,.36), transparent 68%),
+    radial-gradient(ellipse 42% 16% at 40% 78%, rgba(255,255,255,.28), transparent 70%)}
+  /* Saturno: bandas gaseosas */
+  .pad[data-i="2"]::before{opacity:.7;mix-blend-mode:overlay;background:
+    repeating-linear-gradient(178deg, rgba(255,241,205,.3) 0 6%, rgba(120,90,42,.2) 6% 12%)}
+  /* Venus: continentes marmolados */
+  .pad[data-i="3"]::before{opacity:.75;mix-blend-mode:multiply;background:
+    radial-gradient(circle at 30% 30%, rgba(15,70,45,.5) 0 17%, transparent 18%),
+    radial-gradient(circle at 66% 60%, rgba(15,70,45,.44) 0 13%, transparent 14%),
+    radial-gradient(circle at 50% 82%, rgba(15,70,45,.4) 0 9%, transparent 10%)}
+  /* Júpiter: bandas anaranjadas con mancha */
+  .pad[data-i="4"]::before{opacity:.75;mix-blend-mode:overlay;background:
+    repeating-linear-gradient(178deg, rgba(255,222,182,.24) 0 5%, rgba(150,88,40,.24) 5% 10%),
+    radial-gradient(circle at 66% 56%, rgba(175,58,28,.55) 0 9%, transparent 10%)}
+  /* Urano: banda pálida sutil */
+  .pad[data-i="5"]::before{opacity:.5;mix-blend-mode:overlay;background:
+    repeating-linear-gradient(178deg, rgba(255,255,255,.2) 0 10%, transparent 10% 20%)}
+  /* Plutón: superficie helada y craterizada */
+  .pad[data-i="6"]::before{opacity:.7;mix-blend-mode:multiply;background:
+    radial-gradient(circle at 30% 66%, rgba(110,16,58,.5) 0 8%, transparent 9%),
+    radial-gradient(circle at 62% 30%, rgba(110,16,58,.4) 0 6%, transparent 7%)}
+  /* Éris: superficie rocosa violeta */
+  .pad[data-i="7"]::before{opacity:.7;mix-blend-mode:multiply;background:
+    radial-gradient(circle at 35% 30%, rgba(58,10,108,.5) 0 8%, transparent 9%),
+    radial-gradient(circle at 66% 66%, rgba(58,10,108,.4) 0 6%, transparent 7%)}
   .pad .key{position:absolute;top:8px;left:10px;font-family:"Orbitron",monospace;font-size:10px;letter-spacing:.05em;
     background:rgba(0,0,0,.4);color:#fff;padding:2px 6px;border-radius:6px}
   .pad.lit{filter:brightness(1.35) saturate(1.2);transform:scale(1.05);
@@ -82,14 +123,18 @@
 
   .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
     width:34%;aspect-ratio:1;border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #fff6d0, var(--c2) 35%, var(--c0) 78%, #3a0f04 100%);
-    box-shadow:0 0 40px color-mix(in srgb, var(--c2) 65%, transparent), 0 0 90px color-mix(in srgb, var(--c0) 35%, transparent);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;pointer-events:none}
+    background:radial-gradient(circle at 35% 26%, #fff8e0, #f3d179 28%, #c99a3d 58%, #7a4e14 88%, #3a2408 100%);
+    box-shadow:0 0 0 3px rgba(255,224,150,.45), 0 0 40px color-mix(in srgb, var(--c2) 65%, transparent), 0 0 90px color-mix(in srgb, var(--c0) 30%, transparent),
+      inset 0 2px 5px rgba(255,255,255,.55), inset 0 -8px 16px rgba(0,0,0,.4);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;pointer-events:none}
+  .hub-icon{width:26%;aspect-ratio:1;margin-bottom:1px}
+  .hub-icon svg{width:100%;height:100%;display:block}
+  .device:not([data-level="4"]) .hub-icon{display:none}
   .lcd{background:rgba(10,4,0,.55);color:var(--lcd-ink);font-family:"Space Mono",monospace;font-weight:700;
-    font-variant-numeric:tabular-nums;font-size:clamp(20px,6vw,26px);line-height:1;padding:5px 10px;border-radius:4px;
+    font-variant-numeric:tabular-nums;font-size:clamp(18px,5.2vw,24px);line-height:1;padding:4px 9px;border-radius:4px;
     min-width:2.6ch;text-align:center;text-shadow:0 0 10px currentColor;box-shadow:inset 0 0 10px rgba(0,0,0,.6)}
   .lcd.bad{color:#ff5566;text-shadow:0 0 10px #ff5566}
-  .hub small{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#3a2408}
+  .hub small{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4a2f10;font-weight:700}
 
   .status{min-height:1.4em;font-size:14px;text-align:center;color:var(--ink)}
   .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
@@ -215,6 +260,7 @@
   <div class="device locked" id="device" data-level="4">
     <div class="gridpads" id="gridpads"></div>
     <div class="hub" aria-hidden="true">
+      <div class="hub-icon"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="4" fill="#2a1c05"/><rect x="10" y="3" width="4" height="4" rx="1" fill="#2a1c05"/><rect x="11" y="1.4" width="2" height="2.4" rx="1" fill="#2a1c05"/><circle cx="9.5" cy="13.2" r="1.6" fill="#ffe9a8"/><circle cx="14.5" cy="13.2" r="1.6" fill="#ffe9a8"/><rect x="8.5" y="16.4" width="7" height="1.4" rx=".7" fill="#ffe9a8"/><rect x="2.5" y="12" width="2" height="4" rx="1" fill="#2a1c05"/><rect x="19.5" y="12" width="2" height="4" rx="1" fill="#2a1c05"/></svg></div>
       <div class="lcd" id="lcd">--</div>
       <small>ronda</small>
     </div>
