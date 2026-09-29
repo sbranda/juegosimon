@@ -73,6 +73,7 @@
   .pad[data-i="5"]{--pc:var(--c5);--pc-hi:var(--c5-hi)}
   .pad[data-i="6"]{--pc:var(--c6);--pc-hi:var(--c6-hi)}
   .pad[data-i="7"]{--pc:var(--c7);--pc-hi:var(--c7-hi)}
+  .bubble-canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;pointer-events:none}
   .pad .key{position:absolute;top:8px;left:10px;font-family:"Orbitron",monospace;font-size:10px;letter-spacing:.05em;
     background:rgba(0,0,0,.4);color:#fff;padding:2px 6px;border-radius:6px}
   .pad.lit{filter:brightness(1.35) saturate(1.2);transform:scale(1.05);
@@ -473,18 +474,105 @@
     ];
     return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
   }
+  function drawBubble(canvas, idx){
+    const rect = canvas.getBoundingClientRect();
+    const size = Math.max(1, Math.round(Math.max(rect.width, rect.height)));
+    if(size <= 1) return;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(size*dpr); canvas.height = Math.round(size*dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,size,size);
+    const r = size/2;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(r,r,r,0,Math.PI*2); ctx.clip();
+
+    // película del agua: sombreado hacia el borde (curvatura de la burbuja)
+    const rim = ctx.createRadialGradient(r,r,r*0.5, r,r,r);
+    rim.addColorStop(0,'rgba(0,0,0,0)');
+    rim.addColorStop(1,'rgba(0,0,0,.22)');
+    ctx.fillStyle = rim; ctx.fillRect(0,0,size,size);
+
+    // anillo iridiscente tipo pompa de jabón
+    const rng = mulberry32(600+idx);
+    const hueShift = rng();
+    ctx.save();
+    ctx.globalAlpha = .32;
+    const iri = ctx.createConicGradient(hueShift*Math.PI*2, r, r);
+    const stops = ['#ff9fd1','#ffe29f','#9fffcf','#9fd4ff','#d19fff','#ff9fd1'];
+    stops.forEach((c,i)=> iri.addColorStop(i/(stops.length-1), c));
+    ctx.fillStyle = iri;
+    ctx.beginPath(); ctx.arc(r,r,r,0,Math.PI*2);
+    ctx.arc(r,r,r*0.8,0,Math.PI*2,true);
+    ctx.fill('evenodd');
+    ctx.restore();
+
+    // anillo brillante en el borde (tensión superficial)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,.55)';
+    ctx.lineWidth = Math.max(1, size*0.035);
+    ctx.beginPath(); ctx.arc(r, r, r*0.96, 0, Math.PI*2); ctx.stroke();
+    ctx.restore();
+
+    // brillo amplio (luz que atraviesa el agua desde arriba)
+    const glow = ctx.createRadialGradient(r*0.6,r*0.46,0, r*0.6,r*0.46, r*0.8);
+    glow.addColorStop(0,'rgba(255,255,255,.45)');
+    glow.addColorStop(0.5,'rgba(255,255,255,.14)');
+    glow.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = glow; ctx.fillRect(0,0,size,size);
+
+    // punto especular nítido
+    const hot = ctx.createRadialGradient(r*0.34,r*0.26,0, r*0.34,r*0.26, r*0.2);
+    hot.addColorStop(0,'rgba(255,255,255,.95)');
+    hot.addColorStop(0.5,'rgba(255,255,255,.4)');
+    hot.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = hot; ctx.fillRect(0,0,size,size);
+
+    // reflejo secundario más tenue (inferior derecha)
+    const hot2 = ctx.createRadialGradient(r*1.42,r*1.5,0, r*1.42,r*1.5, r*0.5);
+    hot2.addColorStop(0,'rgba(255,255,255,.22)');
+    hot2.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = hot2; ctx.fillRect(0,0,size,size);
+
+    // micro-burbujas satélite dentro de la esfera
+    const count = 3 + Math.floor(rng()*3);
+    for(let i=0;i<count;i++){
+      const a = rng()*Math.PI*2, d = rng()*r*0.55;
+      const bx = r+Math.cos(a)*d, by = r+Math.sin(a)*d;
+      const br = r*(0.03+rng()*0.05);
+      ctx.beginPath(); ctx.arc(bx,by,br,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,.3)';
+      ctx.fill();
+      ctx.beginPath(); ctx.arc(bx-br*0.25,by-br*0.25,br*0.35,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,.6)';
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+  function redrawAllBubbles(){
+    pads.forEach(p => {
+      const c = p.querySelector('.bubble-canvas');
+      if(c) drawBubble(c, +p.dataset.i);
+    });
+  }
+  let bubbleResizeTO = null;
+  window.addEventListener('resize', () => { clearTimeout(bubbleResizeTO); bubbleResizeTO = setTimeout(redrawAllBubbles, 150); });
+
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
-      b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML = `<canvas class="bubble-canvas" aria-hidden="true"></canvas>`;
+      b.innerHTML += `<span class="key">${KEYHINT[i]}</span>`;
       b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.pad')];
     pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
     pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+    requestAnimationFrame(redrawAllBubbles);
   }
   buildPads();
   levelBtns.forEach(b => b.addEventListener('click', () => {
