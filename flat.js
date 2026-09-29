@@ -55,6 +55,7 @@
     -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     display:flex;flex-direction:column;justify-content:space-between;padding:14px;
     background:var(--soft);color:var(--ink-c, var(--pc));text-align:left;transition:background .1s, box-shadow .1s, transform .06s}
+  .glass-canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;pointer-events:none}
   .pad[data-i="0"]{--soft:var(--c0-soft);--pc:var(--c0);--ink-c:var(--c0-ink)}
   .pad[data-i="1"]{--soft:var(--c1-soft);--pc:var(--c1);--ink-c:var(--c1-ink)}
   .pad[data-i="2"]{--soft:var(--c2-soft);--pc:var(--c2);--ink-c:var(--c2-ink)}
@@ -449,18 +450,95 @@
     ];
     return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
   }
+  function roundRectPath(ctx, x, y, w, h, r){
+    const rr = Math.min(r, w/2, h/2);
+    ctx.beginPath();
+    ctx.moveTo(x+rr, y);
+    ctx.arcTo(x+w, y, x+w, y+h, rr);
+    ctx.arcTo(x+w, y+h, x, y+h, rr);
+    ctx.arcTo(x, y+h, x, y, rr);
+    ctx.arcTo(x, y, x+w, y, rr);
+    ctx.closePath();
+  }
+  function drawGlass(canvas, idx){
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.max(1, Math.round(rect.width));
+    const h = Math.max(1, Math.round(rect.height));
+    if(w<=1 || h<=1) return;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    ctx.save();
+    roundRectPath(ctx, 0,0,w,h,14);
+    ctx.clip();
+
+    const rim = ctx.createLinearGradient(0,0,w,h);
+    rim.addColorStop(0,'rgba(255,255,255,.5)');
+    rim.addColorStop(0.14,'rgba(255,255,255,0)');
+    rim.addColorStop(0.84,'rgba(0,0,0,0)');
+    rim.addColorStop(1,'rgba(0,0,0,.16)');
+    ctx.fillStyle = rim; ctx.fillRect(0,0,w,h);
+
+    ctx.save();
+    ctx.translate(w*0.14, h*0.08);
+    ctx.rotate(-24*Math.PI/180);
+    const streak = ctx.createLinearGradient(0,0,0,h*0.55);
+    streak.addColorStop(0,'rgba(255,255,255,.5)');
+    streak.addColorStop(0.55,'rgba(255,255,255,.1)');
+    streak.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = streak;
+    ctx.fillRect(-w*0.1, -h*0.2, w*0.3, h*1.3);
+    ctx.restore();
+
+    ctx.save();
+    ctx.translate(w*0.63, h*0.04);
+    ctx.rotate(-24*Math.PI/180);
+    const streak2 = ctx.createLinearGradient(0,0,0,h*0.4);
+    streak2.addColorStop(0,'rgba(255,255,255,.26)');
+    streak2.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = streak2;
+    ctx.fillRect(0,-h*0.1, w*0.09, h*0.9);
+    ctx.restore();
+
+    const rng = mulberry32(300+idx);
+    const grainCount = Math.round((w*h)/40);
+    ctx.fillStyle = 'rgba(255,255,255,.05)';
+    for(let i=0;i<grainCount;i++){
+      ctx.fillRect(rng()*w, rng()*h, 1, 1);
+    }
+
+    const pool = ctx.createLinearGradient(0,h*0.7,0,h);
+    pool.addColorStop(0,'rgba(0,0,0,0)');
+    pool.addColorStop(1,'rgba(0,0,0,.14)');
+    ctx.fillStyle = pool; ctx.fillRect(0,h*0.7,w,h*0.3);
+
+    ctx.restore();
+  }
+  function redrawAllGlass(){
+    pads.forEach(p => {
+      const c = p.querySelector('.glass-canvas');
+      if(c) drawGlass(c, +p.dataset.i);
+    });
+  }
+  let glassResizeTO = null;
+  window.addEventListener('resize', () => { clearTimeout(glassResizeTO); glassResizeTO = setTimeout(redrawAllGlass, 150); });
+
   function buildPads(){
     device.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
-      b.innerHTML = `<span class="num">${String(i+1).padStart(2,'0')}</span><span class="dot"></span><span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML = `<canvas class="glass-canvas" aria-hidden="true"></canvas>`;
+      b.innerHTML += `<span class="num">${String(i+1).padStart(2,'0')}</span><span class="dot"></span><span class="key">${KEYHINT[i]}</span>`;
       b.innerHTML += cbSymbolHTML(i);
       device.appendChild(b);
     }
     pads = [...device.querySelectorAll('.pad')];
     pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
     pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+    requestAnimationFrame(redrawAllGlass);
   }
   buildPads();
   levelBtns.forEach(b => b.addEventListener('click', () => {
