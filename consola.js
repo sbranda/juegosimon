@@ -102,17 +102,7 @@
       inset 0 -12px 16px rgba(0,0,0,.3),
       inset 0 0 0 2px rgba(0,0,0,.1);
     transition:transform .07s, box-shadow .07s, filter .07s}
-  .pad::after{
-    content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;mix-blend-mode:overlay;opacity:.6;
-    background-image:
-      radial-gradient(circle at 20% 30%, rgba(0,0,0,.5) 0 1px, transparent 1px),
-      radial-gradient(circle at 62% 68%, rgba(0,0,0,.5) 0 1px, transparent 1px),
-      radial-gradient(circle at 82% 22%, rgba(255,255,255,.4) 0 1px, transparent 1px),
-      radial-gradient(circle at 38% 84%, rgba(0,0,0,.45) 0 1px, transparent 1px),
-      radial-gradient(circle at 12% 70%, rgba(255,255,255,.3) 0 1px, transparent 1px),
-      radial-gradient(circle at 70% 45%, rgba(0,0,0,.4) 0 1px, transparent 1px);
-    background-size:9px 9px, 7px 7px, 11px 8px, 8px 10px, 10px 7px, 6px 9px;
-  }
+  .plastic-canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;pointer-events:none}
   .pad[data-i="0"]{--pc:var(--c0);--pd:var(--c0-d)}
   .pad[data-i="1"]{--pc:var(--c1);--pd:var(--c1-d)}
   .pad[data-i="2"]{--pc:var(--c2);--pd:var(--c2-d)}
@@ -513,6 +503,70 @@
     ];
     return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
   }
+  function drawPlasticButton(canvas, idx){
+    const rect = canvas.getBoundingClientRect();
+    const size = Math.max(1, Math.round(Math.max(rect.width, rect.height)));
+    if(size <= 1) return;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(size*dpr); canvas.height = Math.round(size*dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,size,size);
+    const r = size/2;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(r,r,r,0,Math.PI*2); ctx.clip();
+
+    // sombreado de curvatura hacia el borde (falloff esférico)
+    const rim = ctx.createRadialGradient(r,r,r*0.55, r,r,r);
+    rim.addColorStop(0,'rgba(0,0,0,0)');
+    rim.addColorStop(1,'rgba(0,0,0,.28)');
+    ctx.fillStyle = rim; ctx.fillRect(0,0,size,size);
+
+    // brillo amplio tipo domo (parte superior izquierda)
+    const glow = ctx.createRadialGradient(r*0.62,r*0.5,0, r*0.62,r*0.5, r*0.85);
+    glow.addColorStop(0,'rgba(255,255,255,.38)');
+    glow.addColorStop(0.5,'rgba(255,255,255,.12)');
+    glow.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = glow; ctx.fillRect(0,0,size,size);
+
+    // punto especular nítido
+    const hot = ctx.createRadialGradient(r*0.36,r*0.28,0, r*0.36,r*0.28, r*0.22);
+    hot.addColorStop(0,'rgba(255,255,255,.95)');
+    hot.addColorStop(0.5,'rgba(255,255,255,.35)');
+    hot.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = hot; ctx.fillRect(0,0,size,size);
+
+    // arco de luz en el borde superior (bisel brillante)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,.4)';
+    ctx.lineWidth = Math.max(1, size*0.02);
+    ctx.beginPath();
+    ctx.arc(r, r, r*0.94, Math.PI*1.15, Math.PI*1.85);
+    ctx.stroke();
+    ctx.restore();
+
+    // grano orgánico tipo plástico (motas claras/oscuras)
+    const rng = mulberry32(500+idx);
+    const count = Math.round((size*size)/26);
+    for(let i=0;i<count;i++){
+      const a = rng()*Math.PI*2, d = Math.sqrt(rng())*r*0.92;
+      const px = r+Math.cos(a)*d, py = r+Math.sin(a)*d;
+      const light = rng() > 0.5;
+      ctx.fillStyle = light ? 'rgba(255,255,255,.16)' : 'rgba(0,0,0,.14)';
+      ctx.fillRect(px, py, 1, 1);
+    }
+
+    ctx.restore();
+  }
+  function redrawAllPlastic(){
+    pads.forEach(p => {
+      const c = p.querySelector('.plastic-canvas');
+      if(c) drawPlasticButton(c, +p.dataset.i);
+    });
+  }
+  let plasticResizeTO = null;
+  window.addEventListener('resize', () => { clearTimeout(plasticResizeTO); plasticResizeTO = setTimeout(redrawAllPlastic, 150); });
+
   function buildPads(){
     padsEl.style.gridTemplateColumns = COLS[numColors];
     padsEl.innerHTML = '';
@@ -521,7 +575,8 @@
       shell.className = 'pad-shell';
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
-      b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML = `<canvas class="plastic-canvas" aria-hidden="true"></canvas>`;
+      b.innerHTML += `<span class="key">${KEYHINT[i]}</span>`;
       b.innerHTML += cbSymbolHTML(i);
       shell.appendChild(b);
       padsEl.appendChild(shell);
@@ -530,6 +585,7 @@
     pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
     pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
     brandEl.textContent = 'MODELO ' + numColors + 'X';
+    requestAnimationFrame(redrawAllPlastic);
   }
   buildPads();
   levelBtns.forEach(b => b.addEventListener('click', () => {
