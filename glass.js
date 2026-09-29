@@ -73,6 +73,7 @@
   .pad[data-i="5"]{--pc:var(--c5)}
   .pad[data-i="6"]{--pc:var(--c6)}
   .pad[data-i="7"]{--pc:var(--c7)}
+  .holo-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   .pad .key{position:absolute;top:10px;left:12px;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.85);z-index:1}
   .pad.lit{filter:brightness(1.3) saturate(1.3);transform:scale(1.03);
     box-shadow:0 0 30px var(--pc), 0 0 60px color-mix(in srgb, var(--pc) 55%, transparent), inset 0 1px 0 rgba(255,255,255,.8)}
@@ -476,18 +477,89 @@
     ];
     return `<span class="cbsym" aria-hidden="true"><svg viewBox="0 0 24 24">${shapes[i % shapes.length]}</svg></span>`;
   }
+  function drawHolo(canvas, idx){
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.max(1, Math.round(rect.width));
+    const h = Math.max(1, Math.round(rect.height));
+    if(w<=1 || h<=1) return;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    const rng = mulberry32(700+idx);
+
+    // bandas de espectro holográfico diagonales
+    ctx.save();
+    ctx.globalAlpha = .28;
+    ctx.globalCompositeOperation = 'screen';
+    const bandColors = ['#ff6ec7','#ffd166','#5ff0c0','#5ec8ff','#c58bff'];
+    const bandW = w*0.5;
+    for(let i=-1;i<=Math.ceil((w+h)/bandW)+1;i++){
+      ctx.save();
+      ctx.translate(i*bandW - h*0.5, 0);
+      ctx.rotate(-28*Math.PI/180);
+      const g = ctx.createLinearGradient(0,0,bandW,0);
+      const c = bandColors[(i+bandColors.length*3)%bandColors.length];
+      g.addColorStop(0,'rgba(255,255,255,0)');
+      g.addColorStop(0.5,c);
+      g.addColorStop(1,'rgba(255,255,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0,-h, bandW*0.35, h*3);
+      ctx.restore();
+    }
+    ctx.restore();
+
+    // brillo diagonal principal (reflejo de vidrio)
+    ctx.save();
+    ctx.translate(w*0.12, h*0.06);
+    ctx.rotate(-22*Math.PI/180);
+    const streak = ctx.createLinearGradient(0,0,0,h*0.6);
+    streak.addColorStop(0,'rgba(255,255,255,.55)');
+    streak.addColorStop(0.55,'rgba(255,255,255,.12)');
+    streak.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = streak;
+    ctx.fillRect(-w*0.1,-h*0.2, w*0.28, h*1.3);
+    ctx.restore();
+
+    // destellos tipo purpurina holográfica
+    const count = Math.round((w*h)/900);
+    for(let i=0;i<count;i++){
+      const x = rng()*w, y = rng()*h;
+      const s = 0.6+rng()*1.3;
+      ctx.fillStyle = `rgba(255,255,255,${(0.35+rng()*0.45).toFixed(2)})`;
+      ctx.beginPath(); ctx.arc(x,y,s,0,Math.PI*2); ctx.fill();
+    }
+
+    // sombra suave en la base (profundidad)
+    const pool = ctx.createLinearGradient(0,h*0.72,0,h);
+    pool.addColorStop(0,'rgba(0,0,0,0)');
+    pool.addColorStop(1,'rgba(0,0,0,.16)');
+    ctx.fillStyle = pool; ctx.fillRect(0,h*0.72,w,h*0.28);
+  }
+  function redrawAllHolo(){
+    pads.forEach(p => {
+      const c = p.querySelector('.holo-canvas');
+      if(c) drawHolo(c, +p.dataset.i);
+    });
+  }
+  let holoResizeTO = null;
+  window.addEventListener('resize', () => { clearTimeout(holoResizeTO); holoResizeTO = setTimeout(redrawAllHolo, 150); });
+
   function buildPads(){
     gridpads.innerHTML = '';
     for(let i=0;i<numColors;i++){
       const b = document.createElement('button');
       b.className = 'pad'; b.dataset.i = i; b.setAttribute('aria-label', LABELS[i]);
-      b.innerHTML = `<span class="key">${KEYHINT[i]}</span>`;
+      b.innerHTML = `<canvas class="holo-canvas" aria-hidden="true"></canvas>`;
+      b.innerHTML += `<span class="key">${KEYHINT[i]}</span>`;
       b.innerHTML += cbSymbolHTML(i);
       gridpads.appendChild(b);
     }
     pads = [...gridpads.querySelectorAll('.pad')];
     pads.forEach(p => p.addEventListener('pointerdown', e => { e.preventDefault(); press(+p.dataset.i); }));
     pads.forEach(p => p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); press(+p.dataset.i); } }));
+    requestAnimationFrame(redrawAllHolo);
   }
   buildPads();
   levelBtns.forEach(b => b.addEventListener('click', () => {
