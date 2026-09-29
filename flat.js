@@ -43,7 +43,7 @@
   [hidden]{display:none!important}
   .wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:22px;padding-block:28px 32px}
 
-  header{display:flex;justify-content:space-between;align-items:flex-end}
+  .wrap > header{display:flex;justify-content:space-between;align-items:flex-end}
   h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(26px,7vw,32px);margin:0;letter-spacing:-.01em}
   .roundtag{font-size:12px;color:var(--muted);text-align:right;line-height:1.4}
   .roundtag b{display:block;font-family:"Manrope";font-weight:800;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
