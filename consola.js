@@ -65,15 +65,18 @@
     box-shadow:0 18px 0 var(--case-deep), 0 24px 40px rgba(0,0,0,.35);
     border:1px solid var(--case-edge);
   }
-  .screw{position:absolute;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 30%, #fff8, var(--case-deep));box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
+  .screw{position:absolute;width:10px;height:10px;border-radius:50%;overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,.4)}
+  .screw canvas{position:absolute;inset:0;width:100%;height:100%}
   .screw.tl{top:10px;left:12px} .screw.tr{top:10px;right:12px} .screw.bl{bottom:10px;left:12px} .screw.br{bottom:10px;right:12px}
 
   .plate{background:var(--plate);border-radius:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;
     box-shadow:inset 0 2px 4px rgba(0,0,0,.15);margin-bottom:18px}
   .plate .brand{font-weight:700;font-size:15px;letter-spacing:.03em;color:var(--ink)}
-  .lcd{background:var(--lcd);color:var(--lcd-ink);font-family:"Space Mono",monospace;font-weight:700;
+  .lcd{position:relative;overflow:hidden;background:var(--lcd);color:var(--lcd-ink);font-family:"Space Mono",monospace;font-weight:700;
     font-variant-numeric:tabular-nums;font-size:20px;line-height:1;padding:6px 12px;border-radius:6px;
     min-width:2.4ch;text-align:center;box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
+  .lcd-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  #lcd{position:relative;z-index:1;text-shadow:0 0 6px currentColor}
 
   .pads{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;row-gap:30px;
     padding:20px 14px 34px;border-radius:16px;margin-top:4px;
@@ -240,10 +243,10 @@
   </header>
 
   <div class="console locked" id="device">
-    <span class="screw tl"></span><span class="screw tr"></span><span class="screw bl"></span><span class="screw br"></span>
+    <span class="screw tl"><canvas class="screw-canvas" aria-hidden="true"></canvas></span><span class="screw tr"><canvas class="screw-canvas" aria-hidden="true"></canvas></span><span class="screw bl"><canvas class="screw-canvas" aria-hidden="true"></canvas></span><span class="screw br"><canvas class="screw-canvas" aria-hidden="true"></canvas></span>
     <div class="plate">
       <span class="brand" id="brand">MODELO 4X</span>
-      <div class="lcd" id="lcd">--</div>
+      <div class="lcd"><canvas class="lcd-canvas" aria-hidden="true"></canvas><span id="lcd">--</span></div>
     </div>
     <div class="pads" id="pads"></div>
   </div>
@@ -566,6 +569,123 @@
   }
   let plasticResizeTO = null;
   window.addEventListener('resize', () => { clearTimeout(plasticResizeTO); plasticResizeTO = setTimeout(redrawAllPlastic, 150); });
+
+  function drawScrew(canvas, seed){
+    const rect = canvas.getBoundingClientRect();
+    const size = Math.max(1, Math.round(Math.max(rect.width, rect.height)));
+    if(size <= 1) return;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(size*dpr); canvas.height = Math.round(size*dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,size,size);
+    const r = size/2;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(r,r,r,0,Math.PI*2); ctx.clip();
+
+    // base metálica (acero cepillado)
+    const base = ctx.createRadialGradient(r*0.4,r*0.35,r*0.04, r,r, r);
+    base.addColorStop(0,'#f4f4f2');
+    base.addColorStop(0.35,'#cacdd1');
+    base.addColorStop(0.75,'#8d9095');
+    base.addColorStop(1,'#4b4d51');
+    ctx.fillStyle = base; ctx.fillRect(0,0,size,size);
+
+    // grano metálico sutil
+    const rng = mulberry32(600+seed);
+    const count = Math.round((size*size)/9);
+    for(let i=0;i<count;i++){
+      const a = rng()*Math.PI*2, d = Math.sqrt(rng())*r*0.96;
+      const px = r+Math.cos(a)*d, py = r+Math.sin(a)*d;
+      ctx.fillStyle = rng() > 0.5 ? 'rgba(255,255,255,.12)' : 'rgba(0,0,0,.12)';
+      ctx.fillRect(px, py, 1, 1);
+    }
+
+    // sombra de borde (falloff hacia el aro)
+    const rim = ctx.createRadialGradient(r,r,r*0.58, r,r, r);
+    rim.addColorStop(0,'rgba(0,0,0,0)');
+    rim.addColorStop(1,'rgba(0,0,0,.6)');
+    ctx.fillStyle = rim; ctx.fillRect(0,0,size,size);
+
+    // brillo especular
+    const hot = ctx.createRadialGradient(r*0.36,r*0.3,0, r*0.36,r*0.3, r*0.52);
+    hot.addColorStop(0,'rgba(255,255,255,.92)');
+    hot.addColorStop(0.5,'rgba(255,255,255,.28)');
+    hot.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = hot; ctx.fillRect(0,0,size,size);
+
+    // ranura phillips (cruz)
+    ctx.save();
+    ctx.translate(r,r); ctx.rotate(0.35);
+    ctx.fillStyle = 'rgba(0,0,0,.7)';
+    const w = size*0.15, l = size*0.7;
+    ctx.fillRect(-w/2, -l/2, w, l);
+    ctx.fillRect(-l/2, -w/2, l, w);
+    ctx.restore();
+
+    // brillo fino dentro de la ranura
+    ctx.save();
+    ctx.translate(r,r); ctx.rotate(0.35);
+    ctx.strokeStyle = 'rgba(255,255,255,.3)';
+    ctx.lineWidth = Math.max(0.6, size*0.018);
+    ctx.beginPath(); ctx.moveTo(-l*0.42, -w*0.05); ctx.lineTo(l*0.42, -w*0.05); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-w*0.05, -l*0.42); ctx.lineTo(-w*0.05, l*0.42); ctx.stroke();
+    ctx.restore();
+
+    ctx.restore();
+  }
+  function redrawAllScrews(){
+    document.querySelectorAll('.screw-canvas').forEach((c,i) => drawScrew(c,i));
+  }
+  let screwResizeTO = null;
+  window.addEventListener('resize', () => { clearTimeout(screwResizeTO); screwResizeTO = setTimeout(redrawAllScrews, 150); });
+  requestAnimationFrame(redrawAllScrews);
+
+  function drawLcdScreen(canvas){
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.max(1, Math.round(rect.width)), h = Math.max(1, Math.round(rect.height));
+    if(w <= 1 || h <= 1) return;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    // profundidad de vidrio
+    const g = ctx.createLinearGradient(0,0,0,h);
+    g.addColorStop(0,'rgba(255,255,255,.07)');
+    g.addColorStop(0.4,'rgba(255,255,255,0)');
+    g.addColorStop(1,'rgba(0,0,0,.2)');
+    ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+
+    // líneas de escaneo (efecto pantalla LCD)
+    ctx.fillStyle = 'rgba(0,0,0,.13)';
+    for(let y=0; y<h; y+=2){ ctx.fillRect(0,y,w,1); }
+
+    // reflejo diagonal de vidrio
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    const streak = ctx.createLinearGradient(0,0,w,h);
+    streak.addColorStop(0,'rgba(255,255,255,0)');
+    streak.addColorStop(0.42,'rgba(255,255,255,.14)');
+    streak.addColorStop(0.56,'rgba(255,255,255,.14)');
+    streak.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle = streak; ctx.fillRect(0,0,w,h);
+    ctx.restore();
+
+    // viñeta hacia los bordes
+    const vin = ctx.createRadialGradient(w/2,h/2,Math.min(w,h)*0.15, w/2,h/2, Math.max(w,h)*0.8);
+    vin.addColorStop(0,'rgba(0,0,0,0)');
+    vin.addColorStop(1,'rgba(0,0,0,.4)');
+    ctx.fillStyle = vin; ctx.fillRect(0,0,w,h);
+  }
+  function redrawLcd(){
+    const c = document.querySelector('.lcd-canvas');
+    if(c) drawLcdScreen(c);
+  }
+  let lcdResizeTO = null;
+  window.addEventListener('resize', () => { clearTimeout(lcdResizeTO); lcdResizeTO = setTimeout(redrawLcd, 150); });
+  requestAnimationFrame(redrawLcd);
 
   function buildPads(){
     padsEl.style.gridTemplateColumns = COLS[numColors];
