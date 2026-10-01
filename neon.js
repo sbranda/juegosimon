@@ -118,6 +118,12 @@
   .pad .key{position:absolute;top:10px;left:12px;font-family:"Press Start 2P",monospace;font-size:10px;letter-spacing:.05em;opacity:.7}
   .pad.lit{background:var(--pc);color:#050109;transform:scale(.98);
     box-shadow:0 0 30px var(--pc), 0 0 70px var(--pc), inset 0 0 25px rgba(255,255,255,.5)}
+  @keyframes padPop{
+    0%{transform:scale(1.08);filter:brightness(1.5)}
+    100%{transform:scale(.98);filter:brightness(1)}
+  }
+  .pad.lit.pop{animation:padPop .18s cubic-bezier(.2,.8,.4,1)}
+  .rm-on .pad.pop{animation:none}
   .pad:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
   .locked .pad{cursor:default}
 
@@ -186,7 +192,7 @@
   .chart-dot{fill:var(--c2)}
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
-  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} }
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} .pad.pop{animation:none} }
   .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
@@ -655,11 +661,16 @@
   }
 
   async function flash(i, ms, visual=true){
-    if(visual) pads[i].classList.add('lit');
+    if(visual){
+      const el = pads[i];
+      el.classList.remove('pop');
+      void el.offsetWidth; // fuerza reflow para poder re-disparar el "pop" aunque sea el mismo pad seguido
+      el.classList.add('lit','pop');
+    }
     tone(FREQS[i], ms);
     vibrate(14);
     await sleep(ms);
-    if(visual) pads[i].classList.remove('lit');
+    if(visual) pads[i].classList.remove('lit','pop');
   }
 
   const SPEED_LABELS = {1:'Muy lenta',2:'Lenta',3:'Normal',4:'Rápida',5:'Muy rápida'};
@@ -681,7 +692,7 @@
     const rampRounds = 16 / mult;
     const t = Math.min(1, (n-1) / rampRounds);
     const on = Math.round(420 - t*(420-170));
-    const gap = Math.round(80 - t*(80-45));
+    const gap = Math.round(110 - t*(110-70));
     return {on, gap};
   }
 
