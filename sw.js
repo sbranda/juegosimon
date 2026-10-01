@@ -1,6 +1,6 @@
 // Simona — service worker
 // IMPORTANTE: subí CACHE_NAME en cada deploy (v2, v3, …) para que los usuarios reciban la versión nueva.
-const CACHE_NAME = 'simona-app-v68';
+const CACHE_NAME = 'simona-app-v69';
 const FONT_CACHE = 'simona-fonts';
 const ASSETS = [
   './',
