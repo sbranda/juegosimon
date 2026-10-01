@@ -205,11 +205,18 @@
   .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
   .summary-row.highlight b{color:var(--c1, #5ec8ff)}
   .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  .picker-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;width:100%}
+  .toggles-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;width:100%;max-width:360px;margin:0 auto}
+  .opts-advanced{width:100%}
+  .opts-advanced .toggles-grid{margin-top:10px}
 `;
   s.html = `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
-    <h1>ARRECIFE<br>SONORO</h1>
+    <h1 class="sr-only">ARRECIFE<br>SONORO</h1>
     <p class="tag">Memorizá el orden de las burbujas</p>
   </header>
 
@@ -233,6 +240,7 @@
       <button data-m="daily">Desafío diario</button>
       <button data-m="twoplayer">2 jugadores</button>
     </div>
+    <div class="picker-row">
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
       <button data-g="14" aria-pressed="true">14</button>
@@ -249,14 +257,22 @@
       <button data-n="6">6</button>
       <button data-n="8">8</button>
     </div>
-    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
-    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
-    <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
-    <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
-    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
-    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
-    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    </div>
+    <div class="toggles-grid">
+      <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+      <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
+    </div>
     <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
+    <details class="opts-advanced">
+      <summary>Opciones avanzadas</summary>
+      <div class="toggles-grid">
+        <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
+        <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+        <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+        <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+        <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+      </div>
+    </details>
   </div>
 
   <div class="stats">
