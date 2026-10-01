@@ -413,29 +413,29 @@
   audioOnlyEl.addEventListener('change', () => { if(audioOnlyEl.checked && muteEl.checked) muteEl.checked = false; });
   const colorblindEl = document.getElementById('colorblind');
   let cbPref = false;
-  try{ cbPref = localStorage.getItem('memorion-colorblind') === '1'; }catch(e){}
+  try{ cbPref = localStorage.getItem('simona-colorblind') === '1'; }catch(e){}
   colorblindEl.checked = cbPref;
   if(cbPref) device.classList.add('cb-on');
   colorblindEl.addEventListener('change', () => {
     device.classList.toggle('cb-on', colorblindEl.checked);
-    try{ localStorage.setItem('memorion-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
+    try{ localStorage.setItem('simona-colorblind', colorblindEl.checked ? '1' : '0'); }catch(e){}
   });
   const reduceMotionEl = document.getElementById('reducemotion');
   const highContrastEl = document.getElementById('highcontrast');
   let rmPref = false, hcPref = false;
-  try{ rmPref = localStorage.getItem('memorion-reduce-motion') === '1'; }catch(e){}
-  try{ hcPref = localStorage.getItem('memorion-high-contrast') === '1'; }catch(e){}
+  try{ rmPref = localStorage.getItem('simona-reduce-motion') === '1'; }catch(e){}
+  try{ hcPref = localStorage.getItem('simona-high-contrast') === '1'; }catch(e){}
   reduceMotionEl.checked = rmPref;
   highContrastEl.checked = hcPref;
   if(rmPref) document.documentElement.classList.add('rm-on');
   if(hcPref) document.documentElement.classList.add('hc-on');
   reduceMotionEl.addEventListener('change', () => {
     document.documentElement.classList.toggle('rm-on', reduceMotionEl.checked);
-    try{ localStorage.setItem('memorion-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
+    try{ localStorage.setItem('simona-reduce-motion', reduceMotionEl.checked ? '1' : '0'); }catch(e){}
   });
   highContrastEl.addEventListener('change', () => {
     document.documentElement.classList.toggle('hc-on', highContrastEl.checked);
-    try{ localStorage.setItem('memorion-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
+    try{ localStorage.setItem('simona-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
   });
   const bestEl = document.getElementById('best');
   const goalV = document.getElementById('goalv');
@@ -450,7 +450,7 @@
 
   const FREQS = [392, 330, 262, 220, 494, 440, 587, 659]; // pentatónico suave
   const KEYS = {q:0,w:1,a:2,s:3,'1':0,'2':1,'3':2,'4':3,'5':4,'6':5,'7':6,'8':7};
-  const HIST_KEY = 'memorion-history';
+  const HIST_KEY = 'simona-history';
   const SKIN_NAME = 'Ronda Silvestre';
   const ALL_SKINS = ['Ne\u00f3n Cuadrante','Botonera Eco','Secuencia Cuatro','Ronda Silvestre','Terminal Mnemo','Pizarr\u00f3n Vivo','\u00d3rbita C\u00f3smica','Dial Retro','Vidrio Hologr\u00e1fico','Arrecife Sonoro'];
   const ACHIEVEMENTS = [
@@ -568,7 +568,7 @@
     const d = new Date(ts);
     return (d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')) === dayStr;
   }
-  const STATS_KEY = 'memorion-stats';
+  const STATS_KEY = 'simona-stats';
   function dateStr(d){
     return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   }
@@ -652,13 +652,13 @@
   const speedEl = document.getElementById('speed');
   const speedLabelEl = document.getElementById('speedLabel');
   let speedLevel = 3;
-  try{ const sp = +localStorage.getItem('memorion-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
+  try{ const sp = +localStorage.getItem('simona-speed'); if(sp>=1 && sp<=5) speedLevel = sp; }catch(e){}
   speedEl.value = speedLevel;
   speedLabelEl.textContent = SPEED_LABELS[speedLevel];
   speedEl.addEventListener('input', () => {
     speedLevel = +speedEl.value;
     speedLabelEl.textContent = SPEED_LABELS[speedLevel];
-    try{ localStorage.setItem('memorion-speed', String(speedLevel)); }catch(e){}
+    try{ localStorage.setItem('simona-speed', String(speedLevel)); }catch(e){}
   });
   function tempo(){
     const n = seq.length;
@@ -869,7 +869,7 @@
       ctx.textAlign = 'center';
       ctx.fillStyle = muted;
       ctx.font = `700 22px ${bodyFont}`;
-      ctx.fillText('MEMORIÓN · ' + SKIN_NAME.toUpperCase(), W/2, 96);
+      ctx.fillText('SIMONA · ' + SKIN_NAME.toUpperCase(), W/2, 96);
 
       ctx.fillStyle = numColor;
       ctx.font = `800 170px ${headFont}`;
@@ -902,9 +902,9 @@
       : `\u{1F3AE} Estoy jugando Memori\u00f3n (${SKIN_NAME}). \u00bfTe anim\u00e1s a superarme?`;
     let blob = null;
     try{ blob = await makeShareImageBlob(); }catch(e){}
-    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'memorion-record.png',{type:'image/png'})] })){
+    if(blob && navigator.canShare && navigator.canShare({ files:[new File([blob],'simona-record.png',{type:'image/png'})] })){
       try{
-        await navigator.share({ files:[new File([blob],'memorion-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
+        await navigator.share({ files:[new File([blob],'simona-record.png',{type:'image/png'})], title:'Memori\u00f3n', text });
         return;
       }catch(e){ if(e && e.name === 'AbortError') return; }
     }
@@ -914,7 +914,7 @@
     try{ if(navigator.clipboard) await navigator.clipboard.writeText(text); }catch(e){}
     if(blob){
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'memorion-record.png';
+      const a = document.createElement('a'); a.href = url; a.download = 'simona-record.png';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       setTimeout(()=>URL.revokeObjectURL(url), 4000);
     }
@@ -1270,7 +1270,7 @@
   }
   function endTour(){
     tourOverlayEl.hidden = true;
-    try{ localStorage.setItem('memorion-onboarded','1'); }catch(e){}
+    try{ localStorage.setItem('simona-onboarded','1'); }catch(e){}
   }
   function startTour(){
     tourOverlayEl.hidden = false;
@@ -1280,7 +1280,7 @@
   tourPrevEl.addEventListener('click', () => showTourStep(tourIdx-1));
   tourNextEl.addEventListener('click', () => { if(tourIdx >= TOUR_STEPS.length-1) endTour(); else showTourStep(tourIdx+1); });
   let seenTour = false;
-  try{ seenTour = localStorage.getItem('memorion-onboarded') === '1'; }catch(e){}
+  try{ seenTour = localStorage.getItem('simona-onboarded') === '1'; }catch(e){}
   if(!seenTour) setTimeout(() => { if(!running) startTour(); }, 500);
   if(tourLinkEl) tourLinkEl.addEventListener('click', startTour);
   };

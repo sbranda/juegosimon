@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Memorión</title>
+<title>Simona</title>
 <meta name="description" content="Juego de memoria de secuencias de colores. Elegí entre diez diseños.">
 <meta name="theme-color" content="#12141c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Memorión">
+<meta name="apple-mobile-web-app-title" content="Simona">
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
@@ -262,7 +262,7 @@
 <div id="menu">
   <div class="menu-wrap">
     <div class="menu-head">
-      <h1>Memorión</h1>
+      <h1>Simona</h1>
       <p>Elegí un diseño y repetí la secuencia de colores</p>
       <div class="streak-banner" id="streakBanner" hidden role="button" tabindex="0">
         <span class="streak-text" id="streakText"></span>
@@ -423,7 +423,7 @@ window.SKINS = {
 
   function refreshCards(){
     let last = null;
-    try{ last = localStorage.getItem('memorion-last-skin'); }catch(e){}
+    try{ last = localStorage.getItem('simona-last-skin'); }catch(e){}
     document.querySelectorAll('[data-rec]').forEach(el => {
       const skin = SKINS[el.dataset.rec];
       const best = readBest(skin.bestKey);
@@ -454,13 +454,13 @@ window.SKINS = {
     const streakTextEl = document.getElementById('streakText');
     if(!streakBannerEl) return;
     let playDays = [];
-    try{ const s = JSON.parse(localStorage.getItem('memorion-stats')); if(s && Array.isArray(s.playDays)) playDays = s.playDays; }catch(e){}
+    try{ const s = JSON.parse(localStorage.getItem('simona-stats')); if(s && Array.isArray(s.playDays)) playDays = s.playDays; }catch(e){}
     const streak = computeStreakBeforeToday(playDays);
     const today = dateStrShell(new Date());
     let dismissedDay = null;
-    try{ dismissedDay = localStorage.getItem('memorion-streak-dismissed'); }catch(e){}
+    try{ dismissedDay = localStorage.getItem('simona-streak-dismissed'); }catch(e){}
     let history = [];
-    try{ history = JSON.parse(localStorage.getItem('memorion-history')) || []; }catch(e){}
+    try{ history = JSON.parse(localStorage.getItem('simona-history')) || []; }catch(e){}
     const playedDailyToday = history.some(e => e.mode === 'daily' && dateStrShell(new Date(e.ts)) === today);
     if(streak >= 1 && !playedDailyToday && dismissedDay !== today){
       streakTextEl.innerHTML = '\u{1f525} Racha de <b>' + streak + (streak===1?' día':' días') + '</b> — jugá el desafío diario de hoy para no perderla';
@@ -526,7 +526,7 @@ window.SKINS = {
     skinStyleEl.textContent = skin.css;
     stage.innerHTML = skin.html;
     skin.init(currentAbort.signal);
-    try{ localStorage.setItem('memorion-last-skin', key); }catch(e){}
+    try{ localStorage.setItem('simona-last-skin', key); }catch(e){}
     prefetchOtherSkins(key);
   }
 
@@ -551,12 +551,12 @@ window.SKINS = {
   if(streakBannerEl2 && streakCloseEl){
     streakCloseEl.addEventListener('click', e => {
       e.stopPropagation();
-      try{ localStorage.setItem('memorion-streak-dismissed', dateStrShell(new Date())); }catch(e){}
+      try{ localStorage.setItem('simona-streak-dismissed', dateStrShell(new Date())); }catch(e){}
       streakBannerEl2.hidden = true;
     });
     streakBannerEl2.addEventListener('click', () => {
       let last = null;
-      try{ last = localStorage.getItem('memorion-last-skin'); }catch(e){}
+      try{ last = localStorage.getItem('simona-last-skin'); }catch(e){}
       const key = (last && SKINS[last]) ? last : Object.keys(SKINS)[0];
       mountSkin(key);
     });
@@ -576,9 +576,9 @@ window.SKINS = {
     resetOkEl.addEventListener('click', () => {
       try{
         Object.values(SKINS).forEach(s => localStorage.removeItem(s.bestKey));
-        localStorage.removeItem('memorion-history');
-        localStorage.removeItem('memorion-stats');
-        localStorage.removeItem('memorion-streak-dismissed');
+        localStorage.removeItem('simona-history');
+        localStorage.removeItem('simona-stats');
+        localStorage.removeItem('simona-streak-dismissed');
       }catch(e){}
       resetOverlayEl.hidden = true;
       refreshCards();
@@ -593,7 +593,7 @@ window.SKINS = {
   <div class="install-modal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
     <button class="install-x" id="installX" aria-label="Cerrar" type="button">✕</button>
     <img class="install-icon" src="./icon-192.png" alt="" width="64" height="64">
-    <h2 id="installTitle">Instalá Memorión</h2>
+    <h2 id="installTitle">Instalá Simona</h2>
     <p class="install-sub" id="installSub">Agregala a tu pantalla de inicio para jugar más rápido y sin distracciones.</p>
     <ul class="install-benefits" id="installBenefits">
       <li>🎮 Se abre como una app, sin la barra del navegador</li>
@@ -629,7 +629,7 @@ if ('serviceWorker' in navigator) {
   if (standalone) return;
 
   let neverAsk = false;
-  try { neverAsk = localStorage.getItem('memorion-install-off') === '1'; } catch(e){}
+  try { neverAsk = localStorage.getItem('simona-install-off') === '1'; } catch(e){}
 
   const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
   let deferred = null;
@@ -667,14 +667,14 @@ if ('serviceWorker' in navigator) {
   function closeModal(remindMs){
     overlay.hidden = true;
     if (remindMs){
-      try { localStorage.setItem('memorion-install-remind', String(Date.now() + remindMs)); } catch(e){}
+      try { localStorage.setItem('simona-install-remind', String(Date.now() + remindMs)); } catch(e){}
     }
   }
 
   if (ios){
     if (!neverAsk) setTimeout(() => {
       let remindAt = 0;
-      try { remindAt = +localStorage.getItem('memorion-install-remind') || 0; } catch(e){}
+      try { remindAt = +localStorage.getItem('simona-install-remind') || 0; } catch(e){}
       if (Date.now() >= remindAt) openModal();
     }, 1200);
   } else {
@@ -683,7 +683,7 @@ if ('serviceWorker' in navigator) {
       deferred = e;
       if (neverAsk) return;
       let remindAt = 0;
-      try { remindAt = +localStorage.getItem('memorion-install-remind') || 0; } catch(e){}
+      try { remindAt = +localStorage.getItem('simona-install-remind') || 0; } catch(e){}
       if (Date.now() >= remindAt) setTimeout(openModal, 800);
     });
   }
@@ -695,7 +695,7 @@ if ('serviceWorker' in navigator) {
     deferred = null;
     overlay.hidden = true;
     if (choice && choice.outcome === 'dismissed'){
-      try { localStorage.setItem('memorion-install-remind', String(Date.now() + 3*86400000)); } catch(e){}
+      try { localStorage.setItem('simona-install-remind', String(Date.now() + 3*86400000)); } catch(e){}
     }
   });
   later.addEventListener('click', () => closeModal(4*86400000));
@@ -704,14 +704,14 @@ if ('serviceWorker' in navigator) {
   never.addEventListener('click', () => {
     overlay.hidden = true;
     openLink.hidden = false;
-    try { localStorage.setItem('memorion-install-off','1'); } catch(e){}
+    try { localStorage.setItem('simona-install-off','1'); } catch(e){}
   });
   openLink.addEventListener('click', openModal);
 
   window.addEventListener('appinstalled', () => {
     overlay.hidden = true;
     openLink.hidden = true;
-    try { localStorage.setItem('memorion-install-off','1'); } catch(e){}
+    try { localStorage.setItem('simona-install-off','1'); } catch(e){}
   });
 })();
 </script>

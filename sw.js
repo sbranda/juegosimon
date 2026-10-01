@@ -1,7 +1,7 @@
-// Memorión — service worker
+// Simona — service worker
 // IMPORTANTE: subí CACHE_NAME en cada deploy (v2, v3, …) para que los usuarios reciban la versión nueva.
-const CACHE_NAME = 'memorion-app-v64';
-const FONT_CACHE = 'memorion-fonts';
+const CACHE_NAME = 'simona-app-v64';
+const FONT_CACHE = 'simona-fonts';
 const ASSETS = [
   './',
   './index.html',
