@@ -1,6 +1,6 @@
 // Simona — service worker
 // IMPORTANTE: subí CACHE_NAME en cada deploy (v2, v3, …) para que los usuarios reciban la versión nueva.
-const CACHE_NAME = 'simona-app-v67';
+const CACHE_NAME = 'simona-app-v68';
 const FONT_CACHE = 'simona-fonts';
 const ASSETS = [
   './',
@@ -9,7 +9,8 @@ const ASSETS = [
   './icon-192.png',
   './icon-512.png',
   './icon-maskable-512.png',
-  './apple-touch-icon.png'
+  './apple-touch-icon.png',
+  './splash-icon.png'
 ];
 
 self.addEventListener('install', e => {
