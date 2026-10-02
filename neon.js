@@ -107,14 +107,19 @@
     color:var(--pc);
     transition:background .08s, box-shadow .08s, transform .08s;
     box-shadow:inset 0 0 18px color-mix(in srgb, var(--pc) 25%, transparent)}
-  .pad[data-i="0"]{--pc:var(--c0)}
-  .pad[data-i="1"]{--pc:var(--c1)}
-  .pad[data-i="2"]{--pc:var(--c2)}
-  .pad[data-i="3"]{--pc:var(--c3)}
-  .pad[data-i="4"]{--pc:var(--c4)}
-  .pad[data-i="5"]{--pc:var(--c5)}
-  .pad[data-i="6"]{--pc:var(--c6)}
-  .pad[data-i="7"]{--pc:var(--c7)}
+  .pad[data-i="0"]{--pc:var(--c0);animation-delay:0s}
+  .pad[data-i="1"]{--pc:var(--c1);animation-delay:.55s}
+  .pad[data-i="2"]{--pc:var(--c2);animation-delay:1.1s}
+  .pad[data-i="3"]{--pc:var(--c3);animation-delay:1.65s}
+  .pad[data-i="4"]{--pc:var(--c4);animation-delay:.25s}
+  .pad[data-i="5"]{--pc:var(--c5);animation-delay:.8s}
+  .pad[data-i="6"]{--pc:var(--c6);animation-delay:1.35s}
+  .pad[data-i="7"]{--pc:var(--c7);animation-delay:1.9s}
+  @keyframes padIdleGlow{
+    0%,100%{box-shadow:inset 0 0 18px color-mix(in srgb, var(--pc) 25%, transparent), 0 0 0 transparent}
+    50%{box-shadow:inset 0 0 18px color-mix(in srgb, var(--pc) 25%, transparent), 0 0 14px color-mix(in srgb, var(--pc) 55%, transparent)}
+  }
+  .device:not(.locked) .pad:not(.lit){animation:padIdleGlow 2.6s ease-in-out infinite}
   .pad .key{position:absolute;top:10px;left:12px;font-family:"Press Start 2P",monospace;font-size:10px;letter-spacing:.05em;opacity:.7}
   .pad.lit{background:var(--pc);color:#050109;transform:scale(.98);
     box-shadow:0 0 30px var(--pc), 0 0 70px var(--pc), inset 0 0 25px rgba(255,255,255,.5)}
@@ -192,7 +197,7 @@
   .chart-dot{fill:var(--c2)}
   .chart-label{fill:var(--muted);font-size:8px;font-family:inherit}
   footer{font-size:11px;color:var(--muted);letter-spacing:.06em}
-  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} .pad.pop{animation:none} }
+  @media (prefers-reduced-motion: reduce){ .pad,.toggle span::after{transition:none} .pad.lit{transform:none} .pad.pop{animation:none} .pad{animation:none!important} }
   .pad .cbsym, .petal .cbsym{position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:1}
   .cb-on .pad .cbsym, .cb-on .petal .cbsym{display:flex}
   .cbsym svg{width:36%;height:36%;fill:rgba(255,255,255,.92);stroke:rgba(0,0,0,.55);stroke-width:1.4px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}

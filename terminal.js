@@ -38,7 +38,19 @@
   .dot{width:9px;height:9px;border-radius:50%;background:var(--muted);opacity:.5}
   .titlebar span{margin-left:6px;font-size:12px;color:var(--muted);letter-spacing:.04em}
 
-  .screen{padding:18px 16px}
+  .screen{padding:18px 16px;position:relative}
+  .screen::before{
+    content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,255,160,.05) 0px, rgba(120,255,160,.05) 1px, transparent 1px, transparent 3px);
+    mix-blend-mode:overlay;
+    animation:crtFlicker 6s infinite;
+  }
+  @keyframes crtFlicker{
+    0%,46%,54%,76%,84%,100%{opacity:.8}
+    50%{opacity:.5}
+    80%{opacity:.62}
+  }
+  @media (prefers-reduced-motion: reduce){ .screen::before{animation:none;opacity:.8} }
   h1{font-size:15px;margin:0 0 2px;color:var(--c0);letter-spacing:.02em;text-shadow:0 0 6px rgba(51,255,102,.5)}
   h1::before{content:"$ "}
   .tag{margin:0 0 16px;color:var(--muted);font-size:12px}

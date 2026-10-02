@@ -550,12 +550,14 @@
     hot2.addColorStop(1,'rgba(255,255,255,0)');
     ctx.fillStyle = hot2; ctx.fillRect(0,0,size,size);
 
-    // micro-burbujas satélite dentro de la esfera
-    const count = 3 + Math.floor(rng()*3);
+    // micro-burbujas satélite dentro de la esfera: cantidad, tamaño y dispersión
+    // varían por pad (en vez de un racimo parejo) para que se vea más natural
+    const count = 2 + Math.floor(rng()*6);
     for(let i=0;i<count;i++){
-      const a = rng()*Math.PI*2, d = rng()*r*0.55;
+      const a = rng()*Math.PI*2, d = rng()*r*0.62;
       const bx = r+Math.cos(a)*d, by = r+Math.sin(a)*d;
-      const br = r*(0.03+rng()*0.05);
+      const big = rng() < 0.18;
+      const br = big ? r*(0.09+rng()*0.06) : r*(0.022+rng()*0.045);
       ctx.beginPath(); ctx.arc(bx,by,br,0,Math.PI*2);
       ctx.fillStyle = 'rgba(255,255,255,.3)';
       ctx.fill();

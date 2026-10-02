@@ -65,6 +65,10 @@
     box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 8px 20px color-mix(in srgb, var(--pc) 25%, transparent)}
   .pad::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
     background:linear-gradient(135deg, rgba(255,255,255,.55), transparent 45%);opacity:.7}
+  .pad::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
+    background:radial-gradient(circle at 50% 42%, rgba(255,255,255,.6), transparent 62%);
+    opacity:0;transform:scale(.7);transition:opacity .18s ease, transform .18s ease}
+  .pad.lit::after{opacity:.7;transform:scale(1.18)}
   .pad[data-i="0"]{--pc:var(--c0)}
   .pad[data-i="1"]{--pc:var(--c1)}
   .pad[data-i="2"]{--pc:var(--c2)}
@@ -76,6 +80,7 @@
   .holo-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   .pad .key{position:absolute;top:10px;left:12px;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.85);z-index:1}
   .pad.lit{filter:brightness(1.3) saturate(1.3);transform:scale(1.03);
+    backdrop-filter:blur(16px) saturate(1.7);-webkit-backdrop-filter:blur(16px) saturate(1.7);
     box-shadow:0 0 30px var(--pc), 0 0 60px color-mix(in srgb, var(--pc) 55%, transparent), inset 0 1px 0 rgba(255,255,255,.8)}
   .pad:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
   .locked .pad{cursor:default}
@@ -208,11 +213,18 @@
   .summary-row b{font-size:15px;color:#f5f5fa;font-weight:800}
   .summary-row.highlight b{color:var(--c1, #5ec8ff)}
   .summary-close{display:block;width:100%;appearance:none;border:0;cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;padding:13px;border-radius:999px;background:var(--c1, #5ec8ff);color:#0a0a12}
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  .picker-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:flex-start;width:100%}
+  .toggles-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;width:100%;max-width:360px;margin:0 auto}
+  .opts-advanced{width:100%}
+  .opts-advanced .toggles-grid{margin-top:10px}
 `;
   s.html = `<div class="wrap">
   <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
   <header>
-    <h1>VIDRIO<br>HOLOGRÁFICO</h1>
+    <h1 class="sr-only">VIDRIO<br>HOLOGRÁFICO</h1>
     <p class="tag">Repetí el reflejo de la secuencia</p>
   </header>
 
@@ -236,6 +248,7 @@
       <button data-m="daily">Desafío diario</button>
       <button data-m="twoplayer">2 jugadores</button>
     </div>
+    <div class="picker-row">
     <div class="seg" role="group" aria-label="Meta de rondas" id="goal">
       <button data-g="8">8</button>
       <button data-g="14" aria-pressed="true">14</button>
@@ -252,14 +265,22 @@
       <button data-n="6">6</button>
       <button data-n="8">8</button>
     </div>
-    <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
-    <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
-    <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
-    <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
-    <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
-    <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
-    <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+    </div>
+    <div class="toggles-grid">
+      <label class="toggle" for="strict"><input type="checkbox" id="strict"><span></span>Estricto</label>
+      <label class="toggle" for="mute"><input type="checkbox" id="mute"><span></span>Sin sonido</label>
+    </div>
     <label class="speed-ctrl" for="speed"><span>Velocidad: <b id="speedLabel">Normal</b></span><input type="range" id="speed" min="1" max="5" step="1" value="3"></label>
+    <details class="opts-advanced">
+      <summary>Opciones avanzadas</summary>
+      <div class="toggles-grid">
+        <label class="toggle" for="reverse"><input type="checkbox" id="reverse"><span></span>Orden inverso</label>
+        <label class="toggle" for="audioonly"><input type="checkbox" id="audioonly"><span></span>Solo sonido</label>
+        <label class="toggle" for="colorblind"><input type="checkbox" id="colorblind"><span></span>Modo daltónico</label>
+        <label class="toggle" for="reducemotion"><input type="checkbox" id="reducemotion"><span></span>Reducir animaciones</label>
+        <label class="toggle" for="highcontrast"><input type="checkbox" id="highcontrast"><span></span>Alto contraste</label>
+      </div>
+    </details>
   </div>
 
   <div class="stats">

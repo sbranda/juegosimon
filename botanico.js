@@ -75,11 +75,6 @@
       radial-gradient(140% 140% at 50% 40%, var(--pc-hi), var(--pc) 55%, color-mix(in srgb, var(--pc) 55%, black) 100%);
     transition:filter .1s, transform .1s;
     box-shadow:inset 0 0 0 2px rgba(0,0,0,.3), 0 6px 14px rgba(0,0,0,.35)}
-  .petal[data-i="2"]{
-    background:
-      radial-gradient(120% 140% at 28% 18%, rgba(255,255,255,.4), transparent 32%),
-      repeating-conic-gradient(from 0deg at 50% 50%, color-mix(in srgb, var(--pc) 88%, white) 0deg 3deg, color-mix(in srgb, var(--pc) 60%, black) 3deg 6deg),
-      var(--pc)}
   .petal[data-i="0"]{--pc:var(--c0);--pc-hi:var(--c0-hi);top:0;left:0;border-radius:0 100% 100% 100%;transform-origin:100% 100%}
   .petal[data-i="1"]{--pc:var(--c1);--pc-hi:var(--c1-hi);top:0;right:0;border-radius:100% 0 100% 100%;transform-origin:0% 100%}
   .petal[data-i="2"]{--pc:var(--c2);--pc-hi:var(--c2-hi);bottom:0;left:0;border-radius:100% 100% 100% 0;transform-origin:100% 0%}

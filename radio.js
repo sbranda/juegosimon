@@ -135,15 +135,15 @@
   .stat span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
   /* ---------- Llaves y visor decorativos (panel inferior) ---------- */
-  .deco-panel{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}
+  .deco-panel{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;opacity:.7}
   .deco-toggle{display:flex;flex-direction:column;align-items:center;gap:5px}
-  .deco-toggle small{font-size:9px;letter-spacing:.1em;color:var(--c1);font-family:"VT323",monospace;line-height:1}
+  .deco-toggle small{font-size:9px;letter-spacing:.1em;color:var(--muted);font-family:"VT323",monospace;line-height:1}
   .deco-lever{width:15px;height:26px;border-radius:7px;position:relative;
-    background:linear-gradient(180deg,#f6e3a8,#a9782a 55%,#6b4423 100%);
-    border:1px solid #5c3d20;box-shadow:0 2px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.4)}
+    background:linear-gradient(180deg,#d9bc75,#8a6023 55%,#5c3d20 100%);
+    border:1px solid #4a2f18;box-shadow:inset 0 2px 5px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.08)}
   .deco-lever::after{content:"";position:absolute;left:50%;top:3px;transform:translateX(-50%);
     width:9px;height:9px;border-radius:50%;
-    background:radial-gradient(circle at 35% 30%,#fff6d0,#c9a565 55%,#7a5227 100%);box-shadow:0 1px 2px rgba(0,0,0,.4)}
+    background:radial-gradient(circle at 35% 30%,#e8cd8f,#9c7d45 55%,#5c3d20 100%);box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
   .deco-lever.down::after{top:auto;bottom:3px}
   .deco-strip{background:var(--lcd);border:1px solid #5c3d20;border-radius:6px;padding:8px 12px;
     box-shadow:0 0 0 2px #8a6023, inset 0 0 8px rgba(0,0,0,.7);

@@ -77,6 +77,13 @@
   .pad.lit{background:color-mix(in srgb, var(--pc) 22%, transparent);border-style:solid;
     box-shadow:0 0 18px color-mix(in srgb, var(--pc) 55%, transparent), inset 0 0 24px color-mix(in srgb, var(--pc) 35%, transparent);
     transform:scale(1.03) rotate(0deg)}
+  /* sombreado de tiza: rayado cruzado a mano, como si se hubiera coloreado con tiza */
+  .pad.lit::before{content:"";position:absolute;inset:4px;border-radius:inherit;pointer-events:none;
+    background:
+      repeating-linear-gradient(72deg, color-mix(in srgb, var(--pc) 75%, white) 0 1.5px, transparent 1.5px 7px),
+      repeating-linear-gradient(18deg, color-mix(in srgb, var(--pc) 60%, white) 0 1px, transparent 1px 9px),
+      repeating-linear-gradient(150deg, color-mix(in srgb, var(--pc) 50%, white) 0 1px, transparent 1px 11px);
+    opacity:.38;mix-blend-mode:screen}
   .pad:focus-visible{outline:3px solid var(--chalk);outline-offset:3px}
 
   .hub{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2deg);

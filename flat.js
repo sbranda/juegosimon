@@ -45,8 +45,8 @@
 
   .wrap > header{display:flex;justify-content:space-between;align-items:flex-end}
   h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(26px,7vw,32px);margin:0;letter-spacing:-.01em}
-  .roundtag{font-size:12px;color:var(--muted);text-align:right;line-height:1.4}
-  .roundtag b{display:block;font-family:"Manrope";font-weight:800;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .roundtag{display:inline-flex;align-items:baseline;gap:6px;background:var(--c2-soft);color:var(--c2-ink);border-radius:999px;padding:7px 14px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;line-height:1}
+  .roundtag b{display:inline;font-family:"Manrope";font-weight:800;font-size:16px;color:var(--c2-ink);font-variant-numeric:tabular-nums;text-transform:none;letter-spacing:0}
 
   .board{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
   .pads{display:grid;grid-template-columns:1fr 1fr;gap:12px}
