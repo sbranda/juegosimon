@@ -64,12 +64,12 @@
   .device:not([data-level="4"]){display:flex;flex-direction:column;gap:12px;aspect-ratio:auto}
   .device:not([data-level="4"]) .gridpads{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:10px;flex:1}
   .device:not([data-level="4"]) .hub{position:static;transform:none;width:auto;flex-direction:row;gap:10px;padding:8px 14px;order:-1;aspect-ratio:auto;border-radius:999px}
-  .pad{appearance:none;border:0;cursor:pointer;position:relative;border-radius:50%;
+  .pad{appearance:none;border:1px solid color-mix(in srgb, var(--pc) 55%, white 12%);cursor:pointer;position:relative;border-radius:50%;
     aspect-ratio:1;align-self:center;justify-self:center;width:100%;max-width:100%;
     -webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
     background:var(--pc);
     box-shadow:0 0 22px color-mix(in srgb, var(--pc) 45%, transparent), inset 0 0 18px rgba(0,0,0,.35);
-    transition:filter .08s, box-shadow .08s, transform .08s}
+    transition:filter .08s, box-shadow .08s, transform .08s, border-color .08s}
   .pad[data-i="0"]{--pc:var(--c0);--pc-hi:var(--c0-hi)}
   .pad[data-i="1"]{--pc:var(--c1);--pc-hi:var(--c1-hi)}
   .pad[data-i="2"]{--pc:var(--c2);--pc-hi:var(--c2-hi)}
@@ -86,6 +86,7 @@
   .device[data-level="4"] .pad[data-i="2"] .key{top:auto;bottom:8px}
   .device[data-level="4"] .pad[data-i="3"] .key{top:auto;bottom:8px;left:auto;right:10px}
   .pad.lit{filter:brightness(1.35) saturate(1.2);transform:scale(1.05);
+    border-color:color-mix(in srgb, var(--pc) 70%, white 30%);
     box-shadow:0 0 34px var(--pc), 0 0 60px color-mix(in srgb, var(--pc) 60%, transparent), inset 0 0 20px rgba(255,255,255,.25)}
   .pad:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
   .locked .pad{cursor:default}
