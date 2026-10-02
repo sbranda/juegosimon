@@ -133,6 +133,7 @@
   .stat{text-align:center}
   .stat b{display:block;font-size:22px;font-family:"VT323",monospace;color:var(--c1);text-shadow:0 0 6px color-mix(in srgb, var(--c1) 50%, transparent)}
   .stat span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .medal-badge{font-size:13px;margin-left:3px;vertical-align:middle}
 
   /* ---------- Llaves y visor decorativos (panel inferior) ---------- */
   .deco-panel{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;opacity:.7}
@@ -173,6 +174,7 @@
   .ach-badge{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);display:flex;align-items:center;justify-content:center;
     font-size:13px;font-weight:700;color:var(--muted);flex-shrink:0}
   .ach-row.unlocked .ach-badge{border-color:var(--c1);color:var(--c1);background:color-mix(in srgb, var(--c1) 18%, transparent)}
+  .ach-badge.medal{font-size:15px}
   .ach-info{flex:1}
   .ach-title{font-weight:700;font-size:13px;display:block}
   .ach-desc{font-size:12px;color:var(--muted);display:block;margin-top:1px}
@@ -317,7 +319,7 @@
   </div>
 
   <div class="stats">
-    <div class="stat"><b id="best">0</b><span>Récord</span></div>
+    <div class="stat"><b id="best">0</b><span class="medal-badge" id="medalBadge" aria-hidden="true"></span><span>Récord</span></div>
     <div class="stat"><b id="goalv">14</b><span id="goallabel">Meta</span></div>
     <div class="stat"><b id="accv">100%</b><span>Precisión</span></div>
   </div>
@@ -464,6 +466,13 @@
     try{ localStorage.setItem('simona-high-contrast', highContrastEl.checked ? '1' : '0'); }catch(e){}
   });
   const bestEl = document.getElementById('best');
+  const MEDALS = [ {round:31, sym:'\u{1F947}'}, {round:20, sym:'\u{1F948}'}, {round:14, sym:'\u{1F949}'} ];
+  const medalBadgeEl = document.getElementById('medalBadge');
+  function updateMedalBadge(){
+    if(!medalBadgeEl) return;
+    const m = MEDALS.find(m => best >= m.round);
+    medalBadgeEl.textContent = m ? m.sym : '';
+  }
   const goalV = document.getElementById('goalv');
   const accEl = document.getElementById('accv');
   const goalBtns = [...document.querySelectorAll('#goal button')];
@@ -491,7 +500,10 @@
     { id:'timeattack_15', title:'Contra el reloj', desc:'Alcanz\u00e1 15 rondas en Contrarreloj.', check: list => list.some(e => e.mode === 'time' && e.round >= 15) },
     { id:'streak_20', title:'Racha perfecta', desc:'Alcanz\u00e1 20 rondas en una sola partida.', check: list => list.some(e => e.round >= 20) },
     { id:'daily_win', title:'Desaf\u00edo del d\u00eda', desc:'Gan\u00e1 el desaf\u00edo diario en cualquier dise\u00f1o.', check: list => list.some(e => e.won && e.mode === 'daily') },
-    { id:'twoplayer_play', title:'Cara a cara', desc:'Jug\u00e1 una partida en modo Dos jugadores.', check: list => list.some(e => e.mode === 'twoplayer') }
+    { id:'twoplayer_play', title:'Cara a cara', desc:'Jug\u00e1 una partida en modo Dos jugadores.', check: list => list.some(e => e.mode === 'twoplayer') },
+    { id:'bronze_cup', title:'Copa de bronce', desc:'Alcanz\u00e1 la ronda 14 en una partida.', medal:'\u{1F949}', check: list => list.some(e => e.round >= 14) },
+    { id:'silver_cup', title:'Copa de plata', desc:'Alcanz\u00e1 la ronda 20 en una partida.', medal:'\u{1F948}', check: list => list.some(e => e.round >= 20) },
+    { id:'gold_cup', title:'Copa de oro', desc:'Alcanz\u00e1 la ronda 31 en una partida.', medal:'\u{1F947}', check: list => list.some(e => e.round >= 31) }
   ];
   const achListEl = document.getElementById('achList');
   const achCountEl = document.getElementById('achCount');
@@ -525,7 +537,7 @@
   let best = 0;
   let recordBrokenThisRun = false;
   try { best = +localStorage.getItem('dial-retro-best') || 0; } catch(e){}
-  bestEl.textContent = best;
+  bestEl.textContent = best; updateMedalBadge();
 
   function cbSymbolHTML(i){
     const shapes = [
@@ -779,7 +791,9 @@
     achListEl.innerHTML = ACHIEVEMENTS.map(a => {
       const done = a.check(list);
       if(done){ unlocked++; unlockedNow.add(a.id); }
-      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge">${done ? '\u2713' : '\u2013'}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
+      const badgeCls = a.medal ? ' medal' : '';
+      const badgeSym = done ? (a.medal || '\u2713') : '\u2013';
+      return `<div class="ach-row${done ? ' unlocked' : ''}"><span class="ach-badge${badgeCls}">${badgeSym}</span><span class="ach-info"><span class="ach-title">${a.title}</span><span class="ach-desc">${a.desc}</span></span></div>`;
     }).join('');
     achCountEl.textContent = `${unlocked}/${ACHIEVEMENTS.length}`;
     if(seenAchievements){
@@ -1121,7 +1135,7 @@
     if(step === seq.length){
       lock(true);
       const done = seq.length;
-      if(done > best){ best = done; bestEl.textContent = best; try{ localStorage.setItem('dial-retro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
+      if(done > best){ best = done; bestEl.textContent = best; updateMedalBadge(); try{ localStorage.setItem('dial-retro-best', best); }catch(e){} showToast('\u2b50 \u00a1Nuevo r\u00e9cord! ' + done + (done===1?' ronda':' rondas'), 'record'); recordBrokenThisRun = true; }
       if(done > peak) peak = done;
       if(mode === 'goal' && done >= goal) return win();
       if(mode === 'daily' && done >= DAILY_GOAL) return win();
