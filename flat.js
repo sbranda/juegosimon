@@ -1206,6 +1206,9 @@
       pauseOverlayEl.hidden = false;
     }
   }, {signal});
+  signal.addEventListener('abort', () => {
+    if(running && peak > 0) addHistoryEntry(peak, false, hits, misses);
+  });
   document.addEventListener('keydown', e => {
     if(e.target.closest && e.target.closest('.pad')) return;
     const k = KEYS[e.key.toLowerCase()];
